@@ -33,8 +33,8 @@ create table M_board(
   cate_num number not null,
   board_title varchar2(90) not null,
   board_content clob not null,
-  board_uploadfile blob not null,
-  board_filename varchar2(40) not null,
+  board_uploadfile blob,
+  board_filename varchar2(40),
   board_hit number(5) not null,
   board_reg_date date default SYSDATE not null,
 

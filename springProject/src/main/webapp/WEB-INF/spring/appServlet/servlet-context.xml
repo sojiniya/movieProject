@@ -68,6 +68,8 @@
 		</beans:property>	
 	</beans:bean>
 	
+	<!-- 로그인 여부 체크 -->
+	
 	<!-- BLOB타입 이미지 표시 -->
 	<beans:bean id="imageView" class="kr.spring.view.ImageView"/>
 	
