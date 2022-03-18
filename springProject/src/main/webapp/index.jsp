@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <%
 	response.sendRedirect(request.getContextPath()+"/main/main.do");
-	// 2022-03-18 정동윤 푸쉬 테스트 입니다.
+	// 2022-03-18 14:38 - 슬랙 연동 Push 테스트 - 정동윤
 %>
