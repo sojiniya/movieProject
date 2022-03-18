@@ -26,6 +26,10 @@ div#main_footer{
 	width:100%;
 	background-color:yellow;
 }
+div#contents{
+	margin-bottom:10px;
+	padding:0 10px 0 0;
+}
 
 /*===메뉴===*/
 div#main_menu ul{
@@ -62,6 +66,7 @@ div#main_menu ul li{
 .align-center{
 	text-align:center;
 }
+
 /*메인*/
 a:link{
 	text-decoration:none;
@@ -101,6 +106,12 @@ ul.search li{
 	padding:0;
 	display:inline;
 }
+ul img {
+	display:block;
+}
+ul.memberInfo_wrap{
+	float:right;
+}
 table{
 	width:100%;
 	border:1px solid #000;
@@ -137,13 +148,13 @@ textarea.rep-content{
 	height:50px;
 	margin:10px 10px;
 }
-div#re_first, div#mre_first{
+div#re_first{
 	float:left;
 	width:70%;
 	padding-left:15px;
 	margin-bottom:10px;
 }
-div#re_second, div#mre_second{
+div#re_second{
 	float:left;
 	width:19%;
 	margin-bottom:10px;
@@ -183,6 +194,13 @@ form#register_form, form#update_form{
 ul{
 	list-style:none;
 }
+li{
+	float:left;
+	text-align:center;
+}
+h1{
+	float:left;
+}
 label{
 	width:100px;
 	float:left;
@@ -199,7 +217,36 @@ input[id="zipcode"]{
 .error-color{
 		color:red;
 }
+/* footer */
+footer {
+  width: 50%;
+  height: 90px;
+  bottom: 0px;
+  position: absolute;
+  border-top: 1px solid #c4c4c4;
+  padding-top: 15px;
+  color: #808080;
+  font-size: 15px;
+}
 
+footer a {
+  display: inline-block;
+  margin: 0 20px 10px 20px;
+  color: #808080; font-size: 15px;
+}
+
+footer a:visited {
+  color: #808080;
+}
+
+footer p {
+  margin-top: 0; margin-bottom: 0;   
+}
+
+footer p span {
+  display: inline-block;
+  margin-left: 20px;
+}
 
 
 
