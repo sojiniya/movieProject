@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <%
 	response.sendRedirect(request.getContextPath()+"/main/main.do");
-	// 레포지토리 테스트입니다.
+	// 2022-03-18 정동윤 푸쉬 테스트 입니다.
 %>
