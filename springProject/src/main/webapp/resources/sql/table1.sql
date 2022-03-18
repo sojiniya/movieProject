@@ -156,6 +156,7 @@ create table M_reserve(
   constraint M_reserve_M_member_detail_fk foreign key (mem_num) references M_member_detail (mem_num),
   constraint M_reserve_M_movie_fk foreign key (movie_num) references M_movie (movie_num)
 );
+create sequence M_reserve_seq;
 
 /*리뷰*/
 create table M_review(
