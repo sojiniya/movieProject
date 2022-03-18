@@ -33,7 +33,7 @@
 				<beans:value>/WEB-INF/tiles-def/jin.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/yoon.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/mi.xml</beans:value>
-				<beans:value>/WEB-INF/tiles-def/hyun.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/hyoen.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/sook.xml</beans:value>
 			</beans:list>
 		</beans:property>	
