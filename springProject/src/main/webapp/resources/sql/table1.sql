@@ -22,6 +22,8 @@ create table M_member_detail(
 constraint M_member_detail_pk primary key (mem_num),
 constraint M_member_detail_fk foreign key (mem_num) references M_member (mem_num)
 );
+ALTER TABLE m_member_detail MODIFY mem_birth number(8);
+ALTER TABLE m_member_detail MODIFY mem_grade number(4) DEFAULT 0;
 
 create sequence M_member_seq;
 

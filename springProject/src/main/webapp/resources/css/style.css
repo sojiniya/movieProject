@@ -190,6 +190,7 @@ form{
 /*CKEditor 사용시 등록, 수정폼*/
 form#register_form, form#update_form{
 	width:700px;
+	height:300px;
 }
 ul{
 	list-style:none;
