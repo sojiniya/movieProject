@@ -31,7 +31,7 @@
             <c:if test="${!empty user_num && user_auth == 2}">
             <li><a href="/user/mycgv/"><img src="https://img.cgv.co.kr/R2014/images/common/ico/loginMember.png" alt="MY CGV" /><span>MY CGV</span></a></li>
             </c:if>
-            <li><a href="/support/default.aspx"><img src="https://img.cgv.co.kr/R2014/images/common/ico/loginCustomer.png" alt="고객센터" /><span>고객센터</span></a></li>
+            <li><a href="${pageContext.request.contextPath}/board/boardMain.do"><img src="https://img.cgv.co.kr/R2014/images/common/ico/loginCustomer.png" alt="고객센터" /><span>고객센터</span></a></li>
         </ul>
     </div>
 </div>

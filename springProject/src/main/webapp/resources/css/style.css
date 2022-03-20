@@ -248,17 +248,123 @@ footer p span {
   display: inline-block;
   margin-left: 20px;
 }
-
-
-
-
-
-
-
-
-
-
-
+/*고객센터 메인*/
+.bordMain {
+	position: relative;
+	width: 80%;
+}
+.boardMain .board-detail {
+	width: 810px;
+	float: left;
+}
+.check_wrap {
+	overflow: hidden;
+}
+.c_check_warp .c_box.qna_search {
+    width: 270px;
+    background: #fb4357 url(../images/ico_search.png) center 50px scroll no-repeat;
+    background-size: 50px;
+    border-right: none;
+}
+.c_check_warp .c_box {
+    float: left;
+    display: block;
+    width: 269px;
+    height: 260px;
+    text-align: center;
+    border-right: 1px solid #dedace;
+}
+.c_check_warp .qna_search .c_tit {
+    color: #fff;
+}
+.c_check_warp .c_tit {
+    display: block;
+    padding-top: 135px;
+    font-size: 16px;
+    color: #222;
+    letter-spacing: -0.059em;
+    /* background: url(../images/sub/customer/bg_c_check.png) no-repeat; */
+}
+.qna_search .search_box {
+    overflow: hidden;
+    display: inline-block;
+    width: 200px;
+    height: 30px;
+    margin: 12px 0px 9px;
+    text-align: left;
+    background-color: #fff;
+}
+.qna_search .search_box input {
+    float: left;
+    width: 165px;
+    height: 12px;
+    padding: 9px 0;
+    font-size: 13px;
+    line-height: 12px;
+    text-indent: 7px;
+    vertical-align: middle;
+    border: none;
+    background-color: #fff;
+}
+.qna_search .search_box .btn_search {
+    float: right;
+    display: block;
+    width: 34px;
+    height: 30px;
+    font-weight: 500;
+    font-size: 0;
+    line-height: 30px;
+    background: transparent url(../images/bth_search.png) center scroll no-repeat;
+    background-size: 16px;
+}
+.c_check_warp .c_box {
+    float: left;
+    display: block;
+    width: 269px;
+    height: 260px;
+    text-align: center;
+    border-right: 1px solid #dedace;
+}
+.inquiry {
+    background: #f8f8f8 url(../images/ico_email.png) center 50px scroll no-repeat;
+    background-size: 50px;
+}
+.c_check_warp .c_txt {
+    display: block;
+    margin: 11px 0px 17px;
+    font-size: 12px;
+    color: #666;
+    letter-spacing: -0.042em;
+}
+.c_check_warp .c_txt + a {
+    overflow: hidden;
+    display: block;
+    width: 80px;
+    margin: 0 auto;
+    font-size: 12px;
+    color: #fff;
+    letter-spacing: -0.042em;
+    line-height: 23px;
+    text-align: center;
+    background-color: #666;
+    border-radius: 4px;
+}
+.my_advice {
+    background: #f8f8f8 url(../images/ico_myAdvice.png) center 50px scroll no-repeat;
+    background-size: 50px;
+}
+.customer_notice_area {
+    overflow: hidden;
+    margin-top: 36px;
+}
+.notice_area {
+    position: relative;
+    left: 0;
+    top: 0;
+    float: right;
+    width: 800px;
+    height: 287px;
+}
 
 
 
