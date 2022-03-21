@@ -92,6 +92,32 @@ div#boardMain_body {
     float: left;
     width: 78%;
 }
+/*관리자 글쓰기*/
+.adminBoardWrite-main {
+	margin-top: 30px;
+	padding: 0px 20px;
+}
+.adminWriteForm {
+	width: 800px;
+	border: none;
+	padding: 0px;
+}
+.tbl_notice_list {
+    border-top: solid 1px #d6d4ca;
+    border-bottom: solid 1px #b8b6aa;
+}
+.type_list {
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	display: inline-block;
+}
+.type_list > li > label{
+	width: 115px;
+	margin: 0px;
+	padding: 0px;
+	display: inline-block;
+}
 
 /*===헤더===*/
 ul.memberInfo_wrap{
