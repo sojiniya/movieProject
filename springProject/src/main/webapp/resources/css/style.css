@@ -49,7 +49,9 @@ div#boardMain_body {
 
 /*===헤더===*/
 ul.memberInfo_wrap{
+	display: flex;
 	float:right;
+	align-items: center;
 }
 
 /*===메뉴===*/
