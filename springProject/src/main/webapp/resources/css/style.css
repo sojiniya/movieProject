@@ -547,11 +547,16 @@ footer p span {
 
 .col-head{
 	position: relative;
-    height: 33px;
+    height: 7%;
     line-height: 33px;
     text-align: center;
     background-color: #333333;
     color: white;
+}
+
+.col-body{
+	height: 93%;
+    overflow: auto;
 }
 
 .movie-form{

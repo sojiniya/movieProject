@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 중앙 컨텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <div style="display:flex;">
@@ -20,6 +21,23 @@
 <div class="movie-form">
 	<div id="movieselect" style="width: 30%; height: 100%; border:1px black solid; float: left;">
 		<div class="col-head">영화</div>
+		<div class="col-body">
+			<c:if test="${empty list}">
+			<div style="text-align: center;">현재 상영중인 영화가 없습니다.</div>
+		</c:if>
+		<c:if test="${!empty list}">
+			<ul style="margin-top: 0px; padding-left: 0px; margin-bottom: 0px;">
+				<c:forEach var="movie" items="${list}">
+					<li style="margin: 5px; float: none; text-align: left;">
+						<a href="#">
+						<span>${movie.movie_pg}</span>
+						<span>${movie.movie_name}</span>
+						</a>
+					</li>					
+				</c:forEach>
+			</ul>			
+		</c:if>
+		</div>
 	</div>
 	<div style="width: 30%; height: 100%; border:1px black solid; float: left;">
 		<div class="col-head">극장</div>
