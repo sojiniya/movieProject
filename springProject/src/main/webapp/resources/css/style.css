@@ -378,7 +378,7 @@ footer p span {
 .qna_search .board_search_box {
     overflow: hidden;
     display: inline-block;
-    width: 200px;
+    width: 190px;
     height: 30px;
     margin: 12px 0px 9px;
     text-align: left;
@@ -386,7 +386,7 @@ footer p span {
 }
 .qna_search .board_search_box input {
     float: left;
-    width: 165px;
+    width: 155px;
     height: 12px;
     padding: 9px 0;
     font-size: 13px;
@@ -399,6 +399,7 @@ footer p span {
 .qna_search .board_search_box .btn_search {
     float: right;
     display: block;
+    border: none;
     width: 34px;
     height: 30px;
     font-weight: 500;
