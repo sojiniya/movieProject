@@ -16,7 +16,7 @@ public class MemberVO {
 	
 	@Pattern(regexp="^[A-Za-z0-9]{6,10}$")
 	private String id; //회원 아이디 (아이디 최대 6~10자)/ 영(대/소문자)+ 숫자조합
-	private int auth; //0: 정지회원 /1:일반회원(default)/2:탈퇴회원 3:관리자
+	private int auth; //0: 정지회원 /1:일반회원(default)/ 2:관리자
 	
 	@NotEmpty
 	private String mem_name; //회원 이름
@@ -48,7 +48,7 @@ public class MemberVO {
 	private String now_mem_pw;
 	//비밀번호 일치 여부 체크
 	public boolean isCheckPassword(String userPasswd) {
-		if(auth > 1 && mem_pw.equals(userPasswd) ) {
+		if(auth >= 1 && mem_pw.equals(userPasswd) ) {
 			return true;
 		}
 		return false;

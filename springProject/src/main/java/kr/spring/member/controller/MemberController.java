@@ -59,6 +59,66 @@ public class MemberController {
 			return "redirect:/main/main.do";
 		}
 	
+		//로그인 폼
+		@GetMapping("/user/login.do")
+		public String formLogin() {
+			return "memberLogin";
+		}
+		
+		//로그인 폼에서 전송된 데이터 처리
+		@PostMapping("/user/login.do")
+		public String submitLogin(@Valid MemberVO memberVO, BindingResult result, HttpSession session) {
+			
+			logger.info("<<회원 로그인>> : " + memberVO);
+			
+			//유효성 체크 결과 오류가 있으면 폼 호출
+			//id와 passwd 필드만 체크
+			if(result.hasFieldErrors("id") || result.hasFieldErrors("passwd")) {
+				return formLogin();
+			}
+			
+			//로그인 체크(id,비밀번호 일치 여부 체크)
+			try {
+				MemberVO member = memberService.selectCheckMember(memberVO.getId());
+				
+				boolean check = false;
+				
+				if(member != null) {
+					//비밀번호 일치 여부 체크				사용자가 입력한 비밀번호
+					check = member.isCheckPassword(memberVO.getMem_pw());
+				}
+				if(check) {
+					//인증성공, 로그인 처리
+					session.setAttribute("user_num", member.getMem_num());
+					session.setAttribute("user_id", member.getId());
+					session.setAttribute("user_auth", member.getMem_auth());
+					session.setAttribute("user_photo", member.getMem_photo());
+					
+					return "redirect:/main/main.do";
+				}
+				
+				//인증실패
+				throw new AuthCheckException();
+			
+			}catch(AuthCheckException e) {
+				//폼에서 보여질 메시지 생성
+				result.reject("invalidIdOrPassword");
+				//인증 실패로 로그인 폼을 호출
+				return formLogin();
+			}
+			
+		}
+		
+		//회원 로그아웃
+		@RequestMapping("/user/logout.do")
+		public String processLogout(HttpSession session) {
+			
+			//로그아웃
+			session.invalidate();
+			
+			return "redirect:/main/main.do";
+		}
+		
 	
 }
 
