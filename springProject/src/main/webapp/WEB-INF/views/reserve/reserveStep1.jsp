@@ -3,16 +3,14 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!-- 중앙 컨텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
-<div>
-	<ul>
-		<li>1.영화 및 극장 선택</li>
-		<li>2.좌석 선택</li>
-		<li>3.결제</li>
-	</ul>
+<div style="display:flex;">
+	<div style="width: 33%; border: 1px solid black;">1.영화 및 극장 선택</div>
+	<div style="width: 33%; border: 1px solid black;">2.좌석 선택</div>
+	<div style="width: 33%; border: 1px solid black;">3.결제</div>
 </div>
 	
 <div>
-	<input type="button" value="초기화" onclick="location.href='reserveStep1.do'">
+	<input style="" type="button" value="초기화" onclick="location.href='reserveStep1.do'">
 </div>
 
 <div id="info-banner">
@@ -20,7 +18,7 @@
 </div>
 
 <div>
-	<form:form modelAttribute="ReserveVO" action="reserveStep2.do">
+	<form:form modelAttribute="ReserveVO" action="reserveStep2.do" id="reserveStep1form">
 		
 	</form:form>
 </div>
