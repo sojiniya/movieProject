@@ -1,7 +1,6 @@
 package kr.spring.time.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,15 +15,8 @@ public class TimeServiceImpl implements TimeService{
 	private TimeMapper timeMapper;
 
 	@Override
-	public int getTimeCount() {
+	public List<TimeVO> getTimeList(TimeVO timeVO) {
 		
-		return timeMapper.getTimeCount();
+		return timeMapper.selectList(timeVO);
 	}
-
-	@Override
-	public List<TimeVO> getTimeList(Map<String, Object> map) {
-		
-		return timeMapper.selectList(map);
-	}
-	
 }

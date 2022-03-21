@@ -1,27 +1,43 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!-- Áß¾Ó ÄÁÅÙÃ÷ ½ÃÀÛ -->
-<div class="page-main">
-	<h2>±ØÀåÁö¿ªµî·ÏÁ¤º¸ ¸®½ºÆ®Á¶È¸</h2>
-	<form action="list.do" method="get">
+<!-- ì¤‘ì•™ ì»¨í…ì¸  ì‹œì‘ -->
+<style type="text/css">
+div {
+    display: block;
+}
+div, ul, li, form, font, a{
+	font-family: 'Noto Sans KR', 'CJONLYONENEW', 'ë§‘ì€ ê³ ë”•', 'ë‹ì›€', Dotum, sans-serif;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    word-break: break-all;
+}
+</style>
+<div class="favorite-wrap">
+	<div class="sect-city">
 		<ul>
-			<li class="on"><a href="#">¼­¿ï</a></li>
-			<li class="on"><a href="#">°æ±â</a></li>
-			<li class="on"><a href="#">ÀÎÃµ</a></li>
-			<li class="on"><a href="#">°­¿ø</a></li>
-			<li class="on"><a href="#">´ë±¸</a></li>
+			<li class="on">
+			<a href="#">ì„œìš¸</a>
+			<a href="#">ê²½ê¸°</a>
+			<a href="#">ì¸ì²œ</a>
+			<a href="#">ê°•ì›</a>
+			<a href="#">ëŒ€êµ¬</a>
+			<div class="area">
+				<ul>
+					<li class="on">
+					<a title="CGVê°•ë‚¨" href="#">CGVê°•ë‚¨</a>
+					<a title="CGVê°•ë‚¨" href="#">CGVê°•ë³€</a>
+					<a title="CGVê°•ë‚¨" href="#">CGVê±´ëŒ€ì…êµ¬</a>
+					<a title="CGVê°•ë‚¨" href="#">CGVêµ¬ë¡œ</a>
+					<a title="CGVê°•ë‚¨" href="#">CGVí™ëŒ€</a>
+					</li>
+				</ul>
+			</div>
+			</li>
 		</ul>
-		<c:if test="${count > 0}">
-		<div class="area">
-			<ul>
-				<li class="on"><a title="CGV°­³²" href="#">CGV°­³²</a></li>
-				<li class="on"><a title="CGV°­º¯" href="#">CGV°­º¯</a></li>
-				<li class="on"><a title="CGV°Ç´ëÀÔ±¸" href="#">CGV°Ç´ëÀÔ±¸</a></li>
-				<li class="on"><a title="CGV±¸·Î" href="#">CGV±¸·Î</a></li>
-			</ul>
-		</div>
-		</c:if>
-	</form>
+	</div>
 </div>
-<!-- Áß¾Ó ÄÁÅÙÃ÷ ³¡ -->
+<!-- ì¤‘ì•™ ì»¨í…ì¸  ë -->

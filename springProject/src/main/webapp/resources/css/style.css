@@ -626,3 +626,32 @@ footer p span {
 .active{
 	background: red;
 }
+
+/* 극장 리스트 */
+.favorite-wrap {
+    position: relative;
+    width: 874px;
+    height: 400px;
+    padding: 60px 53px 0;
+    background: url(https://img.cgv.co.kr/r2014/images/common/bg/bg_showtimes_favorite.gif) no-repeat 0 0;
+}
+.favorite-wrap .sect-city {
+    height: 42px;
+    margin-top: 18px;
+    border-top: 2px solid #727171;
+    border-bottom: 2px solid #727171;
+}
+.sect-city {
+    height: 44px;
+    border-top: 3px solid #241D1E;
+    line-height: 44px;
+}
+div[class^="sect-"] {
+    clear: both;
+    zoom: 1;
+}
+div[class^="sect-"]:after {
+    content: '';
+    clear: both;
+    display: block;
+}

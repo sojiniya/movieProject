@@ -7,22 +7,17 @@
 	<form:form modelAttribute="theaterVO" action="write.do">
 		<ul>
 			<li>
-				<form:label path="theater_addr">지역명</form:label>
-				<form:input path="theater_addr"/>
-			</li>
-			<li>
-				<form:label path="theater_addr">극장위치</form:label>
+				<form:label path="theater_addr">극장관주소</form:label>
 				<form:input path="theater_addr"/>
 			</li>
 			<li>
 				<form:label path="theater_name">극장관명</form:label>
 				<form:input path="theater_name"/>
-
 			</li>
 		</ul>
 		<div class="align-center">
 			<form:button>등록</form:button>
-			<input type="button" value="목록" onclick="location.href='list.do'">
+			<input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>
 	</form:form>
 </div>
