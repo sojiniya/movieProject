@@ -4,7 +4,7 @@
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main">
 	<h2>극장지역정보 등록</h2>
-	<form:form modelAttribute="theaterVO" action="write.do" id="register_form">
+	<form:form modelAttribute="theaterVO" action="write.do">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>
