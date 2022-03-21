@@ -3,9 +3,17 @@ package kr.spring.board.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.spring.board.dao.BoardMapper;
 import kr.spring.board.vo.BoardVO;
 
+@Service
 public class BoardServiceImpl implements BoardService{
+	
+	@Autowired
+	private BoardMapper boardMapper;
 
 	@Override
 	public List<BoardVO> selectList(Map<String, Object> map) {
@@ -21,7 +29,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void insertBoard(BoardVO board) {
-		// TODO Auto-generated method stub
+		boardMapper.insertBoard(board);
 		
 	}
 
@@ -66,5 +74,8 @@ public class BoardServiceImpl implements BoardService{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
+	
 
 }
