@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.reserve.service.ReserveService;
 import kr.spring.reserve.vo.MovieVO;
+import kr.spring.theater.vo.TheaterVO;
 
 @Controller
 public class ReserveController {
@@ -30,14 +31,19 @@ public class ReserveController {
 	@RequestMapping("/reserve/reserveStep1.do")
 	public ModelAndView reserveStep1() {
 		
-		List<MovieVO> list = null;
-		list = reserveService.selectMovieList();
+		List<MovieVO> movie_list = null;
+		movie_list = reserveService.selectMovieList();
+		
+		List<TheaterVO> theater_list = null;
+		theater_list = reserveService.selectTheaterList();
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("reserveStep1");
-		mav.addObject("list",list);
+		mav.addObject("movie_list",movie_list);
+		mav.addObject("theater_list",theater_list);
 
-		logger.info("<<영화 리스트 조회 결과>> : " + list);
+		logger.info("<<영화 리스트 조회 결과>> : " + movie_list);
+		logger.info("<<상영관 리스트 조회 결과>> : " + theater_list);
 		
 		return mav;
 	}

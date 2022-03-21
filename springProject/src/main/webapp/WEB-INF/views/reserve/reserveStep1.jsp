@@ -22,12 +22,12 @@
 	<div id="movieselect" style="width: 30%; height: 100%; border:1px black solid; float: left;">
 		<div class="col-head">영화</div>
 		<div class="col-body">
-			<c:if test="${empty list}">
+			<c:if test="${empty movie_list}">
 			<div style="text-align: center;">현재 상영중인 영화가 없습니다.</div>
 		</c:if>
-		<c:if test="${!empty list}">
+		<c:if test="${!empty movie_list}">
 			<ul style="margin-top: 0px; padding-left: 0px; margin-bottom: 0px;">
-				<c:forEach var="movie" items="${list}">
+				<c:forEach var="movie" items="${movie_list}">
 					<li style="margin: 5px; float: none; text-align: left;">
 						<a href="#">
 						<span>${movie.movie_pg}</span>
@@ -41,6 +41,16 @@
 	</div>
 	<div style="width: 30%; height: 100%; border:1px black solid; float: left;">
 		<div class="col-head">극장</div>
+		<div class="col-body">
+			<div class="theater-list">
+				<div class="theater-area-list">
+					<ul>
+						
+					</ul>
+				</div>
+				<div class="theater-cgv-list"></div>
+			</div>
+		</div>
 	</div>
 	<div style="width: 9%; height: 100%; border:1px black solid; float: left;">
 		<div class="col-head">날짜</div>
