@@ -5,9 +5,14 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="three" extends="main">
+    <definition name="theaterWrite" extends="main">
     	<put-attribute name="title" value="게시판 목록"/>
-    	<put-attribute name="body" value="/WEB-INF/views/board/boardList.jsp"/>
+    	<put-attribute name="body" value="/WEB-INF/views/theater/theaterWrite.jsp"/>
+    </definition>
+    
+    <definition name="selectList" extends="main">
+    	<put-attribute name="title" value="게시판 목록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/time/selectList.jsp"/>
     </definition>
 </tiles-definitions>
 
