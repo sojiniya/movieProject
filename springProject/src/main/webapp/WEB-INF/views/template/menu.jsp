@@ -4,7 +4,7 @@
 
 <!-- 상단 메뉴 시작 -->
 <ul>
-	<li><a href="/">영화</a></li>
+	<li><a href="${pageContext.request.contextPath}/movie/movieChart.do">영화</a></li>
 	<li><a href="/">극장</a></li>
 	<li><a href="${pageContext.request.contextPath}/reserve/reserveStep1.do">예매</a></li>
 	<li>스토어</li>
