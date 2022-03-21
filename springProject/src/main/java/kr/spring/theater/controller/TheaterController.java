@@ -30,13 +30,13 @@ public class TheaterController {
 	}
 	
 	//1.관리자 - 극장지역등록 폼
-	@GetMapping("/theater/write.do")
+	@GetMapping("/theater/theaterWrite.do")
 	public String form() {
 		return "theaterWrite"; //타일스설정
 	}
 	
 	//1-1. 극장지역등록 폼에서 전송된 데이터 처리
-	@PostMapping("/theater/write.do")
+	@PostMapping("/theater/theaterWrite.do")
 	public String submit(@Valid TheaterVO theaterVO, BindingResult result, HttpSession session, HttpServletRequest request) {
 
 		//로그
