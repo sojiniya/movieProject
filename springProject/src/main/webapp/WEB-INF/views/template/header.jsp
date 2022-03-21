@@ -3,11 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!-- 상단 시작 -->
 
-<div class="header">			
+<div class="header">	
             <!-- 서비스 메뉴 --> 
             
 <div class="main_header">
-    <div class="contents">
+<div class="contents">
         <h1 onclick=""><a href="/"><img src="https://img.cgv.co.kr/R2014/images/common/logo/logoRed.png" alt="CGV" /></a><span>CULTUREPLEX</span></h1>
         <ul class="memberInfo_wrap">
 			
@@ -31,9 +31,10 @@
             <c:if test="${!empty user_num && user_auth == 2}">
             <li><a href="/user/mycgv/"><img src="https://img.cgv.co.kr/R2014/images/common/ico/loginMember.png" alt="MY CGV" /><span>MY CGV</span></a></li>
             </c:if>
-            <li><a href="${pageContext.request.contextPath}/board/boardMain.do"><img src="https://img.cgv.co.kr/R2014/images/common/ico/loginCustomer.png" alt="고객센터" /><span>고객센터</span></a></li>
+            <li><a href="/support/default.aspx"><img src="https://img.cgv.co.kr/R2014/images/common/ico/loginCustomer.png" alt="고객센터" /><span>고객센터</span></a></li>
         </ul>
-    </div>
+        </div>
 </div>
 </div>
+
 <!-- 상단 끝 -->

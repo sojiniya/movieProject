@@ -13,12 +13,16 @@
 	<div id="main_header">
 		<tiles:insertAttribute name="header"/>
 	</div>
+	<div id="main_menu">
+		<tiles:insertAttribute name="menu"/>
+	</div>
 	<div id="main_body">
 		<tiles:insertAttribute name="body"/>
 	</div>
 	<div id="main_footer">
 		<tiles:insertAttribute name="footer"/>
 	</div>
+
 </div>
 </body>
 </html>
