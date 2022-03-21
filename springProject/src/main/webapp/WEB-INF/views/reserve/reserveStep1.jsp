@@ -14,8 +14,22 @@
 	<input style="" type="button" value="초기화" onclick="location.href='reserveStep1.do'">
 </div>
 
-<div id="info-banner" style="width: 100%; background: gray; height: 150px; margin: 10px 0 10px 0">
-	
+<div id="info-banner" style="width: 100%; background: black; height: 150px; margin: 10px 0 10px 0">
+	<div class="info-movie">
+		<div><img src="${pageContext.request.contextPath}/resources/images/default.png"  width="120px" height="130px" style="float:left; margin-right: 20px"></div>
+		<div>영화명</div>
+		<div>장르</div>
+		<div>19세 관람가</div>
+	</div>
+	<div class="info-theater">
+	</div>
+	<div class="info-people">
+	</div>
+	<div>
+		<form:form modelAttribute="ReserveVO" action="reserveStep2.do" id="reserveStep1_form">
+			좌석 선택
+		</form:form> 
+	</div>
 </div>
 
 <div class="movie-form">
@@ -61,10 +75,6 @@
 	<div style="width: 15%; height: 100%; border:1px black solid; float: left;">
 		<div class="col-head">인원 (최대 6명)</div>
 	</div>
-</div>
-<!--
-<form:form modelAttribute="ReserveVO" action="reserveStep2.do" id="reserveStep1form">
-</form:form> 
- -->	
+</div>	
 
 <!-- 중앙 컨텐츠 끝 -->
