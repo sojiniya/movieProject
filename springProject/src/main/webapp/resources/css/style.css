@@ -483,4 +483,17 @@ footer p span {
     height: 500px;
 }
 
+.col-head{
+	position: relative;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    background-color: #333333;
+    color: white;
+}
 
+.movie-form{
+	width: 100%;
+	height: 500px;
+	background: gainsboro;
+}
