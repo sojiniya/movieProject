@@ -4,6 +4,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 중앙 컨텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+	});
+</script>
 <div style="display:flex;">
 	<div style="width: 33%; border: 1px solid black;">1.영화 및 극장 선택</div>
 	<div style="width: 33%; border: 1px solid black;">2.좌석 선택</div>
@@ -17,9 +22,9 @@
 <div id="info-banner" style="width: 100%; background: black; height: 150px; margin: 10px 0 10px 0">
 	<div class="info-movie">
 		<div><img src="${pageContext.request.contextPath}/resources/images/default.png"  width="120px" height="130px" style="float:left; margin-right: 20px"></div>
-		<div>영화명</div>
-		<div>장르</div>
-		<div>19세 관람가</div>
+		<div id="movie_name"></div>
+		<div id="movie_genre"></div>
+		<div id="movie_pg"></div>
 	</div>
 	<div class="info-theater">
 	</div>
@@ -40,12 +45,12 @@
 			<div style="text-align: center;">현재 상영중인 영화가 없습니다.</div>
 		</c:if>
 		<c:if test="${!empty movie_list}">
-			<ul style="margin-top: 0px; padding-left: 0px; margin-bottom: 0px;">
+			<ul style="margin-top: 0px; padding-left: 0px; margin-bottom: 0px;" class="movie_list">
 				<c:forEach var="movie" items="${movie_list}">
 					<li style="margin: 5px; float: none; text-align: left;">
-						<a href="#">
-						<span>${movie.movie_pg}</span>
-						<span>${movie.movie_name}</span>
+						<a href="#" movie-idx="${movie.movie_num}">
+							<span>${movie.movie_pg}</span>
+							<span>${movie.movie_name}</span>
 						</a>
 					</li>					
 				</c:forEach>
