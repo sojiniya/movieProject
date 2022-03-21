@@ -6,7 +6,6 @@
 
 <div class="boardMain">
 	<div class="board-detail">
-	<h2>고객센터 메인</h2>
 	<div class="c_check_warp">
 		<div class="c_box qna_search">
 			<strong class="c_tit">자주찾는 질문 빠른검색</strong>
