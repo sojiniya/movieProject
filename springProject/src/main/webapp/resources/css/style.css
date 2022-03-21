@@ -375,7 +375,7 @@ footer p span {
     letter-spacing: -0.059em;
     /* background: url(../images/sub/customer/bg_c_check.png) no-repeat; */
 }
-.qna_search .search_box {
+.qna_search .board_search_box {
     overflow: hidden;
     display: inline-block;
     width: 200px;
@@ -384,7 +384,7 @@ footer p span {
     text-align: left;
     background-color: #fff;
 }
-.qna_search .search_box input {
+.qna_search .board_search_box input {
     float: left;
     width: 165px;
     height: 12px;
@@ -396,7 +396,7 @@ footer p span {
     border: none;
     background-color: #fff;
 }
-.qna_search .search_box .btn_search {
+.qna_search .board_search_box .btn_search {
     float: right;
     display: block;
     width: 34px;

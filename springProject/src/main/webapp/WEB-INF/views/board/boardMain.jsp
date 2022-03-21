@@ -11,7 +11,7 @@
 		<div class="c_box qna_search">
 			<strong class="c_tit">자주찾는 질문 빠른검색</strong>
 			<br>
-			<div class="search_box">
+			<div class="board_search_box">
 				<input id="searchtext" type="text" title="검색어 입력" placeholder="검색어를 입력해 주세요.">
 				<button type="button" class="btn_search" title="검색하기" id="btn_search">검색</button>
 			</div>
