@@ -35,6 +35,17 @@ div#contents{
 	margin-bottom:10px;
 	padding:0 10px 0 0;
 }
+/*고객센터 레이아웃*/
+div#boardMain_left {
+    float: left;
+    width: 17%;
+    min-height: 400px;
+}
+div#boardMain_body {
+    float: left;
+    width: 78%;
+    padding: 5px 5px 30px 5px;
+}
 
 /*===헤더===*/
 ul.memberInfo_wrap{

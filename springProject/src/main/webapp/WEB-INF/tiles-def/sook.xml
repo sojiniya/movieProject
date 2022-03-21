@@ -5,11 +5,11 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="boardMain" extends="main">
+    <definition name="boardMain" extends="board_main">
     	<put-attribute name="title" value="고객센터"/>
     	<put-attribute name="body" value="/WEB-INF/views/board/boardMain.jsp"/>
     </definition>
-    
+
 </tiles-definitions>
 
 
