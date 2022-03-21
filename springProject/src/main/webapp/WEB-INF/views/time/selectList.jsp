@@ -40,4 +40,8 @@ div, ul, li, form, font, a{
 		</ul>
 	</div>
 </div>
+<hr size="1" noshade="noshade" width="100%">
+<hr size="1" noshade="noshade" width="100%">
+<div>
+</div>
 <!-- 중앙 컨텐츠 끝 -->
