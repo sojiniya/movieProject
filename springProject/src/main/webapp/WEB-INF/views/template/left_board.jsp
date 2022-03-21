@@ -3,17 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!-- 왼쪽 메뉴 시작 -->
 <div class="col-aside">
-	<div class="snb">
-		<ul>
-			<li class="on"><a href="${pageContext.request.contextPath}/board/boardMain.do">고객센터 메인</a></li>
-			<li><a href="#">자주찾는 질문</a></li>
-			<li><a href="#">공지/뉴스</a></li>
-			<li><a href="#">문의/건의</a></li>
-			<c:if test="${!empty user_num && user_auth == 2}">
+	<ul>
+		<li class="on"><a href="${pageContext.request.contextPath}/board/boardMain.do">고객센터 메인</a></li>
+		<li><a href="#">자주찾는 질문</a></li>
+		<li><a href="#">공지/뉴스</a></li>
+		<li><a href="#">문의/건의</a></li>
+		<c:if test="${!empty user_num && user_auth == 2}">
 			<li><a href="#">게시글 관리</a></li>
 			<li><a href="${pageContext.request.contextPath}/board/adminBoardWrite.do">게시글 등록</a></li>
-			</c:if>
-		</ul>
-	</div>
+		</c:if>
+	</ul>
 </div>
 <!-- 왼쪽 메뉴 끝 -->

@@ -43,47 +43,54 @@ div#boardMain_left {
     min-height: 400px;
 
 }
-div .col-aside .snb{
-	font-size: 18px;
-	line-height: 2.0;
+.col-aside{
+	width: 160px;
+	float: left;
+	margin: 0px;
+	padding: 0px;
 }
-.col-aside .snb > ul {
-    margin-bottom: 10px;
-    display: block;
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
-    list-style: none;
-}
-.col-aside .snb > ul > li {
-    border-top: 1px solid #fff;
-}
-.col-aside .snb > ul > li > a {
-    width: 170px;
-    height: 34px;
-    padding-left: 5px;
-    color: #222;
-    font-weight: 500;
-    font-size: 15px;
-    line-height: 34px;
-}
-div .col-aside .snb > ul > li.on > a {
-    background-color: #fb4357;
-    color: #fdfcf0;	
+.col-aside > ul{
+	width: 100%;
+	height: 260px;
+	text-align: center;;
+	margin: 0px;
+	padding: 0px;
 }
 
-div.snb > ul > li:hover, div.snb > ul > li:focus, div.snb > ul > li.on {
-    margin-top: 1px;
+.col-aside > ul > li{
+	width: 100%;
+	height: 42px;
+	text-align: left;
+	margin: 0px;
+	padding-top: 0px;
+	margin-bottom: 1.5px;
+}
+.col-aside > ul > li.on {
+    
     border-top: 0 none;
+}
+.col-aside > ul > li:hover > a,
+.col-aside > ul > li > a:focus,
+.col-aside > ul > li.on > a {
+    background-color: #fb4357;
+    color: #fdfcf0;
+}
+.col-aside > ul > li > a {
+	vertical-align: middle;
+	text-decoration : none;
+	display: inline-block;
+    width: 160px;
+    height: 42px;
+    padding-left: 10px;
+    color: #222;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 34px;
 }
 
 div#boardMain_body {
     float: left;
     width: 78%;
-    padding: 5px 5px 30px 5px;
 }
 
 /*===헤더===*/
