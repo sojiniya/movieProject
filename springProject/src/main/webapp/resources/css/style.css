@@ -557,7 +557,15 @@ footer p span {
 .radio_v2 {
 	display:none;
 }
-
+.hidden {
+    display: inline-block;
+    text-indent: -9999px;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+}
 /*====무비차트====*/
 .movie-image img {
 	width: 170px;
