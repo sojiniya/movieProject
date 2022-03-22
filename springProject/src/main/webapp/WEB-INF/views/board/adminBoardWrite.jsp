@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-	
 	$(function(){
 		$(".radio_b1").click(function(){
 			if($("input[type='radio']").is(':checked')){
@@ -20,6 +20,33 @@
 			}
 
 		})
+		$(".check1").click(function(){
+			if($("input[type='radio']").is(':checked')){
+				$(".region").disable();
+			}else{
+				$(".region").able();
+			}
+
+		})
+		 // 영화관 선택(선택하지 않음:0, 선택함:1)
+        $('input:radio[name="sel_theaterchoise"]').on("change", function () {            
+            $(this).parent().addClass("on").siblings().removeClass("on");
+
+            if ($(this).val() == "0") {
+                //기본으로 셋팅
+                $('#sel_t_group option').eq(0).attr("selected", true);
+                theaterBinding();
+
+                $('#sel_t_group').attr("disabled", true);
+                $('#sel_regioncode').attr("disabled", true);
+                $('#sel_theatercode').attr("disabled", true);
+            }
+            else {
+                $('#sel_t_group').attr("disabled", false);
+                $('#sel_regioncode').attr("disabled", false);
+                $('#sel_theatercode').attr("disabled", false);
+            }
+        });
 	})
 </script>
 <!-- 중앙 시작 -->
@@ -99,28 +126,28 @@
 					<th scope="row">영화관 선택</th>
 					<td>
 						<ul class="type_list">
-							<li>
-								<label for="notCheck">
-								<input type="radio" id="notCheck" name="chooseTheater" class="noCheck" value="0" checked>선택하지 않음
+							<li class="on">
+								<label for="no_sel">
+								<input type="radio" id="no_sel" name="sel_theaterchoise" checked="checked" value="0" />선택하지 않음
 								</label>
 							</li>
 							<li>
-								<label for="Check">
-								<input type="radio" id="Check" name="chooseTheater" value="1">선택함
+								<label for="sel">
+								<input type="radio" id="sel" name="sel_theaterchoise" value="1" />선택함
 								</label>
 							</li>
-							<li>
-								<select name="지역">
-									<option selected disabled>지역 선택</option>
-									<option value="서울">서울</option>
-									<option value="">경기</option>
-									<option value="">인천</option>
-									<option value="">강원</option>
-								</select>
-							</li>
-						</ul>
+						</ul> 
+						<label for="sel_regioncode" class="hidden">지역 선택</label> 
+						<select title="지역 선택" class="sel01" id="sel_regioncode" name="sel_regioncode" disabled="disabled" style="width: 114px;">
+							<option value="">지역 선택</option>
+						</select> 
+						<label for="sel_theatercode" class="hidden">영화관 선택</label> 
+						<select title="영화관 선택" class="sel01" id="sel_theatercode" name="sel_theatercode" disabled="disabled" style="width: 114px;">
+							<option value="">영화관 선택</option>
+						</select>
 					</td>
 				</tr>
+
 				<tr>
 					<th scope="row">제목</th>
 					<td>
