@@ -40,15 +40,19 @@
 					//다음 step으로 가기위한 영화 번호 변수에 저장
 					pick_movie_num = param.movie.movie_num;
 					
-					//극장 카테고리(지역) 내용 초기화
+					//극장 카테고리(지역) 리스트 내용 초기화
 					$('#theater-local').empty();
+					//cgv 리스트 내용 초기화
+					$('#theater-cgv').empty();
+					//info에 있는 cgv 내용 초기화
+					$('#cgv_name').empty();
 						
+					
 					// 선택한 영화가 상영하는 극장 카테고리(지역) 노출
 					$(param.theater_local_name).each(function(index,item){
 						let output = '<li style="float:none; text-align:right;">';
 						output += item.theater_local;
 						output += '</li>';
-
 						
 						//문서 객체에 추가
 						$('#theater-local').append(output);
@@ -64,6 +68,96 @@
 			
 			
 		}) // end of click (영화 선택 시 이벤트 발생)
+		
+		
+		
+		//극장지역 선택 시 이벤트 발생
+		$(document).on('click','#theater-local li',function(){
+			let pick_localname = $(this).text(); // 클릭한 극장 지역(카테고리)명 변수에 저장
+			
+			//로딩 이미지 노출
+			$('.loading2').show();
+			
+			$.ajax({
+				type:'post',
+				data:{pick_localname:pick_localname,pick_movie_num:pick_movie_num},
+				url:'picklocal.do',
+				dataType:'json',
+				cache:false,
+				timeout:30000,
+				success:function(param){
+					//로딩 이미지 감추기
+					$('.loading2').hide();
+					
+					//cgv 목록 내용 초기화
+					$('#theater-cgv').empty();
+						
+					//선택한 지역에 속해있는 극장 노출
+					$(param.cgv_list).each(function(index,item){
+						let output = '<li style="float:none; text-align:right";>';
+						output += '<a href="#" theater-idx="'+ item.theater_num +'">';
+						output += item.theater_name;
+						output += '</a>';
+						output += '</li>';
+
+						//문서 객체에 추가
+						$('#theater-cgv').append(output);
+						
+					});
+				},
+				error:function(){
+					//로딩 이미지 감추기
+					$('.loading2').hide();
+					alert('네트워크 오류 발생');
+				}
+			});
+			
+		}); // end of click (극장지역 선택 시 이벤트 발생)
+		
+		
+		//cgv 선택 시 이벤트 발생
+		$(document).on('click','#theater-cgv li',function(){
+			let pick_theatername = $(this).text(); // 클릭한 cgv명 변수에 저장
+			let pick_theaternum = $(this).children().attr('theater-idx');
+			
+			//로딩 이미지 노출
+			$('.loading3').show();
+			
+			$.ajax({
+				type:'post',
+				data:{pick_theaternum:pick_theaternum,pick_movie_num:pick_movie_num},
+				url:'pickcgv.do',
+				dataType:'json',
+				cache:false,
+				timeout:30000,
+				success:function(param){
+					//로딩 이미지 감추기
+					$('.loading3').hide();
+					
+					//info 영역에 선택한 cgv명 정보 노출
+					$('#cgv_name').html('극장명 | ' + pick_theatername);
+					
+					//선택한 영화/상영관에 상영중인 시간대 노출
+					$(param.time_list).each(function(index,item){
+						let output = '<li style="float:none; text-align:right";>';
+						output += item.movie_date;
+						output += '</li>';
+
+						//문서 객체에 추가
+						$('#movie-time').append(output);
+						
+					});
+					
+				},
+				error:function(){
+					//로딩 이미지 감추기
+					$('.loading3').hide();
+					alert('네트워크 오류 발생');
+				}
+			});
+			
+		}); // end of click (cgv 선택 시 이벤트 발생)
+		
 	});
 </script>
 <div style="display:flex;">
@@ -85,6 +179,8 @@
 		<div id="movie_pg"></div>
 	</div>
 	<div class="info-theater">
+		<div class="loading3" style="display:none;"><img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif"></div>
+		<div id="cgv_name"></div>
 	</div>
 	<div class="info-people">
 	</div>
@@ -125,12 +221,23 @@
 						
 					</ul>
 				</div>
-				<div class="theater-cgv-list"></div>
+				<div class="theater-cgv-list">
+					<ul id="theater-cgv">
+						<div class="loading2" style="display:none;"><img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif"></div>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
 	<div style="width: 9%; height: 100%; border:1px black solid; float: left;">
 		<div class="col-head">날짜</div>
+		<div class="col-body">
+			<div class="time-list">
+				<ul id="movie-time">
+				
+				</ul>
+			</div>
+		</div>
 	</div>
 	<div style="width: 15%; height: 100%; border:1px black solid; float: left;">
 		<div class="col-head">시간</div>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import kr.spring.reserve.dao.ReserveMapper;
 import kr.spring.movie.vo.MovieVO;
 import kr.spring.theater.vo.TheaterVO;
+import kr.spring.time.vo.TimeVO;
 
 @Service
 public class ReserveServiceImpl implements ReserveService{
@@ -33,8 +34,23 @@ public class ReserveServiceImpl implements ReserveService{
 
 
 	@Override
-	public List<TheaterVO> pickmoviedetal_get_theater_local(Integer movie_num) {
-		return reserveMapper.pickmoviedetal_get_theater_local(movie_num);
+	public List<TheaterVO> pickmoviedetail_get_theater_local(Integer movie_num) {
+		return reserveMapper.pickmoviedetail_get_theater_local(movie_num);
+	}
+
+	@Override
+	public List<Integer> pickmoviedetail_get_theater_localcount(Integer movie_num) {
+		return reserveMapper.pickmoviedetail_get_theater_localcount(movie_num);
+	}
+
+	@Override
+	public List<TheaterVO> pickmoviedetail_get_theater_cgv(Map<String, Object> map) {
+		return reserveMapper.pickmoviedetail_get_theater_cgv(map);
+	}
+
+	@Override
+	public List<TimeVO> pickmoviedetail_get_date(Map<String, Object> map) {
+		return reserveMapper.pickmoviedetail_get_date(map);
 	}
 
 }
