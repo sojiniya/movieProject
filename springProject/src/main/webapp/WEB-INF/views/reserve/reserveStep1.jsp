@@ -6,7 +6,64 @@
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(function(){
+		//다음 step 으로 가기위한 영화/상영관/시간/인원수... 정보를 저장하기 위한 변수 선언
+		let pick_movie_num; //선택한 영화번호
 		
+		//영화 선택 시 이벤트 발생
+		$('.movie_list li').click(function(){
+			let movie_num = $(this).children().attr('movie-idx'); // 클릭한 영화의 영화번호 변수에 저장
+			
+			//로딩 이미지 노출
+			$('#loading').show();
+			
+			$.ajax({
+				type:'post',
+				data:{movie_num:movie_num},
+				url:'pickmovie.do',
+				dataType:'json',
+				cache:false,
+				timeout:30000,
+				success:function(param){
+					//로딩 이미지 감추기
+					$('#loading').hide();
+					
+					//info 영역에 선택한 영화 정보 노출
+					$('#movie_name').html(param.movie.movie_name);
+					$('#movie_genre').html(param.movie.movie_genre);
+					$('#movie_pg').html(param.movie.movie_pg);
+					if(param.movie.movie_photo1){ // DB에 이미지 있으면, 
+						$('#movie_photo').css('display','').src(''); // 저장된 이미지 노출
+					}else{ // DB에 이미지 없으면,
+						$('#movie_photo').css('display',''); // 기본 이미지 노출
+					}
+					
+					//다음 step으로 가기위한 영화 번호 변수에 저장
+					pick_movie_num = param.movie.movie_num;
+					
+					//극장 카테고리(지역) 내용 초기화
+					$('#theater-local').empty();
+						
+					// 선택한 영화가 상영하는 극장 카테고리(지역) 노출
+					$(param.theater_local_name).each(function(index,item){
+						let output = '<li style="float:none; text-align:right;">';
+						output += item.theater_local;
+						output += '</li>';
+
+						
+						//문서 객체에 추가
+						$('#theater-local').append(output);
+						
+					});
+				},
+				error:function(){
+					//로딩 이미지 감추기
+					$('#loading').hide();
+					alert('네트워크 오류 발생');
+				}
+			});
+			
+			
+		}) // end of click (영화 선택 시 이벤트 발생)
 	});
 </script>
 <div style="display:flex;">
@@ -21,7 +78,8 @@
 
 <div id="info-banner" style="width: 100%; background: black; height: 150px; margin: 10px 0 10px 0">
 	<div class="info-movie">
-		<div><img src="${pageContext.request.contextPath}/resources/images/default.png"  width="120px" height="130px" style="float:left; margin-right: 20px"></div>
+		<div id="loading" style="display:none;"><img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif"></div>
+		<div><img src="${pageContext.request.contextPath}/resources/images/default.png" width="120px" height="130px" style="float:left; margin-right: 20px; display:none" id="movie_photo"></div>
 		<div id="movie_name"></div>
 		<div id="movie_genre"></div>
 		<div id="movie_pg"></div>
@@ -63,7 +121,7 @@
 		<div class="col-body">
 			<div class="theater-list">
 				<div class="theater-area-list">
-					<ul>
+					<ul id="theater-local">
 						
 					</ul>
 				</div>
