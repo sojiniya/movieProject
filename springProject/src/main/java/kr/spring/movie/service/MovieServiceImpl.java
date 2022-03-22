@@ -6,8 +6,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.spring.board.dao.BoardMapper;
-import kr.spring.board.vo.BoardVO;
 import kr.spring.movie.dao.MovieMapper;
 import kr.spring.movie.vo.MovieVO;
 
@@ -31,7 +29,7 @@ public class MovieServiceImpl implements MovieService{
 
 	@Override
 	public void insertMovie(MovieVO movie) {
-		// TODO Auto-generated method stub
+		movieMapper.insertMovie(movie);
 		
 	}
 
@@ -54,12 +52,6 @@ public class MovieServiceImpl implements MovieService{
 	}
 
 	@Override
-	public void updateHit(Integer movie_num) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void updateMovie(MovieVO movie) {
 		// TODO Auto-generated method stub
 		
@@ -76,6 +68,6 @@ public class MovieServiceImpl implements MovieService{
 		// TODO Auto-generated method stub
 		
 	}
-}
 
+}
 	
