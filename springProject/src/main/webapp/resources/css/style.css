@@ -688,3 +688,12 @@ div[class^="sect-"]:after {
     clear: both;
     display: block;
 }
+.wrap-theater h3 > img{
+	padding: 0px 8px;
+}
+.wrap-theater h3 {
+	text-align: center;
+}
+.theater-ti span {
+	font-size: 29px;
+}
