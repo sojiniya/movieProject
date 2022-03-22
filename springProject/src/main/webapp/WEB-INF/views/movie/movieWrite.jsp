@@ -38,9 +38,9 @@
 				<form:errors path="movie_auth" cssClass="error-color"/>
 			</li>
 			<li>
-				<form:label path="movie_PG">영화 관람연령</form:label>
-				<form:input path="movie_PG"/>
-				<form:errors path="movie_PG" cssClass="error-color"/>
+				<form:label path="movie_pg">영화 관람연령</form:label>
+				<form:input path="movie_pg"/>
+				<form:errors path="movie_pg" cssClass="error-color"/>
 			</li>
 			
 		</ul>	 

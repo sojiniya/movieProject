@@ -17,7 +17,7 @@ public class MovieVO {
 	private MultipartFile upload;
 	private byte[] uploadfile;//파일
 	private String filename;//파일명
-	private int movie_PG;//영화 관람연령
+	private int movie_pg;//영화 관람연령
 	private int movie_auth;//영화 상영정보
 	private int movie_rate; //영화 평점
 	
@@ -78,12 +78,12 @@ public class MovieVO {
 		this.filename = filename;
 	}
 
-	public int getMovie_PG() {
-		return movie_PG;
+	public int getMovie_pg() {
+		return movie_pg;
 	}
 
-	public void setMovie_PG(int movie_PG) {
-		this.movie_PG = movie_PG;
+	public void setMovie_pg(int movie_pg) {
+		this.movie_pg = movie_pg;
 	}
 
 	public int getMovie_auth() {
@@ -109,7 +109,7 @@ public class MovieVO {
 	@Override
 	public String toString() {
 		return "MovieVO [movie_num=" + movie_num + ", movie_name=" + movie_name + ", movie_content=" + movie_content
-				+ ", movie_genre=" + movie_genre + ", upload=" + upload + ", filename=" + filename + ", movie_PG="
-				+ movie_PG + ", movie_auth=" + movie_auth + ", movie_rate=" + movie_rate + "]";
+				+ ", movie_genre=" + movie_genre + ", upload=" + upload + ", filename=" + filename + ", movie_pg="
+				+ movie_pg + ", movie_auth=" + movie_auth + ", movie_rate=" + movie_rate + "]";
 	}
 }
