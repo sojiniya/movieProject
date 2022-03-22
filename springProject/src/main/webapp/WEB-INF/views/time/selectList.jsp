@@ -40,4 +40,32 @@ div, ul, li, form, font, a{
 		</ul>
 	</div>
 </div>
+<hr size="1" noshade="noshade" width="100%">
+<div>
+</div>
+<!-- THEATER 삽입 START -->
+<div class="wrap-theater">
+	<h3>
+		<img alt="theater" src="https://img.cgv.co.kr/R2014/images/title/h3_theater.gif">
+	</h3>
+</div>
+<hr size="1" noshade="noshade" width="100%">
+<!-- THEATER 삽입 END -->
+<!-- 지점별 THEATER 삽입 시작 -->
+<div class="sect-theater">
+	<div class="sect-theater">
+		<h4 class="theater-ti">
+			<span>CGV강남</span>
+		</h4>
+		<div class="wrap-theaterinfo">
+			<div class="box-image">
+				<div class="thumb-image" id="theater_img_container">
+					<img alt="CGV강남점 인포" src="https://img.cgv.co.kr/Theater/Theater/2014/1211/CGVgangnam.jpg">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<hr size="1" noshade="noshade" width="100%">
+<hr size="1" noshade="noshade" width="100%">
 <!-- 중앙 컨텐츠 끝 -->
