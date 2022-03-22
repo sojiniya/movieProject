@@ -1,7 +1,6 @@
 package kr.spring.movie.vo;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 import javax.validation.constraints.NotEmpty;
 

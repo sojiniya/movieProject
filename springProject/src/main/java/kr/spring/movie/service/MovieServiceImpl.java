@@ -17,14 +17,12 @@ public class MovieServiceImpl implements MovieService{
 
 	@Override
 	public List<MovieVO> selectList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		return movieMapper.selectList(map);
 	}
 
 	@Override
 	public int selectRowCount(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return movieMapper.selectRowCount(map);
 	}
 
 	@Override
