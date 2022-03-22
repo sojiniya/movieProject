@@ -20,7 +20,7 @@
                     </div>
                     	<div class="movieChart_wrap">
                             <h3>무비차트</h3>
-                        <a href="/movies/?lt=1&ft=0" id="btn_allView_Movie" class="btn_allView">전체보기</a>
+                        <a href="${pageContext.request.contextPath}/movie/movieChart.do" id="btn_allView_Movie" class="btn_allView">전체보기</a>
                     </div>
                      <div class="swiper movieChart_list" id="movieChart_list">
                         <div class="swiper-wrapper">
