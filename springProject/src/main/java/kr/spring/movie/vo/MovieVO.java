@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.validation.constraints.NotEmpty;
 
+import org.hibernate.validator.constraints.Range;
 import org.springframework.web.multipart.MultipartFile;
 
 public class MovieVO {
@@ -12,11 +13,14 @@ public class MovieVO {
 	private String movie_name; //영화제목
 	@NotEmpty
 	private String movie_content; //영화 상세정보
+	@NotEmpty
 	private String movie_genre;//영화 장르
 	private MultipartFile upload;
 	private byte[] uploadfile;//파일
 	private String filename;//파일명
+	@Range(min=1,max=19)
 	private int movie_pg;//영화 관람연령
+	@Range(min=0,max=2)
 	private int movie_auth;//영화 상영정보
 	private int movie_rate; //영화 평점
 	
