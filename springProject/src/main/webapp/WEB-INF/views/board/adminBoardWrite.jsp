@@ -64,7 +64,10 @@
 <div class="adminBoardWrite-main">
 	<h3>관리자 글쓰기</h3>
 	<form class="adminWriteForm" method="post" enctype="mutipart/form-data">
-		<table class="tbl_notice_list">
+		<table style="table-layout:auto; width:100%; table-layout:fixed;" class="tbl_notice_list">
+			<colgroup>
+				<col style="width:140px;">
+			</colgroup>
 			<tbody>
 				<tr>
 					<th scope="row">게시글 유형</th>
