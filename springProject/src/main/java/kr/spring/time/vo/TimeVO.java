@@ -15,7 +15,7 @@ public class TimeVO {
 	@NotEmpty
 	private String movie_name; //영화제목
 	@NotEmpty
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd") // 예매페이지에서 상영일을 뿌리기 위한 어노테이션 (동윤 작성)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "YY/MM/dd", timezone = "GMT+9") // 예매페이지에서 상영일을 뿌리기 위한 어노테이션 (동윤 작성)
 	private Date movie_date; //상영일
 	@NotEmpty
 	private String movie_time; //상영시간
