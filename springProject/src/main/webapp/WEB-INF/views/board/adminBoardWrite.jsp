@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
+	
 	$(function(){
 		$(".radio_b1").click(function(){
 			if($("input[type='radio']").is(':checked')){
@@ -33,7 +34,7 @@
 						<ul class="type_list">
 							<li>
 								<label for="qna">
-								<input type="radio" id="qna" name="boardCate" class="radio_b1" value="0" checked>자주찾는 질문
+								<input type="radio" id="qna" name="boardCate" class="radio_b1" value="0" data-modal="modal" checked>자주찾는 질문
 								</label>
 							</li>
 							<li>
