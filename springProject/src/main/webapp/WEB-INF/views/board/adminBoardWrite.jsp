@@ -2,7 +2,18 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
-
+<!-- 부트스트랩 라이브러리 -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+.ck-editor__editable_inline{
+	min-height:250px;
+}
+</style>
+<!-- ckedior 라이브러리 -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ckeditor.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/uploadAdapter.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(function(){
@@ -155,9 +166,27 @@
 					</td>
 				</tr>
 				<tr>
-					<th scope="row">내용</th>
+					<th scope="row"><b>내용</b></th>
 					<td>
-						<textarea placeholder="제목을 입력하세요"></textarea> 
+						<textarea class="ck" placeholder="내용을 입력하세요"></textarea>
+						<script>
+						 function MyCustomUploadAdapterPlugin(editor) {
+					    	editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+					        	return new UploadAdapter(loader);
+					    	}
+						}
+				 
+				 	ClassicEditor
+		            	.create( document.querySelector( '.ck' ),{
+		            		extraPlugins: [MyCustomUploadAdapterPlugin]
+		            	})
+		            	.then( editor => {
+							window.editor = editor;
+						} )
+		            	.catch( error => {
+		                	console.error( error );
+		           		} );
+			    	</script>       
 					</td>
 				</tr>
 			</tbody>
