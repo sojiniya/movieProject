@@ -697,3 +697,12 @@ div[class^="sect-"]:after {
 .theater-ti span {
 	font-size: 29px;
 }
+.favorite-wrap .sect-city ul > li.on > a, .favorite-wrap .sect-city ul > li a:hover, .favorite-wrap .sect-city ul > li a:focus {
+    color: #fff !important;
+}
+.favorite-wrap .sect-city > ul > li > a {
+    padding: 0 30px;
+    font-size: 14px;
+    line-height: 42px;
+    text-align: center;
+}

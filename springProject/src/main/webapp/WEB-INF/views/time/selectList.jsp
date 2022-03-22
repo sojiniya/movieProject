@@ -29,6 +29,9 @@ div, ul, li, form, font, a{
 			<a href="#">인천</a>
 			<a href="#">강원</a>
 			<a href="#">대구</a>
+			<a href="#">대전/충청</a>
+			<a href="#">경상</a>
+			<a href="#">대구</a>
 			<div class="area">
 				<ul>
 					<li class="on">
