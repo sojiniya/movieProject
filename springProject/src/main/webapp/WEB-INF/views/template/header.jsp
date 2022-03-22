@@ -29,7 +29,7 @@
 			<a href="${pageContext.request.contextPath}/user/logout.do"><img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png" alt="로그아웃" />로그아웃</a>
             </c:if>
             <c:if test="${!empty user_num && user_auth == 1}">
-            <li><a href="/user/mycgv/"><img src="https://img.cgv.co.kr/R2014/images/common/ico/loginMember.png" alt="MY CGV" /><span>MY CGV</span></a></li>
+            <li><a href="${pageContext.request.contextPath}/user/myPage.do"><img src="https://img.cgv.co.kr/R2014/images/common/ico/loginMember.png" alt="MY CGV" /><span>MY CGV</span></a></li>
             </c:if>
             <c:if test="${!empty user_num && user_auth == 3}">
 			<li><a href="${pageContext.request.contextPath}/member/admin_list.do"><img src="https://img.cgv.co.kr/R2014/images/common/ico/loginMember.png" alt="회원관리" /><span>회원관리</span></a></li>	

@@ -119,6 +119,20 @@ public class MemberController {
 			return "redirect:/main/main.do";
 		}
 		
+		//My페이지
+		@RequestMapping("/user/myPage.do")
+		public String process(HttpSession session, Model model) {
+			
+			Integer user_num = (Integer)session.getAttribute("user_num");
+			MemberVO member = memberService.selectMember(user_num);
+			
+			logger.info("<<회원 상세 정보>> :" + member);
+			
+			model.addAttribute("member", member);
+			
+			return "myPageView";
+		}
+		
 	
 }
 
