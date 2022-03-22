@@ -102,7 +102,7 @@ div#boardMain_body {
 	border: none;
 	padding: 0px;
 }
-.tbl_notice_list {
+.table.tbl_notice_list {
     border-top: solid 1px #d6d4ca;
     border-bottom: solid 1px #b8b6aa;
 }
@@ -553,6 +553,9 @@ footer p span {
     height: 19px;
     background: url(../images/ico_plus.png) no-repeat -159px -287px;
     text-indent: -999px;
+}
+.radio_v2 {
+	display:none;
 }
 
 /*====무비차트====*/
