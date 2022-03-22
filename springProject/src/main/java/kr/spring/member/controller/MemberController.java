@@ -91,7 +91,7 @@ public class MemberController {
 					//인증성공, 로그인 처리
 					session.setAttribute("user_num", member.getMem_num());
 					session.setAttribute("user_id", member.getId());
-					session.setAttribute("user_auth", member.getMem_auth());
+					session.setAttribute("user_auth", member.getAuth());
 					session.setAttribute("user_photo", member.getMem_photo());
 					
 					return "redirect:/main/main.do";
