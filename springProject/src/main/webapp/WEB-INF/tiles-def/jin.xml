@@ -9,6 +9,11 @@
     	<put-attribute name="title" value="무비차트"/>
     	<put-attribute name="body" value="/WEB-INF/views/movie/movieChart.jsp"/>
     </definition>
+    <definition name="movieWrite" extends="main">
+    	<put-attribute name="title" value="무비 등록 폼"/>
+    	<put-attribute name="body" value="/WEB-INF/views/movie/movieWrite.jsp"/>
+    </definition>
+    
 </tiles-definitions>
 
 

@@ -1,6 +1,7 @@
 package kr.spring.movie.vo;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -13,64 +14,20 @@ public class MovieVO {
 	@NotEmpty
 	private String movie_content; //영화 상세정보
 	private String movie_genre;//영화 장르
-	private MultipartFile upload1;
-	private byte[] upload1file;//파일
-	private String filename1;//파일명
-	private MultipartFile upload2;
-	private byte[] upload2file;
-	private String filename2;//파일명
-	private MultipartFile upload3;
-	private byte[] upload3file;
-	private String filename3;//파일명
-	private MultipartFile upload4;
-	private byte[] upload4file;
-	private String filename4;//파일명
-	private MultipartFile upload5;
-	private byte[] upload5file;
-	private String filename5;//파일명
-	private int movie_pg;//영화 관람연령
+	private MultipartFile upload;
+	private byte[] uploadfile;//파일
+	private String filename;//파일명
+	private int movie_PG;//영화 관람연령
 	private int movie_auth;//영화 상영정보
 	private int movie_rate; //영화 평점
 	
 	//업로드 파일 처리
-	public void setUpload1(MultipartFile upload1)throws IOException{
-		this.upload1 = upload1;
+	public void setUpload(MultipartFile upload)throws IOException{
+		this.upload = upload;
 		//MultipartFile -> byte[] 변환
-		setupload1file(upload1.getBytes());
+		setUploadfile(upload.getBytes());
 		//파일명 구하기
-		setFilename1(upload1.getOriginalFilename());
-	}
-	//업로드 파일 처리
-	public void setUpload2(MultipartFile upload2)throws IOException{
-		this.upload2 = upload2;
-		//MultipartFile -> byte[] 변환
-		setupload2file(upload2.getBytes());
-		//파일명 구하기
-		setFilename2(upload2.getOriginalFilename());
-	}
-	//업로드 파일 처리
-	public void setUpload3(MultipartFile upload3)throws IOException{
-		this.upload3 = upload3;
-		//MultipartFile -> byte[] 변환
-		setupload3file(upload3.getBytes());
-		//파일명 구하기
-		setFilename3(upload3.getOriginalFilename());		
-	}
-	//업로드 파일 처리
-	public void setUpload4(MultipartFile upload4)throws IOException{
-		this.upload4 = upload4;
-		//MultipartFile -> byte[] 변환
-		setupload4file(upload4.getBytes());
-		//파일명 구하기
-		setFilename4(upload4.getOriginalFilename());		
-	}
-	//업로드 파일 처리
-	public void setUpload5(MultipartFile upload5)throws IOException{
-		this.upload5 = upload5;
-		//MultipartFile -> byte[] 변환
-		setupload5file(upload5.getBytes());
-		//파일명 구하기
-		setFilename5(upload5.getOriginalFilename());		
+		setFilename(upload.getOriginalFilename());
 	}
 
 	public int getMovie_num() {
@@ -105,112 +62,28 @@ public class MovieVO {
 		this.movie_genre = movie_genre;
 	}
 
-	public MultipartFile getupload1() {
-		return upload1;
+	public byte[] getUploadfile() {
+		return uploadfile;
 	}
 
-	public byte[] getupload1file() {
-		return upload1file;
+	public void setUploadfile(byte[] uploadfile) {
+		this.uploadfile = uploadfile;
 	}
 
-	public void setupload1file(byte[] upload1file) {
-		this.upload1file = upload1file;
+	public String getFilename() {
+		return filename;
 	}
 
-	public String getFilename1() {
-		return filename1;
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 
-	public void setFilename1(String filename1) {
-		this.filename1 = filename1;
+	public int getMovie_PG() {
+		return movie_PG;
 	}
 
-	public MultipartFile getupload2() {
-		return upload2;
-	}
-
-	public byte[] getupload2file() {
-		return upload2file;
-	}
-
-	public void setupload2file(byte[] upload2file) {
-		this.upload2file = upload2file;
-	}
-
-	public String getFilename2() {
-		return filename2;
-	}
-
-	public void setFilename2(String filename2) {
-		this.filename2 = filename2;
-	}
-
-	public MultipartFile getupload3() {
-		return upload3;
-	}
-
-	public byte[] getupload3file() {
-		return upload3file;
-	}
-
-	public void setupload3file(byte[] upload3file) {
-		this.upload3file = upload3file;
-	}
-
-	public String getFilename3() {
-		return filename3;
-	}
-
-	public void setFilename3(String filename3) {
-		this.filename3 = filename3;
-	}
-
-	public MultipartFile getupload4() {
-		return upload4;
-	}
-
-	public byte[] getupload4file() {
-		return upload4file;
-	}
-
-	public void setupload4file(byte[] upload4file) {
-		this.upload4file = upload4file;
-	}
-
-	public String getFilename4() {
-		return filename4;
-	}
-
-	public void setFilename4(String filename4) {
-		this.filename4 = filename4;
-	}
-
-	public MultipartFile getupload5() {
-		return upload5;
-	}
-
-	public byte[] getupload5file() {
-		return upload5file;
-	}
-
-	public void setupload5file(byte[] upload5file) {
-		this.upload5file = upload5file;
-	}
-
-	public String getFilename5() {
-		return filename5;
-	}
-
-	public void setFilename5(String filename5) {
-		this.filename5 = filename5;
-	}
-
-	public int getMovie_pg() {
-		return movie_pg;
-	}
-
-	public void setMovie_pg(int movie_pg) {
-		this.movie_pg = movie_pg;
+	public void setMovie_PG(int movie_PG) {
+		this.movie_PG = movie_PG;
 	}
 
 	public int getMovie_auth() {
@@ -228,15 +101,15 @@ public class MovieVO {
 	public void setMovie_rate(int movie_rate) {
 		this.movie_rate = movie_rate;
 	}
+
+	public MultipartFile getUpload() {
+		return upload;
+	}
+
 	@Override
 	public String toString() {
 		return "MovieVO [movie_num=" + movie_num + ", movie_name=" + movie_name + ", movie_content=" + movie_content
-				+ ", movie_genre=" + movie_genre + ", upload1=" + upload1 + ", filename1=" + filename1 + ", upload2="
-				+ upload2 + ", filename2=" + filename2 + ", upload3=" + upload3 + ", filename3=" + filename3
-				+ ", upload4=" + upload4 + ", filename4=" + filename4 + ", upload5=" + upload5 + ", filename5="
-				+ filename5 + ", movie_pg=" + movie_pg + ", movie_auth=" + movie_auth + ", movie_rate=" + movie_rate
-				+ "]";
+				+ ", movie_genre=" + movie_genre + ", upload=" + upload + ", filename=" + filename + ", movie_PG="
+				+ movie_PG + ", movie_auth=" + movie_auth + ", movie_rate=" + movie_rate + "]";
 	}
-	
-	
 }
