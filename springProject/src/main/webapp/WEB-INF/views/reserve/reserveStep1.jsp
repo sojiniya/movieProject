@@ -8,6 +8,8 @@
 	$(function(){
 		//다음 step 으로 가기위한 영화/상영관/시간/인원수... 정보를 저장하기 위한 변수 선언
 		let pick_movie_num; //선택한 영화번호
+		let pick_theaternum; //선택한 상영관번호
+		let pick_movietime; //선택한 상영시간
 		
 		//영화 선택 시 이벤트 발생
 		$('.movie_list li').click(function(){
@@ -46,6 +48,10 @@
 					$('#theater-cgv').empty();
 					//info에 있는 cgv 내용 초기화
 					$('#cgv_name').empty();
+					//상영일자 내용 초기화
+					$('#movie-date').empty();
+					//상영시간 내용 초기화
+					$('#movie-time').empty();
 						
 					
 					// 선택한 영화가 상영하는 극장 카테고리(지역) 노출
@@ -91,6 +97,12 @@
 					
 					//cgv 목록 내용 초기화
 					$('#theater-cgv').empty();
+					
+					//상영일자 내용 초기화
+					$('#movie-date').empty();
+					
+					//상영시간 내용 초기화
+					$('#movie-time').empty();
 						
 					//선택한 지역에 속해있는 극장 노출
 					$(param.cgv_list).each(function(index,item){
@@ -118,7 +130,7 @@
 		//cgv 선택 시 이벤트 발생
 		$(document).on('click','#theater-cgv li',function(){
 			let pick_theatername = $(this).text(); // 클릭한 cgv명 변수에 저장
-			let pick_theaternum = $(this).children().attr('theater-idx');
+			pick_theaternum = $(this).children().attr('theater-idx');
 			
 			//로딩 이미지 노출
 			$('.loading3').show();
@@ -137,14 +149,20 @@
 					//info 영역에 선택한 cgv명 정보 노출
 					$('#cgv_name').html('극장명 | ' + pick_theatername);
 					
+					//상영일자 내용 초기화
+					$('#movie-date').empty();
+				
+					//상영시간 내용 초기화
+					$('#movie-time').empty();
+					
 					//선택한 영화/상영관에 상영중인 시간대 노출
-					$(param.time_list).each(function(index,item){
+					$(param.date_list).each(function(index,item){
 						let output = '<li style="float:none; text-align:right";>';
 						output += item.movie_date;
 						output += '</li>';
 
 						//문서 객체에 추가
-						$('#movie-time').append(output);
+						$('#movie-date').append(output);
 						
 					});
 					
@@ -157,6 +175,70 @@
 			});
 			
 		}); // end of click (cgv 선택 시 이벤트 발생)
+		
+		
+		//상영 일자 선택 시 이벤트 발생
+		$(document).on('click','#movie-date li',function(){
+			let pick_moviedate = $(this).text(); // 클릭한 상영일자 변수에 저장
+			
+			//로딩 이미지 노출
+			$('.loading4').show();
+			
+			$.ajax({
+				type:'post',
+				data:{pick_theaternum:pick_theaternum,pick_movie_num:pick_movie_num,pick_moviedate:pick_moviedate},
+				url:'picktime.do',
+				dataType:'json',
+				cache:false,
+				timeout:30000,
+				success:function(param){
+					//로딩 이미지 감추기
+					$('.loading4').hide();
+					
+					//info 영역에 선택한 상영일자 정보 노출
+					$('#cgv_date').html('상영일자 | ' + pick_moviedate);
+					
+					//상영시간 내용 초기화
+					$('#movie-time').empty();
+					
+					//선택한 영화/상영관에 상영중인 시간대 노출
+					$(param.time_list).each(function(index,item){
+						let output = '<li style="float:none; text-align:right";>';
+						output += item.movie_time;
+						output += '</li>';
+
+						//문서 객체에 추가
+						$('#movie-time').append(output);
+						
+					});
+					
+				},
+				error:function(){
+					//로딩 이미지 감추기
+					$('.loading4').hide();
+					alert('네트워크 오류 발생');
+				}
+			});
+			
+		}); // end of click (상영 일자 선택 시 이벤트 발생)
+		
+		
+		// 인원수 선택 및 합계 조회
+		let adult_price = 10000;
+		let youth_price = 8000;
+		let old_price = 6000;
+		let total_price = 0;
+		let total_people = 0;
+		
+		let adult_sum = adult_price * $('#adult').val();
+		let youth_sum = youth_price * $('#youth').val();
+		let old_sum = old_price * $('#old').val();
+		
+		total_people = $('#adult').val() + $('#youth').val() + $('#old').val();
+		toatal_price = adult_sum + youth_sum + old_sum;
+		
+		$('#total_people').text('총인원 ' + total_people + '명 / 총금액');
+		$('#total_price').text(total_price);
 		
 	});
 </script>
@@ -181,6 +263,7 @@
 	<div class="info-theater">
 		<div class="loading3" style="display:none;"><img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif"></div>
 		<div id="cgv_name"></div>
+		<div id="cgv_date"></div>
 	</div>
 	<div class="info-people">
 	</div>
@@ -232,6 +315,16 @@
 	<div style="width: 9%; height: 100%; border:1px black solid; float: left;">
 		<div class="col-head">날짜</div>
 		<div class="col-body">
+			<div class="date-list">
+				<ul id="movie-date">
+					<div class="loading4" style="display:none;"><img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif"></div>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div style="width: 10%; height: 100%; border:1px black solid; float: left;">
+		<div class="col-head">시간</div>
+		<div class="col-body">
 			<div class="time-list">
 				<ul id="movie-time">
 				
@@ -239,11 +332,22 @@
 			</div>
 		</div>
 	</div>
-	<div style="width: 15%; height: 100%; border:1px black solid; float: left;">
-		<div class="col-head">시간</div>
-	</div>
-	<div style="width: 15%; height: 100%; border:1px black solid; float: left;">
+	<div style="width: 20%; height: 100%; border:1px black solid; float: left;">
 		<div class="col-head">인원 (최대 6명)</div>
+		<div class="col-body">
+			<div>
+				<span>성인(20세 이상) / 10,000원 </span><input type="number" id="adult" name="adult">
+			</div>
+			<div>
+				<span>청소년(19세 이하) / 8,000원 </span><input type="number" id="youth" name="youth">
+			</div>
+			<div>
+				<span>경로우대(65세 이상) / 6,000원 </span><input type="number" id="old" name="old">
+			</div>
+			<div>
+				<span id="total_people"></span><div id="total_price" name="total_price"></div>
+			</div>
+		</div>
 	</div>
 </div>	
 

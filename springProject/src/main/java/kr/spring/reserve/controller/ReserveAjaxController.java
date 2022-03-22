@@ -80,9 +80,36 @@ public class ReserveAjaxController {
 		map.put("movie_num", movie_num);
 		map.put("theater_num", theater_num);
 				
+		List<TimeVO> date_list = null;
+		date_list = reserveService.pickmoviedetail_get_date(map);
+		System.out.println(date_list);
+		
+		Map<String,Object> mapJson = new HashMap<String,Object>();
+		mapJson.put("date_list", date_list);
+		
+		return mapJson;
+	}
+	
+	//상영시간 선택
+	@RequestMapping("/reserve/picktime.do")
+	@ResponseBody
+	public Map<String,Object> picktimedetail(@RequestParam(value="pick_theaternum") Integer theater_num,
+											 @RequestParam(value="pick_movie_num") Integer movie_num,
+											 @RequestParam(value="pick_moviedate") String movie_date){
+		
+		logger.info("<<전달받은 영화 번호>> movie_num : " + movie_num);
+		logger.info("<<전달받은 상영관 번호>> theater_num : " + theater_num);
+		logger.info("<<전달받은 상영일자>> movie_date : " + movie_date);
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("movie_num", movie_num);
+		map.put("theater_num", theater_num);
+		map.put("movie_date", movie_date);
+				
 		List<TimeVO> time_list = null;
-		time_list = reserveService.pickmoviedetail_get_date(map);
-		System.out.println(time_list);
+		System.out.println("메서드 실행전************************");
+		time_list = reserveService.pickmoviedetail_get_time(map);
+		System.out.println("메서드 실행후 : " + time_list);
 		
 		Map<String,Object> mapJson = new HashMap<String,Object>();
 		mapJson.put("time_list", time_list);

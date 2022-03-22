@@ -53,4 +53,9 @@ public class ReserveServiceImpl implements ReserveService{
 		return reserveMapper.pickmoviedetail_get_date(map);
 	}
 
+	@Override
+	public List<TimeVO> pickmoviedetail_get_time(Map<String, Object> map) {
+		return reserveMapper.pickmoviedetail_get_time(map);
+	}
+
 }
