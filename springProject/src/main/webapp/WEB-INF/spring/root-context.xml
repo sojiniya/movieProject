@@ -73,7 +73,8 @@
 		                                           kr.spring.time.vo,
 		                                           kr.spring.theater.vo,
 		                                           kr.spring.reservseat.vo,
-		                                           kr.spring.reserve.vo"/>
+		                                           kr.spring.reserve.vo
+		                                           kr.spring.movie.vo"/>
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="kr.spring.**.dao"/>
