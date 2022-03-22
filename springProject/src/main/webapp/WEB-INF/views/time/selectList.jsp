@@ -16,6 +16,10 @@ div, ul, li, form, font, a{
     word-break: break-all;
 }
 </style>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	
+</script>
 <div class="favorite-wrap">
 	<div class="sect-city">
 		<ul>
@@ -29,10 +33,9 @@ div, ul, li, form, font, a{
 				<ul>
 					<li class="on">
 					<a title="CGV강남" href="#">CGV강남</a>
-					<a title="CGV강남" href="#">CGV강변</a>
-					<a title="CGV강남" href="#">CGV건대입구</a>
-					<a title="CGV강남" href="#">CGV구로</a>
-					<a title="CGV강남" href="#">CGV홍대</a>
+					<a title="CGV강변" href="#">CGV강변</a>
+					<a title="CGV건대입구" href="#">CGV건대입구</a>
+					<a title="CGV홍대" href="#">CGV홍대</a>
 					</li>
 				</ul>
 			</div>
@@ -40,6 +43,9 @@ div, ul, li, form, font, a{
 		</ul>
 	</div>
 </div>
+
+<a href="${pageContext.request.contextPath}/theater/theaterWrite.do">극장지역등록폼text</a>
+
 <hr size="1" noshade="noshade" width="100%">
 <div>
 </div>

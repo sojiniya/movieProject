@@ -37,7 +37,7 @@ public class TheaterController {
 	
 	//1-1. 극장지역등록 폼에서 전송된 데이터 처리
 	@PostMapping("/theater/theaterWrite.do")
-	public String submit(@Valid TheaterVO theaterVO, BindingResult result, HttpSession session, HttpServletRequest request) {
+	public String submit(@Valid TheaterVO theaterVO, BindingResult result) { //, HttpSession session, HttpServletRequest request
 
 		//로그
 		logger.info("<<극장지역등록>> : " + theaterVO);
@@ -56,6 +56,6 @@ public class TheaterController {
 		//극장정보 등록 완료
 		theaterService.insertTheater(theaterVO);
 
-		return "redirect:/views/main/main.do";
+		return "redirect:/main/main.do";
 	}
 }
