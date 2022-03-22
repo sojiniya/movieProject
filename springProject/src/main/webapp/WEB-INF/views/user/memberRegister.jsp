@@ -73,7 +73,7 @@
 		<ul>
 			<li>
 				<form:label path="id">아이디</form:label>
-				<form:input path="id" placeholder="영문,숫자만  6~10"/>
+				<form:input path="id" placeholder="영문,숫자만  최소 6글자에서 ~최대 10자"/>
 				<input type="button" id="confrimId" value="ID중복체크">
 				<span id="message_id"></span>
 				<form:errors path="id" cssClass="error-color"/>
@@ -85,7 +85,7 @@
 			</li>
 			<li>
 				<form:label path="mem_pw">비밀번호</form:label>
-				<form:input path="mem_pw" placeholder="영문,숫자 6~12"/>
+				<form:input path="mem_pw" placeholder="영문,숫자만  최소 6글자에서 ~최대 10자"/>
 				<form:errors path="mem_pw" cssClass="error-color"/>
 			</li>
 			<li>

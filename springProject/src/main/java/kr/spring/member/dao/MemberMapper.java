@@ -24,7 +24,7 @@ public interface MemberMapper {
 	@Select("SELECT * FROM M_member m LEFT OUTER JOIN M_member_detail d ON m.mem_num = d.mem_num WHERE m.id=#{id}")
 	public MemberVO selectCheckMember(String id);
 	
-	
+	@Select("SELECT * FROM M_member m LEFT OUTER JOIN M_member_detail d ON m.mem_num = d.mem_num WHERE m.mem_num=#{mem_num}")
 	public MemberVO selectMember(Integer mem_num);
 	
 	public void updateMember(MemberVO member);
