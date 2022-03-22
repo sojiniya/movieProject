@@ -30,23 +30,46 @@
 				<div class="result-display">표시할 게시물이 없습니다.</div>
 			</c:if>
 			<c:if test="${count > 0}">
-				<table>
-					<tr>
-						<th>번호</th>
-						<th width="400">영화제목</th>
-						<th>영화장르</th>
-						<th>연령등급</th>
-						<th>상영정보</th>
-					</tr>
-					<c:forEach var="movie" items="${list}">
-						<tr>
-							<td>${movie.movie_num}</td>
-							<td><a href="movieDetail.do?movie_num=${movie.movie_num}">${movie.movie_name}</a></td>
-							<td>${movie.movie_genre}</td>
-							<td>${movie.movie_pg}</td>
-							<td>${movie.movie_auth}</td>
-					</c:forEach>
-				</table>
+			<c:forEach var="movie" items="${list}">
+				<ul>
+					<li>
+						<div class="movie-image">
+						<a href="movieDetail.do?movie_num=${movie.movie_num}"><img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85673/85673_320.jpg"></a></div>
+						<div class="movie-content">
+						<strong class="movie_pg">
+						<c:choose>
+						<c:when test="${1 <= movie.movie_pg && movie.movie_pg <= 12}">
+						<img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-12.png">
+						</c:when>
+						<c:when test="${13 <= movie.movie_pg && movie.movie_pg <= 15}">
+						<img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-15.png">
+						</c:when>
+						<c:when test="${19 <= movie.movie_pg}">
+						<img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-19.png">
+						</c:when>
+						<c:otherwise>
+						<img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-all.png">
+						</c:otherwise></c:choose></strong>
+						<strong class="movie_name"><a href="movieDetail.do?movie_num=${movie.movie_num}">${movie.movie_name}</a></strong><br>
+						<strong class="movie_genre">${movie.movie_genre}</strong>
+						<strong class="movie_auth">
+						<c:if test="${movie.movie_auth == 0}">
+							<div class="auth_result">상영중</div>
+						</c:if>
+						<c:if test="${movie.movie_auth == 1}">
+							<div class="auth_result">상영 예정</div>
+						</c:if>
+						<c:if test="${movie.movie_auth == 2}">
+							<div class="auth_result">상영 종료</div>
+						</c:if>
+						</strong>
+						</div>
+						<strong class="movie_reserve"><a href="/" style="color:white;">예매하기</a></strong>
+						
+					</li>
+					</ul>
+			</c:forEach>
+				
 			</c:if>
 		</div>
 	</div>
