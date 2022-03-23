@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.spring.movie.service.MovieService;
 import kr.spring.movie.vo.MovieVO;
 import kr.spring.util.PagingUtil;
+import kr.spring.util.StringUtil;
 
 @Controller
 public class MovieController {
@@ -95,6 +96,18 @@ public class MovieController {
 		return mav;
 	}
 	
+	//게시판 글 상세
+	@RequestMapping("/movie/movieDetail.do")
+	public ModelAndView process(@RequestParam int movie_num) {
+		logger.info("<<영화 상세 정보 - 영화 번호>> : " + movie_num);
+	
+		MovieVO movie = movieService.selectMovie(movie_num);
+		//타이틀 HTML 불허
+		movie.setMovie_name(StringUtil.useNoHtml(movie.getMovie_name()));
+		                        //타일스 설정      속성명      속성값
+		return new ModelAndView("movieDetail","movie",movie);
 	}
+	}
+	
 
 

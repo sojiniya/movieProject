@@ -33,7 +33,6 @@
 		</div>
 		<div id="movie_api">
 			<script>
-        // 요청을 누르면 페이지 새로고침 없이 페이지에 표가 나오게 함
             $.ajax({
                 url : 'https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=6abbc96e3be813fe944d7bfe0ddb7f4b&targetDt=20220319',
                 type : 'get',             
