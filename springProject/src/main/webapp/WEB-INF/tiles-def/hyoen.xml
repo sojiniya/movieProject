@@ -17,6 +17,20 @@
     	<put-attribute name="title" value="마이페이지"/>
     	<put-attribute name="body" value="/WEB-INF/views/user/myPageView.jsp"/>
     </definition>
+    <definition name="userModifyView" extends="main">
+    	<put-attribute name="title" value="개인정보수정"/>
+    	<put-attribute name="body" value="/WEB-INF/views/user/userModifyView.jsp"/>
+    </definition>
+    <definition name="userModifyForm" extends="main">
+    	<put-attribute name="title" value="개인정보수정폼"/>
+    	<put-attribute name="body" value="/WEB-INF/views/user/userModifyForm.jsp"/>
+    </definition>
+    <definition name="userChangePassword" extends="main">
+    	<put-attribute name="title" value="비밀번호 변경"/>
+    	<put-attribute name="body" value="/WEB-INF/views/user/userChangePassword.jsp"/>
+    </definition>
+    
+    
 </tiles-definitions>
 
 

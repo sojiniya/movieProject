@@ -133,6 +133,89 @@ public class MemberController {
 			return "myPageView";
 		}
 		
+		//My페이지 수정뷰
+		@GetMapping("/user/update.do")
+		public String formUpdateView(HttpSession session, Model model) {
+			Integer user_num = (Integer)session.getAttribute("user_num");
+			
+			MemberVO member = memberService.selectMember(user_num);
+			
+			model.addAttribute("member", member);
+			
+			return "userModifyView";
+		}
+		
+		//My페이지 수정폼
+		@GetMapping("/user/userModify.do")
+		public String formUpdate(HttpSession session, Model model) {
+			Integer user_num = (Integer) session.getAttribute("user_num");
+			
+			logger.info("<<유저넘>> : " + user_num);
+			
+			MemberVO member = memberService.selectMember(user_num);
+
+			model.addAttribute("member", member);
+
+			return "userModifyForm";
+		}
+		
+		//수정폼에서 전송된 데이터 처리
+		@PostMapping("/user/update.do")
+		public String submitUpdate(@Valid MemberVO memberVO, BindingResult result, HttpSession session) {
+			
+			logger.info("<<회원 정보 수정>> : " + memberVO);
+			
+			//유효성 체크 결과 오류가 있으면 폼 호출
+			if(result.hasErrors()) {
+				return "userModifyForm";
+			}
+			
+			Integer user_num = (Integer)session.getAttribute("user_num");
+			
+			memberVO.setMem_num(user_num);
+
+			//회원정보수정
+			memberService.updateMember(memberVO);
+			
+			return "redirect:/user/myPage.do";
+		}
+		
+		//비밀번호 변경 폼
+		@GetMapping("/user/changePassword.do")
+		public String formChangePassword() {
+			return "userChangePassword";
+		}
+		
+		//비밀번호 변경 폼에서 전송된 데이터 처리
+		@PostMapping("/user/changePassword.do")
+		public String submitChangePassword(@Valid MemberVO memberVO, BindingResult result, HttpSession session) {
+			
+			logger.info("<<비밀번호 변경 처리>>:" + memberVO);
+			
+			//유효성 체크 결과 오류가 있으면 폼 호출
+			if(result.hasFieldErrors("now_mem_pw") || result.hasFieldErrors("mem_pw")) {
+				
+				return formChangePassword();
+			}
+			
+			Integer user_num = (Integer)session.getAttribute("user_num");
+			memberVO.setMem_num(user_num);		
+			
+			//세션에 저장된 회원번호를 이용해서 DB에 저장된 회원정보를 MemberVO에 담아서 반환
+			MemberVO db_member = memberService.selectMember(memberVO.getMem_num());
+			
+				//DB에서 읽어온 비밀번호 			     사용자가 입력한 비밀번호
+			if(!db_member.getMem_pw().equals(memberVO.getNow_mem_pw())) {
+				result.rejectValue("now_mem_pw", "invalidPassword");
+				return formChangePassword();
+			}
+			
+			//비밀번호가 동일하면 비밀번호 수정
+			memberService.updatePassword(memberVO);
+			
+			return "redirect:/user/myPage.do";
+		}
+		
 	
 }
 

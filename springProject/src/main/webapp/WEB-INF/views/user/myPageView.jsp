@@ -1,0 +1,364 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
+<head>
+    
+    <link rel="alternate" href="http://m.cgv.co.kr" />
+    <link rel="shortcut icon" href="https://img.cgv.co.kr/theater_img/favicon.ico" type="image/x-icon" />
+    <title id="ctl00_ctl00_headerTitle"></title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://img.cgv.co.kr/R2014/images/favicon.ico" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/webfont.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/reset.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/layout.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/module.css?20211209" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/content.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/common.css" />
+    
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/eggupdate.css" />
+    <link rel="stylesheet" media="print" type="text/css" href="https://img.cgv.co.kr/R2014/css/print.css" />    
+    <link rel="stylesheet" type="text/css" href="https://img.cgv.co.kr/R2014/js/jquery.ui/smoothness/jquery-ui-1.10.4.custom.min.css" />
+    
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/phototicket/phototicket.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/slick.css" />
+	<link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/slick-theme-custom.css" />
+
+    <link rel="stylesheet" type="text/css" href="https://img.cgv.co.kr/R2014/js/icheck/iCheck.css" />
+
+
+
+<div class="sect-common">
+<input type="hidden" id="isTown" name="isTown" value="Y" />
+<input type="hidden" id="userTownMemberInfo" name="userTownMemberInfo" value="" />
+    <div class="mycgv-info-wrap">
+		<div class="skipnaiv" >
+			<a href="#menu" id="skipPersoninfo">개인화영역 건너띄기</a>
+		</div>
+        <div class="sect-person-info">
+        	<h2 class="hidden">개인화 영역</h2> 
+        	<div class="box-image">
+				<span class="thumb-image">
+					<c:if test="${!empty member.mem_photo}">
+					<span class="profile-mask"><img src="${member.mem_photo}" alt="김재현님 프로필 사진"/></span>
+					</c:if>
+					<c:if test="${empty member.mem_photo}">
+					<span class="profile-mask"><img src="${pageContext.request.contextPath}/resources/images/face.png"/></span>
+					</c:if>
+				</span>
+        	</div>
+        	<div class="box-contents newtype">
+        		<div class="person-info">
+        			<strong>${member.id}</strong>
+        			<em>${member.mem_name}</em>
+        			<button type="button" title="개인정보 수정" onclick="${pageContext.request.contextPath}/user/update.do">나의 정보 변경</button>
+        		</div>
+        		<div class="grade-info">
+        	        
+                    <p style="margin-bottom:4px;color: #342929;font-family: 'NanumBarunGothicBold', '맑은 고딕', '돋움', Dotum, sans-serif;font-size: 20px;line-height: 20px;">
+                        
+                            고객님은   
+                        <c:if test="${member.mem_grade < 3}"> 
+                        <strong class="txt-purple">브론즈</strong>입니다.             
+                        </c:if>
+                        <c:if test="${member.mem_grade >= 3}"> 
+                        <strong class="txt-purple">실버</strong>입니다.             
+                        </c:if>
+                        <c:if test="${member.mem_grade >= 5}"> 
+                        <strong class="txt-purple">골드</strong>입니다.             
+                        </c:if>
+                    </p>
+
+        			<button type="button" id="view_usergrade" class="round black"><span>MY 지난등급이력 보기</span></button> 
+        			
+
+                    <div class="mycgv_btn_special2">
+					<!-- 대구 아이피접속자 중 : 동성로 미가입 고객시 a.special_pop_text 노출/ 가입 고객은 a.special0_pop 노출 부탁드립니다.
+						또한 아무 해당 없는 고객에게는 .mycgv_btn_special2 에 클래스 none 추가 부탁드립니다. 
+						-->
+					   
+				    </div>
+
+        		</div>
+        	</div>
+        </div>
+        <div class="cols-benefit-info">
+        	<div class="col-my-coupon">
+        		<h3>MY COUPON</h3>
+        		<ul>
+                    
+                    <li>
+        				<strong>CGV VIP에 도전하세요!</strong>
+        				<span><a href="/user/vip-lounge/" class="round black1"><i>CGV VIP 혜택보기</i></a></span>
+        			</li>
+                    
+        			<li>
+        				<strong>CGV 할인쿠폰</strong>
+        				<span><em><a href="/user/mycgv/coupon/discount/list.aspx?g=1#contaniner">0</a></em> 개</span>
+        			</li>
+        			<li>
+        				<strong>영화관람권</strong>
+        				<span><em><a href="/user/mycgv/coupon/movie-ticket/list.aspx?g=1#contaniner">0</a></em> 개</span>
+        			</li>
+        		</ul>
+        	</div>
+        	
+                
+                <div class="col-one-point">
+               	<h3>CJ ONE POINT</h3>
+        		<a href="/user/mycgv/cjone-point/pointlist.aspx">CJ ONE POINT 더보기</a>
+        		<ul>
+        			<li>
+        				<strong>CJ ONE 사용가능 포인트</strong>
+        				<span><em class="txt-maroon"><a href="/user/mycgv/cjone-point/pointlist.aspx">1,432</a></a></em> 점</span>
+        			</li>
+        		    <li class="tooltip_list cf">
+        				<strong>VIP선정 포인트</strong><a href="/user/mycgv/cjone-point/pointlist.aspx" class="mycgv_tooltip"></a>
+
+        				<span><em>0</em> 점</span>
+        			</li>
+        		</ul>
+                
+        	</div>
+        	<div class="col-favorite-theater">
+        		<h3 class="hidden">자주가는 CGV</h3>
+	    		<div class="sect-favorite">
+		            <ul id="favoriteTheaters">
+                        
+                            <li><a href="#" data-regioncode="202" data-theatercode="0043"><span>1<em>순위</em></span>CGV계양</a></li>
+                        
+                            <li><a href="#" data-regioncode="" data-theatercode=""><span>2<em>순위</em></span></a></li>
+                        
+                            <li><a href="#" data-regioncode="" data-theatercode=""><span>3<em>순위</em></span></a></li>
+                        
+                            <li><a href="#" data-regioncode="" data-theatercode=""><span>4<em>순위</em></span></a></li>
+                        
+                            <li><a href="#" data-regioncode="" data-theatercode=""><span>5<em>순위</em></span></a></li>
+                        
+		            </ul>
+		            <button id="btn_set_my_favorite" title="새창" type="button" class="setting">자주가는 CGV<br />설정하기</button>
+		        </div>
+	        </div>
+         
+                <div class="cols-point-wrap">
+                
+                </div>
+        </div>
+    </div>
+</div>
+
+<div class="cols-content" id="menu">
+    <div class="col-aside">
+		<div class="skipnaiv">
+			<a href="#mycgv_contents" id="skipMycgvMenu">MYCGV 서브메뉴 건너띄기</a>
+		</div>
+	    <h2>MY CGV 서브메뉴</h2>
+	    <div class="snb">
+	        <ul>
+	            <li class="on">
+                    <a href="/user/mycgv/?g=1" title="현재 선택">MY CGV HOME <i></i></a>
+                </li>
+	            <li >
+                    <a href="/user/mycgv/reserve/?g=1" >나의 예매내역 <i></i></a>
+                   
+                </li>
+	         
+	            <li >
+                    <a href="/user/mycgv/myinfo/?g=1" >회원정보<i></i></a>
+	                <ul>
+                         <li >
+                            <a href="${pageContext.request.contextPath}/user/update.do?user_num=${member.mem_num}">개인정보 변경</a>
+                        </li>
+	               
+	                    <li >
+                            <a href="/user/mycgv/myinfo/leave-cjone.aspx?g=1" >회원탈퇴</a>
+                        </li>
+                        
+	                </ul>
+	            </li>
+	      
+	            <li >
+                    <a href="/user/mycgv/inquiry/qna/list.aspx?g=1" >나의 문의내역 <i></i></a>
+	                <ul>
+	                    <li >
+                            <a href="/user/mycgv/inquiry/qna/list.aspx?g=1" >1:1 문의</a>
+                        </li>
+	                </ul>
+	            </li>
+                        <li class="my-event"><a href="/user/movielog/watched.aspx">내가 본 영화</a></li> 
+	           <!-- <li class="my-event"><a href="/user/mycgv/event/?g=1">나의 참여 이벤트</a></li> -->
+	        </ul>
+	        <div class="ad-partner01">
+                <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@M_Rectangle" width="160" height="300" title="" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" id="M_Rectangle"></iframe>
+            </div>
+            <div class="ad-partner02">
+                <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@Image_text" width="160" height="35" title="" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" id="Image_text"></iframe>
+            </div>
+	    </div>
+    </div>
+	<div class="col-detail" id="mycgv_contents">
+	    
+
+<div class="sect-mycgv-reserve movielog col3">
+    <div class="box-polaroid">
+        <div class="box-inner preegg">
+            <a href="http://www.cgv.co.kr/user/movielog/" title="기대되는 영화">
+                <h3>기대되는 영화</h3>
+                <span>보고 싶은 영화들을 미리 <br>담아두고 싶다면?</span>
+            </a>
+        </div>
+        <div class="box-inner watched">
+            <a href="http://www.cgv.co.kr/user/movielog/watched.aspx" title="내가 본 영화">
+                <h3>내가 본 영화</h3>
+                <span>관람한 영화들을 한번에 <br />모아 보고 싶다면?</span>
+            </a>
+        </div>
+        <div class="box-inner mvdiary">
+            <a href="http://www.cgv.co.kr/movies/point/my-list.aspx" title="내가 쓴 평점">
+                <h3>내가 쓴 평점</h3>
+                <span>관람 후 내 감상평을 적어 <br />추억하고 싶다면?</span>
+            </a>
+        </div>
+
+
+       
+    </div>
+</div>
+<div class="tit-mycgv">
+	<h3>MY 예매내역</h3>
+	<p><em>0건</em> <a href="/user/mycgv/reserve/">예매내역 더보기</a></p>
+	<span>예매번호로만 티켓을 찾을 수 있으니 반드시 확인 부탁드립니다.</span>
+</div>
+
+<form name="aspnetForm" method="post" action="./" id="aspnetForm">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTc0NzIwMTk3M2RkGpTZbHfO8pvW/Ta9En5loRX6E2E=" />
+</div>
+    <!-- MY 예매내역 -->
+    <input type="hidden" id="hidCancelReserveNo" name="hidCancelReserveNo" />
+    <div class="sect-base-booking">
+	    <div class="box-polaroid">
+	        <div class="box-inner">
+                
+                
+                    
+                    <div class="lst-item">
+		    	        고객님의 최근 예매내역이 존재하지 않습니다.
+	    	        </div>
+                    
+	        </div>
+	    </div>
+    </div>
+</form>
+<!-- //MY 예매내역 -->
+
+<!-- MY 참여이력 -->
+<div class="sect-mycgv-part">
+    <div class="box-polaroid type1">
+      <!--  <div class="box-inner">
+            <div class="tit-mycgv">
+				<h3>MY 참여이벤트</h3>
+				<p><em>0건</em> <a href="/user/mycgv/event/">MY 참여이벤트 더보기</a></p>
+			</div>
+			<div class="col-myevt">
+                
+                    <ol><li>고객님의 이벤트 참여내역이 존재하지 않습니다.</li></ol>
+                
+			</div>
+        </div>-->
+        <div class="box-inner">
+            <div class="tit-mycgv">
+				<h3>MY Q&amp;A</h3>
+				<p><em>0건</em> <a href="/user/mycgv/inquiry/qna/list.aspx">MY Q&amp;A 더보기</a></p>
+			</div>
+			<div class="col-myqna">
+                
+                    <ul><li>고객님의 1:1 문의내역이 존재하지 않습니다.</li></ul>
+                
+			</div>
+        </div>
+    </div>
+</div>
+<!-- //MY 참여이력 -->
+<!-- MY 구매정보 -->
+<!-- 비노출 처리 : 20211013
+<div class="sect-mycgv-buying">
+    <div class="box-polaroid">
+        <div class="box-inner">
+		    <div class="tit-mycgv">
+		        <h3>MY 구매정보</h3>
+		        <span>현재 사용하실 수 있는 쿠폰정보입니다. 상품명을 클릭하시면 내역조회페이지로 이동합니다.</span>
+		    </div>
+		    <ul>
+		        <li class="booth">
+		            <a href="/user/mycgv/popcorn-store/default.aspx"><strong>내 기프트콘</strong></a>
+		            <span><em>0</em> 개</span>
+		        </li>		      
+		        <li class="funcon">
+		            <a href="/user/mycgv/culture-shop/fun-con.aspx"><strong>FUN-CON 기프트콘</strong></a>
+		            <span><em></em>준비중</span>
+		        </li>
+		        <li class="collage">
+		            <a href="/user/mycgv/culture-shop/movie-collage-passcard/"><strong>무비꼴라쥬 패스카드</strong></a>
+		            <span><em>0</em> 개</span>
+		        </li>
+		    </ul>
+		</div>
+    </div>
+</div>
+//-->
+<form name="targetform" id="targetform" method="post" novalidate="novalidate">
+	<input type="hidden" name="reverse_no" id="reverse_no" />
+</form>
+
+
+	</div>
+</div>
+<script id="temp_view_usergrade" type="text/x-jquery-tmpl">
+
+<div class="popwrap" style="width:330px;margin-top:-500px;margin-left:-165px">
+
+						<h1>VIP 등급 이력</h1>
+						<div class="pop-contents">
+						<!-- Contents Addon -->
+							<div class="sect-my-grade">
+								<p><strong>김재현</strong> 고객님의 연도별 고객 등급 이력입니다.</p>
+								<div class="grade-lst-light scrollbox">
+									<table summary="연도별 VIP 세부 등급 이력" id="mytable">
+										<caption>VIP 등급 이력 리스트</caption>
+										<colgroup>
+											<col width="50%">
+											<col width="*">
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col">승급 년/월별</th>
+												<th scope="col">등급</th>
+											</tr>
+										</thead>
+										<tbody>
+											
+										</tbody>
+									</table>
+								</div>
+								<ul class="tb-desclist">
+									<li>- 고객님의 등급은 당해년도 VIP 규정에 따라 부여된 등급입니다</li>
+									<li>- 연속 VIP는 전년도와 등급 갱신월이 일치해야 인정됩니다<br />
+									(예. 17년 4월 RVIP의 경우, 18년 4월 RVIP 갱신 시에만 2년 연속 RVIP로 인정되며, 2017년 5월 RVIP 승급 시 17년 5월에 1년 차 RVIP로 인정)</li>
+									<li>- 등급이 하락된 경우 하락된 등급의 1년 차로 인정됩니다<br />
+									(예. 17년 4월 SVIP의 경우 18년 4월 VVIP로 등급 하락 시 VVIP 1년 차로 인정)</li>
+								</ul>
+
+							
+							</div>
+						<!-- //Contents Addon -->
+						</div>
+						<button type="button" class="btn-close">MY 지난 등급 이력 팝업 닫기</button>
+					</div>
+
+</script>
+
+
+</body>
+</html>

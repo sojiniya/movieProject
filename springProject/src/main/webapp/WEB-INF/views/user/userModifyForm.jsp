@@ -1,135 +1,110 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<!-- 중앙 컨텐츠 시작 -->
-<script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
-	$(function(){
-		let checkId = 0;
-		
-		//아이디 중복 체크
-		$('#confrimId').click(function(){
-			if($('#id').val().trim()==''){
-				$('#message_id').css('color','red').text('아이디를 입력하세요');
-				$('#id').val('').focus();
-				return;
-			}
-			
-			$.ajax({
-				url:'confrimId.do',
-				type:'post',
-				data:{id:$('#id').val()},
-				dataType:'json',
-				cache:false,
-				timeout:30000,
-				success:function(param){
-					if(param.result == 'idNotFound'){
-						$('#message_id').css('color','#000').text('등록가능ID');
-						checkId = 1;
-					}else if(param.result == 'idDuplicated'){
-						$('#message_id').css('color','red').text('중복된 ID');
-						$('#id').val('').focus();
-						checkId = 0;
-					}else if(param.result == 'notMatchPattern'){
-						$('#message_id').css('color','red').text('영문,숫자 4~12');
-						$('#id').val('').focus();
-						checkId = 0;
-					}else{
-						checkId = 0;
-						alert('ID중복체크 오류');
-					}
-				},
-				error:function(){
-					checkId = 0;
-					alert('네트워크 오류 발생');
-				}
-			});
-		});//end of click
-		
-		//아이디 중복 안내 메시지 초기화 및 아이디 중복 값 초기화
-		$('#register_form #id').keyup(function(){
-			checkId = 0;
-			$('#message_id').text('');
-		});
-		
-		//submit 이벤트 발생시 아이디 중복 체크 여부 확인
-		$('#register_form').submit(function(){
-			if(checkId == 0){
-				$('#message_id').css('color','red').text('아이디 중복 체크 필수');
-				if($('#id').val().trim()==''){
-					$('#id').val('').focus();
-				}
-				return false;
-			}
-		});
-		
-	});
-
-</script>
-<div class="page-main">
-	<h2>회원가입</h2>
-	<form:form modelAttribute="memberVO" action="registerUser.do" id="register_form">
-		<form:errors element="div" cssClass="error-color"/>
-		<ul>
-			<li>
-				<form:label path="id">아이디</form:label>
-				<form:input path="id" placeholder="영문,숫자만  최소 6글자에서 ~최대 10자"/>
-				<input type="button" id="confrimId" value="ID중복체크">
-				<span id="message_id"></span>
-				<form:errors path="id" cssClass="error-color"/>
-			</li>
-			<li>
-				<form:label path="mem_name">이름</form:label>
-				<form:input path="mem_name"/>
-				<form:errors path="mem_name" cssClass="error-color"/>
-			</li>
-			<li>
-				<form:label path="mem_pw">비밀번호</form:label>
-				<form:input path="mem_pw" placeholder="영문,숫자만  최소 6글자에서 ~최대 10자"/>
-				<form:errors path="mem_pw" cssClass="error-color"/>
-			</li>
-			<li>
-				<form:label path="mem_birth">생년월일</form:label>
-				<form:input path="mem_birth"/>
-				<form:errors path="mem_birth" cssClass="error-color"/>
-			</li>
-			<li>
-				<form:label path="mem_phone">전화번호</form:label>
-				<form:input path="mem_phone"/>
-				<form:errors path="mem_phone" cssClass="error-color"/>
-			</li>
-			
-			<li>
-				<form:label path="mem_email">이메일</form:label>
-				<form:input path="mem_email"/>
-				<form:errors path="mem_email" cssClass="error-color"/>
-			</li>
-			<li>
-				<form:label path="mem_zipcode">우편번호</form:label>
-				<form:input path="mem_zipcode"/>
-				<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기">
-				<form:errors path="mem_zipcode" cssClass="error-color"/>
-			</li>
-			<li>
-				<form:label path="mem_address">주소</form:label>
-				<form:input path="mem_address"/>
-				<form:errors path="mem_address" cssClass="error-color"/>
-			</li>
-			
-		</ul>
-		<div class="align-center">
-			<form:button>전송</form:button>
-			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+	<link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/webfont.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/reset.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/layout.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/module.css?20211209" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/content.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">    
+<!DOCTYPE html>
+<div class="cols-content" id="menu">
+	<div class="col-aside">
+		<div class="skipnaiv">
+			<a href="#mycgv_contents" id="skipMycgvMenu">MYCGV 서브메뉴 건너띄기</a>
 		</div>
-	</form:form>
-<!-- 우편번호 스크립트 시작 -->
-<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
-<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
-<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
-</div>
+		<h2>MY CGV 서브메뉴</h2>
+		<div class="snb">
+			<ul>
+				<li class="on"><a href="/user/mycgv/?g=1" title="현재 선택">MY
+						CGV HOME <i></i>
+				</a></li>
+				<li><a href="/user/mycgv/reserve/?g=1">나의 예매내역 <i></i></a></li>
 
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
+				<li><a href="/user/mycgv/myinfo/?g=1">회원정보<i></i></a>
+					<ul>
+						<li><a
+							href="${pageContext.request.contextPath}/user/update.do?user_num=${member.mem_num}">개인정보
+								변경</a></li>
+
+						<li><a href="/user/mycgv/myinfo/leave-cjone.aspx?g=1">회원탈퇴</a>
+						</li>
+
+					</ul></li>
+
+				<li><a href="/user/mycgv/inquiry/qna/list.aspx?g=1">나의
+						문의내역 <i></i>
+				</a>
+					<ul>
+						<li><a href="/user/mycgv/inquiry/qna/list.aspx?g=1">1:1
+								문의</a></li>
+					</ul></li>
+				<li class="my-event"><a href="/user/movielog/watched.aspx">내가
+						본 영화</a></li>
+				<!-- <li class="my-event"><a href="/user/mycgv/event/?g=1">나의 참여 이벤트</a></li> -->
+			</ul>
+			<div class="ad-partner01">
+				<iframe
+					src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@M_Rectangle"
+					width="160" height="300" title="" frameborder="0" scrolling="no"
+					marginwidth="0" marginheight="0" id="M_Rectangle"></iframe>
+			</div>
+			<div class="ad-partner02">
+				<iframe
+					src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@Image_text"
+					width="160" height="35" title="" frameborder="0" scrolling="no"
+					marginwidth="0" marginheight="0" id="Image_text"></iframe>
+			</div>
+		</div>
+	</div>
+
+</div>
+<div class="page-main">
+		<h2>${member.mem_name}님의 회원정보수정</h2>
+		<form:form modelAttribute="memberVO" action="update.do" id="modify_form">
+			<form:errors element="div" cssClass="error-color"/>
+			<ul>
+				<li>
+					<form:label path="mem_phone">전화번호</form:label> 
+					<form:input path="mem_phone"/>
+					<form:errors path="mem_phone" cssClass="error-color"/>
+				</li>
+				<li>
+					<form:label path="mem_email">이메일 </form:label>
+					<form:input path="mem_email"/>
+					<form:errors path="mem_email" cssClass="error-color"/>
+				</li>
+				<li>
+					<form:label path="mem_zipcode">우편번호</form:label> 
+					<form:input path="mem_zipcode"/> 
+					<input type="button" onclick="sample2_execDaumPostcode()" value="우편변호 찾기">
+					<form:errors path="mem_zipcode"/>
+				</li>
+				<li>
+					<form:label path="mem_address">주소</form:label>
+					<form:input path="mem_address"/> 
+					<form:errors path="mem_address" cssClass="error-color"/>
+				</li>
+			</ul>
+			<div class="align-center">
+				<form:button>전송</form:button>
+				<input type="button" value="홈으로"
+					onclick="location.href='${pageContext.request.contextPath}/user/myPage.do'">
+			</div>
+		</form:form>
+		<!-- 우편번호 스크립트 시작 -->
+		<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
+		<div id="layer"
+			style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
+			<img src="//t1.daumcdn.net/postcode/resource/images/close.png"
+				id="btnCloseLayer"
+				style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
+				onclick="closeDaumPostcode()" alt="닫기 버튼">
+		</div>
+
+		<script
+			src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+		<script>
     // 우편번호 찾기 화면을 넣을 element
     var element_layer = document.getElementById('layer');
 
@@ -183,6 +158,7 @@
                 document.getElementById('mem_zipcode').value = data.zonecode;
                 //(수정) + extraAddr를 추가해서 address1에 참고항목이 보여지도록 수정
                 document.getElementById("mem_address").value = addr + extraAddr;
+                // 커서를 상세주소 필드로 이동한다.
 
                 // iframe을 넣은 element를 안보이게 한다.
                 // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
@@ -217,6 +193,6 @@
         element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
     }
 </script>
-<!-- 우편번호 스크립트 끝 -->	
-</div>
-<!-- 중앙 컨텐츠 끝 -->
+		<!-- 우편번호 스크립트 끝 -->
+		<!-- 중앙 컨텐츠 끝-->
+	</div>
