@@ -279,7 +279,7 @@ a:hover{
 }
 .video_text strong{
 	position: absolute;
-	top: 70%;
+	top: 65%;
 	width: 10%;
 	color: #ffffff;
 	font-size: 35px;
@@ -287,7 +287,7 @@ a:hover{
 }
 .video_text span{
 	position: absolute;
-	top: 75%;
+	top: 70%;
 	width: 30%;
 	color: #ffffff;
 	font-size: 25px;
@@ -295,7 +295,7 @@ a:hover{
 }
 .video_text a{
 	position: absolute;
-	top: 85%;
+	top: 80%;
 	width: 10%;
 	color: #ffffff;
 	font-size: 20px;
@@ -333,6 +333,12 @@ div#movie_api img{
 }
 .movie_info p{
 	display: inline;
+}
+.movie_rank{
+	position: absolute;
+	top: 112%;
+	color: white;
+	font-size: 50px;
 }
 
 /*My Page*/
