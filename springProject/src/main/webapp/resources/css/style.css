@@ -93,36 +93,61 @@ div#boardMain_body {
     width: 78%;
 }
 /*관리자 글쓰기*/
-.adminBoardWrite-main {
-	width: 870px;
-	height: 600px;
-	margin-top: 30px;
+.adminBoardWrite-main{
+	position: relative;
+	width: 820px;
+	margin: 30px 0px;
 	padding: 0px 0px 0px 20px;
 }
 .adminWriteForm {
-	width: 800px;
 	border: none;
+	width: 100%;
 	padding: 0px;
-	margin: 0px;
 }
-
-.table.tbl_notice_list {
+ul.type_list{
+	margin: 0px;
+	padding: 0px;
+	display: inline-block;
+	}
+.type_list > li{
+	display: inline-block;
+    margin-right: 15px;
+    vertical-align: middle;
+	float: left;
+	text-align: left;
+}
+.tbl_notice_list.tbl_left tbody th {
+    line-height: 27px;
+    vertical-align: top;
+}
+.tbl_notice_list.tbl_left th, .tbl_notice_list.tbl_left td{
+    padding: 15px 0px 15px 13px;
+    border-top: 1px solid #d6d4ca;
+    text-align: left;
+}
+.tbl_notice_list.tbl_left tbody td {
+    padding: 15px 5px;
+    text-align: left;
+}
+.tbl_notice_list {
     border-top: solid 1px #d6d4ca;
     border-bottom: solid 1px #b8b6aa;
 }
-.type_list {
-	width: 100%;
-	margin: 0px;
-	padding: 0px;
-	display: inline-block;
+.box-btn_adminSubmit{
+	margin-top: 30px;
+    text-align: right;
 }
-.type_list > li > label{
-	width: 115px;
-	margin: 0px;
-	padding: 0px;
-	display: inline-block;
+.round.cancel {
+	background-color: white;
+    border: 2px solid #7b7b7b;
+    line-height: 21px;
 }
-
+.round.submit {
+    background: #fb4357;
+    border: 2px solid #fb4357;
+    color: #ffffff;
+    line-height: 21px;
+}
 /*===헤더===*/
 ul.memberInfo_wrap{
 	display: flex;
@@ -464,7 +489,6 @@ h1{
 	float:left;
 }
 label{
-	width:100px;
 	float:left;
 }
 input[type="text"],input[type="password"],input[type="email"]{

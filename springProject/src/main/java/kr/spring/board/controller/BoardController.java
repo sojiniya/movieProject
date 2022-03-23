@@ -51,7 +51,27 @@ public class BoardController {
 		return "adminBoardWrite";
 	}
 		
-	
+	//글 등록 폼에서 전송된 데이터 처리
+		@PostMapping("/board/adminBoardWrite.do")
+		public String submit(@Valid BoardVO boardVO,
+				             BindingResult result,
+				             HttpSession session,
+				             HttpServletRequest request) {
+			logger.info("<<게시판 글 저장>> : " + boardVO);
+			
+			//유효성 체크 결과 오류가 있으면 폼 호출
+			if(result.hasErrors()) {
+				return form();
+			}
+			
+			Integer user_num = (Integer)session.getAttribute("user_num");
+			//회원 번호 셋팅
+			boardVO.setMem_num(user_num);
+			//글쓰기
+			boardService.insertBoard(boardVO);
+			
+			return "redirect:/board/boardMain.do";
+		}
 	
 	
 }

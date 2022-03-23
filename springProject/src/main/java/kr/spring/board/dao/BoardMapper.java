@@ -11,9 +11,9 @@ public interface BoardMapper {
 	//부모글
 	public List<BoardVO> selectList(Map<String,Object> map); //목록 생성
 	public int selectRowCount(Map<String,Object> map); //페이징 처리
-	@Insert("INSERT INTO spboard (board_num,title,content,uploadfile,"
-		  + "filename,cate_num,mem_num) VALUES (M_board_seq.nextval,#{title},"
-		  + "#{content},#{uploadfile},#{filename},#{cate_num},#{mem_num})")
+	@Insert("INSERT INTO m_board (board_num,board_auth,board_title,board_content,board_uploadfile,"
+		  + "board_filename,cate_num,mem_num) VALUES (M_board_seq.nextval,#{board_auth},#{board_title},"
+		  + "#{board_content},#{board_uploadfile},#{board_filename},#{cate_num},#{mem_num})")
 	public void insertBoard(BoardVO board); //글 작성
 	public BoardVO selectBoard(Integer board_num); //상세보기
 	public BoardVO beforeView(BoardVO vboard); //이전글 보기

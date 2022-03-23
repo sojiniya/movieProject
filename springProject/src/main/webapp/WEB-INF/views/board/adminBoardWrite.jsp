@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+
 <!-- 부트스트랩 라이브러리 -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -11,7 +12,15 @@
 	min-height:350px;
 	overflow:auto;
 }
-
+table{
+	width:100%;
+	border:none;
+	border-collapse:collapse;
+}
+table td, table th{
+	border:none;
+	padding:5px;
+}
 
 </style>
 <!-- ckedior 라이브러리 -->
@@ -66,8 +75,9 @@
 <!-- 중앙 시작 -->
 <div class="adminBoardWrite-main">
 	<h3>관리자 글쓰기</h3>
-	<form class="adminWriteForm" method="post" enctype="mutipart/form-data">
-		<table style="table-layout:auto; width:100%; table-layout:fixed;" class="tbl_notice_list tbl_left">
+	<form:form modelAttribute="boardVO" action="adminBoardWrite.do" 
+	 class="adminWriteForm" method="post" enctype="mutipart/form-data">
+		<table style="width:100%; table-layout:fixed;" class="tbl_notice_list tbl_left">
 			<colgroup>
 				<col style="width:140px;">
 			</colgroup>
@@ -168,7 +178,7 @@
 				<tr>
 					<th scope="row">제목</th>
 					<td>
-						<input name="boardTit" type="text" placeholder="제목을 입력하세요" />
+						<input name="boardTit" style="width: 660px; height: 30px;" type="text" placeholder="제목을 입력하세요" />
 					</td>
 				</tr>
 				<tr>
@@ -195,8 +205,18 @@
 			    	</script>       
 					</td>
 				</tr>
+				<tr>
+					<th>파일업로드</th>
+					<td>
+					<input type="file" name="upload" id="upload">
+					</td>
+				</tr>
 			</tbody>
 		</table>
-	</form>
+		<div class="box-btn_adminSubmit">
+			<input type="button" value="취소하기" class="round cancel" onclick="location.href='boardMain.do'">
+			<form:button class="round submit">등록하기</form:button>
+		</div>
+	</form:form>
 </div>
 <!-- 중앙 끝-->
