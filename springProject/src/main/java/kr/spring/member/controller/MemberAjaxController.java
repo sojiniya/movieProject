@@ -52,7 +52,7 @@ public class MemberAjaxController {
 	}
 	
 	//프로필 사진을 DB에 저장하는 메서드 
-	@RequestMapping("/member/updateMyPhoto.do")
+	@RequestMapping("/user/updateMyPhoto.do")
 	@ResponseBody
 	public Map<String,String> processProfile(MemberVO memberVO, HttpSession session){
 		

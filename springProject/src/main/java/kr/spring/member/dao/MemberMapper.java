@@ -33,12 +33,14 @@ public interface MemberMapper {
 	@Update("UPDATE M_member_detail SET mem_pw=#{mem_pw} WHERE mem_num=#{mem_num}")
 	public void updatePassword(MemberVO member);
 	
+	@Update("UPDATE M_member SET auth=2 WHERE mem_num=#{mem_num}")
 	public void deleteMember(Integer mem_num);
 	
+	@Delete("DELETE FROM M_member_detail WHERE mem_num=#{mem_num}")
 	public void deleteMember_detail(Integer mem_num);
 		
 	//blob타입의 이미지(bytes배열형태는 db에 넣을 때 별도에 처리 없어도 가능),파일명
-	@Update("UPDATE spmember_detail SET photo=#{photo},photo_name=#{photo_name} WHERE mem_num=#{mem_num}")
+	@Update("UPDATE M_member_detail SET mem_photo=#{mem_photo},photo_name=#{photo_name} WHERE mem_num=#{mem_num}")
 	public void updateProfile(MemberVO member);
 	
 	//관리자

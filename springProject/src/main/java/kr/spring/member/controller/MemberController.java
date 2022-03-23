@@ -216,6 +216,69 @@ public class MemberController {
 			return "redirect:/user/myPage.do";
 		}
 		
+		//회원 삭제 폼
+		@GetMapping("/user/delete.do")
+		public String formDelete() {
+			return "userDelete";
+		}
+		
+		//회원데이터 삭제
+		@PostMapping("/user/delete.do")
+		public String submitDelete(@Valid MemberVO memberVO, BindingResult result, HttpSession session) {
+			
+			logger.info("<<회원탈퇴>> : " + memberVO);
+			
+			//유효성 체크 결과 오류
+			if(result.hasFieldErrors("id") || result.hasFieldErrors("mem_pw")) {
+				return formDelete();
+			}
+			
+			Integer user_num = (Integer)session.getAttribute("user_num");
+			memberVO.setMem_num(user_num);
+			
+			//아이디와 비밀번호 일치 여부
+			try {
+				//세션에 저장된 회원번호를 이용해서  DB에 저장된 회원 정보를 MemberVO에 담아서 반환
+				MemberVO db_member = memberService.selectMember(memberVO.getMem_num());
+				boolean check = false;
+				
+				if(db_member!=null && memberVO.getId().contentEquals(db_member.getId())) {
+					//DB비밀번호 일치 여부 체크				//사용자가 입력한 비밀번호
+					check = db_member.isCheckPassword(memberVO.getMem_pw());
+				}
+				if(check) {
+					//인증 성공, 회원정보 삭제
+					memberService.deleteMember(memberVO.getMem_num());
+					//로그아웃
+					session.invalidate();
+					
+					return "redirect:/main/main.do";
+				}
+				//인증 실패
+				throw new AuthCheckException();
+			
+			}catch(AuthCheckException e) {
+				result.reject("invalidIdOrPassword");
+				return formDelete();
+			}
+		}
+		
+		//DB에 저장되어있는 이미지 출력하는 곳
+		@RequestMapping("/user/photoView.do")
+		public ModelAndView viewImage(HttpSession session) {
+			
+			Integer user_num = (Integer)session.getAttribute("user_num");
+			MemberVO memberVO = memberService.selectMember(user_num);
+			
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("imageView");
+			mav.addObject("imageFile",memberVO.getMem_photo());
+			mav.addObject("filename",memberVO.getPhoto_name());
+			
+			return mav;
+		}
+		
+		
 	
 }
 

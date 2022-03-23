@@ -16,7 +16,7 @@
 		<h2>MY CGV 서브메뉴</h2>
 		<div class="snb">
 			<ul>
-				<li class="on"><a href="/user/mycgv/?g=1" title="현재 선택">MY
+				<li class="on"><a href="${pageContext.request.contextPath}/user/myPage.do" title="현재 선택">MY
 						CGV HOME <i></i>
 				</a></li>
 				<li><a href="/user/mycgv/reserve/?g=1">나의 예매내역 <i></i></a></li>
@@ -24,10 +24,10 @@
 				<li><a href="/user/mycgv/myinfo/?g=1">회원정보<i></i></a>
 					<ul>
 						<li><a
-							href="${pageContext.request.contextPath}/user/update.do?user_num=${member.mem_num}">개인정보
+							href="${pageContext.request.contextPath}/user/update.do">개인정보
 								변경</a></li>
 
-						<li><a href="/user/mycgv/myinfo/leave-cjone.aspx?g=1">회원탈퇴</a>
+						<li><a href="${pageContext.request.contextPath}/user/delete.do">회원탈퇴</a>
 						</li>
 
 					</ul></li>

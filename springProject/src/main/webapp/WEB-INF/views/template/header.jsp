@@ -12,7 +12,7 @@
         <ul class="memberInfo_wrap">
 			
 			<c:if test="${!empty user_num && !empty user_photo}">
-    		<img src="${pageContext.request.contextPath}/member/photoView.do" 
+    		<img src="${pageContext.request.contextPath}/user/photoView.do" 
     	                        width="25" height="25" class="my-photo">
     		</c:if>
     		<c:if test="${!empty user_num && empty user_photo}">

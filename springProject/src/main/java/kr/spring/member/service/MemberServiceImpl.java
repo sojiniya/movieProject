@@ -46,13 +46,13 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public void deleteMember(Integer mem_num) {
-		// TODO Auto-generated method stub
-		
+		memberMapper.deleteMember(mem_num);
+		memberMapper.deleteMember_detail(mem_num);
 	}
 
 	@Override
 	public void updateProfile(MemberVO member) {
-		// TODO Auto-generated method stub
+		memberMapper.updateProfile(member);
 		
 	}
 
