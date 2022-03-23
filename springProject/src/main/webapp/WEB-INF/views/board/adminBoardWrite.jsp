@@ -8,7 +8,7 @@
 <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
 .ck-editor__editable_inline{
-	min-height:250px;
+	min-height:350px;
 }
 </style>
 <!-- ckedior 라이브러리 -->

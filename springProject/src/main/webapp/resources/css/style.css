@@ -95,6 +95,7 @@ div#boardMain_body {
 /*관리자 글쓰기*/
 .adminBoardWrite-main {
 	width: 870px;
+	height: 600px;
 	margin-top: 30px;
 	padding: 0px 0px 0px 20px;
 }
