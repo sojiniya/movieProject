@@ -9,7 +9,10 @@
 <style>
 .ck-editor__editable_inline{
 	min-height:350px;
+	overflow:auto;
 }
+
+
 </style>
 <!-- ckedior 라이브러리 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ckeditor.js"></script>
@@ -64,7 +67,7 @@
 <div class="adminBoardWrite-main">
 	<h3>관리자 글쓰기</h3>
 	<form class="adminWriteForm" method="post" enctype="mutipart/form-data">
-		<table style="table-layout:auto; width:100%; table-layout:fixed;" class="tbl_notice_list">
+		<table style="table-layout:auto; width:100%; table-layout:fixed;" class="tbl_notice_list tbl_left">
 			<colgroup>
 				<col style="width:140px;">
 			</colgroup>
@@ -117,7 +120,7 @@
 				<tr class="radio_v2">
 					<th scope="row">카테고리</th>
 					<td>
-						<ul class="type_list">
+						<ul class="type_list cate">
 							<li>
 								<label for="systemCheck">
 								<input type="radio" id="systemCheck" name="writeCate" value="0" checked>시스템점검
