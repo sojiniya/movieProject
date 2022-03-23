@@ -41,7 +41,7 @@
                     let str = '<ul><li><img src="https://movie-phinf.pstatic.net/20220228_168/1646014473355hG4fW_JPEG/movie_image.jpg"></li><li><img src="https://movie-phinf.pstatic.net/20220210_27/16444726389021AWu6_JPEG/movie_image.jpg"></li><li><img src="https://movie-phinf.pstatic.net/20220214_120/1644825641315cvVKI_JPEG/movie_image.jpg"></li><li><img src="https://movie-phinf.pstatic.net/20220317_93/1647485368141aGptp_JPEG/movie_image.jpg"></li><li><img src="https://movie-phinf.pstatic.net/20220217_242/1645084631470w6PTw_JPEG/movie_image.jpg"></li><br><div class="movie_info"><li>'
                     for(let i=0;i<=4;i++){
                         let weeklyMovie = res.boxOfficeResult.weeklyBoxOfficeList[i]
-                        str += '<li><p>'+weeklyMovie.rank+'</p><br>'                  
+                        str += '<li><p class="movie_rank">'+weeklyMovie.rank+'</p><br>'                  
                         str += '<strong class="movie_name">'+weeklyMovie.movieNm+'</strong><br>'
                         str += '<p>'+weeklyMovie.openDt+'</p><br>'
                         str += '<p>'+weeklyMovie.audiAcc+'</p>'
