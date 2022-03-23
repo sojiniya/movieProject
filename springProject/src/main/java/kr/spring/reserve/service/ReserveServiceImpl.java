@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.spring.reserve.dao.ReserveMapper;
+import kr.spring.reserve.vo.ReserveVO;
 import kr.spring.movie.vo.MovieVO;
 import kr.spring.theater.vo.TheaterVO;
 import kr.spring.time.vo.TimeVO;
@@ -56,6 +57,21 @@ public class ReserveServiceImpl implements ReserveService{
 	@Override
 	public List<TimeVO> pickmoviedetail_get_time(Map<String, Object> map) {
 		return reserveMapper.pickmoviedetail_get_time(map);
+	}
+
+	@Override
+	public TheaterVO picktheaterdetail(Integer theater_num) {
+		return reserveMapper.picktheaterdetail(theater_num);
+	}
+
+	@Override
+	public TimeVO picktimedetail(Integer time_num) {
+		return reserveMapper.picktimedetail(time_num);
+	}
+
+	@Override
+	public List<ReserveVO> seatlist(Integer time_num) {
+		return reserveMapper.seatlist(time_num);
 	}
 
 }

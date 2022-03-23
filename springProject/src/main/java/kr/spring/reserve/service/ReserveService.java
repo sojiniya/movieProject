@@ -3,13 +3,15 @@ package kr.spring.reserve.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Select;
 
 import kr.spring.movie.vo.MovieVO;
+import kr.spring.reserve.vo.ReserveVO;
 import kr.spring.theater.vo.TheaterVO;
 import kr.spring.time.vo.TimeVO;
 
 public interface ReserveService {
-
+	//예매하기 1단계
 	public List<MovieVO> selectMovieList();
 	public List<TheaterVO> selectTheaterList();
 	public MovieVO pickmoviedetail(Integer movie_num);
@@ -18,4 +20,9 @@ public interface ReserveService {
 	public List<TheaterVO> pickmoviedetail_get_theater_cgv(Map<String,Object> map);
 	public List<TimeVO> pickmoviedetail_get_date(Map<String,Object> map);
 	public List<TimeVO> pickmoviedetail_get_time(Map<String,Object> map);
+	
+	//예매하기2단계
+	public TheaterVO picktheaterdetail(Integer theater_num);
+	public TimeVO picktimedetail(Integer time_num);
+	public List<ReserveVO> seatlist(Integer time_num);
 }

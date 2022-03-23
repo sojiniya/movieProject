@@ -26,6 +26,12 @@ public class ReserveVO {
 	private int reserve_people_total;
 	private int reserve_price_total;
 	
+	//step2에서 사용하기 위한 프로퍼티
+	private int seat_num;
+	private String seat_name;
+	private int revseat_num;
+	private int reserve_time_num;
+	private int reserve_seat_num;
 	public int getReserve_num() {
 		return reserve_num;
 	}
@@ -140,6 +146,36 @@ public class ReserveVO {
 	public void setReserve_price_total(int reserve_price_total) {
 		this.reserve_price_total = reserve_price_total;
 	}
+	public int getSeat_num() {
+		return seat_num;
+	}
+	public void setSeat_num(int seat_num) {
+		this.seat_num = seat_num;
+	}
+	public String getSeat_name() {
+		return seat_name;
+	}
+	public void setSeat_name(String seat_name) {
+		this.seat_name = seat_name;
+	}
+	public int getRevseat_num() {
+		return revseat_num;
+	}
+	public void setRevseat_num(int revseat_num) {
+		this.revseat_num = revseat_num;
+	}
+	public int getReserve_time_num() {
+		return reserve_time_num;
+	}
+	public void setReserve_time_num(int reserve_time_num) {
+		this.reserve_time_num = reserve_time_num;
+	}
+	public int getReserve_seat_num() {
+		return reserve_seat_num;
+	}
+	public void setReserve_seat_num(int reserve_seat_num) {
+		this.reserve_seat_num = reserve_seat_num;
+	}
 	
 	@Override
 	public String toString() {
@@ -150,7 +186,11 @@ public class ReserveVO {
 				+ ", theater_name=" + theater_name + ", movie_date=" + movie_date + ", movie_time=" + movie_time
 				+ ", reserve_adult=" + reserve_adult + ", reserve_youth=" + reserve_youth + ", reserve_old="
 				+ reserve_old + ", reserve_people_total=" + reserve_people_total + ", reserve_price_total="
-				+ reserve_price_total + "]";
+				+ reserve_price_total + ", seat_num=" + seat_num + ", seat_name=" + seat_name + ", revseat_num="
+				+ revseat_num + ", reserve_time_num=" + reserve_time_num + ", reserve_seat_num=" + reserve_seat_num
+				+ "]";
 	}
+	
+	
 
 }

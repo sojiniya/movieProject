@@ -9,6 +9,10 @@
     	<put-attribute name="title" value="예매하기"/>
     	<put-attribute name="body" value="/WEB-INF/views/reserve/reserveStep1.jsp"/>
     </definition>
+    <definition name="reserveStep2" extends="main">
+    	<put-attribute name="title" value="예매하기"/>
+    	<put-attribute name="body" value="/WEB-INF/views/reserve/reserveStep2.jsp"/>
+    </definition>
 </tiles-definitions>
 
 

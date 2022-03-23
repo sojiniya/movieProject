@@ -366,10 +366,33 @@
 		}); // end of on (인원수 선택 및 합계 조회)
 		
 			
-		//좌석 선택 버튼
-		$(document).on('click','#reserveStep1_form',function(){
+		//좌석 선택 유효성 체크
+		$('#reserveStep1_form').submit(function(){
+			
+			if($('#movie_num').val() == ''){
+				alert('영화를 선택해주세요.');
+				return false;
+			}
+			
+			if($('#theater_num').val() == ''){
+				alert('상영관을 선택해주세요.');
+				return false;
+			}
+			
+			if($('#time_num').val() == ''){
+				alert('상영 일자(날짜) 선택해주세요.');
+				return false;
+			}
+			
+			
+			if($('#reserve_people_total').val() == '' || $('#reserve_people_total').val() == 0){
+				alert('상영 시간 및 인원(최소1명 ~ 최대3명)을 선택해주세요.');
+				return false;
+			}
+			
 			
 		});
+		
 	});
 </script>
 

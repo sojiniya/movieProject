@@ -1,5 +1,6 @@
 package kr.spring.reserve.controller;
 
+import java.sql.Time;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -14,6 +15,7 @@ import kr.spring.reserve.service.ReserveService;
 import kr.spring.reserve.vo.ReserveVO;
 import kr.spring.movie.vo.MovieVO;
 import kr.spring.theater.vo.TheaterVO;
+import kr.spring.time.vo.TimeVO;
 
 @Controller
 public class ReserveController {
@@ -51,11 +53,24 @@ public class ReserveController {
 	
 	//예매하기 2단계 
 	@RequestMapping("/reserve/reserveStep2.do")
-	public String reserveStep2(ReserveVO reservVO) {
+	public ModelAndView reserveStep2(ReserveVO reservVO) {
 		
 		logger.info("<<예약 2단계 / 전달받은 예약 정보>>" + reservVO);
 		
+		MovieVO movie = reserveService.pickmoviedetail(reservVO.getMovie_num());
+		TheaterVO theater = reserveService.picktheaterdetail(reservVO.getTheater_num());
+		TimeVO time = reserveService.picktimedetail(reservVO.getTime_num());
+		List<ReserveVO> seat_list = reserveService.seatlist(reservVO.getTime_num());
 		
-		return "redirect:/reserve/reserveStep1.do";
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("reserveStep2");
+		mav.addObject("reserv",reservVO);
+		mav.addObject("movie",movie);
+		mav.addObject("theater",theater);
+		mav.addObject("time",time);
+		mav.addObject("seat_list",seat_list);
+		System.out.println("seat_list : " + seat_list);
+		
+		return mav;
 	}
 }
