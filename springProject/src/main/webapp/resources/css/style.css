@@ -17,9 +17,8 @@ div#main_header{
 div#main_menu{
 	height: 30px;
 	padding: 20px;
-    border-style: solid;
-    border-width: 0px 0px 5px 0px;
-    border-color: #ea3423;
+    border-bottom: 5px solid #ea3423;
+    margin-bottom: 20px;
 }
 div#main_body{
 	float:left;
@@ -243,24 +242,40 @@ a:hover{
 	font-size: 20px;
 	margin-left: 30px;
 }
-
 .movieChart_wrap {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
+    border-bottom: 1px solid #b1b1b1
 }
-
 .movieChart_wrap .btn_allView {
     padding: 4px 32px 4px 15px;
     font-size: 14px;
     color: #222;
+    background: #ffffff;
     line-height: 1.429em;
-    background: transparent url(./../images/common/ico/arrowR_8x13.png) calc(100% - 7px) center/8px 13px scroll no-repeat;
-    border: 1px solid #e2e2e2;
+    border: 1px solid #bdb7b7;
     border-radius: 15px;
-    box-shadow: 1px 1px 1px 0 rgb(0 0 0 / 5%);
 }
+div#movie_api li{
+	width: 20%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+div#movie_api img{
+	width: 170px;
+    height: 250px;
+}
+.movie_info li{
+	text-align: left;	
+}
+.movie_info p{
+	display: inline;
+}
+
 /*My Page*/
 .mypage-div{
 	width:48%;
@@ -588,8 +603,7 @@ footer p span {
 .tit-moviechart{
 	position: relative;
     height: 60px;
-    padding-top: 10px;
-    border-bottom: 3px solid #241d1e;
+    border-bottom: 2px solid #241d1e;
 }
 .order-moviechart select{
 	height: 30px;
@@ -615,7 +629,7 @@ footer p span {
 	text-align: left;
 }
 .movie_name{
-	font-size: 20px;
+	font-size: 17px;
 }
 .movie_genre{
 	font-weight: normal;
