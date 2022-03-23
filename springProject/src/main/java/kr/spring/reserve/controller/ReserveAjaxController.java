@@ -82,7 +82,7 @@ public class ReserveAjaxController {
 				
 		List<TimeVO> date_list = null;
 		date_list = reserveService.pickmoviedetail_get_date(map);
-		System.out.println(date_list);
+		System.out.println("상영일자 조회 결과 : " + date_list);
 		
 		Map<String,Object> mapJson = new HashMap<String,Object>();
 		mapJson.put("date_list", date_list);
@@ -107,9 +107,8 @@ public class ReserveAjaxController {
 		map.put("movie_date", movie_date);
 				
 		List<TimeVO> time_list = null;
-		System.out.println("메서드 실행전************************");
 		time_list = reserveService.pickmoviedetail_get_time(map);
-		System.out.println("메서드 실행후 : " + time_list);
+		System.out.println("메서드 실행후(time_list) : " + time_list);
 		
 		Map<String,Object> mapJson = new HashMap<String,Object>();
 		mapJson.put("time_list", time_list);

@@ -22,8 +22,8 @@ public interface ReserveMapper {
 	public List<Integer> pickmoviedetail_get_theater_localcount(Integer movie_num);
 	@Select("select distinct theater.theater_num,theater.theater_name from m_movie movie join m_time time on time.movie_num=movie.movie_num join m_theater theater on time.theater_num = theater.theater_num where movie.movie_num=#{movie_num} and theater.theater_local=#{theater_local}")
 	public List<TheaterVO> pickmoviedetail_get_theater_cgv(Map<String,Object> map);
-	@Select("select distinct movie_date from m_time where theater_num = #{theater_num} and movie_num = #{movie_num} order by movie_date")
+	@Select("select distinct movie_date,time_num from m_time where theater_num = #{theater_num} and movie_num = #{movie_num} order by movie_date")
 	public List<TimeVO> pickmoviedetail_get_date(Map<String,Object> map);
-	@Select("select movie_time from m_time where theater_num = #{theater_num} and movie_num = #{movie_num} and movie_date =#{movie_date}")
+	@Select("select distinct time_num,movie_time from m_time where theater_num = #{theater_num} and movie_num = #{movie_num} and movie_date =#{movie_date}")
 	public List<TimeVO> pickmoviedetail_get_time(Map<String,Object> map);
 }

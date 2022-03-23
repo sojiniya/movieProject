@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.reserve.service.ReserveService;
+import kr.spring.reserve.vo.ReserveVO;
 import kr.spring.movie.vo.MovieVO;
 import kr.spring.theater.vo.TheaterVO;
 
@@ -48,4 +49,13 @@ public class ReserveController {
 		return mav;
 	}
 	
+	//예매하기 2단계 
+	@RequestMapping("/reserve/reserveStep2.do")
+	public String reserveStep2(ReserveVO reservVO) {
+		
+		logger.info("<<예약 2단계 / 전달받은 예약 정보>>" + reservVO);
+		
+		
+		return "redirect:/reserve/reserveStep1.do";
+	}
 }
