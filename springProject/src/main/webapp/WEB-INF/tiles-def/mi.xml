@@ -11,9 +11,8 @@
     </definition>
     <definition name="theaterInsert" extends="main">
     	<put-attribute name="title" value="극장정보 등록"/>
-    	<put-attribute name="body" value="/WEB-INF/views/theater/theaterInsert.jsp"/>
+    	<put-attribute name="body" value="/WEB-INF/views/movie/theaterInsert.jsp"/>
     </definition>
-    
     <definition name="selectList" extends="main">
     	<put-attribute name="title" value="극장지역정보 목록"/>
     	<put-attribute name="body" value="/WEB-INF/views/time/selectList.jsp"/>
