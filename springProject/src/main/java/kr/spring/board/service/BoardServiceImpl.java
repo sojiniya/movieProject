@@ -11,10 +11,10 @@ import kr.spring.board.vo.BoardVO;
 
 @Service
 public class BoardServiceImpl implements BoardService{
-	
+
 	@Autowired
 	private BoardMapper boardMapper;
-
+	
 	@Override
 	public List<BoardVO> selectList(Map<String, Object> map) {
 		// TODO Auto-generated method stub
@@ -25,18 +25,6 @@ public class BoardServiceImpl implements BoardService{
 	public int selectRowCount(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	@Override
-	public void insertBoard(BoardVO board) {
-		boardMapper.insertBoard(board);
-		
-	}
-
-	@Override
-	public BoardVO selectBoard(Integer board_num) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -58,6 +46,48 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
+	public void adminInsertBoard(BoardVO board) {
+		boardMapper.adminInsertBoard(board);
+		boardMapper.insertCate(board);
+	}
+
+	@Override
+	public BoardVO adminSelectBoard(Integer board_num) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void adminUpdateBoard(BoardVO board) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void adminDeleteBoard(Integer board_num) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void adminDeleteFile(Integer board_num) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void insertBoard(BoardVO board) {
+		boardMapper.insertBoard(board);
+		boardMapper.insertCate(board);
+	}
+
+	@Override
+	public BoardVO selectBoard(Integer board_num) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public void updateBoard(BoardVO board) {
 		// TODO Auto-generated method stub
 		
@@ -76,6 +106,4 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	
-	
-
 }

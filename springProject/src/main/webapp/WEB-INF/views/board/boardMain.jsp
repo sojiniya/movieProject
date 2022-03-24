@@ -18,7 +18,7 @@
 		<div class="c_box inquiry" style="cursor:pointer;">
 			<strong class="c_tit">건의 및 문의사항</strong>
 			<span class="c_txt">건의 및 문의사항을 전달해 주세요.</span>
-			<a href="#">글쓰기</a>
+			<a href="${pageContext.request.contextPath}/board/userBoardWrite.do">글쓰기</a>
 		</div>
 		<div class="c_box my_advice" style="cursor:pointer;">
 			<strong class="c_tit">내 상담내역 확인</strong>

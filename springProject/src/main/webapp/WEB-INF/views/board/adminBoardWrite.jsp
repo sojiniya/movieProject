@@ -52,7 +52,7 @@ table td, table th{
 
 		})
 		 // 영화관 선택(선택하지 않음:0, 선택함:1)
-        $('input:radio[name="sel_theaterchoise"]').on("change", function () {            
+        $('input:radio[name="theater_choise"]').on("change", function () {            
             $(this).parent().addClass("on").siblings().removeClass("on");
 
             if ($(this).val() == "0") {
@@ -73,6 +73,7 @@ table td, table th{
 	})
 </script>
 <!-- 중앙 시작 -->
+<!-- 3월 11일 31분 -->
 <div class="adminBoardWrite-main">
 	<h3>관리자 글쓰기</h3>
 	<form:form modelAttribute="boardVO" action="adminBoardWrite.do" 
@@ -116,7 +117,7 @@ table td, table th{
 							</li>
 							<li>
 								<label for="memberShip">
-								<input type="radio" id="memberShip" name="cate_nume" value="2">멤버쉽
+								<input type="radio" id="memberShip" name="cate_num" value="2">멤버쉽
 								</label>
 							</li>
 							<li>
@@ -165,12 +166,12 @@ table td, table th{
 							</li>
 						</ul> 
 						<label for="sel_regioncode" class="hidden">지역 선택</label> 
-						<select title="지역 선택" class="sel01" id="sel_regioncode" name="sel_regioncode" disabled="disabled" style="width: 114px;">
-							<option value="">지역 선택</option>
+						<select title="지역 선택" class="sel01" id="sel_regioncode" name="sel_regioncode" disabled="disabled" style="width: 114px; height: 30px;">
+							<option value="0">지역 선택</option>
 						</select> 
 						<label for="sel_theatercode" class="hidden">영화관 선택</label> 
-						<select title="영화관 선택" class="sel01" id="sel_theatercode" name="sel_theatercode" disabled="disabled" style="width: 114px;">
-							<option value="">영화관 선택</option>
+						<select title="영화관 선택" class="sel01" id="sel_theatercode" name="sel_theatercode" disabled="disabled" style="width: 114px; height: 30px;">
+							<option value="0">영화관 선택</option>
 						</select>
 					</td>
 				</tr>
@@ -208,7 +209,7 @@ table td, table th{
 				<tr>
 					<th>파일업로드</th>
 					<td>
-					<input type="file" name="board_upload" id="upload">
+					<input type="file" name="board_upload" id="upload" accept="image/gif,image/png,image/jpeg">
 					</td>
 				</tr>
 			</tbody>
