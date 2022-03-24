@@ -66,5 +66,10 @@ public class MovieServiceImpl implements MovieService{
 		
 	}
 
+	@Override
+	public void insertTheater(MovieVO movie) {
+		movieMapper.insertTheater(movie);
+	}
+
 }
 	
