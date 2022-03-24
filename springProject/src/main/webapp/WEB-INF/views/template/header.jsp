@@ -13,11 +13,11 @@
 			
 			<c:if test="${!empty user_num && !empty user_photo}">
     		<img src="${pageContext.request.contextPath}/user/photoView.do" 
-    	                        width="25" height="25" class="my-photo">
+    	                        width="50" height="50" class="my-photo">
     		</c:if>
     		<c:if test="${!empty user_num && empty user_photo}">
     		<img src="${pageContext.request.contextPath}/resources/images/face.png" 
-    	                        width="25" height="25" class="my-photo">
+    	                        width="50" height="50" class="my-photo">
     		</c:if>
 			
             <c:if test="${empty user_num}">
@@ -25,7 +25,7 @@
             <li><a href="${pageContext.request.contextPath}/user/memberRegister.do"><img src="https://img.cgv.co.kr/R2014/images/common/ico/loginJoin.png" alt="회원가입" /><span>회원가입</span></a></li>
             </c:if>
             <c:if test="${!empty user_num}">
-            [<span>${user_id}</span>]
+             <li class="header_id">${user_id}</li>
 			<a href="${pageContext.request.contextPath}/user/logout.do"><img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png" alt="로그아웃" />로그아웃</a>
             </c:if>
             <c:if test="${!empty user_num && user_auth == 1}">

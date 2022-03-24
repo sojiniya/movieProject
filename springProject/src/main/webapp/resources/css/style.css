@@ -155,6 +155,11 @@ ul.memberInfo_wrap{
 	align-items: center;
 }
 
+li.header_id{
+	margin: 0px 10px 0px 10px;
+    font-weight: bold;
+}
+
 /*===메뉴===*/
 div#main_menu ul{
 	width: 100%;
