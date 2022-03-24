@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.reserve.service.ReserveService;
 import kr.spring.reserve.vo.ReserveVO;
+import kr.spring.reserve.vo.ReserveseatVO;
 import kr.spring.movie.vo.MovieVO;
 import kr.spring.theater.vo.TheaterVO;
 import kr.spring.time.vo.TimeVO;
@@ -61,6 +62,10 @@ public class ReserveController {
 		TheaterVO theater = reserveService.picktheaterdetail(reservVO.getTheater_num());
 		TimeVO time = reserveService.picktimedetail(reservVO.getTime_num());
 		List<ReserveVO> seat_list = reserveService.seatlist(reservVO.getTime_num());
+		List<ReserveseatVO> reserveseat_list = reserveService.reservseatlist(reservVO.getTime_num());
+		int seat_total_count = reserveService.seat_total_count(reservVO.getTime_num());
+		int reserv_total_count = reserveService.reservseat_total_count(reservVO.getTime_num());
+		int seat_possable_count = seat_total_count-reserv_total_count;
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("reserveStep2");
@@ -69,8 +74,24 @@ public class ReserveController {
 		mav.addObject("theater",theater);
 		mav.addObject("time",time);
 		mav.addObject("seat_list",seat_list);
-		System.out.println("seat_list : " + seat_list);
+		mav.addObject("reserveseat_list",reserveseat_list);
+		mav.addObject("seat_total_count",seat_total_count);
+		mav.addObject("reserv_total_count",reserv_total_count);
+		mav.addObject("seat_possable_count",seat_possable_count);
+		
 		
 		return mav;
+	}
+	
+	//예매하기 3단계 
+	@RequestMapping("/reserve/reserveStep3.do")
+	public String reserveStep3(ReserveVO reservVO) {
+		
+		logger.info("<<예약 3단계 / 전달받은 예약 정보>>" + reservVO);
+		
+		//ModelAndView mav = new ModelAndView();
+		//mav.setViewName("reserveStep3");
+		
+		return "redirect:/reserve/reserveStep1.do";
 	}
 }

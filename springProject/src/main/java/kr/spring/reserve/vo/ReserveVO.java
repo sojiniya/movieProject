@@ -1,6 +1,7 @@
 package kr.spring.reserve.vo;
 
 import java.sql.Date;
+import java.util.List;
 
 public class ReserveVO {
 	private int reserve_num; // 예매번호
@@ -8,7 +9,6 @@ public class ReserveVO {
 	private int mem_num; // 회원번호 (외래키)
 	private int movie_num; // 영화번호 (외래키)
 	private int theater_num; // 영화관번호(외래키)
-	private String reserve_seat; // 예약완료한 좌석 (2개 이상 시 A1,A2...문자열로 보관)
 	private String reserve_people; // 연령대 및 인원 (일반 1명,청소년1명,경로우대 1명 ...문자열로 보관)
 	private int reserve_paymethod; // 결제수단 (1:카드 결제 / 2:현금 결제 / 3:카카오페이 결제)
 	private int reserve_paytotal; // 결제 금액
@@ -32,6 +32,12 @@ public class ReserveVO {
 	private int revseat_num;
 	private int reserve_time_num;
 	private int reserve_seat_num;
+	
+	//step3에서 사용하기 위한 프로퍼티
+	private List<String> reserve_seat; // 선택한 좌석명들을 담은 배열 
+	private List<String> seat_num_array; // 선택한 좌석 좌석번호들을 담은 배열
+	
+	
 	public int getReserve_num() {
 		return reserve_num;
 	}
@@ -61,12 +67,6 @@ public class ReserveVO {
 	}
 	public void setTheater_num(int theater_num) {
 		this.theater_num = theater_num;
-	}
-	public String getReserve_seat() {
-		return reserve_seat;
-	}
-	public void setReserve_seat(String reserve_seat) {
-		this.reserve_seat = reserve_seat;
 	}
 	public String getReserve_people() {
 		return reserve_people;
@@ -176,21 +176,30 @@ public class ReserveVO {
 	public void setReserve_seat_num(int reserve_seat_num) {
 		this.reserve_seat_num = reserve_seat_num;
 	}
+	public List<String> getReserve_seat() {
+		return reserve_seat;
+	}
+	public void setReserve_seat(List<String> reserve_seat) {
+		this.reserve_seat = reserve_seat;
+	}
+	public List<String> getSeat_num_array() {
+		return seat_num_array;
+	}
+	public void setSeat_num_array(List<String> seat_num_array) {
+		this.seat_num_array = seat_num_array;
+	}
 	
 	@Override
 	public String toString() {
 		return "ReserveVO [reserve_num=" + reserve_num + ", time_num=" + time_num + ", mem_num=" + mem_num
-				+ ", movie_num=" + movie_num + ", theater_num=" + theater_num + ", reserve_seat=" + reserve_seat
-				+ ", reserve_people=" + reserve_people + ", reserve_paymethod=" + reserve_paymethod
-				+ ", reserve_paytotal=" + reserve_paytotal + ", mem_id=" + mem_id + ", movie_name=" + movie_name
-				+ ", theater_name=" + theater_name + ", movie_date=" + movie_date + ", movie_time=" + movie_time
-				+ ", reserve_adult=" + reserve_adult + ", reserve_youth=" + reserve_youth + ", reserve_old="
-				+ reserve_old + ", reserve_people_total=" + reserve_people_total + ", reserve_price_total="
-				+ reserve_price_total + ", seat_num=" + seat_num + ", seat_name=" + seat_name + ", revseat_num="
-				+ revseat_num + ", reserve_time_num=" + reserve_time_num + ", reserve_seat_num=" + reserve_seat_num
-				+ "]";
+				+ ", movie_num=" + movie_num + ", theater_num=" + theater_num + ", reserve_people=" + reserve_people
+				+ ", reserve_paymethod=" + reserve_paymethod + ", reserve_paytotal=" + reserve_paytotal + ", mem_id="
+				+ mem_id + ", movie_name=" + movie_name + ", theater_name=" + theater_name + ", movie_date="
+				+ movie_date + ", movie_time=" + movie_time + ", reserve_adult=" + reserve_adult + ", reserve_youth="
+				+ reserve_youth + ", reserve_old=" + reserve_old + ", reserve_people_total=" + reserve_people_total
+				+ ", reserve_price_total=" + reserve_price_total + ", seat_num=" + seat_num + ", seat_name=" + seat_name
+				+ ", revseat_num=" + revseat_num + ", reserve_time_num=" + reserve_time_num + ", reserve_seat_num="
+				+ reserve_seat_num + ", reserve_seat=" + reserve_seat + ", seat_num_array=" + seat_num_array + "]";
 	}
-	
-	
 
 }

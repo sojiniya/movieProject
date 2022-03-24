@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 
 import kr.spring.movie.vo.MovieVO;
 import kr.spring.reserve.vo.ReserveVO;
+import kr.spring.reserve.vo.ReserveseatVO;
 import kr.spring.theater.vo.TheaterVO;
 import kr.spring.time.vo.TimeVO;
 
@@ -34,6 +35,12 @@ public interface ReserveMapper {
 	public TheaterVO picktheaterdetail(Integer theater_num);
 	@Select("select * from m_time where time_num = #{time_num}")
 	public TimeVO picktimedetail(Integer time_num);
-	@Select("select s.seat_num,s.theater_num,s.seat_name,t.time_num,t.movie_num,t.movie_date,t.movie_time,rs.revseat_num,rs.time_num reserve_time_num,rs.seat_num reserve_seat_num from m_seat s join m_time t on s.theater_num = t.theater_num left outer join m_reservseat rs on s.seat_num = rs.seat_num where t.time_num = #{time_num} order by seat_name")
+	@Select("select * from m_seat s join m_time t on s.theater_num = t.theater_num where time_num = #{time_num} order by t.time_num,s.seat_name")
 	public List<ReserveVO> seatlist(Integer time_num);
+	@Select("select * from m_reservseat where time_num = #{time_num}")
+	public List<ReserveseatVO> reservseatlist(Integer time_num);
+	@Select("select count(*) from m_seat s join m_time t on s.theater_num = t.theater_num where time_num = #{time_num}")
+	public int seat_total_count(Integer time_num);
+	@Select("select count(*) from m_reservseat where time_num = #{time_num}")
+	public int reservseat_total_count(Integer time_num);
 }

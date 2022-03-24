@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 
 import kr.spring.movie.vo.MovieVO;
 import kr.spring.reserve.vo.ReserveVO;
+import kr.spring.reserve.vo.ReserveseatVO;
 import kr.spring.theater.vo.TheaterVO;
 import kr.spring.time.vo.TimeVO;
 
@@ -25,4 +26,7 @@ public interface ReserveService {
 	public TheaterVO picktheaterdetail(Integer theater_num);
 	public TimeVO picktimedetail(Integer time_num);
 	public List<ReserveVO> seatlist(Integer time_num);
+	public List<ReserveseatVO> reservseatlist(Integer time_num);
+	public int seat_total_count(Integer time_num);
+	public int reservseat_total_count(Integer time_num);
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.spring.reserve.dao.ReserveMapper;
 import kr.spring.reserve.vo.ReserveVO;
+import kr.spring.reserve.vo.ReserveseatVO;
 import kr.spring.movie.vo.MovieVO;
 import kr.spring.theater.vo.TheaterVO;
 import kr.spring.time.vo.TimeVO;
@@ -72,6 +73,21 @@ public class ReserveServiceImpl implements ReserveService{
 	@Override
 	public List<ReserveVO> seatlist(Integer time_num) {
 		return reserveMapper.seatlist(time_num);
+	}
+
+	@Override
+	public List<ReserveseatVO> reservseatlist(Integer time_num) {
+		return reserveMapper.reservseatlist(time_num);
+	}
+
+	@Override
+	public int seat_total_count(Integer time_num) {
+		return reserveMapper.seat_total_count(time_num);
+	}
+
+	@Override
+	public int reservseat_total_count(Integer time_num) {
+		return reserveMapper.reservseat_total_count(time_num);
 	}
 
 }
