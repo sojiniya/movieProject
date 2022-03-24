@@ -854,3 +854,7 @@ div[class^="sect-"]:after {
     line-height: 42px;
     text-align: center;
 }
+.sect-city li {
+    float: left;
+    margin: 0 8px;
+}
