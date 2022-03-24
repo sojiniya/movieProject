@@ -19,7 +19,7 @@
 	<p>${movie.movie_content}</p>
 	<hr size="1" width="100%" noshade="noshade">
 	<div class="align-right">
-		<c:if test="${!empty user_num && movie.mem_num == 0}">
+		<c:if test="${!empty user_num && user_auth == 3}">
 		<input type="button" value="수정" onclick="location.href='movieUpdate.do?movie_num=${movie.movie_num}'"> 
 		<input type="button" value="삭제" id="delete_btn"> 
 		</c:if>

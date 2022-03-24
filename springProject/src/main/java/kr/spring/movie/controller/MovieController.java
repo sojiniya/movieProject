@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -45,13 +46,17 @@ public class MovieController {
 	
 	//무비 등록 폼에서 전송된 데이터 처리
 	@PostMapping("/movie/movieWrite.do")
-	public String submit(@Valid MovieVO movieVO, BindingResult result) {
+	public String submit(@Valid MovieVO movieVO, BindingResult result, HttpSession session, HttpServletRequest request) {
 		logger.info("<<무비차트 영화 저장>> : " + movieVO);
 		
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		if(result.hasErrors()) {
 			return form();
 		}
+		
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		//회원 번호 셋팅
+		movieVO.setMem_num(user_num);
 		
 		//글 등록
 		movieService.insertMovie(movieVO);
@@ -60,26 +65,26 @@ public class MovieController {
 	}
 	
 	//극장 등록 폼
-		@GetMapping("/movie/theaterInsert.do")
-		public String form2() {
-			return "theaterInsert";
-		}
-
-		//극장 등록 폼에서 전송된 데이터 처리
-		@PostMapping("/movie/theaterInsert.do")
-		public String submit2(@Valid MovieVO movieVO, BindingResult result) {
-			logger.info("<<극장 저장>> : " + movieVO);
-
-			//유효성 체크 결과 오류가 있으면 폼 호출
-			if(result.hasErrors()) {
-				return form2();
+			@GetMapping("/movie/theaterInsert.do")
+			public String form2() {
+				return "theaterInsert";
 			}
 
-			//극장 등록
-			movieService.insertTheater(movieVO);
+			//극장 등록 폼에서 전송된 데이터 처리
+			@PostMapping("/movie/theaterInsert.do")
+			public String submit2(@Valid MovieVO movieVO, BindingResult result) {
+				logger.info("<<극장 저장>> : " + movieVO);
 
-			return "redirect:/movie/movieChart.do";
-		}
+				//유효성 체크 결과 오류가 있으면 폼 호출
+				if(result.hasErrors()) {
+					return form2();
+				}
+
+				//극장 등록
+				movieService.insertTheater(movieVO);
+
+				return "redirect:/movie/movieChart.do";
+			}
 	
 	//무비차트
 	@RequestMapping("/movie/movieChart.do")
