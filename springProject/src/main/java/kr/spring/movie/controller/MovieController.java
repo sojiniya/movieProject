@@ -4,12 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,7 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import kr.spring.movie.service.MovieService;
 import kr.spring.movie.vo.MovieVO;
 import kr.spring.util.PagingUtil;
@@ -96,7 +97,7 @@ public class MovieController {
 		return mav;
 	}
 	
-	//게시판 글 상세
+	//영화 상세 정보
 	@RequestMapping("/movie/movieDetail.do")
 	public ModelAndView process(@RequestParam int movie_num) {
 		logger.info("<<영화 상세 정보 - 영화 번호>> : " + movie_num);
@@ -107,6 +108,32 @@ public class MovieController {
 		                        //타일스 설정      속성명      속성값
 		return new ModelAndView("movieDetail","movie",movie);
 	}
+	
+	//무비차트 글 수정
+	@GetMapping("movie/movieUpdate.do")
+	public String formUpdate(@RequestParam int movie_num, Model model) {
+		MovieVO movieVO = movieService.selectMovie(movie_num);
+		model.addAttribute("movieVO", movieVO);
+		return "movieUpdate";
+	}
+	
+	//수정 폼에서 전송된 데이터 처리
+		@PostMapping("/movie/movieUpdate.do")
+		public String submitUpdate(@Valid MovieVO movieVO,
+				                   BindingResult result,
+				                   HttpServletRequest request,
+				                   Model model) {
+			
+			logger.info("<<영화 상세 정보 수정>> : " + movieVO);
+
+			movieService.updateMovie(movieVO);
+			
+			//view에 표시할 메시지
+			model.addAttribute("message", "영화 정보 수정 완료");
+			model.addAttribute("url", request.getContextPath() + "/movie/movieChart.do");
+			
+			return "common/resultView";
+		}
 	}
 	
 

@@ -14,4 +14,13 @@
 			COUNT(*)
 		FROM M_movie
 	</select>
+	<update id="updateMovie" parameterType="movieVO">
+		UPDATE M_movie SET
+			 movie_name=#{movie_name},
+			 movie_content=#{movie_content},
+			 movie_genre=#{movie_genre},
+			 movie_auth=#{movie_auth},
+			 movie_pg=#{movie_pg}
+		WHERE movie_num=#{movie_num}
+	</update>
 </mapper>

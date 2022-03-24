@@ -14,8 +14,8 @@ public interface MovieMapper {
 	//부모글
 	public List<MovieVO> selectList(Map<String,Object> map); //목록 생성
 	public int selectRowCount(Map<String,Object> map); //페이징 처리
-	@Insert("INSERT INTO M_movie (movie_num,movie_name,movie_content,uploadfile,filename,movie_genre,movie_auth,movie_pg) "
-			+ "VALUES (M_movie_seq.nextval,#{movie_name},#{movie_content},#{uploadfile},#{filename},#{movie_genre},#{movie_auth},#{movie_pg})")
+	@Insert("INSERT INTO M_movie (movie_num,movie_name,movie_content,uploadfile,filename,movie_genre,movie_auth,movie_pg,mem_num) "
+			+ "VALUES (M_movie_seq.nextval,#{movie_name},#{movie_content},#{uploadfile},#{filename},#{movie_genre},#{movie_auth},#{movie_pg},#{mem_num})")
 	public void insertMovie(MovieVO movie); //글 작성
 	@Select("SELECT * FROM M_movie m WHERE m.movie_num=#{movie_num}")
 	public MovieVO selectMovie(Integer movie_num); //상세보기

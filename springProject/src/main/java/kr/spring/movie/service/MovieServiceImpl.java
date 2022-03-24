@@ -50,7 +50,7 @@ public class MovieServiceImpl implements MovieService{
 
 	@Override
 	public void updateMovie(MovieVO movie) {
-		// TODO Auto-generated method stub
+		movieMapper.updateMovie(movie);
 		
 	}
 

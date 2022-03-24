@@ -23,6 +23,7 @@ public class MovieVO {
 	@Range(min=0,max=2)
 	private int movie_auth;//영화 상영정보
 	private int movie_rate; //영화 평점
+	private int mem_num; //회원번호
 	
 	//업로드 파일 처리
 	public void setUpload(MultipartFile upload)throws IOException{
@@ -105,6 +106,14 @@ public class MovieVO {
 		this.movie_rate = movie_rate;
 	}
 
+	public int getMem_num() {
+		return mem_num;
+	}
+
+	public void setMem_num(int mem_num) {
+		this.mem_num = mem_num;
+	}
+
 	public MultipartFile getUpload() {
 		return upload;
 	}
@@ -113,6 +122,10 @@ public class MovieVO {
 	public String toString() {
 		return "MovieVO [movie_num=" + movie_num + ", movie_name=" + movie_name + ", movie_content=" + movie_content
 				+ ", movie_genre=" + movie_genre + ", upload=" + upload + ", filename=" + filename + ", movie_pg="
-				+ movie_pg + ", movie_auth=" + movie_auth + ", movie_rate=" + movie_rate + "]";
+				+ movie_pg + ", movie_auth=" + movie_auth + ", movie_rate=" + movie_rate + ", mem_num=" + mem_num + "]";
 	}
 }
+	
+	
+
+	
