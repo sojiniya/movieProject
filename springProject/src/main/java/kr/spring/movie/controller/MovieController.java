@@ -161,7 +161,14 @@ public class MovieController {
 			
 			return "common/resultView";
 		}
+		
+		//무비차트 글 삭제
+		@RequestMapping("/movie/movieDelete.do")
+		public String submitDelete(@RequestParam int movie_num) {
+			movieService.deleteMovie(movie_num);
+			return "redirect:/movie/movieChart.do";		
 	}
+}
 	
 
 
