@@ -28,6 +28,7 @@ public class MemberVO {
 	private int mem_birth; //최대6자 ex:2203016 형식
 	
 	@NotEmpty
+	@Size(max=11)
 	private String mem_phone;
 	private MultipartFile upload;
 	private byte[] mem_photo;
@@ -36,6 +37,7 @@ public class MemberVO {
 	@NotEmpty
 	private String mem_address; //회원주소 + 상세주소
 	
+	@NotEmpty
 	@Size(min=5,max=5)
 	private String mem_zipcode;
 	

@@ -3,6 +3,8 @@ package kr.spring.reserve.vo;
 import java.sql.Date;
 import java.util.List;
 
+import kr.spring.movie.vo.MovieVO;
+
 public class ReserveVO {
 	private int reserve_num; // 예매번호
 	private int time_num; // 상영시간 번호 (외래키)
@@ -37,6 +39,15 @@ public class ReserveVO {
 	private List<String> reserve_seat; // 선택한 좌석명들을 담은 배열 
 	private List<String> seat_num_array; // 선택한 좌석 좌석번호들을 담은 배열
 	
+	//나의 예매 내역확인을 위한 MovieVO추가
+	private MovieVO movieVO;
+	
+	public MovieVO getMovieVO() {
+		return movieVO;
+	}
+	public void setMovieVO(MovieVO movieVO) {
+		this.movieVO = movieVO;
+	}
 	
 	public int getReserve_num() {
 		return reserve_num;

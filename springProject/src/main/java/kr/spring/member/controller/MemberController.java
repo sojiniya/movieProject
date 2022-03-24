@@ -166,9 +166,10 @@ public class MemberController {
 			logger.info("<<회원 정보 수정>> : " + memberVO);
 			
 			//유효성 체크 결과 오류가 있으면 폼 호출
-			if(result.hasErrors()) {
+			/*if(result.hasErrors()) {
 				return "userModifyForm";
 			}
+			*/
 			
 			Integer user_num = (Integer)session.getAttribute("user_num");
 			
