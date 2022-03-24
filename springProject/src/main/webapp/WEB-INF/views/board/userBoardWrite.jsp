@@ -45,22 +45,22 @@ table td, table th{
 						<ul class="type_list">
 							<li>
 								<label for="question">
-								<input type="radio" id="question" name="cate_num" value="7" checked>문의
+								<input type="radio" id="question" name="cate_name" value="7" checked>문의
 								</label>
 							</li>
 							<li>
 								<label for="complain">
-								<input type="radio" id="complain" name="cate_num" value="8">불만
+								<input type="radio" id="complain" name="cate_name" value="8">불만
 								</label>
 							</li>
 							<li>
 								<label for="compliment">
-								<input type="radio" id="compliment" name="cate_num" value="9">칭찬
+								<input type="radio" id="compliment" name="cate_name" value="9">칭찬
 								</label>
 							</li>
 							<li>
 								<label for="proposal">
-								<input type="radio" id="proposal" name="cate_num" value="10">제안
+								<input type="radio" id="proposal" name="cate_name" value="10">제안
 								</label>
 							</li>
 						</ul>

@@ -12,6 +12,7 @@ public class BoardVO {
 	private int board_auth; //게시판 구분
 	private int mem_num; //회원 번호
 	private int cate_num; //카테고리 번호
+	private int cate_name; //카테고리 이름
 	private int theater_choise; //영화관 선택 0:선택안함, 1:선택
 	private int sel_regioncode; //지역 선택
 	private int sel_theatercode; //영화관 선택
@@ -121,13 +122,19 @@ public class BoardVO {
 	public void setSel_theatercode(int sel_theatercode) {
 		this.sel_theatercode = sel_theatercode;
 	}
+	public int getCate_name() {
+		return cate_name;
+	}
+	public void setCate_name(int cate_name) {
+		this.cate_name = cate_name;
+	}
 	
 	@Override
 	public String toString() {
 		return "BoardVO [board_num=" + board_num + ", board_auth=" + board_auth + ", mem_num=" + mem_num + ", cate_num="
-				+ cate_num + ", theater_choise=" + theater_choise + ", sel_regioncode=" + sel_regioncode
-				+ ", sel_theatercode=" + sel_theatercode + ", board_title=" + board_title + ", board_content="
-				+ board_content + ", upload=" + upload + ", board_filename=" + board_filename + ", board_hit="
-				+ board_hit + ", board_reg_date=" + board_reg_date + ", id=" + id + "]";
+				+ cate_num + ", cate_name=" + cate_name + ", theater_choise=" + theater_choise + ", sel_regioncode="
+				+ sel_regioncode + ", sel_theatercode=" + sel_theatercode + ", board_title=" + board_title
+				+ ", board_content=" + board_content + ", upload=" + upload + ", board_filename=" + board_filename
+				+ ", board_hit=" + board_hit + ", board_reg_date=" + board_reg_date + ", id=" + id + "]";
 	}
 }

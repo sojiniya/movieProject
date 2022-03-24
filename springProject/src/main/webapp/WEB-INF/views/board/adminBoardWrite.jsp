@@ -107,22 +107,22 @@ table td, table th{
 						<ul class="type_list">
 							<li>
 								<label for="ticket">
-								<input type="radio" id="ticket" name="cate_num" value="0" checked>예매/매표
+								<input type="radio" id="ticket" name="cate_name" value="0" checked>예매/매표
 								</label>
 							</li>
 							<li>
 								<label for="pay">
-								<input type="radio" id="pay" name="cate_num" value="1">결제수단
+								<input type="radio" id="pay" name="cate_name" value="1">결제수단
 								</label>
 							</li>
 							<li>
 								<label for="memberShip">
-								<input type="radio" id="memberShip" name="cate_num" value="2">멤버쉽
+								<input type="radio" id="memberShip" name="cate_name" value="2">멤버쉽
 								</label>
 							</li>
 							<li>
 								<label for="useTheater">
-								<input type="radio" id="useTheater" name="cate_num" value="3">영화관이용
+								<input type="radio" id="useTheater" name="cate_name" value="3">영화관이용
 								</label>
 							</li>
 						</ul>
@@ -134,17 +134,17 @@ table td, table th{
 						<ul class="type_list cate">
 							<li>
 								<label for="systemCheck">
-								<input type="radio" id="systemCheck" name="cate_num" value="4" checked>시스템점검
+								<input type="radio" id="systemCheck" name="cate_name" value="4" checked>시스템점검
 								</label>
 							</li>
 							<li>
 								<label for="theater">
-								<input type="radio" id="theater" name="cate_num" value="5">극장
+								<input type="radio" id="theater" name="cate_name" value="5">극장
 								</label>
 							</li>
 							<li>
 								<label for="etc">
-								<input type="radio" id="etc" name="cate_num" value="6">기타
+								<input type="radio" id="etc" name="cate_name" value="6">기타
 								</label>
 							</li>
 						</ul>

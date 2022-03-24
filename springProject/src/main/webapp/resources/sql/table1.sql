@@ -33,7 +33,6 @@ create table M_board(
   board_num number not null,
   mem_num number not null,
   board_auth number(1) not null, /*auth:1:공지사항/2:일대일문의/3:자주찾는 질문*/
-  cate_num number not null,
   board_title varchar2(90) not null,
   board_content clob not null,
   board_uploadfile blob,
@@ -42,8 +41,7 @@ create table M_board(
   board_reg_date date default SYSDATE not null,
 
   constraint M_board_pk primary key (board_num),
-  constraint M_board_M_member_fk foreign key (mem_num) references M_member (mem_num),
-  constraint M_board_M_category_fk foreign key (cate_num) references M_category (cate_num)
+  constraint M_board_M_member_fk foreign key (mem_num) references M_member (mem_num)
 );
 create sequence M_board_seq;
 
@@ -51,8 +49,10 @@ create sequence M_board_seq;
 create table M_category(
   cate_num number not null,
   cate_name varchar2(40) not null,
+  board_num number not null,
 
-  constraint M_category_pk primary key (cate_num)
+  constraint M_category_pk primary key (cate_num),
+  constraint M_category_M_board_fk foreign key (board_num) references M_board (board_num)
 );
 create sequence M_category_seq;
 
