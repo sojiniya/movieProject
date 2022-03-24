@@ -13,16 +13,19 @@
     	<put-attribute name="title" value="로그인"/>
     	<put-attribute name="body" value="/WEB-INF/views/user/memberLogin.jsp"/>
     </definition>
-    <definition name="myPageView" extends="main">
+    <definition name="myPageView" extends="board_main">
     	<put-attribute name="title" value="마이페이지"/>
+    	<put-attribute name="left" value="/WEB-INF/views/template/myPageSide.jsp"/>
     	<put-attribute name="body" value="/WEB-INF/views/user/myPageView.jsp"/>
     </definition>
-    <definition name="userModifyView" extends="main">
+    <definition name="userModifyView" extends="board_main">
     	<put-attribute name="title" value="개인정보수정"/>
+    	<put-attribute name="left" value="/WEB-INF/views/template/myPageSide.jsp"/>
     	<put-attribute name="body" value="/WEB-INF/views/user/userModifyView.jsp"/>
     </definition>
-    <definition name="userModifyForm" extends="main">
+    <definition name="userModifyForm" extends="board_main">
     	<put-attribute name="title" value="개인정보수정폼"/>
+    	<put-attribute name="left" value="/WEB-INF/views/template/myPageSide.jsp"/>
     	<put-attribute name="body" value="/WEB-INF/views/user/userModifyForm.jsp"/>
     </definition>
     <definition name="userChangePassword" extends="main">
