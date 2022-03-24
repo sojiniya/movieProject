@@ -1,5 +1,10 @@
 package kr.spring.theater.controller;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -12,6 +17,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.spring.theater.service.TheaterService;
 import kr.spring.theater.vo.TheaterVO;
@@ -58,4 +66,22 @@ public class TheaterController {
 
 		return "redirect:/main/main.do";
 	}
+	
+		//2. 극장지역리스트 ajax 
+		@RequestMapping("/time/selectListData.do")
+		@ResponseBody //제이슨문자열로 만들어줌
+		public Map<String,Object> process(@RequestParam String theater_local){
+			logger.info("<<local>> : " + theater_local);
+			
+			Map<String,Object> map = new HashMap<String,Object>();
+			
+			List<TheaterVO> list = theaterService.listLocal(theater_local);
+			if(list!=null) {
+				//list 데이터가 존재할 때 결과
+				map.put("list", list);
+			}else {
+				map.put("list", Collections.emptyList());
+			}
+			return map;
+		}
 }

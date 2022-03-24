@@ -1,5 +1,7 @@
 package kr.spring.theater.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,11 @@ public class TheaterServiceImpl implements TheaterService{
 	@Override
 	public void insertTheater(TheaterVO theater) {
 		theaterMapper.insertTheater(theater);
+	}
+
+	@Override
+	public List<TheaterVO> listLocal(String local) {
+		return theaterMapper.listLocal(local);
 	}
 
 }
