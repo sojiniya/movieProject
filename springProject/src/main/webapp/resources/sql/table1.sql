@@ -38,7 +38,7 @@ create table M_board(
   board_content clob not null,
   board_uploadfile blob,
   board_filename varchar2(40),
-  board_hit number(5) not null,
+  board_hit number(5) default 0 not null,
   board_reg_date date default SYSDATE not null,
 
   constraint M_board_pk primary key (board_num),
