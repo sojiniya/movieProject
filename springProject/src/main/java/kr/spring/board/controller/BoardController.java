@@ -59,10 +59,7 @@ public class BoardController {
 				             HttpServletRequest request) {
 			logger.info("<<게시판 글 저장>> : " + boardVO);
 			
-			//유효성 체크 결과 오류가 있으면 폼 호출
-			if(result.hasErrors()) {
-				return form();
-			}
+			
 			
 			Integer user_num = (Integer)session.getAttribute("user_num");
 			//회원 번호 셋팅

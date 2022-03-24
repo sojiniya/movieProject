@@ -88,12 +88,12 @@ table td, table th{
 						<ul class="type_list">
 							<li>
 								<label for="qna">
-								<input type="radio" id="qna" name="boardCate" class="radio_b1" value="0" data-modal="modal" checked>자주찾는 질문
+								<input type="radio" id="qna" name="board_auth" class="radio_b1" value="0" data-modal="modal" checked>자주찾는 질문
 								</label>
 							</li>
 							<li>
 								<label for="news">
-								<input type="radio" id="news" name="boardCate" class="radio_b2" value="1">뉴스/공지
+								<input type="radio" id="news" name="board_auth" class="radio_b2" value="1">뉴스/공지
 								</label>
 							</li>
 						</ul>
@@ -106,22 +106,22 @@ table td, table th{
 						<ul class="type_list">
 							<li>
 								<label for="ticket">
-								<input type="radio" id="ticket" name="writeCate" value="0" checked>예매/매표
+								<input type="radio" id="ticket" name="cate_num" value="0" checked>예매/매표
 								</label>
 							</li>
 							<li>
 								<label for="pay">
-								<input type="radio" id="pay" name="writeCate" value="1">결제수단
+								<input type="radio" id="pay" name="cate_num" value="1">결제수단
 								</label>
 							</li>
 							<li>
 								<label for="memberShip">
-								<input type="radio" id="memberShip" name="writeCate" value="2">멤버쉽
+								<input type="radio" id="memberShip" name="cate_nume" value="2">멤버쉽
 								</label>
 							</li>
 							<li>
 								<label for="useTheater">
-								<input type="radio" id="useTheater" name="writeCate" value="3">영화관이용
+								<input type="radio" id="useTheater" name="cate_num" value="3">영화관이용
 								</label>
 							</li>
 						</ul>
@@ -133,17 +133,17 @@ table td, table th{
 						<ul class="type_list cate">
 							<li>
 								<label for="systemCheck">
-								<input type="radio" id="systemCheck" name="writeCate" value="0" checked>시스템점검
+								<input type="radio" id="systemCheck" name="cate_num" value="4" checked>시스템점검
 								</label>
 							</li>
 							<li>
 								<label for="theater">
-								<input type="radio" id="theater" name="writeCate" value="1">극장
+								<input type="radio" id="theater" name="cate_num" value="5">극장
 								</label>
 							</li>
 							<li>
 								<label for="etc">
-								<input type="radio" id="etc" name="writeCate" value="2">기타
+								<input type="radio" id="etc" name="cate_num" value="6">기타
 								</label>
 							</li>
 						</ul>
@@ -155,12 +155,12 @@ table td, table th{
 						<ul class="type_list">
 							<li class="on">
 								<label for="no_sel">
-								<input type="radio" id="no_sel" name="sel_theaterchoise" checked="checked" value="0" />선택하지 않음
+								<input type="radio" id="no_sel" name="theater_choise" checked="checked" value="0" />선택하지 않음
 								</label>
 							</li>
 							<li>
 								<label for="sel">
-								<input type="radio" id="sel" name="sel_theaterchoise" value="1" />선택함
+								<input type="radio" id="sel" name="theater_choise" value="1" />선택함
 								</label>
 							</li>
 						</ul> 
@@ -178,13 +178,13 @@ table td, table th{
 				<tr>
 					<th scope="row">제목</th>
 					<td>
-						<input name="boardTit" style="width: 660px; height: 30px;" type="text" placeholder="제목을 입력하세요" />
+						<input name="board_title" style="width: 660px; height: 30px;" type="text" placeholder="제목을 입력하세요" />
 					</td>
 				</tr>
 				<tr>
 					<th scope="row"><b>내용</b></th>
 					<td>
-						<textarea class="ck" placeholder="내용을 입력하세요"></textarea>
+						<textarea name="board_content" class="ck" placeholder="내용을 입력하세요"></textarea>
 						<script>
 						 function MyCustomUploadAdapterPlugin(editor) {
 					    	editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
@@ -208,7 +208,7 @@ table td, table th{
 				<tr>
 					<th>파일업로드</th>
 					<td>
-					<input type="file" name="upload" id="upload">
+					<input type="file" name="board_upload" id="upload">
 					</td>
 				</tr>
 			</tbody>
