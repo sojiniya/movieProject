@@ -3,6 +3,7 @@ package kr.spring.reserve.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 import kr.spring.movie.vo.MovieVO;
@@ -43,4 +44,10 @@ public interface ReserveMapper {
 	public int seat_total_count(Integer time_num);
 	@Select("select count(*) from m_reservseat where time_num = #{time_num}")
 	public int reservseat_total_count(Integer time_num);
+	
+	// 예매완료
+	@Insert("")
+	public void insertreserveseat(ReserveseatVO reserveseatVO);
+	@Insert("")
+	public void insertreserve(ReserveVO reserveseatVO);
 }

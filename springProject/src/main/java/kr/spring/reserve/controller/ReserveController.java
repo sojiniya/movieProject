@@ -138,6 +138,9 @@ public class ReserveController {
 		
 		logger.info("<<예매완료 / 전달받은 예약 정보>>" + reservVO);
 		
+		//예약좌석(M_reservseat) 테이블에 데이터 삽입
+		//예매내역(M_reserve) 테이블에 데이터 삽입
+		
 		MovieVO movie = reserveService.pickmoviedetail(reservVO.getMovie_num());
 		TheaterVO theater = reserveService.picktheaterdetail(reservVO.getTheater_num());
 		TimeVO time = reserveService.picktimedetail(reservVO.getTime_num());

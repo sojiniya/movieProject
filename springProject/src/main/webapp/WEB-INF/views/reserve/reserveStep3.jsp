@@ -33,9 +33,10 @@
 		<div id="youth_result" reserve_youth=${reserv.reserve_youth}>청소년 | ${reserv.reserve_youth} 명</div>
 		<div id="old_result" reserve_old=${reserv.reserve_old}>경로우대 | ${reserv.reserve_old} 명</div>
 		<div id="total_result" reserve_price_total=${reserv.reserve_price_total}>합계 | ${reserv.reserve_price_total}원</div>
+		<div id="kakaopay"><img src="${pageContext.request.contextPath}/resources/images/kakao.png" width="50px"></div>
 	</div>
 	<div>
-		<form action="reserveStep3.do" method="post" id="reserveStep1_form">
+		<form action="reserveconfirm.do" method="post" id="reserveStep1_form" style="display:none;">
 			<input type="hidden" name="movie_num" id="movie_num" value="${movie.movie_num}">
 			<input type="hidden" name="theater_num" id="theater_num" value="${theater.theater_num}">
 			<input type="hidden" name="time_num" id="time_num" value="${time.time_num}">
@@ -82,27 +83,18 @@
 	
 	let name = '${movie.movie_name}';
 	let amount = $('#final_price').val();
+	let email = '${member.mem_email}';
+	let mem_name = '${member.mem_name}';
+	let phone = '${member.mem_phone}';
+    let address = '${member.mem_address}';
+    let zipcode = '${member.mem_zipcode}';
 	
-	//결제하기 버튼 클릭 시 
-	$('#reserveStep1_form').submit(function(){
-		/*
-		//카카오페이 API (카카오디벨로퍼)
-		$.ajax({
-			url:'kakaopay.do',
-			dataType:'json',
-			success:function(data){
-				alert('성공');
-				alert(data.tid);
-				console.log(data.tid);
-			},
-			error:function(error){
-				alert('실패');
-				//alert(error);
-			}
-		});
-		*/
-		
-		//아임포트 API
+    $('#kakaopay').click(function(){
+    	iamport();
+    });
+    
+    function iamport(){
+    	//아임포트 API
 		IMP.init('imp27697868');
 		IMP.request_pay({
 		    pg : 'kakaopay',
@@ -110,32 +102,31 @@
 		    merchant_uid : 'merchant_' + new Date().getTime(),
 		    name : name, //결제창에서 보여질 이름
 		    amount : amount, //실제 결제되는 가격
-		    buyer_email : 'iamport@siot.do',
-		    buyer_name : '구매자이름',
-		    buyer_tel : '010-1234-5678',
-		    buyer_addr : '서울 강남구 도곡동',
-		    buyer_postcode : '123-456',
-			m_redirect_url : 'http://localhost:8080/project/reserve/reserveconfirm.do'
+		    buyer_email : email,
+		    buyer_name : mem_name,
+		    buyer_tel : phone,
+		    buyer_addr : address,
+		    buyer_postcode : zipcode,
 		}, function(rsp) {
 			console.log(rsp);
 		    if ( rsp.success ) {
-		    	var msg = '결제가 완료되었습니다.';
-		        msg += '고유ID : ' + rsp.imp_uid;
-		        msg += '상점 거래ID : ' + rsp.merchant_uid;
-		        msg += '결제 금액 : ' + rsp.paid_amount;
-		        msg += '카드 승인번호 : ' + rsp.apply_num;
+		    	alert('결제완료');
+		    	
+		    	$("#reserveStep1_form").submit();
+		      	
+		    	//결제 완료 후 예매완료 페이지로 이동
+			    //window.location.href = 'http://localhost:8080/project/reserve/reserveconfirm.do';
 		    } else {
-		    	 var msg = '결제에 실패하였습니다.';
-		         msg += '에러내용 : ' + rsp.error_msg;
+		    	alert('결제실패');
 		    }
-		    alert(msg);
 		    
-		    //결제 완료 후 예매완료 페이지로 이동
-		    window.location.href = 'http://localhost:8080/project/reserve/reserveconfirm.do';
 		});
+    }
+    
+	//결제하기 버튼 클릭 시 
+	//$('#reserveStep1_form').submit(function(){		
 		
-		return false;
-	}); // end of submit (결제하기 버튼 클릭 시)
+	//}); // end of submit (결제하기 버튼 클릭 시)
 	
 </script>
 

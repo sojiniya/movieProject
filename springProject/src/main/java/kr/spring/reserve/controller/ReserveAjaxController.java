@@ -125,47 +125,5 @@ public class ReserveAjaxController {
 		return mapJson;
 	}
 	
-	//카카오 페이 결제
-	@RequestMapping("/reserve/kakaopay.do")
-	public String kakaopay() {
-		System.out.println("=====================우선 실행=====================");
-		try {
-			URL url = new URL("https://kapi.kakao.com/v1/payment/ready");
-			HttpURLConnection server = (HttpURLConnection)url.openConnection(); // 내 서버와 카카오 서버를 연결해주는 클래스
-			server.setRequestMethod("POST"); // 서버 요청방식 지정
-			server.setRequestProperty("Authorization", "KakaoAK 03cdd82183bad1979f6f057009b87197");
-			server.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
-			server.setDoOutput(true); // setDoOutput()은 기본값이 false기 때문에 true로 명시해줘야함 setDoInput()은 기본값이 true라 생략 가능.
-			String parameter ="cid=TC0ONETIME&partner_order_id=partner_order_id&partner_user_id=partner_user_id&item_name=초코파이&quantity=1&total_amount=2200&vat_amount=200&tax_free_amount=0&approval_url=http://localhost:8080/project/reserve/reserveconfirm.do&fail_url=http://localhost:8080/project/reserve/reserveconfirm.do&cancel_url=http://localhost:8080/project/reserve/reserveconfirm.do";
-			OutputStream out = server.getOutputStream(); // 무언가(?) 주는애
-			DataOutputStream dataout = new DataOutputStream(out); // 데이터 주는애
-			dataout.writeBytes(parameter); // 파라미터는 바이트형식으로 형변환해서 서버에 전달해줘야함.
-			dataout.close(); // dataout.flush() 처리(dataout이 가지고 있는 data를 서버에 전달해줌) 완료 후 dataout 닫기
-			
-			int result = server.getResponseCode(); // 서버통신 결과를 담는 변수
-			
-			System.out.println("[서버통신 결과] : " + result);
-			
-			InputStream in; // 무언가(?) 받는애
-			if(result == 200) { // http 통신 정상은 200 그 외에는 무조건 다 error
-				in = server.getInputStream();
-			}else { // 에러나는 경우
-				in = server.getErrorStream();
-			}
-			
-			InputStreamReader reader = new InputStreamReader(in); // InputStream 으로 받은걸 읽기 위해서 InputStreamReader 객체 생성
-			BufferedReader br = new BufferedReader(reader); // InputStreamReader 로 읽은 데이터를 형변환
-			//System.out.println("리드라인 : " + br.readLine());
-			return br.readLine();
-			
-		} catch (MalformedURLException e) { // URL 클래스 예외처리
-			e.printStackTrace();
-		} catch (IOException e) { // openConnection() 예외처리
-			e.printStackTrace();
-		}
-		
-		
-		return "{\"result\":\"NO\"}";
-	}
 	
 }
