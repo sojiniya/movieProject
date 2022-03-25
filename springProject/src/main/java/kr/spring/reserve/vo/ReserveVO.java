@@ -37,7 +37,9 @@ public class ReserveVO {
 	private List<String> reserve_seat; // 선택한 좌석명들을 담은 배열 
 	private List<String> seat_num_array; // 선택한 좌석 좌석번호들을 담은 배열
 	
-	
+	//결제완료 페이지에서 사용하기 위한 프로퍼티
+	private int sale_price;
+	private int final_price;
 	public int getReserve_num() {
 		return reserve_num;
 	}
@@ -188,7 +190,18 @@ public class ReserveVO {
 	public void setSeat_num_array(List<String> seat_num_array) {
 		this.seat_num_array = seat_num_array;
 	}
-	
+	public int getSale_price() {
+		return sale_price;
+	}
+	public void setSale_price(int sale_price) {
+		this.sale_price = sale_price;
+	}
+	public int getFinal_price() {
+		return final_price;
+	}
+	public void setFinal_price(int final_price) {
+		this.final_price = final_price;
+	}
 	@Override
 	public String toString() {
 		return "ReserveVO [reserve_num=" + reserve_num + ", time_num=" + time_num + ", mem_num=" + mem_num
@@ -199,7 +212,7 @@ public class ReserveVO {
 				+ reserve_youth + ", reserve_old=" + reserve_old + ", reserve_people_total=" + reserve_people_total
 				+ ", reserve_price_total=" + reserve_price_total + ", seat_num=" + seat_num + ", seat_name=" + seat_name
 				+ ", revseat_num=" + revseat_num + ", reserve_time_num=" + reserve_time_num + ", reserve_seat_num="
-				+ reserve_seat_num + ", reserve_seat=" + reserve_seat + ", seat_num_array=" + seat_num_array + "]";
+				+ reserve_seat_num + ", reserve_seat=" + reserve_seat + ", seat_num_array=" + seat_num_array
+				+ ", sale_price=" + sale_price + ", final_price=" + final_price + "]";
 	}
-
 }

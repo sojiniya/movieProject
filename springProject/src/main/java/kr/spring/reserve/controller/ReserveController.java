@@ -1,7 +1,19 @@
 package kr.spring.reserve.controller;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.Time;
 import java.util.List;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +26,8 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.spring.reserve.service.ReserveService;
 import kr.spring.reserve.vo.ReserveVO;
 import kr.spring.reserve.vo.ReserveseatVO;
+import kr.spring.member.service.MemberService;
+import kr.spring.member.vo.MemberVO;
 import kr.spring.movie.vo.MovieVO;
 import kr.spring.theater.vo.TheaterVO;
 import kr.spring.time.vo.TimeVO;
@@ -24,12 +38,20 @@ public class ReserveController {
 	
 	@Autowired
 	private ReserveService reserveService;
+	@Autowired
+	private MemberService memberService;
 	
 	//자바빈(VO) 초기화
 	@ModelAttribute
 	public MovieVO initCommand() {
 		return new MovieVO();
 	}
+
+	//자바빈(VO)초기화
+	//@ModelAttribute
+	//public MemberVO initCommand() {
+	//	return new MemberVO();
+	//}
 	
 	//예매하기 1단계 
 	@RequestMapping("/reserve/reserveStep1.do")
@@ -85,13 +107,54 @@ public class ReserveController {
 	
 	//예매하기 3단계 
 	@RequestMapping("/reserve/reserveStep3.do")
-	public String reserveStep3(ReserveVO reservVO) {
+	public ModelAndView reserveStep3(ReserveVO reservVO,HttpSession session) {
 		
 		logger.info("<<예약 3단계 / 전달받은 예약 정보>>" + reservVO);
 		
-		//ModelAndView mav = new ModelAndView();
-		//mav.setViewName("reserveStep3");
+		MovieVO movie = reserveService.pickmoviedetail(reservVO.getMovie_num());
+		TheaterVO theater = reserveService.picktheaterdetail(reservVO.getTheater_num());
+		TimeVO time = reserveService.picktimedetail(reservVO.getTime_num());
+		List<ReserveVO> seat_list = reserveService.seatlist(reservVO.getTime_num());
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		MemberVO member = memberService.selectMember(user_num);
 		
-		return "redirect:/reserve/reserveStep1.do";
+		logger.info("<<회원 상세 정보>> :" + member);
+		
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("reserveStep3");
+		mav.addObject("reserv",reservVO);
+		mav.addObject("movie",movie);
+		mav.addObject("theater",theater);
+		mav.addObject("time",time);
+		mav.addObject("member",member);
+		
+		return mav;
 	}
+	
+	//예매완료 
+	@RequestMapping("/reserve/reserveconfirm.do")
+	public ModelAndView reserve(ReserveVO reservVO,HttpSession session) {
+		
+		logger.info("<<예매완료 / 전달받은 예약 정보>>" + reservVO);
+		
+		MovieVO movie = reserveService.pickmoviedetail(reservVO.getMovie_num());
+		TheaterVO theater = reserveService.picktheaterdetail(reservVO.getTheater_num());
+		TimeVO time = reserveService.picktimedetail(reservVO.getTime_num());
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		MemberVO member = memberService.selectMember(user_num);
+		
+		logger.info("<<회원 상세 정보>> :" + member);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("reserveconfirm");
+		mav.addObject("reserv",reservVO);
+		mav.addObject("movie",movie);
+		mav.addObject("theater",theater);
+		mav.addObject("time",time);
+		mav.addObject("member",member);
+		
+		return mav;
+	}
+	
 }
