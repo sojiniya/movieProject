@@ -38,10 +38,10 @@
 						<div class="movie-content">
 						<strong class="movie_pg">
 						<c:choose>
-						<c:when test="${1 <= movie.movie_pg && movie.movie_pg <= 12}">
+						<c:when test="${12 <= movie.movie_pg && movie.movie_pg < 15}">
 						<img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-12.png">
 						</c:when>
-						<c:when test="${13 <= movie.movie_pg && movie.movie_pg <= 15}">
+						<c:when test="${15 <= movie.movie_pg && movie.movie_pg < 19}">
 						<img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-15.png">
 						</c:when>
 						<c:when test="${19 <= movie.movie_pg}">
