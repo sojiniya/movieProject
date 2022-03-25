@@ -53,12 +53,11 @@ $(function(){
 			
 		}); // end of click (극장지역 선택 시 이벤트 발생)
 		
-		
+		//극장관 등록 후 cgv지점을 클릭하면 지점별 극장 인포사진 노출
 		$(document).on('click','.theater-name',function(){
 			let theater_num = $(this).attr('data-num');
 			$('#theater_img_container').find('img').attr('src','${pageContext.request.contextPath}/theater/theaterImage.do?theater_num='+theater_num)
-		});
-		
+		});	
 });
 </script>
 <div class="favorite-wrap">
@@ -100,7 +99,9 @@ $(function(){
 		<div class="wrap-theaterinfo">
 			<div class="box-image">
 				<div class="thumb-image" id="theater_img_container">
-					<img src="${pageContext.request.contextPath}/theater/theaterImage.do?theater_num=23">
+					<!-- cgv강남점을 디폴트 이미지로 -->
+					<%-- <img src="${pageContext.request.contextPath}/theater/theaterImage.do?theater_num=24"> --%>
+					<img src="https://img.cgv.co.kr/Theater/Theater/2014/1211/CGVgangnam.jpg">
 				</div>
 			</div>
 		</div>
