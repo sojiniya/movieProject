@@ -95,7 +95,7 @@ create sequence M_movie_seq;
 create table M_theater(
   theater_num number not null,
   theater_name varchar2(18) not null,
-  theater_addr varchar2(50) not null,
+  theater_addr varchar2(100) not null,
 
   constraint M_theater_pk primary key (theater_num)
 );

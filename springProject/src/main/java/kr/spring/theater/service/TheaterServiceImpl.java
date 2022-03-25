@@ -24,4 +24,10 @@ public class TheaterServiceImpl implements TheaterService{
 		return theaterMapper.listLocal(local);
 	}
 
+	@Override
+	public TheaterVO selectTheater(Integer theater_num) {
+
+		return theaterMapper.selectTheater(theater_num);
+	}
+
 }

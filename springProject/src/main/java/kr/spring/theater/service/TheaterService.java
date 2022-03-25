@@ -10,4 +10,7 @@ public interface TheaterService {
 	
 	//극장지역정보 목록
 	public List<TheaterVO> listLocal(String local);
+	
+	//
+	public TheaterVO selectTheater(Integer theater_num);
 }

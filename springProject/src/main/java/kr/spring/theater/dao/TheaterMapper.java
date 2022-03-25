@@ -16,4 +16,7 @@ public interface TheaterMapper {
 	//2. 극장지역 리스트출력
 	@Select("SELECT * FROM M_theater WHERE theater_local = #{local} ORDER BY theater_name ASC")
 	public List<TheaterVO> listLocal(String local);
+	
+	@Select("SELECT * FROM M_theater WHERE theater_num=#{theater_num}")
+	public TheaterVO selectTheater(Integer theater_num);
 }

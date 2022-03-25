@@ -1,7 +1,6 @@
 package kr.spring.theater.vo;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -19,7 +18,7 @@ public class TheaterVO {
 	private String theater_imagename; //파일명
 	
 	//업로드 파일 처리
-	public void setUpload(MultipartFile upload)  throws IOException{
+	public void setUpload(MultipartFile upload) throws IOException{
 		this.upload = upload;
 		//MultipartFile -> byte[] 형태로 변환 -> 작업시 예외발생가능성 있으므로 메서드에 IO익셉션 명시
 		setTheater_image(upload.getBytes());

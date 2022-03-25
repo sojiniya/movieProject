@@ -873,3 +873,7 @@ div[class^="sect-"]:after {
     float: left;
     margin: 0 8px;
 }
+
+form#theater_form {
+	height: 130px;
+}
