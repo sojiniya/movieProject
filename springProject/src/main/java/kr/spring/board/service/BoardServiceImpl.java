@@ -48,7 +48,7 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void adminInsertBoard(BoardVO board) {
 		boardMapper.adminInsertBoard(board);
-		boardMapper.insertCate(board);
+		
 	}
 
 	@Override
@@ -78,7 +78,7 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void insertBoard(BoardVO board) {
 		boardMapper.insertBoard(board);
-		boardMapper.insertCate(board);
+
 	}
 
 	@Override

@@ -16,9 +16,7 @@ public class BoardVO {
 	private int theater_choise; //영화관 선택 0:선택안함, 1:선택
 	private int sel_regioncode; //지역 선택
 	private int sel_theatercode; //영화관 선택
-	@NotEmpty
 	private String board_title; //제목
-	@NotEmpty
 	private String board_content; //내용
 	private MultipartFile upload;
 	private byte[] board_uploadfile;//파일

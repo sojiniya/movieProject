@@ -45,22 +45,22 @@ table td, table th{
 						<ul class="type_list">
 							<li>
 								<label for="question">
-								<input type="radio" id="question" name="cate_name" value="7" checked>문의
+								<input type="radio" id="question" name="cate_name" value="8" checked>문의
 								</label>
 							</li>
 							<li>
 								<label for="complain">
-								<input type="radio" id="complain" name="cate_name" value="8">불만
+								<input type="radio" id="complain" name="cate_name" value="9">불만
 								</label>
 							</li>
 							<li>
 								<label for="compliment">
-								<input type="radio" id="compliment" name="cate_name" value="9">칭찬
+								<input type="radio" id="compliment" name="cate_name" value="10">칭찬
 								</label>
 							</li>
 							<li>
 								<label for="proposal">
-								<input type="radio" id="proposal" name="cate_name" value="10">제안
+								<input type="radio" id="proposal" name="cate_name" value="11">제안
 								</label>
 							</li>
 						</ul>
@@ -114,7 +114,7 @@ table td, table th{
 				<tr>
 					<th>파일업로드</th>
 					<td>
-					<input type="file" name="board_upload" id="upload" accept="image/gif,image/png,image/jpeg">
+					<input type="file" name="upload" id="upload" accept="image/gif,image/png,image/jpeg">
 					</td>
 				</tr>
 			</tbody>

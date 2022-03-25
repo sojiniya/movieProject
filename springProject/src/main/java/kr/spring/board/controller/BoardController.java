@@ -68,6 +68,18 @@ public class BoardController {
 		return "redirect:/board/boardMain.do";
 		}
 	
+	//자주찾는 질문  리스트
+	@RequestMapping("/board/boardQna.do")
+	public String qnaList() {
+		return "qnaList";
+	}
+	
+	//공지/뉴스 리스트
+	@RequestMapping("/board/boardNews.do")
+	public String newsList() {
+		return "newsList";
+	}
+	
 	//회원 글 등록 폼
 	@RequestMapping("/board/userBoardWrite.do")
 	public String userBoardMain() {

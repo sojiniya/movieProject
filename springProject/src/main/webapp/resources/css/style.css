@@ -648,6 +648,42 @@ input[id="zipcode"]{
     line-height: 0;
     overflow: hidden;
 }
+/*자주찾는 질문, 공지.뉴스 */
+.c_tab_wrap {
+    position: relative;
+    margin-top: 15px;
+    border-bottom: 2px solid #898987;
+    height: 35px;
+}
+.c_tab {
+    overflow: hidden;
+}
+
+ul.c_tab.type_free {
+    padding: 0;
+}
+.c_tab > li {
+    float: left;
+    position: relative;
+    display: block;
+    width: 87px;
+    height: 37px;
+    margin-left: 2px;
+    line-height: 36px;
+    text-align: center;
+    background-color: #898987;
+    font-weight: 500;
+    font-size: 13px;
+    color: #fff;
+}
+.c_tab > li.on {
+    width: 88px;
+    background-color: #fb4357;
+}
+.tbl_area {
+    overflow: hidden;
+    padding-top: 10px;
+}
 /*====무비차트====*/
 .movie-image img {
 	width: 170px;
