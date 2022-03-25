@@ -717,6 +717,21 @@ input[id="zipcode"]{
     background: #ed3124;
     border-radius: 7px;
 }
+input#mymovie{
+	font-size: 20px;
+	border: none;
+	float: right;
+	background-color: transparent;
+	margin-bottom: 10px;
+}
+input#movie_name{
+	width:600px;
+	height: 20px;
+}
+input#movie_content{
+	width:600px;
+	height: 200px;
+}
 /* ======예약하기==========*/
 
 .col-head{
