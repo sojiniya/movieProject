@@ -28,14 +28,12 @@ public class MemberMovieServiceImpl implements MemberMovieService{
 
 	@Override
 	public int selectMyReserveMovieCount(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return MemberMovieMapper.selectMyReserveMovieCount(map);
 	}
 
 	@Override
 	public List<ReserveVO> selectMyReserveMovie(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		return MemberMovieMapper.selectMyReserveMovie(map);
 	}
 
 	@Override

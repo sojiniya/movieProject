@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 	<link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/webfont.css" />
     <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/reset.css" />
@@ -17,7 +18,7 @@
 				<li class="on"><a href="${pageContext.request.contextPath}/user/myPage.do" title="현재 선택">MY
 						CGV HOME <i></i>
 				</a></li>
-				<li><a href="">나의 예매내역 <i></i></a></li>
+				<li><a href="${pageContext.request.contextPath}/user/myReserveMovie.do">나의 예매내역 <i></i></a></li>
 
 				<li><a href="/user/mycgv/myinfo/?g=1">회원정보<i></i></a>
 					<ul>
@@ -36,7 +37,7 @@
 						<li><a href="/user/mycgv/inquiry/qna/list.aspx?g=1">1:1 문의</a></li>
 					</ul>
 				</li>
-				<li class="my-event"><a href="${pageContext.request.contextPath}/user/myMovie.do">내가 본 영화</a></li>
+				<li class="my-event"><a href="${pageContext.request.contextPath}/user/myWatchedMovie.do">내가 본 영화</a></li>
 				<!-- <li class="my-event"><a href="/user/mycgv/event/?g=1">나의 참여 이벤트</a></li> -->
 			</ul>
 			<div class="ad-partner01">

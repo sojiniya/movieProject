@@ -18,7 +18,6 @@ public interface MemberMovieMapper {
 		public List<ReserveVO> selectMyWatchedMovie(Map<String,Object> map);
 		
 		//내가 예매한 영화 리스트 카운트
-		@Select("SELECT ")
 		public int selectMyReserveMovieCount(Map<String,Object> map);
 		
 		//내가 예매한 영화 리스트
