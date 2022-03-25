@@ -3,6 +3,8 @@ package kr.spring.reserve.vo;
 import java.sql.Date;
 import java.util.List;
 
+import kr.spring.movie.vo.MovieVO;
+
 public class ReserveVO {
 	private int reserve_num; // 예매번호
 	private int time_num; // 상영시간 번호 (외래키)
@@ -40,6 +42,17 @@ public class ReserveVO {
 	//결제완료 페이지에서 사용하기 위한 프로퍼티
 	private int sale_price;
 	private int final_price;
+
+	//나의 예매 내역확인을 위한 MovieVO추가
+	private MovieVO movieVO;
+	
+	public MovieVO getMovieVO() {
+		return movieVO;
+	}
+	public void setMovieVO(MovieVO movieVO) {
+		this.movieVO = movieVO;
+	}
+	
 	public int getReserve_num() {
 		return reserve_num;
 	}

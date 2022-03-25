@@ -45,30 +45,50 @@ public class BoardController {
 		return "boardMain";
 	}
 	
-	//글 등록 폼
+	//관리자 글 등록 폼
 	@GetMapping("/board/adminBoardWrite.do")
 	public String form() {
 		return "adminBoardWrite";
 	}
 		
-	//글 등록 폼에서 전송된 데이터 처리
-		@PostMapping("/board/adminBoardWrite.do")
-		public String submit(@Valid BoardVO boardVO,
-				             BindingResult result,
-				             HttpSession session,
-				             HttpServletRequest request) {
-			logger.info("<<게시판 글 저장>> : " + boardVO);
+	//관리자 글 등록 폼에서 전송된 데이터 처리
+	@PostMapping("/board/adminBoardWrite.do")
+	public String submit(BoardVO boardVO,
+				         HttpSession session,
+				         HttpServletRequest request) {
 			
+		logger.info("<<관리자 게시판 글 저장>> : " + boardVO);
 			
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		//회원 번호 셋팅
+		boardVO.setMem_num(user_num);
+		//글쓰기
+		boardService.adminInsertBoard(boardVO);
 			
-			Integer user_num = (Integer)session.getAttribute("user_num");
-			//회원 번호 셋팅
-			boardVO.setMem_num(user_num);
-			//글쓰기
-			boardService.insertBoard(boardVO);
-			
-			return "redirect:/board/boardMain.do";
+		return "redirect:/board/boardMain.do";
 		}
 	
+	//회원 글 등록 폼
+	@RequestMapping("/board/userBoardWrite.do")
+	public String userBoardMain() {
+		return "userBoardWrite";
+	}
+	
+	//회원 글 등록 폼에서 전송된 데이터 처리
+	@PostMapping("/board/userBoardWrite.do")
+	public String submit1(BoardVO boardVO,
+					      HttpSession session,
+					      HttpServletRequest request) {
+				
+		logger.info("<<사용자 게시판 글 저장>> : " + boardVO);
+				
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		//회원 번호 셋팅
+		boardVO.setMem_num(user_num);
+		//글쓰기
+		boardService.insertBoard(boardVO);
+				
+		return "redirect:/board/boardMain.do";
+		}
 	
 }

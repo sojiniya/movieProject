@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.member.dao.MemberMovieMapper">
+	<select id="selectMyWatchedMovieCount" parameterType="map" resultType="integer" >
+		SELECT 
+		count(*) 
+		FROM 
+			(SELECT * FROM 
+					(SELECT * FROM M_reserve r LEFT OUTER JOIN M_movie m ON r.movie_num = m.movie_num) a 
+					 LEFT OUTER JOIN m_time t ON a.time_num = t.time_num 
+	<![CDATA[
+					 WHERE 
+					 movie_Date <= #{movieDate} 
+					 AND a.mem_num = #{mem_num})
+	]]>
+		
+	</select>
+	<select id="selectMyWatchedMovie" parameterType="map" resultType="ReserveVO">
+		SELECT 
+		  * 
+		FROM (SELECT * FROM (SELECT * FROM M_reserve r LEFT OUTER JOIN M_movie m ON r.movie_num = m.movie_num) a 
+		LEFT OUTER JOIN m_time t ON a.time_num = t.time_num 
+		<![CDATA[
+		WHERE 
+		movie_Date < TO_DATE(#{movieDate},'yy-mm-dd') AND movie_time <= #{movieHour,jdbcType=VARCHAR}
+		AND a.mem_num = #{mem_num})
+		]]>
+	</select> 
+</mapper>
