@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.theater.service.TheaterService;
 import kr.spring.theater.vo.TheaterVO;
@@ -63,7 +65,7 @@ public class TheaterController {
 		
 		//극장정보 등록 완료
 		theaterService.insertTheater(theaterVO);
-
+		
 		return "redirect:/main/main.do";
 	}
 	
@@ -84,4 +86,36 @@ public class TheaterController {
 			}
 			return map;
 		}
+		
+
+		 //3-1. 이미지 출력
+		 @RequestMapping("/theater/theaterImage.do") //번호를 통해 이미지를 읽어와야함 
+		 public ModelAndView theaterWrite(@RequestParam int theater_num) {
+			 TheaterVO theater = theaterService.selectTheater(theater_num);
+			 
+			 ModelAndView mav = new ModelAndView();
+			 mav.setViewName("selectList");
+			 mav.addObject("imageFile",theater.getTheater_image()); //바이트배열로 반환
+			 mav.addObject("filename",theater.getTheater_imagename());
+		 
+		 return mav;
+		}
+		 
+		 //4. 극장지역리스트 사진? ajax 
+		 @RequestMapping("/time/selectListImage.do")
+		 @ResponseBody //제이슨문자열로 만들어줌
+		 public Map<String,Object> process2(@RequestParam String theater_name){
+			 logger.info("<<local>> : " + theater_name);
+
+			 Map<String,Object> map = new HashMap<String,Object>();
+
+			 List<TheaterVO> list = theaterService.listLocal(theater_name);
+			 if(list!=null) {
+				 //list 데이터가 존재할 때 결과
+				 map.put("list", list);
+			 }else {
+				 map.put("list", Collections.emptyList());
+			 }
+			 return map;
+		 }
 }

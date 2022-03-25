@@ -11,7 +11,12 @@
 	<div class="col-detail">
 		<div class="movielog-detail-wrap">
 			<div class="sect-movielog-lst">
-				<c:forEach var="watchedMovie" items="${list}">
+				<c:if test="${count == 0}">
+					예매한 영화가 없습니다.
+				</c:if>
+				<c:if test="${count >0}">
+				
+				<c:forEach var="reserveMovie" items="${list}">
 					<ul id="watched_list_container">
 						<li class="movie_info_80530">
 							<div class="article-movie-info">
@@ -31,21 +36,22 @@
 										</a>
 									</div>
 
-									<p class="date">${watchedMovie.movie_date}
-										${watchedMovie.movie_time}</p>
-									<p class="theater">CGV${watchedMovie.theater_name}
-										/${watchedMovie.seat_num}석</p>
+									<p class="date">${reserveMovie.movie_date}
+										${reserveMovie.movie_time}</p>
+									<p class="theater">CGV${reserveMovie.theater_name}
+										/${reserveMovie.seat_num}석</p>
 								</div>
 								<button type="button" data="329787502" class="btn-del">
 									<img
 										src="https://img.cgv.co.kr/R2014/images/common/btn/btn_del.gif"
-										alt="${watchedMovie.movie_name}">
+										alt="${reserveMovie.movie_name}">
 								</button>
+							</div>
 						</li>
 					</ul>
+				</c:forEach>
+				</c:if>		
 			</div>
-			</c:forEach>
-			</ul>
 		</div>
 	</div>
 </div>

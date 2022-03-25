@@ -36,6 +36,16 @@
     	<put-attribute name="title" value="회원탈퇴"/>
     	<put-attribute name="body" value="/WEB-INF/views/user/userDelete.jsp"/>
     </definition>
+    <definition name="myWatchedMovie" extends="board_main">
+    	<put-attribute name="title" value="내가 본 영화"/>
+    	<put-attribute name="left" value="/WEB-INF/views/template/myMovieSide.jsp"/>
+    	<put-attribute name="body" value="/WEB-INF/views/user/myWatchedMovie.jsp"/>
+    </definition>
+     <definition name="myReserveMovie" extends="board_main">
+    	<put-attribute name="title" value="나의 예매 내역"/>
+    	<put-attribute name="left" value="/WEB-INF/views/template/myMovieSide.jsp"/>
+    	<put-attribute name="body" value="/WEB-INF/views/user/myReserveMovie.jsp"/>
+    </definition>
     
     
 </tiles-definitions>

@@ -18,7 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.board.controller.BoardController;
 import kr.spring.member.service.MemberMovieService;
+import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.movie.service.MovieService;
 import kr.spring.reserve.vo.ReserveVO;
 import kr.spring.util.PagingUtil;
 
@@ -28,19 +30,23 @@ public class MemberMovieController {
 	
 	@Autowired
 	private MemberMovieService MemberMovieService;
+	@Autowired
+	private MemberService memberService;
 	
+	//예매 조건 체크를 위해서 날짜 데이터
+	Date date = new Date();
+	SimpleDateFormat format = new SimpleDateFormat("yy/MM/dd hh:mm");
+	String str = format.format(date);
+	String movieDate = str.substring(0, 8);
+	String movieHour = str.substring(9,11)+"시";
 	
-	@RequestMapping("/user/myMovie.do")
+	//내가 본 영화 리스트처리
+	@RequestMapping("/user/myWatchedMovie.do")
 	public ModelAndView viewMyWatchedMovie(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage, HttpSession session) {
 		
-		//예매 조건 체크를 위해서 날짜 데이터
-		Date date = new Date();
-		SimpleDateFormat format = new SimpleDateFormat("yy/MM/dd hh:mm");
-		String str = format.format(date);
-		String movieDate = str.substring(0, 8);
-		String movieHour = str.substring(9,11)+"시";
-		
 		Integer user_num = (Integer)session.getAttribute("user_num");
+		MemberVO member = memberService.selectMember(user_num);
+		
 		logger.info("<user_num>> : " + user_num);
 		logger.info("<영화날짜>> : " + movieDate);
 		logger.info("<영화시간>> : " + movieHour);
@@ -54,16 +60,15 @@ public class MemberMovieController {
 		int count = MemberMovieService.selectMyWatchedMovieCount(map);
 		logger.info("<count>> : " + count);
 		
-		
-		
 		//페이지 처리
 		PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "myMovie.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
+		logger.info("<map222>> : " + map);
 		
 		List<ReserveVO> list = null;
 		if (count > 0) {
-			list = MemberMovieService.selectMyReserveMovie(map);
+			list = MemberMovieService.selectMyWatchedMovie(map);
 		}
 		logger.info("<list>> : " + list);
 
@@ -72,12 +77,52 @@ public class MemberMovieController {
 		mav.addObject("count", count);
 		mav.addObject("list", list);
 		mav.addObject("pagingHtml", page.getPagingHtml());
+		mav.addObject("member",member);
 		
 		return mav;
 	}
 	
+	//나의 예매 내역
+	@RequestMapping("/user/myReserveMovie.do")
+	public ModelAndView viewMyReserveMovie(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage, HttpSession session) {
 		
-	//내가 본 영화
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		MemberVO member = memberService.selectMember(user_num);
+		
+		logger.info("<user_num>> : " + user_num);
+		logger.info("<영화날짜>> : " + movieDate);
+		logger.info("<영화시간>> : " + movieHour);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("mem_num",user_num);
+		map.put("movieDate", movieDate);
+		map.put("movieHour", movieHour);
+		logger.info("<map>> : " + map);
+		
+		int count = MemberMovieService.selectMyReserveMovieCount(map);
+		logger.info("<count>> : " + count);
+		
+		//페이지 처리
+		PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "myMovie.do");
+		map.put("start", page.getStartCount());
+		map.put("end", page.getEndCount());
+		logger.info("<map222>> : " + map);
+		
+		List<ReserveVO> list = null;
+		if (count > 0) {
+			list = MemberMovieService.selectMyReserveMovie(map);
+		}
+		logger.info("<list>> : " + list);
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("myReserveMovie");
+		mav.addObject("count", count);
+		mav.addObject("list", list);
+		mav.addObject("pagingHtml", page.getPagingHtml());
+		mav.addObject("member",member);
+		
+		return mav;
+	}
 	//내가 관심 있는 영화
 	//테이블 하나 더 만들어야함(찜한거/무비넘,회원넘)
 	//내가 남긴 매너평가

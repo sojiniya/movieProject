@@ -44,7 +44,11 @@ $(function(){
 						//문서 객체에 극장지역 리스트 추가
 						$('#area').append(output);
 						
-						//해당 극장지점(cgv강남점) 클릭 시 지점별 극장관 이미지 교체			
+						//해당 극장지점(cgv강남점) 클릭 시 지점별 극장관 이미지 교체
+						let theater_name; //선택한 cgv지점
+						$(document).on('click','.theatername-choice',function(){
+							
+						});//end of click(name 선택 시 이벤트 발생)
 					});
 				},
 				error:function(){
@@ -66,7 +70,6 @@ $(function(){
 			<a href="#" class="theater-choice">대구</a>
 			<a href="#" class="theater-choice">대전/충청</a>
 			<a href="#" class="theater-choice">경상</a>
-			<a href="#" class="theater-choice">대구</a>
 			<div id="area"></div>
 			</li>
 		</ul>
