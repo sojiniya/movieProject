@@ -94,7 +94,7 @@ public class TheaterController {
 			 TheaterVO theater = theaterService.selectTheater(theater_num);
 			 
 			 ModelAndView mav = new ModelAndView();
-			 mav.setViewName("selectList");
+			 mav.setViewName("imageView");
 			 mav.addObject("imageFile",theater.getTheater_image()); //바이트배열로 반환
 			 mav.addObject("filename",theater.getTheater_imagename());
 		 

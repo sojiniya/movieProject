@@ -36,7 +36,7 @@ $(function(){
 						let output = '<div class="area">';
 						output += '<ul>';
 						output += '<li class="on">';
-						output += '<a title="'+ item.theater_name + '" href="#">' + item.theater_name + '</a>';
+						output += '<a title="'+ item.theater_name + '" class="theater-name" data-num="'+item.theater_num+'">' + item.theater_name + '</a>';
 						output += '</li>';
 						output += '</ul>';
 						output += '</div>';
@@ -44,11 +44,6 @@ $(function(){
 						//문서 객체에 극장지역 리스트 추가
 						$('#area').append(output);
 						
-						//해당 극장지점(cgv강남점) 클릭 시 지점별 극장관 이미지 교체
-						let theater_name; //선택한 cgv지점
-						$(document).on('click','.theatername-choice',function(){
-							
-						});//end of click(name 선택 시 이벤트 발생)
 					});
 				},
 				error:function(){
@@ -57,19 +52,26 @@ $(function(){
 			});
 			
 		}); // end of click (극장지역 선택 시 이벤트 발생)
+		
+		
+		$(document).on('click','.theater-name',function(){
+			let theater_num = $(this).attr('data-num');
+			$('#theater_img_container').find('img').attr('src','${pageContext.request.contextPath}/theater/theaterImage.do?theater_num='+theater_num)
+		});
+		
 });
 </script>
 <div class="favorite-wrap">
 	<div class="sect-city">
 		<ul>
 			<li class="on">
-			<a href="#" class="theater-choice">서울</a>
-			<a href="#" class="theater-choice">경기</a>
-			<a href="#" class="theater-choice">인천</a>
-			<a href="#" class="theater-choice">강원</a>
-			<a href="#" class="theater-choice">대구</a>
-			<a href="#" class="theater-choice">대전/충청</a>
-			<a href="#" class="theater-choice">경상</a>
+			<a class="theater-choice">서울</a>
+			<a class="theater-choice">경기</a>
+			<a class="theater-choice">인천</a>
+			<a class="theater-choice">강원</a>
+			<a class="theater-choice">대구</a>
+			<a class="theater-choice">대전/충청</a>
+			<a class="theater-choice">경상</a>
 			<div id="area"></div>
 			</li>
 		</ul>
@@ -98,7 +100,7 @@ $(function(){
 		<div class="wrap-theaterinfo">
 			<div class="box-image">
 				<div class="thumb-image" id="theater_img_container">
-					<img alt="CGV강남점 인포" src="https://img.cgv.co.kr/Theater/Theater/2014/1211/CGVgangnam.jpg">
+					<img src="${pageContext.request.contextPath}/theater/theaterImage.do?theater_num=23">
 				</div>
 			</div>
 		</div>

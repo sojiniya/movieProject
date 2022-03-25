@@ -913,3 +913,6 @@ div[class^="sect-"]:after {
 form#theater_form {
 	height: 130px;
 }
+theater-choice,theater-name{
+	cursor:pointer;
+}
