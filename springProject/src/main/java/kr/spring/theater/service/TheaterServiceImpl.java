@@ -30,4 +30,10 @@ public class TheaterServiceImpl implements TheaterService{
 		return theaterMapper.selectTheater(theater_num);
 	}
 
+	@Override
+	public List<TheaterVO> listName(String name) {
+		
+		return theaterMapper.listName(name);
+	}
+
 }

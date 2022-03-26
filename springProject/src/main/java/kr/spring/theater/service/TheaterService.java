@@ -11,6 +11,9 @@ public interface TheaterService {
 	//극장지역정보 목록
 	public List<TheaterVO> listLocal(String local);
 	
-	//
+	//극장 인포사진 호출하기 위한 프라이머리 키 구하기
 	public TheaterVO selectTheater(Integer theater_num);
+	
+	//극장 제목 변경 에이젝스
+	public List<TheaterVO> listName(String name);
 }

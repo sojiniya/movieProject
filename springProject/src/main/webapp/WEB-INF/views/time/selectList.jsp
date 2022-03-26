@@ -56,7 +56,67 @@ $(function(){
 		//극장관 등록 후 cgv지점을 클릭하면 지점별 극장 인포사진 노출
 		$(document).on('click','.theater-name',function(){
 			let theater_num = $(this).attr('data-num');
-			$('#theater_img_container').find('img').attr('src','${pageContext.request.contextPath}/theater/theaterImage.do?theater_num='+theater_num)
+			$('#theater_img_container').find('img').attr('src','${pageContext.request.contextPath}/theater/theaterImage.do?theater_num='+theater_num);
+			
+		//극장관 등록 후 cgv지점을 클릭하면 지점명 교체
+		//$(document).on('click','.theater-name',function(){
+			//let theater_name; //선택한 cgv지점
+			//let theater_num = $('.theater-name').attr('data-num');
+			
+			$('#theater-ti').find('span').attr('class','${theater_name}');
+			
+			$.ajax({
+				type:'post',
+				data:{theater_name:$(this).text()},// 클릭한 극장 지점명 저장
+				url:'theaterInfo.do',
+				dataType:'json',
+				cache:false,
+				timeout:30000,
+				success:function(param){	
+					//$('#sect-theater').empty();
+					//클릭한 극장지점명 이름 노출
+					$(param.list).each(function(index,item){
+						let output = '<div class="sect-theater">';
+						output += '<h4 class="theater-ti">';
+						output += '<span class="click_cgvname" data-num="' + item.theater_num + '">' + item.theater_name + '</span>';
+						output += '</h4>';
+						output += '</div>';
+				
+						//문서 객체에 극장지점 추가
+						$('#theater-ti').append(output);	
+					});
+				},
+				error:function(){
+					alert('네트워크 오류 발생');
+				}
+			//});
+		});//end click - theater_name
+		
+			/* $.ajax({
+				type:'post',
+				data:{theater_name:$(this).text()},// 클릭한 극장 지점명 저장
+				url:'theaterInfo.do',
+				dataType:'json',
+				cache:false,
+				timeout:30000,
+				success:function(param){	
+					$('#sect-theater').empty();
+					//클릭한 극장지점명 이름 노출
+					$(param.list).each(function(index,item){
+						let output = '<div class="sect-theater">';
+						output += '<h4 class="theater-ti">';
+						output += '<span>' + item.theater_name + '</span>';
+						output += '</h4>';
+						output += '</div>';
+				
+						//문서 객체에 극장지점 리스트 추가
+						$('#sect-theater').append(output);	
+					});
+				},
+				error:function(){
+					alert('네트워크 오류 발생');
+				}
+			}); */
 		});	
 });
 </script>
@@ -92,10 +152,10 @@ $(function(){
 <!-- THEATER 삽입 END -->
 <!-- 지점별 THEATER 삽입 시작 -->
 <div class="sect-theater">
-	<div class="sect-theater">
-		<h4 class="theater-ti">
-			<span>CGV강남</span>
-		</h4>
+	<div class="sect-theater" id="theatername_container">
+		<!-- <h4 class="theater-ti"> <h4 class="theater-ti">
+			<span class="click_cgvname"></span> <span class="theater-name">CGV강남</span>
+		</h4> --> 
 		<div class="wrap-theaterinfo">
 			<div class="box-image">
 				<div class="thumb-image" id="theater_img_container">
@@ -105,8 +165,8 @@ $(function(){
 				</div>
 			</div>
 		</div>
-	</div>
 </div>
+	</div>
 <hr size="1" noshade="noshade" width="100%">
 <hr size="1" noshade="noshade" width="100%">
 <!-- 중앙 컨텐츠 끝 -->

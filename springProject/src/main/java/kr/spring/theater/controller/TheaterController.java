@@ -101,11 +101,11 @@ public class TheaterController {
 		 return mav;
 		}
 		 
-		 //4. 극장지역리스트 사진? ajax 
-		 @RequestMapping("/time/selectListImage.do")
+		 //4. 극장지점명 변경 ajax 
+		 @RequestMapping("/time/theaterInfo.do")
 		 @ResponseBody //제이슨문자열로 만들어줌
 		 public Map<String,Object> process2(@RequestParam String theater_name){
-			 logger.info("<<local>> : " + theater_name);
+			 logger.info("<<theater_name>> : " + theater_name);
 
 			 Map<String,Object> map = new HashMap<String,Object>();
 
