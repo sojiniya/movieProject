@@ -12,7 +12,7 @@ public class BoardVO {
 	private int board_auth; //게시판 구분
 	private int mem_num; //회원 번호
 	private int cate_num; //카테고리 번호
-	private int cate_name; //카테고리 이름
+	private String cate_name; //카테고리 이름
 	private int theater_choise; //영화관 선택 0:선택안함, 1:선택
 	private int sel_regioncode; //지역 선택
 	private int sel_theatercode; //영화관 선택
@@ -120,10 +120,10 @@ public class BoardVO {
 	public void setSel_theatercode(int sel_theatercode) {
 		this.sel_theatercode = sel_theatercode;
 	}
-	public int getCate_name() {
+	public String getCate_name() {
 		return cate_name;
 	}
-	public void setCate_name(int cate_name) {
+	public void setCate_name(String cate_name) {
 		this.cate_name = cate_name;
 	}
 	

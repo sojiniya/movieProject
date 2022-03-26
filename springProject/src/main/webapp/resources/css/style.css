@@ -290,6 +290,10 @@ footer {
 .align-center{
 	text-align:center;
 }
+.paging {
+    text-align: center;
+    margin-top: 25px;
+}
 
 /*메인*/
 a:link{
@@ -652,6 +656,7 @@ input[id="zipcode"]{
 .c_tab_wrap {
     position: relative;
     margin-top: 15px;
+    margin-left: 10px;
     border-bottom: 2px solid #898987;
     height: 35px;
 }
@@ -672,9 +677,12 @@ ul.c_tab.type_free {
     line-height: 36px;
     text-align: center;
     background-color: #898987;
-    font-weight: 500;
-    font-size: 13px;
+    font-weight: 800;
+    font-size: 15px;
     color: #fff;
+}
+.c_tab > li > a{
+	color: #fff;
 }
 .c_tab > li.on {
     width: 88px;
@@ -683,7 +691,9 @@ ul.c_tab.type_free {
 .tbl_area {
     overflow: hidden;
     padding-top: 10px;
+    margin-left: 10px;
 }
+
 /*====무비차트====*/
 .movie-image img {
 	width: 170px;
@@ -767,6 +777,36 @@ input#movie_name{
 input#movie_content{
 	width:600px;
 	height: 200px;
+}
+/*고객센터 목록보기*/
+#search_form {
+    overflow: hidden;
+    margin-left: 10px;
+    padding: 0px;
+}
+.round.inblack {
+    background: #222222;
+    border: 2px solid #222222;
+    color: #ffffff;
+    line-height: 21px;
+}
+.search123{
+	margin-top: 5px;
+}
+.tbl_notice_list thead th {
+    padding: 10px 0 8px 0px;
+    border-bottom: solid 1px #e1dfd5;
+    text-align: center;
+    background-color: #f8f8f8;
+}
+.tbl_notice_list .tit, .tbl_notice_list .txt {
+    text-align: left;
+    padding: 10px 15px 8px;
+}
+.tbl_notice_list tbody td {
+    padding: 15px 0px 13px 0px;
+    border-top: solid 1px #d6d4ca;
+    text-align: center;
 }
 /* ======예약하기==========*/
 

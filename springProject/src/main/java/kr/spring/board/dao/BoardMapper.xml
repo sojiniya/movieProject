@@ -3,5 +3,52 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.spring.board.dao.BoardMapper"> 
+	<select id="selectList" parameterType="map" resultType="boardVO">
+		SELECT
+		  *
+		FROM (SELECT 
+		       a.*,
+		       rownum rnum
+		      FROM (SELECT 
+		               b.board_num,
+		               <![CDATA[
+		               REPLACE(REPLACE(b.board_title,'<','&lt;'),'>','&gt;') board_title,
+		               ]]>
+		               b.board_hit,
+		               b.board_reg_date,
+		               m.cate_name
+		            FROM m_board b
+		            JOIN m_category m 
+		            ON b.cate_num = m.cate_num
+		            <where>
+		            	<if test="keyword != '' and keyfield == 1">
+		            		b.board_title LIKE '%' || #{keyword} || '%' or
+		            		b.board_content LIKE '%' || #{keyword} || '%'
+		            	</if>
+		            	<if test="keyword != '' and keyfield == 2">
+		            		b.board_title LIKE '%' || #{keyword} || '%'
+		            	</if>
+		            	<if test="keyword != '' and keyfield == 3">
+		            		b.board_content LIKE '%' || #{keyword} || '%'
+		            	</if>
+		            </where>
+		            ORDER BY b.board_num DESC)a)
+	   <![CDATA[
+	   WHERE rnum >= #{start} AND rnum <= #{end}
+	   ]]>	            
+	</select>
+	<select id="selectRowCount" parameterType="map" resultType="integer">
+		SELECT
+		  COUNT(*)
+		FROM m_board b
+		JOIN m_member m
+		ON b.mem_num = m.mem_num
+		 <where>
+		 	<if test="keyword != '' and keyfield == 1">
+		 		b.board_title LIKE '%' || #{keyword} || '%' or
+		        b.board_content LIKE '%' || #{keyword} || '%'
+		    </if>
+		 </where>
+	</select>
 	
 </mapper>

@@ -68,17 +68,79 @@ public class BoardController {
 		return "redirect:/board/boardMain.do";
 		}
 	
-	//자주찾는 질문  리스트
-	@RequestMapping("/board/boardQna.do")
-	public String qnaList() {
-		return "qnaList";
-	}
+	//자주찾는 질문  목록
+	@RequestMapping("/board/qnaList.do")
+	public ModelAndView process(
+			@RequestParam(value="pageNum",defaultValue="1")int currentPage,
+			@RequestParam(value="keyfield",defaultValue="")String keyfield,
+			@RequestParam(value="keyword",defaultValue="")String keyword) {
+				
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("keyfield", keyfield);
+			map.put("keyword", keyword);
+				
+			//글의 총갯수 또는 검색된 글의 갯수
+			int count = boardService.selectRowCount(map);
+				
+			//페이지 처리
+			PagingUtil page = new PagingUtil(keyfield,keyword,
+						                currentPage,count,10,10,"qnaList.do");
+				
+			map.put("start",page.getStartCount());
+			map.put("end", page.getEndCount());
+			
+			//리스트
+			List<BoardVO> list = null;
+			if(count > 0) {
+				list = boardService.selectList(map);
+			}
+						
+			ModelAndView mav = new ModelAndView();
+				            //타일스 설정
+			mav.setViewName("qnaList");
+			mav.addObject("count", count);
+			mav.addObject("list",list);
+			mav.addObject("pagingHtml", page.getPagingHtml());
+				
+			return mav;
+			}
 	
-	//공지/뉴스 리스트
-	@RequestMapping("/board/boardNews.do")
-	public String newsList() {
-		return "newsList";
-	}
+	//공지/뉴스 목록
+	@RequestMapping("/board/newsList.do")
+	public ModelAndView process1(
+			@RequestParam(value="pageNum",defaultValue="1")int currentPage,
+			@RequestParam(value="keyfield",defaultValue="")String keyfield,
+			@RequestParam(value="keyword",defaultValue="")String keyword) {
+				
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("keyfield", keyfield);
+			map.put("keyword", keyword);
+				
+			//글의 총갯수 또는 검색된 글의 갯수
+			int count = boardService.selectRowCount(map);
+				
+			//페이지 처리
+			PagingUtil page = new PagingUtil(keyfield,keyword,
+						                currentPage,count,10,10,"newsList.do");
+				
+			map.put("start",page.getStartCount());
+			map.put("end", page.getEndCount());
+			
+			//리스트
+			List<BoardVO> list = null;
+			if(count > 0) {
+				list = boardService.selectList(map);
+			}
+						
+			ModelAndView mav = new ModelAndView();
+				            //타일스 설정
+			mav.setViewName("newsList");
+			mav.addObject("count", count);
+			mav.addObject("list",list);
+			mav.addObject("pagingHtml", page.getPagingHtml());
+				
+			return mav;
+			}
 	
 	//회원 글 등록 폼
 	@RequestMapping("/board/userBoardWrite.do")
@@ -102,5 +164,7 @@ public class BoardController {
 				
 		return "redirect:/board/boardMain.do";
 		}
+	
+
 	
 }
