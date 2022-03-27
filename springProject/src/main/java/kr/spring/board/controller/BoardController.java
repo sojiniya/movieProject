@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.spring.board.service.BoardService;
 import kr.spring.board.vo.BoardVO;
 import kr.spring.util.PagingUtil;
+import kr.spring.util.StringUtil;
 
 @Controller
 public class BoardController {
@@ -104,6 +105,45 @@ public class BoardController {
 				
 			return mav;
 			}
+	//자주찾는 질문  글상세 
+	@RequestMapping("/board/qnaDetail.do")
+	public ModelAndView process(@RequestParam int board_num) {
+		logger.info("<<자주찾는 질문 글 상세 - 글 번호>> : " + board_num);
+			
+		//해당 글의 조회수 증가
+		boardService.updateHit(board_num);
+			
+		BoardVO board = boardService.adminSelectBoard(board_num);
+		//타이틀 HTML 불허
+		board.setBoard_title(StringUtil.useNoHtml(board.getBoard_title()));
+			                    //타일스 설정      속성명      속성값
+		return new ModelAndView("qnaBoardView","board",board);
+		}
+		
+	//이미지 출력
+	@RequestMapping("/board/imageView.do")
+	public ModelAndView viewImage(@RequestParam int board_num) {
+		BoardVO board = boardService.adminSelectBoard(board_num);
+			
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		mav.addObject("imageFile",board.getBoard_uploadfile());
+		mav.addObject("filename", board.getBoard_filename());
+		return mav;
+	}
+		
+	//파일 다운로드
+	@RequestMapping("/board/file.do")
+	public ModelAndView download(@RequestParam int board_num) {
+		BoardVO board = boardService.adminSelectBoard(board_num);
+			
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("downloadView");
+		mav.addObject("downloadFile", board.getBoard_uploadfile());
+		mav.addObject("filename", board.getBoard_filename());
+			
+		return mav;
+	}
 	
 	//공지/뉴스 목록
 	@RequestMapping("/board/newsList.do")

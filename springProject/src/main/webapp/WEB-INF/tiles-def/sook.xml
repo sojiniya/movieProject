@@ -21,6 +21,10 @@
     	<put-attribute name="title" value="자주찾는 질문"/>
     	<put-attribute name="body" value="/WEB-INF/views/board/qnaList.jsp"/>
     </definition>
+    <definition name="qnaBoardView" extends="board_main">
+    	<put-attribute name="title" value="자주찾는 질문"/>
+    	<put-attribute name="body" value="/WEB-INF/views/board/qnaBoardView.jsp"/>
+    </definition>
 	 <definition name="newsList" extends="board_main">
     	<put-attribute name="title" value="공지/뉴스"/>
     	<put-attribute name="body" value="/WEB-INF/views/board/newsList.jsp"/>
