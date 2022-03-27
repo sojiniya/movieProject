@@ -68,13 +68,15 @@ table td, table th{
 				<tbody>
 					
 					<c:forEach var="board" items="${list}">
+					<c:if test="${board.cate_num eq 5 or board.cate_num eq 6 or board.cate_num eq 7}">
 					<tr>
 						<td>${board.board_num}</td>
-						<td>${board.cate_name}</td>
+						<td>[${board.cate_name}]</td>
 						<td class="txt"><a href="detail.do?board_num=${board.board_num}">${board.board_title}</a></td>
 						<td>${board.board_reg_date}</td>
 						<td>${board.board_hit}</td>
 					</tr>
+					</c:if>
 					</c:forEach>
 					
 				</tbody>

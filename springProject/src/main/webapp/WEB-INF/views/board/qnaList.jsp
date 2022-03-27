@@ -3,6 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 콘텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
+
+<script>
+	$(window).ready(function(){
+		console.log("2");
+	});
+</script>
 <style>
 table{
 	width:100%;
@@ -65,13 +71,25 @@ table td, table th{
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="board" items="${list}">
-					<tr>
-						<td>${board.board_num}</td>
-						<td>[${board.cate_name}]</td>
-						<td class="txt"><a href="qnaDetail.do?board_num=${board.board_num}">${board.board_title}</a></td>
-						<td>${board.board_hit}</td>
-					</tr>
+<%-- 					<c:if test="${!empty cate_num='' && cate_num == 1}"> --%>
+<%-- 					<c:forEach var="board" items="${list}"> --%>
+<!-- 					<tr> -->
+<%-- 						<td>${board.board_num}</td> --%>
+<%-- 						<td>[${board.cate_name}]</td> --%>
+<%-- 						<td class="txt"><a href="qnaDetail.do?board_num=${board.board_num}">${board.board_title}</a></td> --%>
+<%-- 						<td>${board.board_hit}</td> --%>
+<!-- 					</tr> -->
+<%-- 					</c:forEach> --%>
+<%-- 					</c:if> --%>
+					<c:forEach items="${list}" var="board" varStatus="status">
+						<c:if test="${board.cate_num eq 1 or board.cate_num eq 2 or board.cate_num eq 3 or board.cate_num eq 4}">
+						<tr>
+							<td>${board.board_num}</td>
+							<td>[${board.cate_name}]</td>
+							<td class="txt"><a href="qnaDetail.do?board_num=${board.board_num}">${board.board_title}</a></td>
+							<td>${board.board_hit}</td>
+						</tr>
+						</c:if>
 					</c:forEach>
 				</tbody>
 			</table>

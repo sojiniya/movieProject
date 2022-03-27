@@ -16,7 +16,8 @@
 		               ]]>
 		               b.board_hit,
 		               b.board_reg_date,
-		               m.cate_name
+		               m.cate_name,
+		               m.cate_num
 		            FROM m_board b
 		            JOIN m_category m 
 		            ON b.cate_num = m.cate_num
