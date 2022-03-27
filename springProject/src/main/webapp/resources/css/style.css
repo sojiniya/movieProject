@@ -293,6 +293,7 @@ footer {
 .paging {
     text-align: center;
     margin-top: 25px;
+    margin-bottom: 10px;
 }
 
 /*메인*/
@@ -519,6 +520,7 @@ input[id="zipcode"]{
 }
 .boardMain .board-detail {
 	margin-top: 30px;
+	margin-bottom: 50px;
 	width: 810px;
 	float: left;
 }
@@ -790,6 +792,18 @@ input#movie_content{
     color: #ffffff;
     line-height: 21px;
 }
+.round.inred {
+    background: #c5291a;
+    border: 2px solid #c5291a;
+    color: #ffffff;
+    line-height: 21px;
+}
+.round.inwhite {
+    background: #c0c0c0;
+    border: 2px solid #c0c0c0;
+    color: #ffffff;
+    line-height: 21px;
+}
 .search123{
 	margin-top: 5px;
 }
@@ -807,6 +821,83 @@ input#movie_content{
     padding: 15px 0px 13px 0px;
     border-top: solid 1px #d6d4ca;
     text-align: center;
+}
+/*고객센터 상세페이지*/
+.board_view_area {
+    margin-top: 19px;
+}
+.top_title_faq {
+    overflow: hidden;
+    padding: 11px;
+    border-top: solid 1px #b8b6aa;
+    border-bottom: solid 1px #b8b6aa;
+    background-color: #f8f8f8;
+}
+.top_title_faq .title {
+    float: left;
+    font-size: 12px;
+    font-weight: 500;
+    display: block;
+    overflow: hidden;
+    width: 520px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+.top_title_faq .stit_area {
+    float: right;
+    font-size: 12px;
+    line-height: 16px;
+}
+em {
+    font-style: normal;
+}
+.view_area {
+    padding: 35px 13px;
+    border-bottom: solid 1px #b8b6aa;
+    line-height: 24px;
+}
+.customer_btn {
+    margin: 15px 0px 20px 0px;
+    text-align: right;
+}
+.btm_sup_list {
+    overflow: hidden;
+    border-top: solid 1px #b8b6aa;
+    border-bottom: solid 1px #b8b6aa;
+    font-size: 13px;
+}
+
+.btm_sup_list .line_sup_next {
+    overflow: hidden;
+    padding: 15px 19px 12px 13px;
+}
+.btm_sup_list .line_sup_next .stit {
+    float: left;
+    padding-right: 15px;
+    background: url(../images/common/ico/ico_arrow_customer.png) no-repeat right 3px;
+}
+.btm_sup_list .name {
+    float: left;
+    margin-left: 17px;
+    display: block;
+    width: 580px;
+}
+.btm_sup_list .name a {
+    display: block;
+    width: 575px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.btm_sup_list .check_writ_area {
+    float: right;
+    font-size: 12px;
+}
+.btm_sup_list .line_sup_prev {
+    overflow: hidden;
+    padding: 15px 19px 12px 13px;
+    border-top: solid 1px #d4d2c6;
 }
 /* ======예약하기==========*/
 

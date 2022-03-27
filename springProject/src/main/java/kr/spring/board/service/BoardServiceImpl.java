@@ -51,8 +51,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public BoardVO adminSelectBoard(Integer board_num) {
-		// TODO Auto-generated method stub
-		return null;
+		return boardMapper.adminSelectBoard(board_num);
 	}
 
 	@Override
@@ -81,7 +80,6 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public BoardVO selectBoard(Integer board_num) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

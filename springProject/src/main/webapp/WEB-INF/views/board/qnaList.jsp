@@ -68,8 +68,8 @@ table td, table th{
 					<c:forEach var="board" items="${list}">
 					<tr>
 						<td>${board.board_num}</td>
-						<td>${board.cate_name}</td>
-						<td class="txt"><a href="detail.do?board_num=${board.board_num}">${board.board_title}</a></td>
+						<td>[${board.cate_name}]</td>
+						<td class="txt"><a href="qnaDetail.do?board_num=${board.board_num}">${board.board_title}</a></td>
 						<td>${board.board_hit}</td>
 					</tr>
 					</c:forEach>

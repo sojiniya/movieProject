@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
 
 import kr.spring.board.vo.BoardVO;
 import kr.spring.member.vo.MemberVO;
@@ -23,6 +24,9 @@ public interface BoardMapper {
 			  + "board_filename,mem_num) VALUES (M_board_seq.nextval,#{board_auth},#{cate_num},#{theater_choise},#{sel_regioncode},#{sel_theatercode},"
 			  + "#{board_title},#{board_content},#{board_uploadfile},#{board_filename},#{mem_num})")
 	public void adminInsertBoard(BoardVO board); //관리자 글 작성
+	@Select("SELECT * FROM m_board b JOIN m_member m "
+		  + "ON b.mem_num=m.mem_num LEFT JOIN m_category c on b.cate_num=c.cate_num"
+		  + " WHERE b.board_num=#{board_num}")
 	public BoardVO adminSelectBoard(Integer board_num); //관리자 상세보기
 	public void adminUpdateBoard(BoardVO board); //관리자 글 수정
 	public void adminDeleteBoard(Integer board_num); //관리자 글 삭제
