@@ -37,14 +37,40 @@
 					id="btn_allView_Movie" class="btn_allView">전체보기</a>
 			</div>
 			<div id="movie_api">
-				<c:forEach var="movie" items="${movieList}" varStatus="status">
+				<c:forEach var="movie" items="${movieList}" varStatus="status" begin="1" end="5">
 					<li>
+						<p class="movie_img"><img src="imageView.do?movie_num=${movie.movie_num}" style="width:185px; height:260px;"></p>
 						<p class="movie_rank">${status.count}</p>
 						<br>
-						<p>${movie.movie_pg}</p>
+						<p class="movie_pg">
+						<c:choose>
+						<c:when test="${12 <= movie.movie_pg && movie.movie_pg < 15}">
+						<img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-12.png">
+						</c:when>
+						<c:when test="${15 <= movie.movie_pg && movie.movie_pg < 19}">
+						<img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-15.png">
+						</c:when>
+						<c:when test="${19 <= movie.movie_pg}">
+						<img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-19.png">
+						</c:when>
+						<c:otherwise>
+						<img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-all.png">
+						</c:otherwise>
+						</c:choose>
+						</p>
 						<br>
-						<strong class="movie_name">${movie.movie_name}</strong><br>
-						<p>${movie.movie_auth}</p>
+						<strong class="movie_name"><a href="movieDetail.do?movie_num=${movie.movie_num}">${movie.movie_name}</a></strong><br>
+						<p>
+						<c:if test="${movie.movie_auth == 0}">
+							<div class="auth_result">상영중</div>
+						</c:if>
+						<c:if test="${movie.movie_auth == 1}">
+							<div class="auth_result">상영 예정</div>
+						</c:if>
+						<c:if test="${movie.movie_auth == 2}">
+							<div class="auth_result">상영 종료</div>
+						</c:if>
+						</p>
 						<br>
 					</li>
 				</c:forEach>

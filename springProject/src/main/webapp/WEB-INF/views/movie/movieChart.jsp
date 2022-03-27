@@ -34,7 +34,7 @@
 				<ul>
 					<li>
 						<div class="movie-image">
-						<a href="movieDetail.do?movie_num=${movie.movie_num}"><img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85673/85673_320.jpg"></a></div>
+						<a href="movieDetail.do?movie_num=${movie.movie_num}"><img src="imageView.do?movie_num=${movie.movie_num}" style="width:185px; height:260px;"></a></div>
 						<div class="movie-content">
 						<strong class="movie_pg">
 						<c:choose>

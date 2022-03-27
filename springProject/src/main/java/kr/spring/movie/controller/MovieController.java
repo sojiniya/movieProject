@@ -136,6 +136,31 @@ public class MovieController {
 		return new ModelAndView("movieDetail","movie",movie);
 	}
 	
+	//이미지 출력
+	@RequestMapping("/movie/imageView.do")
+	public ModelAndView viewImage(@RequestParam int movie_num) {
+		MovieVO movie = movieService.selectMovie(movie_num);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		mav.addObject("imageFile",movie.getUploadfile());
+		mav.addObject("filename", movie.getFilename());
+		return mav;
+	}
+	
+	//파일 다운로드
+		@RequestMapping("/movie/file.do")
+		public ModelAndView download(@RequestParam int movie_num) {
+			MovieVO movie = movieService.selectMovie(movie_num);
+			
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("downloadView");
+			mav.addObject("downloadFile", movie.getUploadfile());
+			mav.addObject("filename", movie.getFilename());
+			
+			return mav;
+		}
+	
 	//무비차트 글 수정
 	@GetMapping("movie/movieUpdate.do")
 	public String formUpdate(@RequestParam int movie_num, Model model) {

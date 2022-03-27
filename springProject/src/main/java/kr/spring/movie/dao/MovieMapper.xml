@@ -6,8 +6,8 @@
 
 	<select id="selectList" parameterType="map" resultType="movieVO">
 		SELECT
-		  movie_num, movie_name, movie_genre, movie_pg, movie_auth
-		 FROM M_movie          
+		  *
+		FROM M_movie
 	</select>
 	<select id="selectRowCount" parameterType="map" resultType="integer">
 		SELECT
