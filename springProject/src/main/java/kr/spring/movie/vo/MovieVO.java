@@ -25,6 +25,9 @@ public class MovieVO {
 	private int movie_rate; //영화 평점
 	private int mem_num; //회원번호
 	
+	//찜한 영화를 위한 my_movie_num
+	private int my_movie_num;
+
 	//업로드 파일 처리
 	public void setUpload(MultipartFile upload)throws IOException{
 		this.upload = upload;
@@ -116,6 +119,14 @@ public class MovieVO {
 
 	public MultipartFile getUpload() {
 		return upload;
+	}
+	
+	public int getMy_movie_num() {
+		return my_movie_num;
+	}
+
+	public void setMy_movie_num(int my_movie_num) {
+		this.my_movie_num = my_movie_num;
 	}
 
 	@Override
