@@ -61,7 +61,7 @@ $(function(){
 			//cgv지점명 클릭시 지점별 인포사진 교체
 			$('#theater_img_container').find('img').attr('src','${pageContext.request.contextPath}/theater/theaterImage.do?theater_num='+theater_num);	
 			//cgv지점명 클릭시 인포사진 위에 극장지점명(ex cgv강남) 표시
-			$('h4').find('span').text(theater_name).show();
+			$('h4').find('span').text(theater_name).show();		
 	});	
 });
 </script>
@@ -115,4 +115,6 @@ $(function(){
 </div>
 <hr size="1" noshade="noshade" width="100%">
 <hr size="1" noshade="noshade" width="100%">
+<!-- 극장 리스트 작업 시작 -->
+<!-- 극장 리스트 작업 끝 -->
 <!-- 중앙 컨텐츠 끝 -->
