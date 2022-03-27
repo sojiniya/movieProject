@@ -29,6 +29,23 @@ table td, table th{
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(function(){
+		$("#sel_regioncode").change(function(){
+			console.log("sel_theatercode 변함");
+			var regioncode = $("#sel_regioncode").val();
+			
+			$("#sel_regioncode").empty();
+			
+			if(regioncode == 1){
+				option .. append
+			}else if(regioncode == 2){
+				
+			}
+			
+			// 서울 > 1,2,
+			// 부산 > 3,4
+			
+		});
+		
 		$(".radio_b1").click(function(){
 			if($("input[type='radio']").is(':checked')){
 				$(".radio_v1").show();
@@ -70,6 +87,7 @@ table td, table th{
                 $('#sel_theatercode').attr("disabled", false);
             }
         });
+		
 	})
 </script>
 <!-- 중앙 시작 -->
@@ -174,9 +192,10 @@ table td, table th{
 							<option value="4">강원</option>
 							<option value="5">대구</option>
 						</select> 
-						<label for="sel_theatercode" class="hidden" selected>영화관 선택</label> 
+						<label for="sel_theatercode" class="hidden">영화관 선택</label> 
 						<select title="영화관 선택" class="sel01" id="sel_theatercode" name="sel_theatercode" disabled="disabled" style="width: 114px; height: 30px;">
-							<option value="0">영화관 선택</option>
+							<option value="0" selected>영화관 선택</option>
+							
 						</select>
 					</td>
 				</tr>

@@ -52,7 +52,7 @@ public class BoardController {
 		return "adminBoardWrite";
 	}
 		
-	//관리자 글 등록 폼에서 전송된 데이터 처리
+	//관리자 글 등록 폼에서 전송된 데이터 처리 은경
 	@PostMapping("/board/adminBoardWrite.do")
 	public String submit(BoardVO boardVO,
 				         HttpSession session,
@@ -182,9 +182,11 @@ public class BoardController {
 			return mav;
 			}
 	
-	//회원 글 등록 폼
-	@RequestMapping("/board/userBoardWrite.do")
+	//회원 글 등록 폼 은경
+//	@RequestMapping("/board/userBoardWrite.do")
+	@GetMapping("/board/userBoardWrite.do")
 	public String userBoardMain() {
+		logger.info("ㅅㄷㄴㅅ " );
 		return "userBoardWrite";
 	}
 	
@@ -194,7 +196,7 @@ public class BoardController {
 					      HttpSession session,
 					      HttpServletRequest request) {
 				
-		logger.info("<<사용자 게시판 글 저장>> : " + boardVO);
+		logger.info("1<<사용자 게시판 글 저장>> : " + boardVO);
 				
 		Integer user_num = (Integer)session.getAttribute("user_num");
 		//회원 번호 셋팅
@@ -205,6 +207,7 @@ public class BoardController {
 		return "redirect:/board/boardMain.do";
 		}
 	
-
+	
+	
 	
 }

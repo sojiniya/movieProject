@@ -32,8 +32,8 @@ public interface BoardMapper {
 	public void adminDeleteBoard(Integer board_num); //관리자 글 삭제
 	public void adminDeleteFile(Integer board_num); //관리자 글 파일 삭제
 	//회원부분
-	@Insert("INSERT INTO M_board (board_num,board_auth,sel_regioncode,sel_theatercode,board_title,board_content,board_uploadfile,"
-			  + "board_filename,mem_num) VALUES (M_board_seq.nextval,3,#{sel_regioncode},#{sel_theatercode},"
+	@Insert("INSERT INTO M_board (board_num,board_auth,cate_num,sel_regioncode,sel_theatercode,board_title,board_content,board_uploadfile,"
+			  + "board_filename,mem_num) VALUES (M_board_seq.nextval,#{board_auth},#{cate_num},#{sel_regioncode},#{sel_theatercode},"
 			  + "#{board_title},#{board_content},#{board_uploadfile},#{board_filename},#{mem_num})")
 	public void insertBoard(BoardVO board); //회원 글 작성
 	public BoardVO selectBoard(Integer board_num); //회원글 상세보기

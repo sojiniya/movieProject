@@ -33,34 +33,44 @@ table td, table th{
 <div class="adminBoardWrite-main">
 	<h3>문의 및 건의</h3>
 	<form:form modelAttribute="boardVO" action="userBoardWrite.do" 
-	 class="adminWriteForm" method="post" enctype="mutipart/form-data">
+	 class="adminWriteForm" method="post" enctype="multipart/form-data">
 		<table style="width:100%; table-layout:fixed;" class="tbl_notice_list tbl_left">
 			<colgroup>
 				<col style="width:140px;">
 			</colgroup>
 			<tbody>
+				<tr style="display: none;">
+					<th scope="row">게시글 유형</th>
+					<td>
+						<ul>
+							<li >
+								<input type="radio" id="ask" name="board_auth" class="radio_b1" value="2" checked>건의 및 문의
+							</li>
+						</ul>
+					</td>
+				</tr>
 				<tr class="radio_v1">
 					<th scope="row">카테고리</th>
 					<td>
 						<ul class="type_list">
 							<li>
 								<label for="question">
-								<input type="radio" id="question" name="cate_name" value="8" checked>문의
+								<input type="radio" id="question" name="cate_num" value="8" checked>문의
 								</label>
 							</li>
 							<li>
 								<label for="complain">
-								<input type="radio" id="complain" name="cate_name" value="9">불만
+								<input type="radio" id="complain" name="cate_num" value="9">불만
 								</label>
 							</li>
 							<li>
 								<label for="compliment">
-								<input type="radio" id="compliment" name="cate_name" value="10">칭찬
+								<input type="radio" id="compliment" name="cate_num" value="10">칭찬
 								</label>
 							</li>
 							<li>
 								<label for="proposal">
-								<input type="radio" id="proposal" name="cate_name" value="11">제안
+								<input type="radio" id="proposal" name="cate_num" value="11">제안
 								</label>
 							</li>
 						</ul>
@@ -72,11 +82,23 @@ table td, table th{
 						
 						<label for="sel_regioncode" class="hidden">지역 선택</label> 
 						<select title="지역 선택" class="sel01" id="sel_regioncode" name="sel_regioncode" style="width: 114px; height: 30px;">
-							<option value="">지역 선택</option>
+							<option value="0" selected>지역 선택</option>
+							<option value="1">서울</option>
+							<option value="2">경기</option>
+							<option value="3">인천</option>
+							<option value="4">강원</option>
+							<option value="5">대구</option>
 						</select> 
 						<label for="sel_theatercode" class="hidden">영화관 선택</label> 
 						<select title="영화관 선택" class="sel01" id="sel_theatercode" name="sel_theatercode" style="width: 114px; height: 30px;">
-							<option value="">영화관 선택</option>
+							<option value="0" selected>영화관 선택</option>
+							<option value="1">cgv 강남</option>
+							<option value="2">cgv 홍대</option>
+							<option value="3">cgv 압구정</option>
+							<option value="4">cgv 대학로</option>
+							<option value="5">cgv 동대문</option>
+							<option value="6">cgv 수원</option>
+							<option value="7">cgv 강남</option>
 						</select>
 					</td>
 				</tr>
