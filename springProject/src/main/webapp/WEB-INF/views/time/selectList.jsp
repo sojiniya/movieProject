@@ -56,40 +56,12 @@ $(function(){
 		//극장관 등록 후 cgv지점을 클릭하면 지점별 극장 인포사진 노출
 		$(document).on('click','.theater-name',function(){
 			let theater_num = $(this).attr('data-num');
+			let theater_name = $(this).text();
+			
+			//cgv지점명 클릭시 지점별 인포사진 교체
 			$('#theater_img_container').find('img').attr('src','${pageContext.request.contextPath}/theater/theaterImage.do?theater_num='+theater_num);	
-			
-		//극장관 등록 후 cgv지점을 클릭하면 지점명 교체
-		//$(document).on('click','.theater-name',function(){
-			//let theater_name; //선택한 cgv지점
-			//let theater_num = $('.theater-name').attr('data-num');
-			
-		$('#theatername_container').find('span').attr('class', '${pageContext.request.contextPath}/theater/theaterImage.do?theater_num='+theater_num);
-			$.ajax({
-				type:'post',
-				data:{theater_name:$(this).text()},// 클릭한 극장 지점명 저장
-				url:'theaterInfo.do',
-				dataType:'json',
-				cache:false,
-				timeout:30000,
-				success:function(param){	
-					//$('#sect-theater').empty();
-					//클릭한 극장지점명 이름 노출
-					$(param.list).each(function(index,item){
-						//let output = '<div class="sect-theater">';
-						let output = '<h4 class="theater-ti">';
-						output += '<span class="theater-name" data-num="' + item.theater_num + '">' + item.theater_name + '</span>';
-						output += '</h4>';
-						//output += '</div>';
-				
-						//문서 객체에 극장지점 추가
-						$('#theater-ti').append(output);	
-					});
-				},
-				error:function(){
-					alert('네트워크 오류 발생');
-				}
-			//});
-		});//end click - theater_name
+			//cgv지점명 클릭시 인포사진 위에 극장지점명(ex cgv강남) 표시
+			$('h4').find('span').text(theater_name).show();
 	});	
 });
 </script>
@@ -128,7 +100,7 @@ $(function(){
 	<div id="theatername_container"> <!-- <div class="sect-theater" id="theatername_container"> -->
 		<h4 class="theater-ti">
 			<!-- 디폴트값 cgv강남으로 지정 -->
-			<span class="theater-name">CGV강남</span>	<!-- <span class="theater-name">CGV강남</span> -->
+			<span class="theater-name">cgv강남</span>	<!-- <span class="theater-name">CGV강남</span> -->
 		</h4>
 		<div class="wrap-theaterinfo">
 			<div class="box-image">
