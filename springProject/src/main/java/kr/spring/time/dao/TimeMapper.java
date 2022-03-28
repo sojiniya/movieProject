@@ -14,7 +14,7 @@ public interface TimeMapper {
 	public List<TimeVO> selectList(TimeVO timeVO);
 	
 	//2.극장등록
-	@Insert("INSERT INTO M_movie (movie_num,movie_name,movie_genre,movie_auth,movie_pg,movie_date,movie_time) "
-			+ "VALUES (M_movie_seq.nextval,#{movie_name},#{movie_genre},#{movie_auth},#{movie_pg},#{movie_date},#{movie_time})")
+	@Insert("INSERT INTO M_time (movie_num,movie_name,movie_genre,movie_auth,movie_pg,movie_date,movie_time) "
+			+ "VALUES (M_time_seq.nextval,#{movie_name},#{movie_genre},#{movie_auth},#{movie_pg},#{movie_date},#{movie_time})")
 	public void insertTheater2(TimeVO timeVO);
 }

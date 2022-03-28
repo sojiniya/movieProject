@@ -2,6 +2,8 @@ package kr.spring.time.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -45,13 +47,17 @@ public class TimeController {
 
 	//극장 등록 폼에서 전송된 데이터 처리
 	@PostMapping("/time/theaterInsert2.do")
-	public String submit2(@Valid TimeVO timeVO, BindingResult result) {
+	public String submit2(@Valid TimeVO timeVO, BindingResult result, HttpSession session, HttpServletRequest request) {
 		logger.info("<<극장 저장>> : " + timeVO);
 
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		if(result.hasErrors()) {
 			return form2();
 		}
+		
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		//회원 번호 셋팅
+		timeVO.setMem_num(user_num);
 
 		//극장 등록
 		timeService.insertTheater2(timeVO);

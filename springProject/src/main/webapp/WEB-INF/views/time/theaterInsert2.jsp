@@ -37,7 +37,7 @@
 				<form:errors path="movie_time" cssClass="error-color"/>
 			</li>
 			<li>
-				<form:label path="movie_date">극장상영시간</form:label>
+				<form:label path="movie_date">극장상영날짜</form:label>
 				<form:input path="movie_date"/>
 				<form:errors path="movie_date" cssClass="error-color"/>
 			</li>
