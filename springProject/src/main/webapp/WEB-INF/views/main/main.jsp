@@ -39,7 +39,7 @@
 			<div id="movie_api">
 				<c:forEach var="movie" items="${movieList}" varStatus="status" begin="1" end="5">
 					<li>
-						<p class="movie_img"><img src="imageView.do?movie_num=${movie.movie_num}" style="width:185px; height:260px;"></p>
+						<p class="movie_img"><a href="/project/movie/movieDetail.do?movie_num=${movie.movie_num}"><img src="/project/movie/imageView.do?movie_num=${movie.movie_num}" style="width:185px; height:260px;"></a></p>
 						<p class="movie_rank">${status.count}</p>
 						<br>
 						<p class="movie_pg">
@@ -59,19 +59,9 @@
 						</c:choose>
 						</p>
 						<br>
-						<strong class="movie_name"><a href="movieDetail.do?movie_num=${movie.movie_num}">${movie.movie_name}</a></strong><br>
-						<p>
-						<c:if test="${movie.movie_auth == 0}">
-							<div class="auth_result">상영중</div>
-						</c:if>
-						<c:if test="${movie.movie_auth == 1}">
-							<div class="auth_result">상영 예정</div>
-						</c:if>
-						<c:if test="${movie.movie_auth == 2}">
-							<div class="auth_result">상영 종료</div>
-						</c:if>
-						</p>
-						<br>
+						<div class="movie_content">
+						<strong class="movie_name"><a href="/project/movie/movieDetail.do?movie_num=${movie.movie_num}">${movie.movie_name}</a></strong><br>
+						</div>
 					</li>
 				</c:forEach>
 			</div>

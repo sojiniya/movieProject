@@ -2,34 +2,23 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<style>
-.movie_info table{
-	border:none;
-}
-.movie_info td{
-	border:none;
-	font-weight: bold;
-}
-</style>
 <!-- 중앙 컨텐츠 시작 -->
 <script
 	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
-<div class="movie_info">
-<table>
-	<tr><td><img src="imageView.do?movie_num=${movie.movie_num}" style="width:185px; height:260px;"></td>
-	<td>${movie.movie_name}</td></tr></table>
-</div>
+
+<p class="movie_img"><img src="imageView.do?movie_num=${movie.movie_num}" style="width:185px; height:260px;"></p>
+	<div class="movie_info">
+	<p class="detail_name">${movie.movie_name}</p>
+	<c:if test="${movie.movie_auth == 0}">
+			<span class="auth_result">상영중</span></c:if>
+	<c:if test="${movie.movie_auth == 1}">
+			<span class="auth_result">상영 예정</span></c:if> 
+	<c:if test="${movie.movie_auth == 2}">
+			<span class="auth_result">상영 종료</span></c:if>
+</div><hr>
 <div class="page-main">
-	<strong class="movie_auth"> <c:if
-			test="${movie.movie_auth == 0}">
-			<div class="auth_result">상영중</div>
-		</c:if> <c:if test="${movie.movie_auth == 1}">
-			<div class="auth_result">상영 예정</div>
-		</c:if> <c:if test="${movie.movie_auth == 2}">
-			<div class="auth_result">상영 종료</div>
-		</c:if>
-	</strong>
-	<p>${movie.movie_content}</p>
+	<p class="movie_contents">${movie.movie_content}</p>
+	<a class="detail_reserve" href="/project/reserve/reserveStep1.do">예매하기</a>
 	<p>첨부파일 : <a href="file.do?movie_num=${movie.movie_num}">${movie.filename}</a></p>
 	<c:if test="${fn:endsWith(movie.filename,'.jpg') ||
 	              fn:endsWith(movie.filename,'.JPG') ||

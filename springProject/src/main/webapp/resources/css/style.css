@@ -365,6 +365,7 @@ div#movie_api li{
 }
 .movie_info p{
 	display: inline;
+	margin: 0px 25px 0px 25px;
 }
 .movie_rank{
 	position: absolute;
@@ -376,6 +377,13 @@ div#movie_api li{
 	position: absolute;
 	margin: 0;
 	padding: 0;
+}
+p.detail_name{
+	font-weight: bold;
+    font-size: 30px;
+}
+.movie_content{
+	float: left;
 }
 
 /*My Page*/
@@ -744,13 +752,17 @@ ul.c_tab.type_free {
 }
 .movie_name{
 	font-size: 17px;
+	margin-left: 35px;
 }
 .movie_genre{
 	font-weight: normal;
 	font-size: 15px;
 }
-.auth_result{
+span.auth_result{
 	font-weight: normal;
+	border: 2px solid #a16423;
+    color: #a16423;
+    padding: 5px;
 }
 .pg-image {
 	margin-top: 10px;
@@ -758,6 +770,7 @@ ul.c_tab.type_free {
 .movie_pg img{
 	width: 22px;
 	height: 22px;
+	margin-left: 4px;
 }
 .movie_reserve{
 	font-weight: normal;
@@ -781,6 +794,27 @@ input#movie_name{
 input#movie_content{
 	width:600px;
 	height: 200px;
+}
+.movie_img{
+	float: left;
+}
+.movie_info{
+	margin: 30px 0px 30px 0px;
+}
+p.movie_contents{
+	margin-left: 200px;
+	width: 750px;
+	height: 100px;
+}
+.detail_reserve{
+	display: inline-block;
+    width: 100px;
+    height: 35px;
+    background: #c9c9c9; 
+    text-align: center;
+    border-radius: 15px;
+    padding-top: 13px;
+    margin-left: 25px;
 }
 /*고객센터 목록보기*/
 #search_form {
