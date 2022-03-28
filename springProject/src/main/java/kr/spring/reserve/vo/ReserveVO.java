@@ -12,7 +12,7 @@ public class ReserveVO {
 	private int movie_num; // 영화번호 (외래키)
 	private int theater_num; // 영화관번호(외래키)
 	private String reserve_people; // 연령대 및 인원 (일반 1명,청소년1명,경로우대 1명 ...문자열로 보관)
-	private int reserve_paymethod; // 결제수단 (1:카드 결제 / 2:현금 결제 / 3:카카오페이 결제)
+	private String reserve_paymethod; // 결제수단 (1:카드 결제 / 2:현금 결제 / 3:카카오페이 결제)
 	private int reserve_paytotal; // 결제 금액
 	
 	private String mem_id; //회원 id
@@ -89,10 +89,10 @@ public class ReserveVO {
 	public void setReserve_people(String reserve_people) {
 		this.reserve_people = reserve_people;
 	}
-	public int getReserve_paymethod() {
+	public String getReserve_paymethod() {
 		return reserve_paymethod;
 	}
-	public void setReserve_paymethod(int reserve_paymethod) {
+	public void setReserve_paymethod(String reserve_paymethod) {
 		this.reserve_paymethod = reserve_paymethod;
 	}
 	public int getReserve_paytotal() {

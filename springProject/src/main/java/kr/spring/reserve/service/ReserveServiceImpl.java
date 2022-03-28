@@ -90,4 +90,17 @@ public class ReserveServiceImpl implements ReserveService{
 		return reserveMapper.reservseat_total_count(time_num);
 	}
 
+	@Override
+	public void insertreserveseat(List<Map<String,Object>> list) {
+		for(Map<String,Object> map : list) {
+			reserveMapper.insertreserveseat(map);
+		}
+	}	
+
+	@Override
+	public void insertreserve(ReserveVO reserveVO) {
+		
+	}
+
+
 }

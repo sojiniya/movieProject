@@ -3,6 +3,7 @@ package kr.spring.reserve.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 import kr.spring.movie.vo.MovieVO;
@@ -29,4 +30,8 @@ public interface ReserveService {
 	public List<ReserveseatVO> reservseatlist(Integer time_num);
 	public int seat_total_count(Integer time_num);
 	public int reservseat_total_count(Integer time_num);
+	
+	//예매완료
+	public void insertreserveseat(List<Map<String,Object>> list);
+	public void insertreserve(ReserveVO reserveVO);
 }

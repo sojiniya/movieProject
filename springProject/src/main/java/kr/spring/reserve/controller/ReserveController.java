@@ -10,7 +10,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpSession;
@@ -138,16 +141,44 @@ public class ReserveController {
 		
 		logger.info("<<예매완료 / 전달받은 예약 정보>>" + reservVO);
 		
+		Integer mem_num = (Integer)session.getAttribute("user_num");
+		reservVO.setMem_num(mem_num);
+		
+		ReserveseatVO reserveseatVO = new ReserveseatVO();
+		reserveseatVO.setTime_num(reservVO.getTime_num());
+		
+		// 예약좌석(M_reservseat) 테이블에 데이터 삽입 sql문 수행하기위한 매개변수(list)를 넘겨주기 전 객체 생성
+		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+		
+		//배열로 전달 받은 예약 선택좌석 번호를 한개씩 뽑아내기
+		for(String num : reservVO.getSeat_num_array()) {
+			//선택좌석 번호 첫번째 요소와 마지막 요소에 들어가는 '[',']' 특수문자 제거 
+			String seat_num_str = num.replace("[","").replace("]","");
+			Integer seat_num = Integer.parseInt(seat_num_str); // Integer 형식으로 형변환
+		
+			// m_reserveseat 테이블에 데이터 추가를 위한 sql문에 전달할 map 객체 생성
+			Map<String,Object> map = new HashMap<String, Object>();
+			
+			map.put("time_num",reservVO.getTime_num());
+			map.put("seat_num",seat_num);		
+			
+			list.add(map);
+		}		
+		
 		//예약좌석(M_reservseat) 테이블에 데이터 삽입
+		reserveService.insertreserveseat(list);
+		
+		reservVO.setReserve_paymethod("카카오페이");
+		
+		System.out.println("예매 전 reservVO : " + reservVO);
+
 		//예매내역(M_reserve) 테이블에 데이터 삽입
+		reserveService.insertreserve(reservVO);
 		
 		MovieVO movie = reserveService.pickmoviedetail(reservVO.getMovie_num());
 		TheaterVO theater = reserveService.picktheaterdetail(reservVO.getTheater_num());
 		TimeVO time = reserveService.picktimedetail(reservVO.getTime_num());
-		Integer user_num = (Integer)session.getAttribute("user_num");
-		MemberVO member = memberService.selectMember(user_num);
-		
-		logger.info("<<회원 상세 정보>> :" + member);
+		MemberVO member = memberService.selectMember(mem_num);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("reserveconfirm");
