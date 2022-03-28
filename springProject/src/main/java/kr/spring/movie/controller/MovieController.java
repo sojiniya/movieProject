@@ -64,27 +64,23 @@ public class MovieController {
 		return "redirect:/movie/movieChart.do";
 	}
 	
-	//극장 등록 폼
-			@GetMapping("/movie/theaterInsert.do")
-			public String form2() {
-				return "theaterInsert";
-			}
-
-			//극장 등록 폼에서 전송된 데이터 처리
-			@PostMapping("/movie/theaterInsert.do")
-			public String submit2(@Valid MovieVO movieVO, BindingResult result) {
-				logger.info("<<극장 저장>> : " + movieVO);
-
-				//유효성 체크 결과 오류가 있으면 폼 호출
-				if(result.hasErrors()) {
-					return form2();
-				}
-
-				//극장 등록
-				movieService.insertTheater(movieVO);
-
-				return "redirect:/movie/movieChart.do";
-			}
+	/*
+	 * //극장 등록 폼
+	 * 
+	 * @GetMapping("/movie/theaterInsert.do") public String form2() { return
+	 * "theaterInsert"; }
+	 * 
+	 * //극장 등록 폼에서 전송된 데이터 처리
+	 * 
+	 * @PostMapping("/movie/theaterInsert.do") public String submit2(@Valid MovieVO
+	 * movieVO, BindingResult result) { logger.info("<<극장 저장>> : " + movieVO);
+	 * 
+	 * //유효성 체크 결과 오류가 있으면 폼 호출 if(result.hasErrors()) { return form2(); }
+	 * 
+	 * //극장 등록 movieService.insertTheater(movieVO);
+	 * 
+	 * return "redirect:/movie/movieChart.do"; }
+	 */
 	
 	//무비차트
 	@RequestMapping("/movie/movieChart.do")

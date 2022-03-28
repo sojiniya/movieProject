@@ -16,5 +16,5 @@ public interface MovieService {
 	public void deleteMovie(Integer movie_num); //글 삭제
 	public void deleteFile(Integer movie_num); //글 파일 삭제
 	
-	public void insertTheater(MovieVO movie); //극장등록
+	//public void insertTheater(MovieVO movie); //극장등록
 }

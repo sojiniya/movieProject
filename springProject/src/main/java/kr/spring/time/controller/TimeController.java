@@ -13,10 +13,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.spring.theater.vo.TheaterVO;
 import kr.spring.time.service.TimeService;
 import kr.spring.time.vo.TimeVO;
 
@@ -37,6 +39,12 @@ public class TimeController {
 		return "selectList";
 	}
 	
+	//자바빈(VO) 초기화
+	@ModelAttribute
+	public TimeVO initCommand() {
+		return new TimeVO();
+	}
+	
 	//2. 극장등록
 	//극장 등록 폼
 	@GetMapping("/time/theaterInsert2.do")
@@ -46,7 +54,7 @@ public class TimeController {
 
 	//극장 등록 폼에서 전송된 데이터 처리
 	@PostMapping("/time/theaterInsert2.do")
-	public String submit2(@Valid TimeVO timeVO, BindingResult result, HttpSession session, HttpServletRequest request) {
+	public String submit2(@ModelAttribute("timeVO") @Valid TimeVO timeVO, BindingResult result, HttpSession session, HttpServletRequest request) {
 		logger.info("<<극장 저장>> : " + timeVO);
 
 		//유효성 체크 결과 오류가 있으면 폼 호출

@@ -31,10 +31,12 @@ public interface MovieMapper {
 			+ "WHERE movie_num=#{movie_num}")
 	public void deleteFile(Integer movie_num); //글 파일 삭제
 	
-	@Insert("INSERT INTO M_movie (movie_num,movie_name,movie_genre,movie_auth,movie_pg,movie_date,movie_time) "
-			+ "VALUES (M_movie_seq.nextval,#{movie_name},#{movie_genre},#{movie_auth},#{movie_pg},#{movie_date},#{movie_time})")
-	public void insertTheater(MovieVO movie); //극장 등록 - 찬미
-	
+	/*
+	 * @Insert("INSERT INTO M_movie (movie_num,movie_name,movie_genre,movie_auth,movie_pg,movie_date,movie_time) "
+	 * +
+	 * "VALUES (M_movie_seq.nextval,#{movie_name},#{movie_genre},#{movie_auth},#{movie_pg},#{movie_date},#{movie_time})"
+	 * ) public void insertTheater(MovieVO movie); //극장 등록 - 찬미
+	 */	
 	//리뷰
 	public List<MovieReviewVO> selectListReview(Map<String,Object> map); //목록생성
 	@Select("SELECT COUNT(*) FROM M_review r JOIN M_member m "

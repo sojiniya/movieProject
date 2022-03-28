@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!-- 중앙 컨텐츠 시작 -->
@@ -49,5 +49,5 @@
 			              onclick="location.href='movieChart.do'">
 		</div>                                          
 	</form:form>
-</div>
+</div> --%>
 <!-- 중앙 컨텐츠 끝 -->
