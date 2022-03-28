@@ -9,6 +9,7 @@
 <div class="page-main">
 	<h2>극장정보 등록</h2>
 	<form:form modelAttribute="timeVO" action="theaterInsert2.do" id="register_form">
+		<form:hidden path="movie_num"/>
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>

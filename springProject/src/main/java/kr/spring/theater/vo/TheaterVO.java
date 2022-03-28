@@ -17,6 +17,8 @@ public class TheaterVO {
 	private byte[] theater_image; //바이트형태 파일->파일업로드할수있게
 	private String theater_imagename; //파일명
 	
+	private int mem_num;
+	
 	//업로드 파일 처리
 	public void setUpload(MultipartFile upload) throws IOException{
 		this.upload = upload;
@@ -74,11 +76,19 @@ public class TheaterVO {
 		this.theater_imagename = theater_imagename;
 	}
 	
+	public int getMem_num() {
+		return mem_num;
+	}
+
+	public void setMem_num(int mem_num) {
+		this.mem_num = mem_num;
+	}
+
 	//투스트링
 	@Override
 	public String toString() {
 		return "TheaterVO [theater_num=" + theater_num + ", theater_name=" + theater_name + ", theater_addr="
 				+ theater_addr + ", theater_local=" + theater_local + ", upload=" + upload + ", theater_imagename="
-				+ theater_imagename + "]";
+				+ theater_imagename + ", mem_num=" + mem_num + "]";
 	}
 }

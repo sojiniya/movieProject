@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import kr.spring.movie.vo.MovieVO;
 import kr.spring.time.service.TimeService;
 import kr.spring.time.vo.TimeVO;
 
