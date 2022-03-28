@@ -20,7 +20,35 @@
 			 movie_content=#{movie_content},
 			 movie_genre=#{movie_genre},
 			 movie_auth=#{movie_auth},
-			 movie_pg=#{movie_pg}
+			 movie_pg=#{movie_pg},
+			  <if test="filename != ''">
+		  	uploadfile=#{uploadfile},
+		  	filename=#{filename}
+		  </if>
 		WHERE movie_num=#{movie_num}
 	</update>
+	<select id="selectListReview" parameterType="map"
+                         resultType="movieReviewVO">
+       SELECT
+          *
+       FROM (SELECT 
+               a.*,
+               rownum rnum
+             FROM (SELECT
+                     review_num,
+                     <![CDATA[
+                     REPLACE(REPLACE(review_content,'<','&lt;'),'>','&gt;') review_content,
+                     ]]>
+                     review_reg_date,
+                     movie_num,
+                     mem_num,
+                     id
+                   FROM M_review
+                   JOIN M_member USING(mem_num) 
+                   WHERE movie_num = #{movie_num}
+                   ORDER BY review_num DESC)a)
+       <![CDATA[
+       WHERE rnum >= #{start} AND rnum <= #{end}
+       ]]>                                 
+    </select>
 </mapper>
