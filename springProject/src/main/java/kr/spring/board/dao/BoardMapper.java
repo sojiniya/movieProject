@@ -34,8 +34,8 @@ public interface BoardMapper {
 	public void adminDeleteBoard(Integer board_num); //관리자 글 삭제
 	@Update("UPDATE m_board SET board_uploadfile='',board_filename='' WHERE board_num=#{board_num}")
 	//public void adminDeleteFile(Integer board_num); //관리자 글 파일 삭제
-	@Select("SELECT board_title,board_reg_date FROM m_board where rownum <6 AND cate_num between '5' and '7' ORDER BY board_reg_date DESC;")
-	public BoardVO boardNews(Integer board_num); //고객센터 메인 뉴스 보기
+	//@Select("SELECT board_title,board_reg_date,board_num FROM m_board where rownum <6 AND cate_num between '5' and '7' ORDER BY board_reg_date DESC")
+	public List<BoardVO> boardNews(Map<String,Object> map); //고객센터 메인 뉴스 보기
 	
 	
 	//회원부분

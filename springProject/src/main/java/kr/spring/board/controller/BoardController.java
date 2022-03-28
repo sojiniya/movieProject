@@ -41,12 +41,43 @@ public class BoardController {
 		return new BoardVO();
 	}
 	
-	//고객센터 메인 페이지
+	//고객센터 메인
 	@RequestMapping("/board/boardMain.do")
-	public String boardMain() {
-		
-		return "boardMain";
-	}
+	public ModelAndView process3(
+		@RequestParam(value="pageNum",defaultValue="1")int currentPage,
+		@RequestParam(value="keyfield",defaultValue="")String keyfield,
+		@RequestParam(value="keyword",defaultValue="")String keyword) {
+				
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+				
+		//글의 총갯수 또는 검색된 글의 갯수
+		int count = boardService.selectRowCount(map);
+				
+		//페이지 처리
+		PagingUtil page = new PagingUtil(keyfield,keyword,
+						                currentPage,count,20,10,"qnaList.do");
+				
+		map.put("start",page.getStartCount());
+		map.put("end", page.getEndCount());
+			
+		//리스트
+		List<BoardVO> list = null;
+		if(count > 0) {
+			list = boardService.selectList(map);
+		}
+						
+		ModelAndView mav = new ModelAndView();
+				       //타일스 설정
+		mav.setViewName("boardMain");
+			mav.addObject("count", count);
+			mav.addObject("list",list);
+			mav.addObject("pagingHtml", page.getPagingHtml());
+				
+			return mav;
+			}
+	
 	
 	//관리자 글 등록 폼
 	@GetMapping("/board/adminBoardWrite.do")
@@ -56,7 +87,7 @@ public class BoardController {
 		
 	//관리자 글 등록 폼에서 전송된 데이터 처리
 	@PostMapping("/board/adminBoardWrite.do")
-	public String submit(BoardVO boardVO, int board_num, Model model,
+	public String submit(BoardVO boardVO,
 				         HttpSession session,
 				         HttpServletRequest request) {
 			
@@ -151,8 +182,8 @@ public class BoardController {
 	@RequestMapping("/board/newsList.do")
 	public ModelAndView process1(
 			@RequestParam(value="pageNum",defaultValue="1")int currentPage,
-			@RequestParam(value="keyfield",defaultValue="")String keyfield,
-			@RequestParam(value="keyword",defaultValue="")String keyword) {
+			@RequestParam(value="keyfield",defaultValue="2")String keyfield,
+			@RequestParam(value="keyword",defaultValue="2")String keyword) {
 				
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("keyfield", keyfield);
@@ -254,6 +285,20 @@ public class BoardController {
 			mav.addObject("pagingHtml", page.getPagingHtml());
 					
 			return mav;
+			}
+	//회원 질문  글상세 
+	@RequestMapping("/board/userQnaView.do")
+		public ModelAndView process4(@RequestParam int board_num) {
+			logger.info("<<회원 질문 글 상세 - 글 번호>> : " + board_num);
+				
+			//해당 글의 조회수 증가
+			boardService.updateHit(board_num);
+				
+			BoardVO board = boardService.selectBoard(board_num);
+			//타이틀 HTML 불허
+			board.setBoard_title(StringUtil.useNoHtml(board.getBoard_title()));
+				                    //타일스 설정      속성명      속성값
+			return new ModelAndView("userQnaView","board",board);
 			}
 	
 	

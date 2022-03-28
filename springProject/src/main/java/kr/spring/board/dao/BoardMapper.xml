@@ -49,8 +49,15 @@
 		 		b.board_title LIKE '%' || #{keyword} || '%' or
 		        b.board_content LIKE '%' || #{keyword} || '%'
 		    </if>
+		    <if test="keyword != '' and keyfield == 2">
+		 		b.board_title LIKE '%' || #{keyword} || '%'
+		    </if>
+		    <if test="keyword != '' and keyfield == 3">
+		 		b.board_content LIKE '%' || #{keyword} || '%'
+		    </if>
 		 </where>
 	</select>
+	
 	<update id="adminUpdateBoard" parameterType="boardVO">
 		UPDATE m_board SET
 		  <if test="filename != ''">

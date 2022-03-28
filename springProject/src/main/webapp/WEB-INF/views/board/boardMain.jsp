@@ -36,12 +36,20 @@
 			<a href="${pageContext.request.contextPath}/board/newsList.do">
 				<span class="tit">공지/뉴스</span>
 			</a>
+			
+			<!-- 공지/ 뉴스 카테고리만 뜨게끔 수정해야함. -->
+			<c:forEach var="board" items="${list}" begin="0" end="3" step="1" varStatus="status">
+			
 			<ul class="txt">
 				<li>
-					<a href="#">분류,제목</a>
-					<span class="day">등록일</span>
+					<p style="display:none">${status.index}</p>
+					<a href="qnaDetail.do?board_num=${board.board_num}">${board.board_title}</a>
+					<span class="day">${board.board_reg_date}</span>
+					
 				</li>
 			</ul>
+		
+			</c:forEach>
 		</div>
 	</div>
 	</div>

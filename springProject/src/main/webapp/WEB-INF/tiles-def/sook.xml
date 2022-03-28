@@ -33,6 +33,10 @@
     	<put-attribute name="title" value="문의/건의"/>
     	<put-attribute name="body" value="/WEB-INF/views/board/userQnaList.jsp"/>
     </definition>
+    <definition name="userQnaView" extends="board_main">
+    	<put-attribute name="title" value="문의/건의"/>
+    	<put-attribute name="body" value="/WEB-INF/views/board/userQnaView.jsp"/>
+    </definition>
      <definition name="adminUpdate" extends="board_main">
     	<put-attribute name="title" value="관리자 글 수정"/>
     	<put-attribute name="body" value="/WEB-INF/views/board/adminUpdate.jsp"/>

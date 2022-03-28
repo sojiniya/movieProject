@@ -65,7 +65,7 @@ table td, table th{
 					<tr>
 						<td>${board.board_num}</td>
 						<td>[${board.cate_name}]</td>
-						<td class="txt"><a href="qnaDetail.do?board_num=${board.board_num}">${board.board_title}</a></td>
+						<td class="txt"><a href="userQnaView.do?board_num=${board.board_num}">${board.board_title}</a></td>
 						<td>${board.board_reg_date}</td>
 						<td>${board.board_reg_date}</td>
 						<td>${board.board_hit}</td>

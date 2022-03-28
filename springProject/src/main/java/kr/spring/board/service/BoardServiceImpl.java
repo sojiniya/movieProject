@@ -103,9 +103,10 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public BoardVO boardNews(Integer board_num) {
-		return boardMapper.boardNews(board_num);
+	public List<BoardVO> boardNews(Map<String, Object> map) {
+		return boardMapper.boardNews(map);
 	}
+
 
 	
 	

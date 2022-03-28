@@ -20,7 +20,7 @@ public interface BoardService {
 	public void adminUpdateBoard(BoardVO board); //관리자 글 수정
 	public void adminDeleteBoard(Integer board_num); //관리자 글 삭제
 	//public void adminDeleteFile(Integer board_num); //관리자 글 파일 삭제
-	public BoardVO boardNews(Integer board_num); //고객센터 메인 뉴스 보기
+	public List<BoardVO> boardNews(Map<String,Object> map);
 	
 	//회원부분
 	public void insertBoard(BoardVO board); //회원 글 작성

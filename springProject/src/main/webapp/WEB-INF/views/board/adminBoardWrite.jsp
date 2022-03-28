@@ -230,13 +230,13 @@ table td, table th{
 			    	</script>       
 					</td>
 				</tr>
-				<!-- 안넣어도 될 것 같음 ckeditor로 사진 업로드 가능 -->
-				<!-- <tr>
+				
+				<tr style="display:none">
 					<th>파일업로드</th>
 					<td>
 					<input type="file" name="upload" id="upload" accept="image/gif,image/png,image/jpeg">
 					</td>
-				</tr> -->
+				</tr>
 			</tbody>
 		</table>
 		<div class="box-btn_adminSubmit">
