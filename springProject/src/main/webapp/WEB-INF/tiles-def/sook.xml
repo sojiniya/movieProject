@@ -29,6 +29,14 @@
     	<put-attribute name="title" value="공지/뉴스"/>
     	<put-attribute name="body" value="/WEB-INF/views/board/newsList.jsp"/>
     </definition>
+    <definition name="userQnaList" extends="board_main">
+    	<put-attribute name="title" value="문의/건의"/>
+    	<put-attribute name="body" value="/WEB-INF/views/board/userQnaList.jsp"/>
+    </definition>
+     <definition name="adminUpdate" extends="board_main">
+    	<put-attribute name="title" value="관리자 글 수정"/>
+    	<put-attribute name="body" value="/WEB-INF/views/board/adminUpdate.jsp"/>
+    </definition>
 </tiles-definitions>
 
 

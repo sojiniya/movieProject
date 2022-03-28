@@ -642,15 +642,23 @@ input[id="zipcode"]{
     width: 800px;
     height: 287px;
 }
-.notice_area .more {
-    position: absolute;
-    top: 0;
-    left: 75px;
-    display: inline-block;
-    width: 20px;
-    height: 19px;
-    background: url(../images/ico_plus.png) no-repeat -159px -287px;
-    text-indent: -999px;
+.notice_area .txt {
+    margin-top: 15px;
+}
+.notice_area .txt li {
+    text-align: right;
+    margin-top: 13px;
+    vertical-align: top;
+}
+.notice_area .txt li a {
+    float: left;
+    overflow: hidden;
+    display: block;
+    width: 400px;
+    color: #222;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
 }
 .radio_v2 {
 	display:none;

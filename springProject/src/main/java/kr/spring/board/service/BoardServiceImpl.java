@@ -39,7 +39,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void updateHit(Integer board_num) {
-		// TODO Auto-generated method stub
+		boardMapper.updateHit(board_num);
 		
 	}
 
@@ -56,21 +56,22 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void adminUpdateBoard(BoardVO board) {
-		// TODO Auto-generated method stub
+		boardMapper.adminUpdateBoard(board);
 		
 	}
 
 	@Override
 	public void adminDeleteBoard(Integer board_num) {
-		// TODO Auto-generated method stub
+		boardMapper.adminDeleteBoard(board_num);
 		
 	}
 
-	@Override
-	public void adminDeleteFile(Integer board_num) {
-		// TODO Auto-generated method stub
-		
-	}
+	/*
+	 * @Override public void adminDeleteFile(Integer board_num) {
+	 * boardMapper.adminDeleteFile(board_num);
+	 * 
+	 * }
+	 */
 
 	@Override
 	public void insertBoard(BoardVO board) {
@@ -80,7 +81,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public BoardVO selectBoard(Integer board_num) {
-		return null;
+		return boardMapper.selectBoard(board_num);
 	}
 
 	@Override
@@ -99,6 +100,11 @@ public class BoardServiceImpl implements BoardService{
 	public void deleteFile(Integer board_num) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public BoardVO boardNews(Integer board_num) {
+		return boardMapper.boardNews(board_num);
 	}
 
 	

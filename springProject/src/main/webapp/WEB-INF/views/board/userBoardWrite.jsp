@@ -133,12 +133,12 @@ table td, table th{
 			    	</script>       
 					</td>
 				</tr>
-				<tr>
+				<!-- <tr>
 					<th>파일업로드</th>
 					<td>
 					<input type="file" name="upload" id="upload" accept="image/gif,image/png,image/jpeg">
 					</td>
-				</tr>
+				</tr> -->
 			</tbody>
 		</table>
 		<div class="box-btn_adminSubmit">

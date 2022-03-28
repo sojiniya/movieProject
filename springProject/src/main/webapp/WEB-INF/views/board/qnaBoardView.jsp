@@ -40,9 +40,11 @@ table td, table th{
 				</div>
 				<div class="customer_btn">
 					<c:if test="${!empty user_num && user_auth == 3}">
-					<button type="button" class="round inwhite" id="btn_list">
+					<button type="button" class="round inwhite" id="btn_list"
+					onclick="location.href='adminUpdate.do?board_num=${board.board_num}'">
 						<span>수정</span>
 					</button>
+					
 					<button type="button" class="round inred" id="btn_list">
 						<span>삭제</span>
 					</button>

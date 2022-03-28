@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -43,6 +44,7 @@ public class BoardController {
 	//고객센터 메인 페이지
 	@RequestMapping("/board/boardMain.do")
 	public String boardMain() {
+		
 		return "boardMain";
 	}
 	
@@ -52,9 +54,9 @@ public class BoardController {
 		return "adminBoardWrite";
 	}
 		
-	//관리자 글 등록 폼에서 전송된 데이터 처리 은경
+	//관리자 글 등록 폼에서 전송된 데이터 처리
 	@PostMapping("/board/adminBoardWrite.do")
-	public String submit(BoardVO boardVO,
+	public String submit(BoardVO boardVO, int board_num, Model model,
 				         HttpSession session,
 				         HttpServletRequest request) {
 			
@@ -85,7 +87,7 @@ public class BoardController {
 				
 			//페이지 처리
 			PagingUtil page = new PagingUtil(keyfield,keyword,
-						                currentPage,count,10,10,"qnaList.do");
+						                currentPage,count,20,10,"qnaList.do");
 				
 			map.put("start",page.getStartCount());
 			map.put("end", page.getEndCount());
@@ -161,7 +163,7 @@ public class BoardController {
 				
 			//페이지 처리
 			PagingUtil page = new PagingUtil(keyfield,keyword,
-						                currentPage,count,10,10,"newsList.do");
+						                currentPage,count,20,10,"newsList.do");
 				
 			map.put("start",page.getStartCount());
 			map.put("end", page.getEndCount());
@@ -182,11 +184,21 @@ public class BoardController {
 			return mav;
 			}
 	
-	//회원 글 등록 폼 은경
-//	@RequestMapping("/board/userBoardWrite.do")
+	
+	//수정 폼
+	@GetMapping("/board/adminUpdate.do")
+	public String formUpdate(@RequestParam int board_num,
+				                 Model model) {
+	BoardVO boardVO = boardService.adminSelectBoard(board_num);
+			
+	model.addAttribute("boardVO", boardVO);		
+			
+	return "adminUpdate";
+	}
+	
+	//회원 글 등록 폼 
 	@GetMapping("/board/userBoardWrite.do")
 	public String userBoardMain() {
-		logger.info("ㅅㄷㄴㅅ " );
 		return "userBoardWrite";
 	}
 	
@@ -207,7 +219,42 @@ public class BoardController {
 		return "redirect:/board/boardMain.do";
 		}
 	
-	
+	//문의/건의 목록
+	@RequestMapping("/board/userQnaList.do")
+		public ModelAndView process2(
+			@RequestParam(value="pageNum",defaultValue="1")int currentPage,
+			@RequestParam(value="keyfield",defaultValue="")String keyfield,
+			@RequestParam(value="keyword",defaultValue="")String keyword) {
+					
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("keyfield", keyfield);
+			map.put("keyword", keyword);
+					
+			//글의 총갯수 또는 검색된 글의 갯수
+			int count = boardService.selectRowCount(map);
+					
+			//페이지 처리
+			PagingUtil page = new PagingUtil(keyfield,keyword,
+							                currentPage,count,20,10,"userQnaList.do");
+					
+			map.put("start",page.getStartCount());
+			map.put("end", page.getEndCount());
+				
+			//리스트
+			List<BoardVO> list = null;
+			if(count > 0) {
+			list = boardService.selectList(map);
+			}
+							
+			ModelAndView mav = new ModelAndView();
+					            //타일스 설정
+			mav.setViewName("userQnaList");
+			mav.addObject("count", count);
+			mav.addObject("list",list);
+			mav.addObject("pagingHtml", page.getPagingHtml());
+					
+			return mav;
+			}
 	
 	
 }

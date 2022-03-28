@@ -93,8 +93,8 @@ table td, table th{
 <!-- 중앙 시작 -->
 <!-- 3월 11일 31분 -->
 <div class="adminBoardWrite-main">
-	<h3>관리자 글쓰기</h3>
-	<form:form modelAttribute="boardVO" action="adminBoardWrite.do" 
+	<h3>관리자 글 수정</h3>
+	<form:form modelAttribute="boardVO" action="adminUpdate.do" 
 	 class="adminWriteForm" method="post" enctype="multipart/form-data">
 		<table style="width:100%; table-layout:fixed;" class="tbl_notice_list tbl_left">
 			<colgroup>
@@ -203,13 +203,13 @@ table td, table th{
 				<tr>
 					<th scope="row">제목</th>
 					<td>
-						<input name="board_title" style="width: 660px; height: 30px;" type="text" placeholder="제목을 입력하세요" />
+						<input name="board_title" style="width: 660px; height: 30px;" type="text" placeholder="제목을 입력하세요" value="${boardVO.board_title}"/>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row"><b>내용</b></th>
 					<td>
-						<textarea name="board_content" class="ck" placeholder="내용을 입력하세요"></textarea>
+						<textarea name="board_content" class="ck" placeholder="내용을 입력하세요">${boardVO.board_content}</textarea>
 						<script>
 						 function MyCustomUploadAdapterPlugin(editor) {
 					    	editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
@@ -230,7 +230,6 @@ table td, table th{
 			    	</script>       
 					</td>
 				</tr>
-				<!-- 안넣어도 될 것 같음 ckeditor로 사진 업로드 가능 -->
 				<!-- <tr>
 					<th>파일업로드</th>
 					<td>
