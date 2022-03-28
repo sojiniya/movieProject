@@ -23,12 +23,22 @@
 		<div class="c_box inquiry" style="cursor:pointer;">
 			<strong class="c_tit">건의 및 문의사항</strong>
 			<span class="c_txt">건의 및 문의사항을 전달해 주세요.</span>
+			<c:if test="${!empty user_num && user_auth == 1}">
 			<a href="${pageContext.request.contextPath}/board/userBoardWrite.do">글쓰기</a>
+			</c:if>
+			<c:if test="${empty user_num}">
+			<a href="${pageContext.request.contextPath}/user/login.do">로그인 후 사용</a>
+			</c:if>
 		</div>
 		<div class="c_box my_advice" style="cursor:pointer;">
 			<strong class="c_tit">내 상담내역 확인</strong>
 			<span class="c_txt">문의하신 내용을 확인하실 수 있습니다.</span>
+			<c:if test="${!empty user_num && user_auth == 1}">
 			<a href="#" target="_blank">내역 조회</a>
+			</c:if>
+			<c:if test="${empty user_num}">
+			<a href="${pageContext.request.contextPath}/user/login.do">로그인 후 사용</a>
+			</c:if>
 		</div>
 	</div>
 	<div class="customer_notice_area">
