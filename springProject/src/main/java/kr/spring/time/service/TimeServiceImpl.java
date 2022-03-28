@@ -19,4 +19,9 @@ public class TimeServiceImpl implements TimeService{
 		
 		return timeMapper.selectList(timeVO);
 	}
+
+	@Override
+	public void insertTheater2(TimeVO timeVO) {
+		timeMapper.insertTheater2(timeVO);
+	}
 }

@@ -3,6 +3,7 @@ package kr.spring.time.vo;
 import java.sql.Date;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -20,65 +21,84 @@ public class TimeVO {
 	
 	//극장정보 등록을 위해 movie테이블에서 가져온 데이터
 	@NotEmpty
-	private String moive_genre; //장르
+	private String movie_genre; //장르
 	@NotEmpty
+	@Size(min=2,max=2)
 	private int movie_pg; //관람연령(12/15/19)
 	@NotEmpty
-	private int moive_auth; //영화 상영정보 0:상영중/1:상영예정/2:상영종료
+	private int movie_auth; //영화 상영정보 0:상영중/1:상영예정/2:상영종료
 	
+	//게터세터
 	public int getTime_num() {
 		return time_num;
 	}
+
 	public void setTime_num(int time_num) {
 		this.time_num = time_num;
 	}
+
 	public int getTheater_num() {
 		return theater_num;
 	}
+
 	public void setTheater_num(int theater_num) {
 		this.theater_num = theater_num;
 	}
+
 	public int getMovie_num() {
 		return movie_num;
 	}
+
 	public void setMovie_num(int movie_num) {
 		this.movie_num = movie_num;
 	}
+
 	public String getMovie_name() {
 		return movie_name;
 	}
+
 	public void setMovie_name(String movie_name) {
 		this.movie_name = movie_name;
 	}
+
 	public Date getMovie_date() {
 		return movie_date;
 	}
+
 	public void setMovie_date(Date movie_date) {
 		this.movie_date = movie_date;
 	}
+
 	public String getMovie_time() {
 		return movie_time;
 	}
+
 	public void setMovie_time(String movie_time) {
 		this.movie_time = movie_time;
 	}
-	public String getMoive_genre() {
-		return moive_genre;
+
+	public String getMovie_genre() {
+		return movie_genre;
 	}
-	public void setMoive_genre(String moive_genre) {
-		this.moive_genre = moive_genre;
+
+	public void setMovie_genre(String movie_genre) {
+		this.movie_genre = movie_genre;
 	}
+
 	public int getMovie_pg() {
 		return movie_pg;
 	}
+
 	public void setMovie_pg(int movie_pg) {
 		this.movie_pg = movie_pg;
 	}
-	public int getMoive_auth() {
-		return moive_auth;
+
+	public int getMovie_auth() {
+		return movie_auth;
 	}
-	public void setMoive_auth(int moive_auth) {
-		this.moive_auth = moive_auth;
+
+	public void setMovie_auth(int movie_auth) {
+		this.movie_auth = movie_auth;
 	}
 	
 	//투스트링
@@ -86,6 +106,7 @@ public class TimeVO {
 	public String toString() {
 		return "TimeVO [time_num=" + time_num + ", theater_num=" + theater_num + ", movie_num=" + movie_num
 				+ ", movie_name=" + movie_name + ", movie_date=" + movie_date + ", movie_time=" + movie_time
-				+ ", moive_genre=" + moive_genre + ", movie_pg=" + movie_pg + ", moive_auth=" + moive_auth + "]";
+				+ ", movie_genre=" + movie_genre + ", movie_pg=" + movie_pg + ", movie_auth=" + movie_auth + "]";
 	}
+	
 }

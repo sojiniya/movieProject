@@ -9,9 +9,9 @@
     	<put-attribute name="title" value="극장지역정보 등록"/>
     	<put-attribute name="body" value="/WEB-INF/views/theater/theaterWrite.jsp"/>
     </definition>
-    <definition name="theaterInsert" extends="main">
+    <definition name="theaterInsert2" extends="main">
     	<put-attribute name="title" value="극장정보 등록"/>
-    	<put-attribute name="body" value="/WEB-INF/views/movie/theaterInsert.jsp"/>
+    	<put-attribute name="body" value="/WEB-INF/views/time/theaterInsert2.jsp"/>
     </definition>
     <definition name="selectList" extends="main">
     	<put-attribute name="title" value="극장지역정보 목록"/>
