@@ -43,13 +43,6 @@ public interface MemberMapper {
 	@Update("UPDATE M_member_detail SET mem_photo=#{mem_photo},photo_name=#{photo_name} WHERE mem_num=#{mem_num}")
 	public void updateProfile(MemberVO member);
 	
-	//관리자
-	public List<MemberVO> selectList(Map<String,Object> map);
-	public int selectRowCount(Map<String,Object> map);
-	
-	public void updateByAdmin(MemberVO member);
-	
-	public void updateDetailByAdmin(MemberVO member);
 }
 
 

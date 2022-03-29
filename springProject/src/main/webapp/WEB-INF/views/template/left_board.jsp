@@ -8,10 +8,8 @@
 		<li><a href="${pageContext.request.contextPath}/board/qnaList.do">자주찾는 질문</a></li>
 		<li><a href="${pageContext.request.contextPath}/board/newsList.do">공지/뉴스</a></li>
 		<li><a href="${pageContext.request.contextPath}/board/userQnaList.do">문의/건의</a></li>
-		<c:if test="${!empty user_num && user_auth == 3}">
-			<li><a href="#">게시글 관리</a></li>
-			<li><a href="${pageContext.request.contextPath}/board/adminBoardWrite.do">게시글 등록</a></li>
-		</c:if>
+		<li><a href="#">게시글 관리</a></li>
+		<li><a href="${pageContext.request.contextPath}/board/adminBoardWrite.do">게시글 등록</a></li>
 	</ul>
 </div>
 <!-- 왼쪽 메뉴 끝 -->
