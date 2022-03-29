@@ -2,6 +2,7 @@ package kr.spring.time.service;
 
 import java.util.List;
 
+import kr.spring.movie.vo.MovieVO;
 import kr.spring.time.vo.TimeVO;
 
 public interface TimeService {
@@ -9,5 +10,8 @@ public interface TimeService {
 	public List<TimeVO> getTimeList(TimeVO timeVO);
 	
 	//극장등록
+	public MovieVO selectMovie2(Integer movie_num);
+	
 	public void insertTheater2(TimeVO timeVO);
+	
 }

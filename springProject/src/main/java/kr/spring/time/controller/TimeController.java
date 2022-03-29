@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
-import kr.spring.theater.vo.TheaterVO;
+import kr.spring.movie.vo.MovieVO;
 import kr.spring.time.service.TimeService;
 import kr.spring.time.vo.TimeVO;
 
@@ -52,11 +54,11 @@ public class TimeController {
 		return "theaterInsert2";
 	}
 
-	//극장 등록 폼에서 전송된 데이터 처리
+	//2-1. 극장 등록 폼에서 전송된 데이터 처리
 	@PostMapping("/time/theaterInsert2.do")
 	public String submit2(@Valid TimeVO timeVO, BindingResult result, HttpSession session, HttpServletRequest request) {
 		logger.info("<<극장 저장>> : " + timeVO);
-
+		
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		if(result.hasErrors()) {
 			return form2();
@@ -70,5 +72,19 @@ public class TimeController {
 		timeService.insertTheater2(timeVO);
 
 		return "redirect:/movie/movieChart.do";
+	}
+	//2-2.영화번호 구하기
+	@RequestMapping("/time/theaterWrite2.do")
+	 public ModelAndView theaterWrite2(@RequestParam int movie_num) {
+		 MovieVO movieVO = timeService.selectMovie2(movie_num);
+		 
+		 ModelAndView mav = new ModelAndView();
+		 mav.setViewName("theaterWrite2");
+		 mav.addObject("movie_num",movieVO.getMovie_num());
+		 mav.addObject("movie_genre",movieVO.getMovie_genre());
+		 mav.addObject("movie_pg",movieVO.getMovie_pg());
+		 mav.addObject("movie_auth",movieVO.getMovie_auth());
+	 
+	 return mav;
 	}
 }

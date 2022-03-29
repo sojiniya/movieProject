@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.spring.movie.vo.MovieVO;
 import kr.spring.time.dao.TimeMapper;
 import kr.spring.time.vo.TimeVO;
 
@@ -21,7 +22,13 @@ public class TimeServiceImpl implements TimeService{
 	}
 
 	@Override
+	public MovieVO selectMovie2(Integer movie_num) {
+
+		return timeMapper.selectMovie2(movie_num);
+	}
+
+	@Override
 	public void insertTheater2(TimeVO timeVO) {
-		timeMapper.insertTheater2(timeVO);
+		timeMapper.insertTheater2(timeVO);	
 	}
 }
