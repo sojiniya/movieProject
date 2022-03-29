@@ -1,8 +1,9 @@
 package kr.spring.time.vo;
 
-import java.sql.Date;
+import java.util.Date; //date에서 sql.date를 못불러와서 일단 이렇게 처리
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -13,7 +14,7 @@ public class TimeVO {
 	private int movie_num; //영화번호 //moive(무비테이블 프라이머리 키),time테이블
 	@NotEmpty
 	private String movie_name; //영화제목
-	@NotEmpty
+	@NotNull
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "YY/MM/dd", timezone = "GMT+9") // 예매페이지에서 상영일을 뿌리기 위한 어노테이션 (동윤 작성)
 	private Date movie_date; //상영일
 	@NotEmpty
@@ -22,10 +23,10 @@ public class TimeVO {
 	//극장정보 등록을 위해 movie테이블에서 가져온 데이터
 	@NotEmpty
 	private String movie_genre; //장르
-	@NotEmpty
-	@Size(min=2,max=2)
+	@NotNull
+	/* @Size(min=2,max=2) */
 	private int movie_pg; //관람연령(12/15/19)
-	@NotEmpty
+	@NotNull
 	private int movie_auth; //영화 상영정보 0:상영중/1:상영예정/2:상영종료
 	
 	private int mem_num;
