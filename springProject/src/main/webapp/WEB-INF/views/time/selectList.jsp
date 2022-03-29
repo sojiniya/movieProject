@@ -117,5 +117,10 @@ $(function(){
      <strong class="title">서울 강남구 테헤란로123</strong>
 </div>
 <hr size="1" noshade="noshade" width="100%">
+<!-- 상영일자 표시 -->
+<ul>
+	<li>3월29일</li>
+</ul>
+<!-- 상영일자 표시 -->
 <hr size="1" noshade="noshade" width="100%">
 <!-- 중앙 컨텐츠 끝 -->

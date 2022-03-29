@@ -30,6 +30,12 @@
 					//로딩 이미지 감추기
 					$('#loading').hide();
 					
+					//영화 연령제한 유효성 검사
+					if(param.age<param.movie.movie_pg){
+						alert('해당 영화는' + param.movie.movie_pg + '세 이상 관람 가능 합니다.');
+						return;
+					}
+					
 					//info 영역에 선택한 영화 정보 노출
 					$('#movie_name').html(param.movie.movie_name).attr('movie_num',movie_num);
 					$('#movie_genre').html(param.movie.movie_genre);
@@ -201,8 +207,10 @@
 					
 					//선택한 영화/상영관에 상영중인 시간대 노출
 					$(param.date_list).each(function(index,item){
-						let output = '<li style="float:none; text-align:right;" time_num="'+ item.time_num +'">';
-						output += item.movie_date;
+						let output = '<li style="float:none; text-align:center;" time_num="'+ item.time_num +'">';
+						output += '<a href="#">';
+						output += item.movie_date;						
+						output += '</a>';
 						output += '</li>';
 
 						//문서 객체에 추가
@@ -259,7 +267,7 @@
 					
 					//선택한 영화/상영관에 상영중인 시간대 노출
 					$(param.time_list).each(function(index,item){
-						let output = '<li style="float:none; text-align:right";>';
+						let output = '<li style="float:none; text-align:center";>';
 						output += '<a href="#" time-idx="'+ item.time_num +'">';
 						output += item.movie_time;
 						output += '</a>';
@@ -453,7 +461,22 @@
 				<c:forEach var="movie" items="${movie_list}">
 					<li style="margin: 5px; float: none; text-align: left;">
 						<a href="#" movie-idx="${movie.movie_num}">
-							<span>${movie.movie_pg}</span>
+							<span style="display:inline-block;">
+								<c:choose>
+									<c:when test="${12 <= movie.movie_pg && movie.movie_pg < 15}">
+									<img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-12.png" width="30px" height="30px;">
+									</c:when>
+									<c:when test="${15 <= movie.movie_pg && movie.movie_pg < 19}">
+									<img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-15.png" width="30px" height="30px;">
+									</c:when>
+									<c:when test="${19 <= movie.movie_pg}">
+									<img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-19.png" width="30px" height="30px;">
+									</c:when>
+									<c:otherwise>
+									<img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-all.png" width="30px" height="30px;">
+									</c:otherwise>
+								</c:choose>
+							</span>
 							<span>${movie.movie_name}</span>
 						</a>
 					</li>					
@@ -483,7 +506,7 @@
 		<div class="col-head">날짜</div>
 		<div class="col-body">
 			<div class="date-list">
-				<ul id="movie-date">
+				<ul id="movie-date" style="padding-left: 0px;">
 					<div class="loading4" style="display:none;"><img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif"></div>
 				</ul>
 			</div>
@@ -492,8 +515,8 @@
 	<div style="width: 10%; height: 100%; border:1px black solid; float: left;">
 		<div class="col-head">시간</div>
 		<div class="col-body">
-			<div class="time-list">
-				<ul id="movie-time">
+			<div class="time-list"> 
+				<ul id="movie-time" style="padding-left: 0px;">
 				
 				</ul>
 			</div>

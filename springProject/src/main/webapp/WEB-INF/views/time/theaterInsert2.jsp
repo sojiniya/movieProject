@@ -7,43 +7,37 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <div class="page-main">
-	<h2>극장정보 등록</h2>
-	<form:form modelAttribute="timeVO" action="theaterInsert2.do" id="register_form">
-		<form:hidden path="movie_num"/>
+	<h2>상영 정보 등록</h2>
+	<form:form modelAttribute="timeVO" action="timeInsert.do" id="register_form">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>
-				<form:label path="movie_name">극장제목</form:label>
+				<form:label path="theater_num">영화관</form:label>
+				<form:input path="theater_num"/>
+				<form:errors path="theater_num" cssClass="error-color"/>
+			</li>
+		    <li style="clear:both">
+				<form:label path="movie_num">영화</form:label>
+				<form:input path="movie_num"/>
+				<form:errors path="movie_num" cssClass="error-color"/>
+			</li>
+			<li>
+				<form:label path="movie_name">영화제목</form:label>
 				<form:input path="movie_name"/>
 				<form:errors path="movie_name" cssClass="error-color"/>
 			</li>
-			<li>
-				<form:label path="movie_genre">극장장르</form:label>
-				<form:input path="movie_genre"/>
-				<form:errors path="movie_genre" cssClass="error-color"/>
-			</li>
-			<li>
-				<form:label path="movie_auth">상영정보</form:label>
-				<form:input path="movie_auth"/>
-				<form:errors path="movie_auth" cssClass="error-color"/>
-			</li>
-			<li>
-				<form:label path="movie_pg">관람연령</form:label>
-				<form:input path="movie_pg"/>
-				<form:errors path="movie_pg" cssClass="error-color"/>
-			</li>
-<li>
+			<li style="clear:both">
 				<form:label path="movie_time">극장상영시간</form:label>
 				<form:input path="movie_time"/>
 				<form:errors path="movie_time" cssClass="error-color"/>
 			</li>
-			<li>
+			<li style="clear:both">
 				<form:label path="movie_date">극장상영날짜</form:label>
 				<form:input path="movie_date"/>
 				<form:errors path="movie_date" cssClass="error-color"/>
 			</li>
 		</ul>	 
-		<div class="align-center">
+		<div class="align-center" style="clear:both">
 			<form:button>전송</form:button>
 			<input type="button" value="목록" 
 			              onclick="location.href='${pageContext.request.contextPath}/time/selectList.do'">

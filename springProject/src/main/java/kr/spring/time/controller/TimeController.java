@@ -1,5 +1,6 @@
 package kr.spring.time.controller;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -49,13 +50,13 @@ public class TimeController {
 	
 	//2. 극장등록
 	//극장 등록 폼
-	@GetMapping("/time/theaterInsert2.do")
+	@GetMapping("/time/timeInsert.do")
 	public String form2() {
 		return "theaterInsert2";
 	}
 
 	//2-1. 극장 등록 폼에서 전송된 데이터 처리
-	@PostMapping("/time/theaterInsert2.do")
+	@PostMapping("/time/timeInsert.do")
 	public String submit2(@Valid TimeVO timeVO, BindingResult result, HttpSession session, HttpServletRequest request) {
 		logger.info("<<극장 저장>> : " + timeVO);
 		
@@ -73,9 +74,16 @@ public class TimeController {
 
 		return "redirect:/movie/movieChart.do";
 	}
+	
+	//@RequestMapping("")
+	
+	
 	//2-2.영화번호 구하기
 	@RequestMapping("/time/theaterWrite2.do")
 	 public ModelAndView theaterWrite2(@RequestParam int movie_num) {
+		
+		logger.info("<<영화 번호>> : " + movie_num);
+		
 		 MovieVO movieVO = timeService.selectMovie2(movie_num);
 		 
 		 ModelAndView mav = new ModelAndView();

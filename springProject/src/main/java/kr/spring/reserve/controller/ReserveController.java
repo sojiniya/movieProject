@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -58,7 +59,22 @@ public class ReserveController {
 	
 	//예매하기 1단계 
 	@RequestMapping("/reserve/reserveStep1.do")
-	public ModelAndView reserveStep1() {
+	public ModelAndView reserveStep1(HttpSession session,HttpServletRequest request) {
+		
+		
+		//회원 전용 페이지 사용을 위한 조건 체크
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		
+		if(user_num == null) { // 로그인 X
+			
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("resultView");
+			mav.addObject("message","회원 전용 페이지 입니다.");
+			mav.addObject("url",request.getContextPath() + "/user/login.do");
+			
+			return mav;
+		}
+		
 		
 		List<MovieVO> movie_list = null;
 		movie_list = reserveService.selectMovieList();
@@ -137,21 +153,21 @@ public class ReserveController {
 	
 	//예매완료 
 	@RequestMapping("/reserve/reserveconfirm.do")
-	public ModelAndView reserve(ReserveVO reservVO,HttpSession session) {
+	public ModelAndView reserve(ReserveVO reserveVO,HttpSession session) {
 		
-		logger.info("<<예매완료 / 전달받은 예약 정보>>" + reservVO);
+		logger.info("<<예매완료 / 전달받은 예약 정보>>" + reserveVO);
 		
 		Integer mem_num = (Integer)session.getAttribute("user_num");
-		reservVO.setMem_num(mem_num);
+		reserveVO.setMem_num(mem_num);
 		
 		ReserveseatVO reserveseatVO = new ReserveseatVO();
-		reserveseatVO.setTime_num(reservVO.getTime_num());
+		reserveseatVO.setTime_num(reserveVO.getTime_num());
 		
 		// 예약좌석(M_reservseat) 테이블에 데이터 삽입 sql문 수행하기위한 매개변수(list)를 넘겨주기 전 객체 생성
 		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
 		
 		//배열로 전달 받은 예약 선택좌석 번호를 한개씩 뽑아내기
-		for(String num : reservVO.getSeat_num_array()) {
+		for(String num : reserveVO.getSeat_num_array()) {
 			//선택좌석 번호 첫번째 요소와 마지막 요소에 들어가는 '[',']' 특수문자 제거 
 			String seat_num_str = num.replace("[","").replace("]","");
 			Integer seat_num = Integer.parseInt(seat_num_str); // Integer 형식으로 형변환
@@ -159,7 +175,7 @@ public class ReserveController {
 			// m_reserveseat 테이블에 데이터 추가를 위한 sql문에 전달할 map 객체 생성
 			Map<String,Object> map = new HashMap<String, Object>();
 			
-			map.put("time_num",reservVO.getTime_num());
+			map.put("time_num",reserveVO.getTime_num());
 			map.put("seat_num",seat_num);		
 			
 			list.add(map);
@@ -168,21 +184,21 @@ public class ReserveController {
 		//예약좌석(M_reservseat) 테이블에 데이터 삽입
 		reserveService.insertreserveseat(list);
 		
-		reservVO.setReserve_paymethod("카카오페이");
+		//VO에 결제수단 정보 저장
+		reserveVO.setReserve_paymethod("카카오페이");
 		
-		System.out.println("예매 전 reservVO : " + reservVO);
-
 		//예매내역(M_reserve) 테이블에 데이터 삽입
-		reserveService.insertreserve(reservVO);
+		reserveService.insertreserve(reserveVO);
 		
-		MovieVO movie = reserveService.pickmoviedetail(reservVO.getMovie_num());
-		TheaterVO theater = reserveService.picktheaterdetail(reservVO.getTheater_num());
-		TimeVO time = reserveService.picktimedetail(reservVO.getTime_num());
+		MovieVO movie = reserveService.pickmoviedetail(reserveVO.getMovie_num());
+		TheaterVO theater = reserveService.picktheaterdetail(reserveVO.getTheater_num());
+		TimeVO time = reserveService.picktimedetail(reserveVO.getTime_num());
+		time.setMovie_date(time.getMovie_date().substring(2, 10).replace("-","/"));
 		MemberVO member = memberService.selectMember(mem_num);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("reserveconfirm");
-		mav.addObject("reserv",reservVO);
+		mav.addObject("reserve",reserveVO);
 		mav.addObject("movie",movie);
 		mav.addObject("theater",theater);
 		mav.addObject("time",time);

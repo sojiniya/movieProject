@@ -6,27 +6,17 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 public class TimeVO {
 	private int time_num; //상영시간 번호
 	private int theater_num; //영화관 번호
 	private int movie_num; //영화번호 //moive(무비테이블 프라이머리 키),time테이블
-	@NotEmpty
-	private String movie_name; //영화제목
-	@NotNull
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "YY/MM/dd", timezone = "GMT+9") // 예매페이지에서 상영일을 뿌리기 위한 어노테이션 (동윤 작성)
-	private Date movie_date; //상영일
-	@NotEmpty
+	private String movie_date; //상영일
 	private String movie_time; //상영시간
 	
+	private String movie_name; //영화제목
 	//극장정보 등록을 위해 movie테이블에서 가져온 데이터
-	@NotEmpty
 	private String movie_genre; //장르
-	@NotNull
-	/* @Size(min=2,max=2) */
 	private int movie_pg; //관람연령(12/15/19)
-	@NotNull
 	private int movie_auth; //영화 상영정보 0:상영중/1:상영예정/2:상영종료
 	
 	private int mem_num;
@@ -64,11 +54,11 @@ public class TimeVO {
 		this.movie_name = movie_name;
 	}
 
-	public Date getMovie_date() {
+	public String getMovie_date() {
 		return movie_date;
 	}
 
-	public void setMovie_date(Date movie_date) {
+	public void setMovie_date(String movie_date) {
 		this.movie_date = movie_date;
 	}
 

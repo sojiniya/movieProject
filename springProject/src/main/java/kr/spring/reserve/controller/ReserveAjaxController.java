@@ -9,9 +9,13 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +26,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.spring.reserve.service.ReserveService;
+import kr.spring.member.service.MemberService;
+import kr.spring.member.vo.MemberVO;
 import kr.spring.movie.vo.MovieVO;
 import kr.spring.theater.vo.TheaterVO;
 import kr.spring.time.vo.TimeVO;
@@ -35,10 +41,13 @@ public class ReserveAjaxController {
 	@Autowired
 	private ReserveService reserveService;
 	
+	@Autowired
+	private MemberService memberService;
+	
 	//선택한 영화 목록
 	@RequestMapping("/reserve/pickmovie.do")
 	@ResponseBody
-	public Map<String,Object> pickmoviedetail(@RequestParam(value="movie_num") int movie_num){
+	public Map<String,Object> pickmoviedetail(@RequestParam(value="movie_num") int movie_num,HttpSession session){
 		
 		logger.info("<<전달받은 영화 번호>> movie_num : " + movie_num);
 		
@@ -48,10 +57,26 @@ public class ReserveAjaxController {
 		List<Integer> theater_local_count = null;
 		theater_local_count = reserveService.pickmoviedetail_get_theater_localcount(movie_num);
 		
+		logger.info("<<영화 클릭 시 전달된 영화 정보>> movie : " + movie);
+		
+		//연령제한 유효성 체크를 위한 날짜 정보 가져오기
+		Date nowDate = new Date(); 
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy");
+		int date = Integer.parseInt(simpleDateFormat.format(nowDate));
+		
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		MemberVO member = memberService.selectMember(user_num);
+		String str = Integer.toString(member.getMem_birth());
+		int birth = Integer.parseInt(str.substring(0, 2));
+		
+		//로그인한 회원 나이
+		int age = Math.abs(date-birth);
+		
 		Map<String,Object> mapJson = new HashMap<String,Object>();
 		mapJson.put("movie", movie);
 		mapJson.put("theater_local_name",theater_local_name);
 		mapJson.put("theater_local_count",theater_local_count);
+		mapJson.put("age",age);
 		
 		return mapJson;
 	}
@@ -91,8 +116,13 @@ public class ReserveAjaxController {
 				
 		List<TimeVO> date_list = null;
 		date_list = reserveService.pickmoviedetail_get_date(map);
-		System.out.println("상영일자 조회 결과 : " + date_list);
 		
+		for(TimeVO time: date_list) {
+			time.setMovie_date(time.getMovie_date().substring(2, 10).replace("-","/"));
+		}	
+		
+		System.out.println("상영일자 조회 결과 : " + date_list);
+
 		Map<String,Object> mapJson = new HashMap<String,Object>();
 		mapJson.put("date_list", date_list);
 		

@@ -36,7 +36,7 @@ public class ReserveVO {
 	private int reserve_seat_num;
 	
 	//step3에서 사용하기 위한 프로퍼티
-	private List<String> reserve_seat; // 선택한 좌석명들을 담은 배열 
+	private String reserve_seat; // 선택한 좌석명들을 담은 배열 
 	private List<String> seat_num_array; // 선택한 좌석 좌석번호들을 담은 배열
 	
 	//결제완료 페이지에서 사용하기 위한 프로퍼티
@@ -191,10 +191,10 @@ public class ReserveVO {
 	public void setReserve_seat_num(int reserve_seat_num) {
 		this.reserve_seat_num = reserve_seat_num;
 	}
-	public List<String> getReserve_seat() {
+	public String getReserve_seat() {
 		return reserve_seat;
 	}
-	public void setReserve_seat(List<String> reserve_seat) {
+	public void setReserve_seat(String reserve_seat) {
 		this.reserve_seat = reserve_seat;
 	}
 	public List<String> getSeat_num_array() {
