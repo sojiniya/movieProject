@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.spring.member.dao.MemberMovieMapper;
 import kr.spring.member.vo.MyReviewVO;
+import kr.spring.movie.vo.MovieVO;
 import kr.spring.reserve.vo.ReserveVO;
 
 @Service
@@ -38,14 +39,12 @@ public class MemberMovieServiceImpl implements MemberMovieService{
 
 	@Override
 	public int selectMyInterestedMovieCount(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return MemberMovieMapper.selectMyInterestedMovieCount(map);
 	}
 
 	@Override
-	public List<ReserveVO> selectMyInterestedMovie(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<MovieVO> selectMyInterestedMovie(Map<String, Object> map) {
+		return MemberMovieMapper.selectMyInterestedMovie(map);
 	}
 
 	@Override

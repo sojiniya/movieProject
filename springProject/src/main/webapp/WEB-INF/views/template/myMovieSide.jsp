@@ -44,7 +44,7 @@
     <div class="box-round-wgray">
         <div class="box-round-inner">
             <div class="inner-contents-log">
-                <a href="/user/movielog/default.aspx">
+                <a href="${pageContext.request.contextPath}/user/myInterestedMovie.do">
                     <em></em>
                     <strong>기대되는 영화</strong>
                 </a>

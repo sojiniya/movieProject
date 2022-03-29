@@ -21,6 +21,7 @@ import kr.spring.member.service.MemberMovieService;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.movie.service.MovieService;
+import kr.spring.movie.vo.MovieVO;
 import kr.spring.reserve.vo.ReserveVO;
 import kr.spring.util.PagingUtil;
 
@@ -61,7 +62,7 @@ public class MemberMovieController {
 		logger.info("<count>> : " + count);
 		
 		//페이지 처리
-		PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "myMovie.do");
+		PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "myWatchedMovie.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
 		logger.info("<map222>> : " + map);
@@ -103,7 +104,7 @@ public class MemberMovieController {
 		logger.info("<count>> : " + count);
 		
 		//페이지 처리
-		PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "myMovie.do");
+		PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "myReserveMovie.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
 		logger.info("<map222>> : " + map);
@@ -124,7 +125,42 @@ public class MemberMovieController {
 		return mav;
 	}
 	//내가 관심 있는 영화
-	//테이블 하나 더 만들어야함(찜한거/무비넘,회원넘)
+		@RequestMapping("/user/myInterestedMovie.do")
+		public ModelAndView viewMyInterestedMovie(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage, HttpSession session) {
+			
+			Integer user_num = (Integer)session.getAttribute("user_num");
+			MemberVO member = memberService.selectMember(user_num);
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("mem_num",user_num);
+			
+			int count = MemberMovieService.selectMyInterestedMovieCount(map);
+			logger.info("<count>> : " + count);
+			
+			//페이지 처리
+			PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "myInterestedMovie.do");
+			map.put("start", page.getStartCount());
+			map.put("end", page.getEndCount());
+			logger.info("<map222>> : " + map);
+			
+			List<MovieVO> list = null;
+			if (count > 0) {
+				list = MemberMovieService.selectMyInterestedMovie(map);
+			}
+			logger.info("<내가 관심있는 영화>> : " + list);
+
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("myInterestedMovie");
+			mav.addObject("count", count);
+			mav.addObject("list", list);
+			mav.addObject("pagingHtml", page.getPagingHtml());
+			mav.addObject("member",member);
+			
+			return mav;
+		}
+	
 	//내가 남긴 매너평가
+		
+		
 	//
 }

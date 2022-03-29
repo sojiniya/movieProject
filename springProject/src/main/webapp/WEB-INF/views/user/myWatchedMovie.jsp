@@ -41,6 +41,9 @@
 										src="https://img.cgv.co.kr/R2014/images/common/btn/btn_del.gif"
 										alt="${watchedMovie.movie_name}">
 								</button>
+								<button type="button">
+									리뷰남기기
+								</button>
 						</li>
 					</ul>
 			</div>
