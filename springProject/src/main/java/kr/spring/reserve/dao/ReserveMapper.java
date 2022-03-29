@@ -48,6 +48,6 @@ public interface ReserveMapper {
 	// 예매완료
 	@Insert("insert into m_reservseat values(m_reservseat_seq.nextval,#{time_num},#{seat_num})")
 	public void insertreserveseat(Map<String,Object> map);
-	@Insert("insert into m_reserve values(m_reserve_seq.nextval,#{time_num},#{mem_num},#{movie_num},'#{reserve_seat}',#{reserve_paymethod},#{final_price})")
+	@Insert("insert into m_reserve values(m_reserve_seq.nextval,#{time_num},#{mem_num},#{movie_num},#{reserve_seat},#{reserve_paymethod},#{final_price})")
 	public void insertreserve(ReserveVO reserveVO);
 }

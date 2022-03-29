@@ -99,7 +99,7 @@ public class ReserveServiceImpl implements ReserveService{
 
 	@Override
 	public void insertreserve(ReserveVO reserveVO) {
-		
+		reserveMapper.insertreserve(reserveVO);
 	}
 
 
