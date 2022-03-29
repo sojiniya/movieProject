@@ -116,8 +116,13 @@ public class ReserveAjaxController {
 				
 		List<TimeVO> date_list = null;
 		date_list = reserveService.pickmoviedetail_get_date(map);
-		System.out.println("상영일자 조회 결과 : " + date_list);
 		
+		for(TimeVO time: date_list) {
+			time.setMovie_date(time.getMovie_date().substring(2, 10).replace("-","/"));
+		}	
+		
+		System.out.println("상영일자 조회 결과 : " + date_list);
+
 		Map<String,Object> mapJson = new HashMap<String,Object>();
 		mapJson.put("date_list", date_list);
 		

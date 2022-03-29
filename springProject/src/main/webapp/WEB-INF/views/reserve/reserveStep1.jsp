@@ -207,8 +207,10 @@
 					
 					//선택한 영화/상영관에 상영중인 시간대 노출
 					$(param.date_list).each(function(index,item){
-						let output = '<li style="float:none; text-align:right;" time_num="'+ item.time_num +'">';
-						output += item.movie_date;
+						let output = '<li style="float:none; text-align:center;" time_num="'+ item.time_num +'">';
+						output += '<a href="#">';
+						output += item.movie_date;						
+						output += '</a>';
 						output += '</li>';
 
 						//문서 객체에 추가
@@ -265,7 +267,7 @@
 					
 					//선택한 영화/상영관에 상영중인 시간대 노출
 					$(param.time_list).each(function(index,item){
-						let output = '<li style="float:none; text-align:right";>';
+						let output = '<li style="float:none; text-align:center";>';
 						output += '<a href="#" time-idx="'+ item.time_num +'">';
 						output += item.movie_time;
 						output += '</a>';
@@ -504,7 +506,7 @@
 		<div class="col-head">날짜</div>
 		<div class="col-body">
 			<div class="date-list">
-				<ul id="movie-date">
+				<ul id="movie-date" style="padding-left: 0px;">
 					<div class="loading4" style="display:none;"><img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif"></div>
 				</ul>
 			</div>
@@ -513,8 +515,8 @@
 	<div style="width: 10%; height: 100%; border:1px black solid; float: left;">
 		<div class="col-head">시간</div>
 		<div class="col-body">
-			<div class="time-list">
-				<ul id="movie-time">
+			<div class="time-list"> 
+				<ul id="movie-time" style="padding-left: 0px;">
 				
 				</ul>
 			</div>

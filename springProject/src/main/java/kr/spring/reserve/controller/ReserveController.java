@@ -193,6 +193,7 @@ public class ReserveController {
 		MovieVO movie = reserveService.pickmoviedetail(reserveVO.getMovie_num());
 		TheaterVO theater = reserveService.picktheaterdetail(reserveVO.getTheater_num());
 		TimeVO time = reserveService.picktimedetail(reserveVO.getTime_num());
+		time.setMovie_date(time.getMovie_date().substring(2, 10).replace("-","/"));
 		MemberVO member = memberService.selectMember(mem_num);
 		
 		ModelAndView mav = new ModelAndView();
