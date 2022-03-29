@@ -1,6 +1,7 @@
 package kr.spring.time.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,10 @@ public class TimeServiceImpl implements TimeService{
 	@Override
 	public void insertTheater2(TimeVO timeVO) {
 		timeMapper.insertTheater2(timeVO);	
+	}
+
+	@Override
+	public List<TimeVO> selectList(Map<String, Object> map) {
+		return timeMapper.selectList(map);
 	}
 }
