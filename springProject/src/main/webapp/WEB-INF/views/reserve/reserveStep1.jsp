@@ -10,7 +10,10 @@
 		let pick_movie_num; //선택한 영화번호
 		let pick_theaternum; //선택한 상영관번호
 		let pick_movietime; //선택한 상영시간번호
-		
+		let seat_total_count; //해당 영화 전체 좌석 수
+		let reserv_total_count; //해당 영화 예약된 좌석 수
+		let seat_possable_count; //해당 영화 예약 가능한 좌석 수
+			
 		//영화 선택 시 이벤트 발생
 		$('.movie_list li').click(function(){
 			let movie_num = $(this).children().attr('movie-idx'); // 클릭한 영화의 영화번호 변수에 저장
@@ -40,10 +43,13 @@
 					$('#movie_name').html(param.movie.movie_name).attr('movie_num',movie_num);
 					$('#movie_genre').html(param.movie.movie_genre);
 					$('#movie_pg').html(param.movie.movie_pg);
-					if(param.movie.movie_photo1){ // DB에 이미지 있으면, 
-						$('#movie_photo').css('display','').src(''); // 저장된 이미지 노출
+
+					if(param.movie.filename){ // DB에 이미지 있으면, 
+						let imgurl = '/project/movie/imageView.do?movie_num='+param.movie.movie_num; // DB에서 가져온 filename
+						$('#movie_photo').css('display','').attr('src',imgurl); // 저장된 이미지 노출
 					}else{ // DB에 이미지 없으면,
-						$('#movie_photo').css('display',''); // 기본 이미지 노출
+						let imgurl_default = '/project/resources/images/default.png'; // 기본 이미지
+						$('#movie_photo').css('display','').attr('src',imgurl_default); // 기본 이미지 노출
 					}
 					
 					//다음 step으로 가기위한 영화 번호 변수에 저장
@@ -241,7 +247,7 @@
 			$.ajax({
 				type:'post',
 				data:{pick_theaternum:pick_theaternum,pick_movie_num:pick_movie_num,pick_moviedate:pick_moviedate},
-				url:'picktime.do',
+				url:'pickdate.do',
 				dataType:'json',
 				cache:false,
 				timeout:30000,
@@ -291,7 +297,7 @@
 		
 		//상영 시간 선택 시 이벤트 발생
 		$(document).on('click','#movie-time li',function(){
-			pick_moviedate = $(this).children().attr('time-idx'); // 클릭한 상영시간의 시간 번호(time_num)을 변수에 저장
+			pick_time_num = $(this).children().attr('time-idx'); // 클릭한 상영시간의 시간 번호(time_num)을 변수에 저장
 			
 			//인원수 체크 내용 초기화
 			$('#people').empty();
@@ -299,20 +305,38 @@
 			//info 영역에 선택한 상영일자 정보 노출
 			$('#cgv_time').html('상영시간 | ' + $(this).children().text());
 			
-			//인원수 선택 및 합계 조회 정보 노출
-			//$('#people_check').css('display','');
-			let output = '<div id="people_check">';
-			output += '<div><span>성인(20세 이상) / 10,000원 </span><input type="number" id="adult" name="adult" max="3" min="0"></div>';
-			output += '<div><span>청소년(19세 이하) / 8,000원 </span><input type="number" id="youth" name="youth" max="3" min="0"></div>';
-			output += '<div><span>경로우대(65세 이상) / 6,000원 </span><input type="number" id="old" name="old" max="3" min="0"></div>';
-			output += '<div><span id="total_people" name=""></span><div id="total_price" name="total_price"></div></div>';
-			output += '</div>';
-
-			//문서 객체에 추가
-			$('#people').append(output);
-
 			
-		}); // end of click (상영 일자 선택 시 이벤트 발생)
+			$.ajax({
+				type:'post',
+				data:{pick_time_num:pick_time_num},
+				url:'picktime.do',
+				dataType:'json',
+				cache:false,
+				timeout:30000,
+				success:function(param){
+					seat_total_count = param.seat_total_count; //해당 영화 전체 좌석 수 
+					reserv_total_count = param.reserv_total_count; //해당 영화 예약된 좌석 수
+					seat_possable_count = param.seat_possable_count; //해당 영화 예약 가능한 좌석 수
+					
+					//인원수 선택 및 합계 조회 정보 노출
+					//$('#people_check').css('display','');
+					let output = '<div id="people_check">';
+					output += '<div><span>'+seat_possable_count+'/'+seat_total_count+'(예약가능 좌석 / 총 좌석)</div>';
+					output += '<div><span>성인(20세 이상) / 10,000원 </span><input type="number" id="adult" name="adult" max="3" min="0"></div>';
+					output += '<div><span>청소년(19세 이하) / 8,000원 </span><input type="number" id="youth" name="youth" max="3" min="0"></div>';
+					output += '<div><span>경로우대(65세 이상) / 6,000원 </span><input type="number" id="old" name="old" max="3" min="0"></div>';
+					output += '<div><span id="total_people" name=""></span><div id="total_price" name="total_price"></div></div>';
+					output += '</div>';
+
+					//문서 객체에 추가
+					$('#people').append(output);
+				},
+				error:function(){
+					alert('네트워크 오류 발생');
+				}
+			});
+
+		}); // end of click (상영 시간 선택 시 이벤트 발생)
 		
 		
 		// =================================================================================================인원수 선택 및 합계 조회
@@ -331,17 +355,54 @@
 		let adult; // 예약하려는 어른 수
 		let youth; // 예약하려는 청소년 수
 		let old; // 예약하려는 경로우대 수
-
+	
+		let movie_pg; // 영화 시청연령
 		
 		$(document).on('keyup mouseup','#adult,#youth,#old',function(){
+			
+			//연령제한 유효성 검사
+			$.ajax({
+				type:'post',
+				data:{pick_movie_num:pick_movie_num},
+				url:'pickmovie_pg.do',
+				dataType:'json',
+				cache:false,
+				timeout:30000,
+				success:function(param){
+					movie_pg = param.movie.movie_pg;
+				},
+				error:function(){
+					alert('네트워크 오류 발생');
+				}
+			});
+			
+			
+			if(seat_possable_count == 0){
+				alert('예약 가능한 좌석이 없습니다.');
+				$(this).val('').focus();
+				return;
+			}
+			
+			
 			if(possable_people == 0){
 				alert('최대 예약 가능한 인원은 3명입니다.');
 				$(this).val('').focus();
 			}
 			
+			
 			adult = Number($('#adult').val());
-			youth = Number($('#youth').val())
-			old = Number($('#old').val())
+			youth = Number($('#youth').val());
+			old = Number($('#old').val());
+			
+			
+			if(movie_pg == 19){
+				if(youth >= 1){
+					alert('청소년이 관람할 수 없는 영화입니다.');
+					$('#youth').val('').focus();
+					youth = Number($('#youth').val());
+				}
+			}
+			
 			
 			//인원수 체크
 			total_people = adult + youth + old;

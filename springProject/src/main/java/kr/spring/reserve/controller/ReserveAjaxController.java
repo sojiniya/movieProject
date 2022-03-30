@@ -129,10 +129,10 @@ public class ReserveAjaxController {
 		return mapJson;
 	}
 	
-	//상영시간 선택
-	@RequestMapping("/reserve/picktime.do")
+	//상영일자 선택
+	@RequestMapping("/reserve/pickdate.do")
 	@ResponseBody
-	public Map<String,Object> picktimedetail(@RequestParam(value="pick_theaternum") Integer theater_num,
+	public Map<String,Object> pickdatedetail(@RequestParam(value="pick_theaternum") Integer theater_num,
 											 @RequestParam(value="pick_movie_num") Integer movie_num,
 											 @RequestParam(value="pick_moviedate") String movie_date){
 		
@@ -155,5 +155,38 @@ public class ReserveAjaxController {
 		return mapJson;
 	}
 	
+	//상영시간 선택
+	@RequestMapping("/reserve/picktime.do")
+	@ResponseBody
+	public Map<String,Object> picktimedetail(@RequestParam(value="pick_time_num") Integer time_num){
+		
+		logger.info("<<전달받은 상영시간 번호>> time_num : " + time_num);
+		
+		int seat_total_count = reserveService.seat_total_count(time_num);
+		int reserv_total_count = reserveService.reservseat_total_count(time_num);
+		int seat_possable_count = seat_total_count-reserv_total_count;
+		
+		Map<String,Object> mapJson = new HashMap<String,Object>();
+		mapJson.put("seat_total_count", seat_total_count);
+		mapJson.put("reserv_total_count", reserv_total_count);
+		mapJson.put("seat_possable_count", seat_possable_count);
+		
+		return mapJson;
+	}
+	
+	//선택한 영화의 연령제한 정보 가져오기
+	@RequestMapping("/reserve/pickmovie_pg.do")
+	@ResponseBody
+	public Map<String,Object> pickmoviedetail_pg(@RequestParam(value="pick_movie_num") int movie_num){
+		
+		logger.info("<<전달받은 영화 번호>> movie_num : " + movie_num);
+		
+		MovieVO movie = reserveService.pickmoviedetail(movie_num);
+		
+		Map<String,Object> mapJson = new HashMap<String,Object>();
+		mapJson.put("movie", movie);
+		
+		return mapJson;
+	}
 	
 }

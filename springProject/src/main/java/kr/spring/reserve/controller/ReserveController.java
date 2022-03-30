@@ -102,6 +102,7 @@ public class ReserveController {
 		MovieVO movie = reserveService.pickmoviedetail(reservVO.getMovie_num());
 		TheaterVO theater = reserveService.picktheaterdetail(reservVO.getTheater_num());
 		TimeVO time = reserveService.picktimedetail(reservVO.getTime_num());
+		time.setMovie_date(time.getMovie_date().substring(2, 10).replace("-","/"));
 		List<ReserveVO> seat_list = reserveService.seatlist(reservVO.getTime_num());
 		List<ReserveseatVO> reserveseat_list = reserveService.reservseatlist(reservVO.getTime_num());
 		int seat_total_count = reserveService.seat_total_count(reservVO.getTime_num());
@@ -133,6 +134,7 @@ public class ReserveController {
 		MovieVO movie = reserveService.pickmoviedetail(reservVO.getMovie_num());
 		TheaterVO theater = reserveService.picktheaterdetail(reservVO.getTheater_num());
 		TimeVO time = reserveService.picktimedetail(reservVO.getTime_num());
+		time.setMovie_date(time.getMovie_date().substring(2, 10).replace("-","/"));
 		List<ReserveVO> seat_list = reserveService.seatlist(reservVO.getTime_num());
 		Integer user_num = (Integer)session.getAttribute("user_num");
 		MemberVO member = memberService.selectMember(user_num);

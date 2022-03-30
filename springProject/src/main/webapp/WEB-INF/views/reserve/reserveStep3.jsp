@@ -17,7 +17,14 @@
 
 <div id="info-banner" style="width: 100%; background: black; height: 150px; margin: 10px 0 10px 0">
 	<div class="info-movie">
-		<div><img src="${pageContext.request.contextPath}/resources/images/default.png" width="120px" height="130px" style="float:left; margin-right: 20px; display:none" id="movie_photo"></div>
+		<div>
+			<c:if test="${empty movie.filename}">
+				<img src="${pageContext.request.contextPath}/resources/images/default.png" width="120px" height="130px" style="float:left; margin-right: 20px;" id="movie_photo">
+			</c:if>
+			<c:if test="${!empty movie.filename}">
+				<img src="${pageContext.request.contextPath}/movie/imageView.do?movie_num=${movie.movie_num }" width="120px" height="130px" style="float:left; margin-right: 20px;" id="movie_photo">
+			</c:if>
+		</div>
 		<div id="movie_name" movie_num=${movie.movie_num}>${movie.movie_name}</div>
 		<div id="movie_genre">${movie.movie_genre}</div>
 		<div id="movie_pg">${movie.movie_pg}</div>

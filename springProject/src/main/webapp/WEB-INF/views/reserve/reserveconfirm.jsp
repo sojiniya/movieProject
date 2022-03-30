@@ -2,15 +2,21 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- 중앙 컨텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <div>
-	${member.mem_name}님 예매가 완료되었습니다.
+	<b>${member.mem_name}</b>님 예매가 완료되었습니다.
 </div>
 <hr width="100%">
 <div>
 	<div>
-		<img src="${pageContext.request.contextPath}/resources/images/default.png" style="float:left;">
+		<c:if test="${empty movie.filename}">
+			<img src="${pageContext.request.contextPath}/resources/images/default.png" width="500px" height="500px" style="float:left; margin: 20px;" id="movie_photo">
+		</c:if>
+		<c:if test="${!empty movie.filename}">
+			<img src="${pageContext.request.contextPath}/movie/imageView.do?movie_num=${movie.movie_num }" width="500px" style="float:left; margin: 20px;" id="movie_photo">
+		</c:if>
 	</div>
 	<div>
 		<p>${movie.movie_name}</p>
@@ -31,10 +37,10 @@
 		<th>결제 방법</th>
 	</tr>
 	<tr>
-		<td>${reserve.reserve_price_total}원</td>
-		<td>${reserve.sale_price}원</td>
-		<td>${reserve.final_price}원</td>
-		<td>${reserve.reserve_paymethod}</td>
+		<td style="text-align:center;"><fmt:formatNumber value="${reserve.reserve_price_total}" type="number"/>원</td>
+		<td style="text-align:center;"><fmt:formatNumber value="${reserve.sale_price}" type="number"/>원</td>
+		<td style="text-align:center;"><fmt:formatNumber value="${reserve.final_price}" type="number"/>원</td>
+		<td style="text-align:center;">${reserve.reserve_paymethod}</td>
 	</tr>
 </table>
 <!-- 중앙 컨텐츠 끝 -->
