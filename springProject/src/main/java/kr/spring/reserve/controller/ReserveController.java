@@ -121,6 +121,8 @@ public class ReserveController {
 		mav.addObject("reserv_total_count",reserv_total_count);
 		mav.addObject("seat_possable_count",seat_possable_count);
 		
+		System.out.println("전체 좌석 : " + seat_list);
+		System.out.println("예약 좌석 : " + reserveseat_list);
 		
 		return mav;
 	}

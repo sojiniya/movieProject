@@ -63,14 +63,14 @@
 <div id="seat">
 	
 	<c:forEach var="seat" items="${seat_list}">
-			<span id="seat_detail" style="background: black; color: white; display: inline-block; width: 95px; height: 50px; margin-bottom: 10px;">
+			<span class="seat_detail" style="background: black; color: white; display: inline-block; width: 95px; height: 50px; margin-bottom: 10px;">
 				<input style="margin-top: 17px; margin-left: 30px;" type="checkbox" class="seat_select" seat_num="${seat.seat_num}" value="${seat.seat_name}">${seat.seat_name}
 			</span>			
 		<c:forEach var="reserveseat" items="${reserveseat_list}">
 				<c:if test="${reserveseat.seat_num == seat.seat_num}">
 					<script type="text/javascript">
 						$('input:checkbox').prop("checked",true).prop('disabled', true);
-						$('#seat_detail').css('background','#743030');
+						$('.seat_detail').css('background','#743030');
 					</script>
 				</c:if>
 		</c:forEach>
