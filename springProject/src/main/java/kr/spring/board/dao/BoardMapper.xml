@@ -38,6 +38,30 @@
 	   WHERE rnum >= #{start} AND rnum <= #{end}
 	   ]]>	            
 	</select>
+	
+	<!-- <select id="boardNews" parameterType="map" resultType="boardVO">
+		  SELECT
+		  *
+		FROM (SELECT 
+		       a.*,
+		       rownum
+		      FROM (SELECT 
+		               b.board_num,
+		               b.board_title,
+		               b.board_hit,
+		               b.board_reg_date,
+		               m.cate_name,
+		               m.cate_num
+		            FROM m_board b
+		            JOIN m_category m 
+		            ON b.cate_num = m.cate_num
+		             <![CDATA[
+		             where rownum < 6 AND m.cate_num between '5' and '7'
+		            ]]>
+		            ORDER BY b.board_reg_date DESC)a)
+		                
+	</select> -->
+	
 	<select id="selectRowCount" parameterType="map" resultType="integer">
 		SELECT
 		  COUNT(*)
@@ -60,15 +84,12 @@
 	
 	<update id="adminUpdateBoard" parameterType="boardVO">
 		UPDATE m_board SET
-		  <if test="filename != ''">
-		  	board_uploadfile=#{board_uploadfile},
-		  	board_filename=#{board_filename},
-		  </if>
+		  
 		  board_auth=#{board_auth},
 		  cate_num=#{cate_num},
 		  theater_choise=#{theater_choise},
 		  sel_regioncode=#{sel_regioncode},
-		  sel_theatercode=#{sel_theatercode}
+		  sel_theatercode=#{sel_theatercode},
 		  board_title=#{board_title},
 		  board_content=#{board_content}
 	   WHERE board_num=#{board_num}

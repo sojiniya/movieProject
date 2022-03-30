@@ -227,6 +227,28 @@ public class BoardController {
 	return "adminUpdate";
 	}
 	
+	//수정 폼에서 전송된 데이터 처리
+	@PostMapping("/board/adminUpdate.do")
+	public String submitUpdate(BoardVO boardVO,
+				               HttpServletRequest request,
+				                Model model) {
+			
+		logger.info("<<관리자 글 정보 수정>> : " + boardVO);
+			
+			
+		//글 수정
+		boardService.adminUpdateBoard(boardVO);
+		
+		model.addAttribute("boardVO", boardVO);	
+			
+		/*
+		 * //view에 표시할 메시지 model.addAttribute("message", "글 수정 완료");
+		 * model.addAttribute("url", request.getContextPath() + "/board/qnaList.do");
+		 */
+			
+			return "qnaList";
+		}
+	
 	//회원 글 등록 폼 
 	@GetMapping("/board/userBoardWrite.do")
 	public String userBoardMain() {
@@ -300,6 +322,20 @@ public class BoardController {
 				                    //타일스 설정      속성명      속성값
 			return new ModelAndView("userQnaView","board",board);
 			}
+	
+	//qna게시판 글 삭제
+	@RequestMapping("/board/qnaDelete.do")
+	public String submitDelete(@RequestParam int board_num) {
+		boardService.adminDeleteBoard(board_num);
+		return "redirect:/board/qnaList.do";
+	}
+
+	//news게시판 글 삭제
+	@RequestMapping("/board/newsDelete.do")
+	public String submitDelete2(@RequestParam int board_num) {
+		boardService.adminDeleteBoard(board_num);
+		return "redirect:/board/newsList.do";
+	}
 	
 	
 }

@@ -240,7 +240,7 @@ table td, table th{
 		</table>
 		<div class="box-btn_adminSubmit">
 			<input type="button" value="취소하기" class="round cancel" onclick="location.href='boardMain.do'">
-			<form:button class="round submit">등록하기</form:button>
+			<form:button class="round submit">수정하기</form:button>
 		</div>
 	</form:form>
 </div>

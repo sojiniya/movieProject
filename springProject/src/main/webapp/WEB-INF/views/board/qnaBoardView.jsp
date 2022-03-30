@@ -45,9 +45,31 @@ table td, table th{
 						<span>수정</span>
 					</button>
 					
-					<button type="button" class="round inred" id="btn_list">
+					<button type="button" class="round inred" id="btn_delete">
 						<span>삭제</span>
 					</button>
+					<c:if test="${board.cate_num eq 1 or board.cate_num eq 2 or board.cate_num eq 3 or board.cate_num eq 4}">
+					<script type="text/javascript">
+						let btn_delete = document.getElementById('btn_delete');
+						btn_delete.onclick=function(){
+							let choice = confirm('삭제하시겠습니까?');
+							if(choice){
+								location.replace('qnaDelete.do?board_num=${board.board_num}');
+							}
+						};
+					</script>
+					</c:if>
+					<c:if test="${board.cate_num eq 5 or board.cate_num eq 6 or board.cate_num eq 7}">
+					<script type="text/javascript">
+						let btn_delete = document.getElementById('btn_delete');
+						btn_delete.onclick=function(){
+							let choice = confirm('삭제하시겠습니까?');
+							if(choice){
+								location.replace('newsDelete.do?board_num=${board.board_num}');
+							}
+						};
+					</script>
+					</c:if>
 					</c:if>
 					<button type="button" class="round inblack" id="btn_list">
 						<span>목록</span>
