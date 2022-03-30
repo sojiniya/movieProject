@@ -170,7 +170,11 @@ $(function(){
 	</div>
 </div>
 
-<a href="${pageContext.request.contextPath}/theater/theaterWrite.do">극장지역등록폼text</a>
+<c:if test="${!empty user_num && user_auth==3}">
+	<div class="align-right">
+		<input type="button" value="극장등록" onclick="location.href='${pageContext.request.contextPath}/theater/theaterWrite.do'">
+	</div>
+</c:if>
 
 <hr size="1" noshade="noshade" width="100%">
 <div>
