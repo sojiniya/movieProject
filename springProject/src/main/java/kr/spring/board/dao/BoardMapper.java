@@ -29,8 +29,8 @@ public interface BoardMapper {
 		  + "ON b.mem_num=m.mem_num LEFT JOIN m_category c on b.cate_num=c.cate_num"
 		  + " WHERE b.board_num=#{board_num}")
 	public BoardVO adminSelectBoard(Integer board_num); //관리자 상세보기(0)
-	public void adminUpdateBoard(BoardVO board); //관리자 글 수정
-	@Delete("DELETE FROM b_board WHERE board_num=#{board_num}")
+	public void adminUpdateBoard(BoardVO board); //관리자 글 수정(0)
+	@Delete("DELETE FROM m_board WHERE board_num=#{board_num}")
 	public void adminDeleteBoard(Integer board_num); //관리자 글 삭제
 	@Update("UPDATE m_board SET board_uploadfile='',board_filename='' WHERE board_num=#{board_num}")
 	//public void adminDeleteFile(Integer board_num); //관리자 글 파일 삭제
