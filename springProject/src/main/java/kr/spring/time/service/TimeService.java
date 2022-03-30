@@ -7,14 +7,14 @@ import kr.spring.movie.vo.MovieVO;
 import kr.spring.time.vo.TimeVO;
 
 public interface TimeService {
-	//목록
-	public List<TimeVO> getTimeList(TimeVO timeVO);
+	//public List<TimeVO> getTimeList(TimeVO timeVO);
 	
 	//극장등록
 	public MovieVO selectMovie2(Integer movie_num);
 	
 	public void insertTheater2(TimeVO timeVO);
 	
+	//목록
 	public List<TimeVO> selectList(Map<String,Object> map);
 	
 }

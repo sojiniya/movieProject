@@ -1,7 +1,9 @@
 package kr.spring.time.controller;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.movie.vo.MovieVO;
@@ -33,11 +36,11 @@ public class TimeController {
 	private TimeService timeService;
 	
 	//1. 목록
-	@RequestMapping(value = "time/selectList.do", method=RequestMethod.GET)
+	@RequestMapping(value = "/time/selectList.do")
 	public String timeList(TimeVO timeVO, Model model) {
 		
-		List<TimeVO> list = timeService.getTimeList(timeVO);
-		model.addAttribute("list",list);
+		//List<TimeVO> list = timeService.getTimeList(timeVO);
+		//model.addAttribute("list",list);
 		
 		return "selectList";
 	}
@@ -75,7 +78,24 @@ public class TimeController {
 		return "redirect:/movie/movieChart.do";
 	}
 	
-	//@RequestMapping("")
+	//날짜별 상영 정보 얻기
+	@RequestMapping("/time/selectTimeListAjax.do")
+	@ResponseBody
+	public List<TimeVO> selectTimeList(@RequestParam String movie_date,
+			                           @RequestParam int theater_num){
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("movie_date",movie_date);
+		map.put("theater_num",theater_num);
+		
+		System.out.println("~~~~~~"+map);
+		
+		List<TimeVO> list = timeService.selectList(map);
+		
+		System.out.println(list);
+	
+		return list;
+	}
 	
 	
 	//2-2.영화번호 구하기

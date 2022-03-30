@@ -16,11 +16,11 @@ public class TimeServiceImpl implements TimeService{
 	@Autowired
 	private TimeMapper timeMapper;
 
-	@Override
-	public List<TimeVO> getTimeList(TimeVO timeVO) {
-		
-		return timeMapper.selectList(timeVO);
-	}
+	/*
+	 * @Override public List<TimeVO> getTimeList(TimeVO timeVO) {
+	 * 
+	 * return timeMapper.selectList(timeVO); }
+	 */
 
 	@Override
 	public MovieVO selectMovie2(Integer movie_num) {
