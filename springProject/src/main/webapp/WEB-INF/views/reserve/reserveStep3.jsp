@@ -5,14 +5,14 @@
 <!-- 중앙 컨텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<div style="display:flex;">
-	<div style="width: 33%; border: 1px solid black;">1.영화 및 극장 선택</div>
-	<div style="width: 33%; border: 1px solid black;">2.좌석 선택</div>
-	<div style="width: 33%; border: 1px solid black;">3.결제</div>
+<div id="step-info">
+	<div id="step1-info">1.영화 및 극장 선택</div>
+	<div id="step2-info">2.좌석 선택</div>
+	<div id="step3-info" style="background: #ed6e6e; font-weight: bold;">3.결제</div>
 </div>
 	
-<div>
-	<input style="" type="button" value="예약 선택 초기화" onclick="location.href='reserveStep1.do'">
+<div style="display: flex; flex-direction: row-reverse;">
+	<input type="button" value="예약 선택 초기화" onclick="location.href='reserveStep1.do'">
 </div>
 
 <div id="info-banner" style="width: 100%; background: black; height: 150px; margin: 10px 0 10px 0">
@@ -40,7 +40,7 @@
 		<div id="youth_result" reserve_youth=${reserv.reserve_youth}>청소년 | ${reserv.reserve_youth} 명</div>
 		<div id="old_result" reserve_old=${reserv.reserve_old}>경로우대 | ${reserv.reserve_old} 명</div>
 		<div id="total_result" reserve_price_total=${reserv.reserve_price_total}>합계 | ${reserv.reserve_price_total}원</div>
-		<div id="kakaopay"><img src="${pageContext.request.contextPath}/resources/images/kakao.png" width="50px"></div>
+		<div id="kakaopay" style="padding-top: 10px;"><img src="${pageContext.request.contextPath}/resources/images/kakao.png" width="50px"></div>
 	</div>
 	<div>
 		<form action="reserveconfirm.do" method="post" id="reserveStep1_form" style="display:none;">
@@ -60,7 +60,7 @@
 	</div>
 </div>
 
-<div>
+<div id="info-message" style="background: #f2f2f2; padding: 10px; margin-bottom: 10px">
 	<div>${member.mem_name}님은 
 		<c:if test="${member.mem_grade == 0}">브론즈</c:if>
 		<c:if test="${member.mem_grade == 1}">실버</c:if>
@@ -69,18 +69,24 @@
 		<c:if test="${member.mem_grade == 1}"><span id="grade_sale_price">2000</span></c:if>
 		<c:if test="${member.mem_grade == 2}"><span id="grade_sale_price">3000</span></c:if> 원 할인 혜택을 받으실 수 있습니다.
 	</div>
-	<div>
-		<div>결제하실 금액</div>
-		<div id="original_price">${reserv.reserve_price_total}</div>
-	</div>
-	<div>
-		<div>총 할인 금액</div>
-		<div id="sale_price_info"></div>
-	</div><div>
-		<div>최종 결제 금액</div>
-		<div id="final_price_info"></div>
-	</div>
 </div>
+
+<hr width="100%">
+<table>
+	<tr>
+		<th>결제하실 금액</th>
+		<th>총 할인 금액</th>
+		<th>최종결제 금액</th>
+		<th>결제 방법</th>
+	</tr>
+	<tr>
+		<td style="text-align:center;" id="original_price">${reserv.reserve_price_total}</td>
+		<td style="text-align:center;" id="sale_price_info"></td>
+		<td style="text-align:center;" id="final_price_info"></td>
+	</tr>
+</table>
+
+
 
 <script type="text/javascript">
 	$('#sale_price_info').text($('#grade_sale_price').text());

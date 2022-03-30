@@ -4,14 +4,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 중앙 컨텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
-<div style="display:flex;">
-	<div style="width: 33%; border: 1px solid black;">1.영화 및 극장 선택</div>
-	<div style="width: 33%; border: 1px solid black;">2.좌석 선택</div>
-	<div style="width: 33%; border: 1px solid black;">3.결제</div>
+<div id="step-info">
+	<div id="step1-info">1.영화 및 극장 선택</div>
+	<div id="step2-info" style="background: #ed6e6e; font-weight: bold;">2.좌석 선택</div>
+	<div id="step3-info">3.결제</div>
 </div>
 	
-<div>
-	<input style="" type="button" value="예약 선택 초기화" onclick="location.href='reserveStep1.do'">
+<div style="display: flex; flex-direction: row-reverse;">
+	<input type="button" value="예약 선택 초기화" onclick="location.href='reserveStep1.do'">
 </div>
 
 <div id="info-banner" style="width: 100%; background: black; height: 150px; margin: 10px 0 10px 0">
@@ -50,27 +50,27 @@
 			<input type="hidden" name="reserve_price_total" id="reserve_price_total" value="${reserv.reserve_price_total}">
 			<input type="hidden" name="reserve_seat" id="reserve_seat">
 			<input type="hidden" name="seat_num_array" id="seat_num_array">
-			<input type="submit" value="결제하기">
+			<input type="submit" value="결제하기" class="custom-btn btn-7">
 		</form> 
 	</div>
 </div>
 
-<div id="info-message" style="background: #f2f2f2; padding: 10px;">
+<div id="info-message" style="background: #f2f2f2; padding: 10px; margin-bottom: 10px">
 	${seat_possable_count} / ${seat_total_count} (예약가능 좌석 / 총 좌석)
 	<p>회원님께서 선택한 인원수는 ${reserv.reserve_people_total}명입니다. ${reserv.reserve_people_total}명의 자리를 선택해주세요. </p>
-	<span style="background: gray; color: white; margin: 9px; font-size: 13pt;">선택가능</span>
-	<span style="background: skyblue; color: white; margin: 9px; font-size: 13pt;">선택됨</span>
-	<span style="background: red; color: white; margin: 9px; font-size: 13pt;">선택불가</span>
 </div>
 
 <div id="seat">
 	
 	<c:forEach var="seat" items="${seat_list}">
-			<input type="checkbox" class="seat_select" seat_num="${seat.seat_num}" value="${seat.seat_name}">${seat.seat_name}
+			<span id="seat_detail" style="background: black; color: white; display: inline-block; width: 95px; height: 50px; margin-bottom: 10px;">
+				<input style="margin-top: 17px; margin-left: 30px;" type="checkbox" class="seat_select" seat_num="${seat.seat_num}" value="${seat.seat_name}">${seat.seat_name}
+			</span>			
 		<c:forEach var="reserveseat" items="${reserveseat_list}">
 				<c:if test="${reserveseat.seat_num == seat.seat_num}">
 					<script type="text/javascript">
 						$('input:checkbox').prop("checked",true).prop('disabled', true);
+						$('#seat_detail').css('background','#743030');
 					</script>
 				</c:if>
 		</c:forEach>

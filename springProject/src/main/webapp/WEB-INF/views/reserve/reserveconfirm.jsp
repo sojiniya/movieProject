@@ -24,8 +24,8 @@
 		<p>일시 | ${time.movie_date} ${time.movie_time}</p>
 		<p>인원 | 성인 ${reserve.reserve_adult}명, 청소년 ${reserve.reserve_youth}명, 경로우대 ${reserve.reserve_old}명</p>
 		<p>좌석번호 | ${reserve.reserve_seat}<p>
-		<input type="button" value="영화정보 보기" onclick="location.href='${pageContext.request.contextPath}/movie/movieDetail.do?movie_num=${movie.movie_num}'">
-		<input type="button" value="마이페이지" onclick="location.href='${pageContext.request.contextPath}/user/myPage.do'">
+		<input type="button" value="영화정보 보기" class="custom-btn btn-7" onclick="location.href='${pageContext.request.contextPath}/movie/movieDetail.do?movie_num=${movie.movie_num}'">
+		<input type="button" value="마이페이지"  class="custom-btn btn-7" onclick="location.href='${pageContext.request.contextPath}/user/myPage.do'">
 	</div>
 </div>
 <hr width="100%">

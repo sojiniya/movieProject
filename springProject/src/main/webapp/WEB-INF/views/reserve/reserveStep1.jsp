@@ -321,11 +321,11 @@
 					//인원수 선택 및 합계 조회 정보 노출
 					//$('#people_check').css('display','');
 					let output = '<div id="people_check">';
-					output += '<div><span>'+seat_possable_count+'/'+seat_total_count+'(예약가능 좌석 / 총 좌석)</div>';
+					output += '<div style="height: 30px; text-align: center; background: white;"><span style="vertical-align: middle;">'+seat_possable_count+'/'+seat_total_count+'(예약가능 좌석 / 총 좌석)</div>';
 					output += '<div><span>성인(20세 이상) / 10,000원 </span><input type="number" id="adult" name="adult" max="3" min="0"></div>';
 					output += '<div><span>청소년(19세 이하) / 8,000원 </span><input type="number" id="youth" name="youth" max="3" min="0"></div>';
 					output += '<div><span>경로우대(65세 이상) / 6,000원 </span><input type="number" id="old" name="old" max="3" min="0"></div>';
-					output += '<div><span id="total_people" name=""></span><div id="total_price" name="total_price"></div></div>';
+					output += '<div style="margin-top: 10px;"><span id="total_people" name=""></span><div id="total_price" name="total_price"></div></div>';
 					output += '</div>';
 
 					//문서 객체에 추가
@@ -416,8 +416,8 @@
 			//남은 인원수 구하기
 			possable_people = 3 - total_people;
 			
-			$('#total_people').text('총인원 ' + total_people + '명 / 총금액');
-			$('#total_price').text(total_price + '원');
+			$('#total_people').text('총인원 ' + total_people + '명');
+			$('#total_price').text('총금액 ' + total_price + '원');
 			
 			//info 영역에 선택한 인원수 정보 노출
 			$('#adult_result').html('성인 '+ adult + '명 | ' + adult_sum + '원').attr('adult_count',adult);
@@ -465,14 +465,14 @@
 	});
 </script>
 
-<div style="display:flex;">
-	<div style="width: 33%; border: 1px solid black;">1.영화 및 극장 선택</div>
-	<div style="width: 33%; border: 1px solid black;">2.좌석 선택</div>
-	<div style="width: 33%; border: 1px solid black;">3.결제</div>
+<div id="step-info">
+	<div id="step1-info" style="background: #ed6e6e; font-weight: bold;">1.영화 및 극장 선택</div>
+	<div id="step2-info">2.좌석 선택</div>
+	<div id="step3-info">3.결제</div>
 </div>
 	
-<div>
-	<input style="" type="button" value="초기화" onclick="location.href='reserveStep1.do'">
+<div style="display: flex; flex-direction: row-reverse;">
+	<input type="button" value="초기화" onclick="location.href='reserveStep1.do'">
 </div>
 
 <div id="info-banner" style="width: 100%; background: black; height: 150px; margin: 10px 0 10px 0">
@@ -496,7 +496,7 @@
 		<div id="total_result"></div>
 	</div>
 	<div>
-		<form action="reserveStep2.do" method="post" id="reserveStep1_form">
+		<form action="reserveStep2.do" method="post" id="reserveStep1_form" style="border:0px solid;">
 			<input type="hidden" name="movie_num" id="movie_num">
 			<input type="hidden" name="theater_num" id="theater_num">
 			<input type="hidden" name="time_num" id="time_num">
@@ -505,7 +505,7 @@
 			<input type="hidden" name="reserve_old" id="reserve_old">
 			<input type="hidden" name="reserve_people_total" id="reserve_people_total">
 			<input type="hidden" name="reserve_price_total" id="reserve_price_total">
-			<input type="submit" value="좌석선택">
+			<input type="submit" value="좌석선택" class="custom-btn btn-7">
 		</form> 
 	</div>
 </div>
