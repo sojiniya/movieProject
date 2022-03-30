@@ -56,9 +56,11 @@ table td, table th{
 				<div class="reply_area">
 					<span class="re-title">답변 내용</span>
 					<form>
+					
+					<!-- 회원인 경우 div창만 보이게 구성. 답변 테이블 null 인  경우 답변전이라는 문구 띄움 , 답변 등록되어 있는 경우 답변내용 출력 -->
 						<input type="hidden" name="board_num" value="${board.board_num}" id="board_num">
 						<textarea rows="3" cols="50" name="re_content" id="re_content" class="rep-content"
-			         		<c:if test="${empty user_num}">disabled="disabled"</c:if>>
+			         		<c:if test="${empty user_num && user_num == 0 or user_num == 1 or user_num == 2}">disabled="disabled"</c:if>>
 			         		<c:if test="${empty user_num}">로그인해야 작성할 수 있습니다.</c:if></textarea>                 
 							<c:if test="${!empty user_num}">
 								<div id="re_first">

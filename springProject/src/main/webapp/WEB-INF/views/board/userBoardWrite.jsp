@@ -27,6 +27,37 @@ table td, table th{
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ckeditor.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/uploadAdapter.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+
+	function movie(){
+			
+			const selectVal = $('#sel_regioncode').children("option:selected").val();
+			console.log(selectVal);
+			
+			switch(selectVal) {
+				case '1':
+					console.log("1탔다");
+					$('#sel_theatercode').empty();
+					$('#sel_theatercode').append("<option value='0' selected>영화관 선택</option>");
+					$('#sel_theatercode').append("<option value='2' selected>CGV 홍대</option>");
+					$('#sel_theatercode').append("<option value='3' selected>CGV 강남</option>");
+					$('#sel_theatercode').append("<option value='4' selected>CGV 압구정</option>");
+					break;
+				case '2':
+					console.log("2탔다");
+					$('#sel_theatercode').empty();
+					$('#sel_theatercode').append("<option value='0' selected>영화관 선택</option>");
+					$('#sel_theatercode').append("<option value='5' selected>CGV 수원</option>");
+					$('#sel_theatercode').append("<option value='6' selected>CGV 광교</option>");
+					$('#sel_theatercode').append("<option value='2' selected>CGV 화성</option>");
+					break;
+				default:
+					break;
+			}
+		
+			
+		}
+</script>
 
 <!-- 중앙 시작 -->
 <!-- 3월 11일 31분 -->
@@ -80,26 +111,23 @@ table td, table th{
 					<th scope="row">영화관 선택</th>
 					<td>
 						
-						<label for="sel_regioncode" class="hidden">지역 선택</label> 
-						<select title="지역 선택" class="sel01" id="sel_regioncode" name="sel_regioncode" style="width: 114px; height: 30px;">
-							<option value="0" selected>지역 선택</option>
-							<option value="1">서울</option>
-							<option value="2">경기</option>
-							<option value="3">인천</option>
-							<option value="4">강원</option>
-							<option value="5">대구</option>
-						</select> 
-						<label for="sel_theatercode" class="hidden">영화관 선택</label> 
-						<select title="영화관 선택" class="sel01" id="sel_theatercode" name="sel_theatercode" style="width: 114px; height: 30px;">
+						<label for="sel_regioncode" class="hidden">지역 선택</label> <select
+						title="지역 선택" class="sel01" id="sel_regioncode"
+						name="sel_regioncode" 
+						style="width: 114px; height: 30px;" onchange="movie();">
+							<option value=0 selected>지역 선택</option>
+							<option value=1>서울</option>
+							<option value=2>경기</option>
+							<option value=3>인천</option>
+							<option value=4>강원</option>
+							<option value=5>대구</option>
+					</select> <label for="sel_theatercode" class="hidden">영화관 선택</label> <select
+						title="영화관 선택" class="sel01" id="sel_theatercode"
+						name="sel_theatercode" 
+						style="width: 114px; height: 30px;">
 							<option value="0" selected>영화관 선택</option>
-							<option value="1">cgv 강남</option>
-							<option value="2">cgv 홍대</option>
-							<option value="3">cgv 압구정</option>
-							<option value="4">cgv 대학로</option>
-							<option value="5">cgv 동대문</option>
-							<option value="6">cgv 수원</option>
-							<option value="7">cgv 강남</option>
-						</select>
+
+					</select>
 					</td>
 				</tr>
 

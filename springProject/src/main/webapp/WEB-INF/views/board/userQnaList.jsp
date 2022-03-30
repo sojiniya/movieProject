@@ -21,19 +21,19 @@ table td, table th{
 		<div class="c_tab_wrap">
 			<ul class="c_tab type_free">
 				<li class="on">
-					<a href="#" style="font-size: 13px;" title="선택된 탭메뉴">전체</a>
+					<a href="/project/board/userQnaList.do?cate_num=21" style="font-size: 13px;" title="선택된 탭메뉴">전체</a>
 				</li>
 				<li class>
-					<a href="#" style="font-size: 13px;">문의</a>
+					<a href="/project/board/userQnaList.do?cate_num=8" style="font-size: 13px;">문의</a>
 				</li>
 				<li class>
-					<a href="#" style="font-size: 13px;">불만</a>
+					<a href="/project/board/userQnaList.do?cate_num=9" style="font-size: 13px;">불만</a>
 				</li>
 				<li class>
-					<a href="#" style="font-size: 13px;">칭찬</a>
+					<a href="/project/board/userQnaList.do?cate_num=10" style="font-size: 13px;">칭찬</a>
 				</li>
 				<li class>
-					<a href="#" style="font-size: 13px;">제안</a>
+					<a href="/project/board/userQnaList.do?cate_num=11" style="font-size: 13px;">제안</a>
 				</li>
 			</ul>
 		</div>

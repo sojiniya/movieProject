@@ -23,7 +23,7 @@
 		<div class="c_box inquiry" style="cursor:pointer;">
 			<strong class="c_tit">건의 및 문의사항</strong>
 			<span class="c_txt">건의 및 문의사항을 전달해 주세요.</span>
-			<c:if test="${!empty user_num && user_auth == 1}">
+			<c:if test="${!empty user_num && user_auth == 1 or user_auth == 3}">
 			<a href="${pageContext.request.contextPath}/board/userBoardWrite.do">글쓰기</a>
 			</c:if>
 			<c:if test="${empty user_num}">
@@ -33,7 +33,7 @@
 		<div class="c_box my_advice" style="cursor:pointer;">
 			<strong class="c_tit">내 상담내역 확인</strong>
 			<span class="c_txt">문의하신 내용을 확인하실 수 있습니다.</span>
-			<c:if test="${!empty user_num && user_auth == 1}">
+			<c:if test="${!empty user_num && user_auth == 1 or user_auth == 3}">
 			<a href="#" target="_blank">내역 조회</a>
 			</c:if>
 			<c:if test="${empty user_num}">
@@ -53,7 +53,7 @@
 			<ul class="txt">
 				<li>
 					<p style="display:none">${status.index}</p>
-					<a href="qnaDetail.do?board_num=${board.board_num}">${board.board_title}</a>
+					<a href="qnaDetail.do?board_num=${board.board_num}">[${board.cate_name}] ${board.board_title}</a>
 					<span class="day">${board.board_reg_date}</span>
 					
 				</li>

@@ -3,6 +3,9 @@ package kr.spring.board.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Insert;
+
+import kr.spring.board.vo.BoardReplyVO;
 import kr.spring.board.vo.BoardVO;
 
 public interface BoardService {
@@ -20,7 +23,7 @@ public interface BoardService {
 	public void adminUpdateBoard(BoardVO board); //관리자 글 수정
 	public void adminDeleteBoard(Integer board_num); //관리자 글 삭제
 	//public void adminDeleteFile(Integer board_num); //관리자 글 파일 삭제
-	public List<BoardVO> boardNews(Map<String,Object> map);
+	public List<BoardVO> selectListBy5(Map<String,Object> map);
 	
 	//회원부분
 	public void insertBoard(BoardVO board); //회원 글 작성
@@ -28,4 +31,17 @@ public interface BoardService {
 	public void updateBoard(BoardVO board); //회원 글 수정
 	public void deleteBoard(Integer board_num); //회원 글 삭제
 	public void deleteFile(Integer board_num); //회원 글 파일 삭제
+	
+	//댓글
+	public List<BoardReplyVO> selectListReply(Map<String,Object> map); //필요없을듯
+	public int selectRowCountReply(Map<String,Object> map);
+	public BoardReplyVO selectReply(Integer re_num);
+	@Insert("INSERT INTO m_reply (reply_num,reply_content,"
+			+ "board_num,mem_num) VALUES (m_reply_seq.nextval,"
+			+ "#{reply_content},#{board_num},#{mem_num})")
+	public void insertReply(BoardReplyVO boardReply);
+	public void updateReply(BoardReplyVO boardReply);
+	public void deleteReply(Integer re_num);
+	//부모글 삭제시 댓글이 존재하면 부모글 삭제전 댓글 삭제
+	public void deleteReplyByBoardNum(Integer board_num);
 }

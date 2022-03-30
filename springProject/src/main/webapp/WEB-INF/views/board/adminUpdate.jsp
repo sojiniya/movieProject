@@ -106,13 +106,18 @@ table td, table th{
 					<td>
 						<ul class="type_list">
 							<li>
+								<label for="board_num">
+								<input type="hidden" id="board_num" name="board_num" style="display:none;" value="${boardVO.board_num}" >
+								</label>
+							</li>
+							<li>
 								<label for="qna">
-								<input type="radio" id="qna" name="board_auth" class="radio_b1" value="0" data-modal="modal" checked>자주찾는 질문
+								<input type="radio" id="qna" name="board_auth" class="radio_b1" value="0" data-modal="modal" ${boardVO.board_auth==0? 'checked':''}>자주찾는 질문
 								</label>
 							</li>
 							<li>
 								<label for="news">
-								<input type="radio" id="news" name="board_auth" class="radio_b2" value="1">뉴스/공지
+								<input type="radio" id="news" name="board_auth" class="radio_b2" value="1" ${boardVO.board_auth==1? 'checked':''}>뉴스/공지
 								</label>
 							</li>
 						</ul>

@@ -37,22 +37,25 @@ table td, table th{
 		<div class="c_tab_wrap">
 			<ul class="c_tab type_free">
 				<li class="on">
-					<a href="#" style="font-size: 13px;" title="선택된 탭메뉴">전체</a>
+					<a href="/project/board/qnaList.do?cate_num=0" style="font-size: 13px;" title="선택된 탭메뉴">전체</a>
 				</li>
 				<li>
-					<a href="#" style="font-size: 13px;">예매/매표</a>
+					<a href="/project/board/qnaList.do?cate_num=1" style="font-size: 13px;">예매/매표</a>
 				</li>
 				<li>
-					<a href="#" style="font-size: 13px;">결제수단</a>
+					<a href="/project/board/qnaList.do?cate_num=2" style="font-size: 13px;">결제수단</a>
 				</li>
 				<li>
-					<a href="#" style="font-size: 13px;">멤버쉽</a>
+					<a href="/project/board/qnaList.do?cate_num=3" style="font-size: 13px;">멤버쉽</a>
 				</li>
 				<li>
-					<a href="#" style="font-size: 13px;">영화관이용</a>
+					<a href="/project/board/qnaList.do?cate_num=4" style="font-size: 13px;">영화관이용</a>
 				</li>
 			</ul>
 		</div>
+		<c:if test="${count == 0}">
+		<div class="result-display">표시할 게시물이 없습니다.</div>
+		</c:if>
 		<c:if test="${count > 0}">
 		<div class="tbl_area">
 			<table class="tbl_notice_list">
@@ -72,14 +75,14 @@ table td, table th{
 				</thead>
 				<tbody>
 					<c:forEach items="${list}" var="board" varStatus="status">
-						<c:if test="${board.cate_num eq 1 or board.cate_num eq 2 or board.cate_num eq 3 or board.cate_num eq 4}">
+						<%-- <c:if test="${board.cate_num eq 1 or board.cate_num eq 2 or board.cate_num eq 3 or board.cate_num eq 4}"> --%>
 						<tr>
 							<td>${board.board_num}</td>
 							<td>[${board.cate_name}]</td>
 							<td class="txt"><a href="qnaDetail.do?board_num=${board.board_num}">${board.board_title}</a></td>
 							<td>${board.board_hit}</td>
 						</tr>
-						</c:if>
+						<%-- </c:if> --%>
 					</c:forEach>
 				</tbody>
 			</table>

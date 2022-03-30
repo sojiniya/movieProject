@@ -54,6 +54,7 @@ public class BoardController {
 				
 		//글의 총갯수 또는 검색된 글의 갯수
 		int count = boardService.selectRowCount(map);
+		System.out.println(count);
 				
 		//페이지 처리
 		PagingUtil page = new PagingUtil(keyfield,keyword,
@@ -65,7 +66,7 @@ public class BoardController {
 		//리스트
 		List<BoardVO> list = null;
 		if(count > 0) {
-			list = boardService.selectList(map);
+			list = boardService.selectListBy5(map);
 		}
 						
 		ModelAndView mav = new ModelAndView();
@@ -102,16 +103,57 @@ public class BoardController {
 		return "redirect:/board/boardMain.do";
 		}
 	
+	//관리자 질문  목록
+	@RequestMapping("/board/adminBoardList.do")
+	public ModelAndView process4(
+			@RequestParam(value="pageNum",defaultValue="1")int currentPage,
+			@RequestParam(value="keyfield",defaultValue="")String keyfield,
+			@RequestParam(value="keyword",defaultValue="")String keyword,
+			@RequestParam(value="cate_num",defaultValue="31")String cate_num) {
+					
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("keyfield", keyfield);
+			map.put("keyword", keyword);
+			map.put("cate_num", cate_num);
+					
+			//글의 총갯수 또는 검색된 글의 갯수
+			int count = boardService.selectRowCount(map);
+					
+			//페이지 처리
+			PagingUtil page = new PagingUtil(keyfield,keyword,
+							                currentPage,count,20,10,"qnaList.do");
+					
+			map.put("start",page.getStartCount());
+			map.put("end", page.getEndCount());
+				
+			//리스트
+			List<BoardVO> list = null;
+			if(count > 0) {
+				list = boardService.selectList(map);
+			}
+							
+			ModelAndView mav = new ModelAndView();
+					        //타일스 설정
+			mav.setViewName("adminBoardList");
+			mav.addObject("count", count);
+			mav.addObject("list",list);
+			mav.addObject("pagingHtml", page.getPagingHtml());
+					
+			return mav;
+			}
+	
 	//자주찾는 질문  목록
 	@RequestMapping("/board/qnaList.do")
 	public ModelAndView process(
 			@RequestParam(value="pageNum",defaultValue="1")int currentPage,
 			@RequestParam(value="keyfield",defaultValue="")String keyfield,
-			@RequestParam(value="keyword",defaultValue="")String keyword) {
+			@RequestParam(value="keyword",defaultValue="")String keyword,
+			@RequestParam(value="cate_num",defaultValue="0")String cate_num) {
 				
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("keyfield", keyfield);
 			map.put("keyword", keyword);
+			map.put("cate_num", cate_num);
 				
 			//글의 총갯수 또는 검색된 글의 갯수
 			int count = boardService.selectRowCount(map);
@@ -142,7 +184,7 @@ public class BoardController {
 	@RequestMapping("/board/qnaDetail.do")
 	public ModelAndView process(@RequestParam int board_num) {
 		logger.info("<<자주찾는 질문 글 상세 - 글 번호>> : " + board_num);
-			
+		
 		//해당 글의 조회수 증가
 		boardService.updateHit(board_num);
 			
@@ -183,11 +225,13 @@ public class BoardController {
 	public ModelAndView process1(
 			@RequestParam(value="pageNum",defaultValue="1")int currentPage,
 			@RequestParam(value="keyfield",defaultValue="2")String keyfield,
-			@RequestParam(value="keyword",defaultValue="2")String keyword) {
+			@RequestParam(value="keyword",defaultValue="2")String keyword,
+			@RequestParam(value="cate_num",defaultValue="20")String cate_num) {
 				
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("keyfield", keyfield);
 			map.put("keyword", keyword);
+			map.put("cate_num", cate_num);
 				
 			//글의 총갯수 또는 검색된 글의 갯수
 			int count = boardService.selectRowCount(map);
@@ -233,6 +277,7 @@ public class BoardController {
 				               HttpServletRequest request,
 				                Model model) {
 			
+		System.out.println("수정 실제"+boardVO.toString());
 		logger.info("<<관리자 글 정보 수정>> : " + boardVO);
 			
 			
@@ -246,7 +291,7 @@ public class BoardController {
 		 * model.addAttribute("url", request.getContextPath() + "/board/qnaList.do");
 		 */
 			
-			return "qnaList";
+			return "redirect:/board/adminBoardList.do";
 		}
 	
 	//회원 글 등록 폼 
@@ -277,11 +322,13 @@ public class BoardController {
 		public ModelAndView process2(
 			@RequestParam(value="pageNum",defaultValue="1")int currentPage,
 			@RequestParam(value="keyfield",defaultValue="")String keyfield,
-			@RequestParam(value="keyword",defaultValue="")String keyword) {
+			@RequestParam(value="keyword",defaultValue="")String keyword,
+			@RequestParam(value="cate_num",defaultValue="31")String cate_num) {
 					
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("keyfield", keyfield);
 			map.put("keyword", keyword);
+			map.put("cate_num", cate_num);
 					
 			//글의 총갯수 또는 검색된 글의 갯수
 			int count = boardService.selectRowCount(map);
@@ -292,7 +339,8 @@ public class BoardController {
 					
 			map.put("start",page.getStartCount());
 			map.put("end", page.getEndCount());
-				
+			map.put("cate_num", cate_num);
+			
 			//리스트
 			List<BoardVO> list = null;
 			if(count > 0) {

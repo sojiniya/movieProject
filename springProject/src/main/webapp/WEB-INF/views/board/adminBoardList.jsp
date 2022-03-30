@@ -18,7 +18,7 @@ table td, table th{
 </style>
 <div class="boardMain">
 	<div class="board-detail">
-		<h3 style="margin:0px 10px;">공지/뉴스</h3>
+		<h3 style="margin:0px 10px;">관리자 게시판 관리</h3>
 		<form action="newsList.do" id="search_form" method="get">
 		<div class="search_area">
 			<select name="keyfield" id="keyfield" class="c_select" style="width:100px;">
@@ -34,22 +34,10 @@ table td, table th{
 		<div class="c_tab_wrap">
 			<ul class="c_tab type_free">
 				<li class="on">
-					<a href="/project/board/newsList.do?cate_num=20" style="font-size: 13px;" title="선택된 탭메뉴">전체</a>
-				</li>
-				<li class>
-					<a href="/project/board/newsList.do?cate_num=5" style="font-size: 13px;">시스템점검</a>
-				</li>
-				<li class>
-					<a href="/project/board/newsList.do?cate_num=6" style="font-size: 13px;">극장</a>
-				</li>
-				<li class>
-					<a href="/project/board/newsList.do?cate_num=7" style="font-size: 13px;">기타</a>
+					<a href="#" style="font-size: 13px;" title="선택된 탭메뉴">전체</a>
 				</li>
 			</ul>
 		</div>
-		<c:if test="${count == 0}">
-		<div class="result-display">표시할 게시물이 없습니다.</div>
-		</c:if>
 		<c:if test="${count > 0}">
 		<div class="tbl_area">
 			<table class="tbl_notice_list">
@@ -71,8 +59,8 @@ table td, table th{
 				</thead>
 				<tbody>
 					
-					<c:forEach var="board" items="${list}" varStatus="status">
-					<%-- <c:if test="${board.cate_num eq 5 or board.cate_num eq 6 or board.cate_num eq 7}"> --%>
+					<c:forEach var="board" items="${list}">
+					<c:if test="${board.cate_num eq 5 or board.cate_num eq 6 or board.cate_num eq 7 or board.cate_num eq 1 or board.cate_num eq 2 or board.cate_num eq 3 or board.cate_num eq 4}">
 					<tr>
 						<td>${board.board_num}</td>
 						<td>[${board.cate_name}]</td>
@@ -80,7 +68,16 @@ table td, table th{
 						<td>${board.board_reg_date}</td>
 						<td>${board.board_hit}</td>
 					</tr>
-					<%-- </c:if> --%>
+					</c:if>
+					<c:if test="${board.cate_num eq 8 or board.cate_num eq 9 or board.cate_num eq 10}">
+					<tr>
+						<td>${board.board_num}</td>
+						<td>[${board.cate_name}]</td>
+						<td class="txt"><a href="userQnaView.do?board_num=${board.board_num}">${board.board_title}</a></td>
+						<td>${board.board_reg_date}</td>
+						<td>${board.board_hit}</td>
+					</tr>
+					</c:if>
 					</c:forEach>
 					
 				</tbody>
@@ -90,43 +87,3 @@ table td, table th{
 			</c:if>
 	</div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

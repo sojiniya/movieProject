@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.spring.board.dao.BoardMapper;
+import kr.spring.board.vo.BoardReplyVO;
 import kr.spring.board.vo.BoardVO;
 
 @Service
@@ -56,6 +57,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void adminUpdateBoard(BoardVO board) {
+		System.out.println(board.toString());
 		boardMapper.adminUpdateBoard(board);
 		
 	}
@@ -102,9 +104,55 @@ public class BoardServiceImpl implements BoardService{
 		
 	}
 
+	
+	
+	//댓글 부분
 	@Override
-	public List<BoardVO> boardNews(Map<String, Object> map) {
-		return boardMapper.boardNews(map);
+	public List<BoardReplyVO> selectListReply(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int selectRowCountReply(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public BoardReplyVO selectReply(Integer re_num) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void insertReply(BoardReplyVO boardReply) {
+		boardMapper.insertReply(boardReply);
+		
+	}
+
+	@Override
+	public void updateReply(BoardReplyVO boardReply) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteReply(Integer re_num) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteReplyByBoardNum(Integer board_num) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<BoardVO> selectListBy5(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return boardMapper.selectListBy5(map);
 	}
 
 
