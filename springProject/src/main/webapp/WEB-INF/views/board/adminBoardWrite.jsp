@@ -36,27 +36,11 @@ table td, table th {
 	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		/* $("#sel_regioncode").change(function(){
-			console.log("sel_theatercode 변함");
-			var regioncode = $("#sel_regioncode").val();
-			
-			$("#sel_regioncode").empty();
-			
-			if(regioncode == 1){
-				option .. append
-			}else if(regioncode == 2){
-				
-			}
-			
-			// 서울 > 1,2,
-			// 부산 > 3,4
-			
-		}); */
-		
 		$(".radio_b1").click(function(){
 			if($("input[type='radio']").is(':checked')){
 				$(".radio_v1").show();
 				$(".radio_v2").hide();
+				$("input:radio[name='cate_num']:radio[value='1']").prop("checked",true) ;
 			}
 
 		});
@@ -64,6 +48,7 @@ table td, table th {
 			if($("input[type='radio']").is(':checked')){
 				$(".radio_v2").show();
 				$(".radio_v1").hide();
+				$("input:radio[name='cate_num']:radio[value='5']").prop("checked",true) ;
 			}
 
 		})
@@ -156,8 +141,8 @@ table td, table th {
 					<th scope="row">카테고리</th>
 					<td>
 						<ul class="type_list">
-							<li><label for="ticket"> <input type="radio"
-									id="ticket" name="cate_num" value="1" checked>예매/매표
+							<li><label for="tic"> <input type="radio"
+									id="tic" name="cate_num" value="1" checked>예매/매표
 							</label></li>
 							<li><label for="pay"> <input type="radio" id="pay"
 									name="cate_num" value="2">결제수단
@@ -176,7 +161,7 @@ table td, table th {
 					<td>
 						<ul class="type_list cate">
 							<li><label for="systemCheck"> <input type="radio"
-									id="systemCheck" name="cate_num" value="5" checked>시스템점검
+									id="systemCheck" name="cate_num" value="5" >시스템점검
 							</label></li>
 							<li><label for="theater"> <input type="radio"
 									id="theater" name="cate_num" value="6">극장

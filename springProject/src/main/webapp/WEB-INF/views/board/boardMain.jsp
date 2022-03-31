@@ -48,7 +48,7 @@
 			</a>
 			
 			<!-- 공지/ 뉴스 카테고리만 뜨게끔 수정해야함. -->
-			<c:forEach var="board" items="${list}" begin="0" end="3" step="1" varStatus="status">
+			<c:forEach var="board" items="${list}" begin="0" end="4" step="1" varStatus="status">
 			
 			<ul class="txt">
 				<li>

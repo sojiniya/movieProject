@@ -224,8 +224,8 @@ public class BoardController {
 	@RequestMapping("/board/newsList.do")
 	public ModelAndView process1(
 			@RequestParam(value="pageNum",defaultValue="1")int currentPage,
-			@RequestParam(value="keyfield",defaultValue="2")String keyfield,
-			@RequestParam(value="keyword",defaultValue="2")String keyword,
+			@RequestParam(value="keyfield",defaultValue="")String keyfield,
+			@RequestParam(value="keyword",defaultValue="")String keyword,
 			@RequestParam(value="cate_num",defaultValue="20")String cate_num) {
 				
 			Map<String,Object> map = new HashMap<String,Object>();

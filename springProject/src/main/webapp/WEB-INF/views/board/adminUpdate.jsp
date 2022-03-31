@@ -30,11 +30,12 @@ table td, table th{
 <script type="text/javascript">
 	$(function(){
 		
-		
 		$(".radio_b1").click(function(){
 			if($("input[type='radio']").is(':checked')){
 				$(".radio_v1").show();
 				$(".radio_v2").hide();
+				$("input:radio[name='cate_num']:radio[value='1']").prop("checked",true) ;
+
 			}
 
 		});
@@ -42,17 +43,27 @@ table td, table th{
 			if($("input[type='radio']").is(':checked')){
 				$(".radio_v2").show();
 				$(".radio_v1").hide();
+				$("input:radio[name='cate_num']:radio[value='5']").prop("checked",true) ;
 			}
 
-		})
-		$(".check1").click(function(){
+		});
+		
+		//board_auth가  1이면 이벤트 발생
+		if(${boardVO.board_auth}){
+			$('.radio_b2').trigger('click');
+		}
+		if(${boardVO.theater_choise}){
+			$('#sel').trigger('click');
+		}
+		
+	/* 	$(".check1").click(function(){
 			if($("input[type='radio']").is(':checked')){
 				$(".region").disable();
 			}else{
 				$(".region").able();
 			}
 
-		})
+		}) */
 		 // 영화관 선택(선택하지 않음:0, 선택함:1)
         $('input:radio[name="theater_choise"]').on("change", function () {            
             $(this).parent().addClass("on").siblings().removeClass("on");
@@ -97,12 +108,14 @@ table td, table th{
 							</li>
 							<li>
 								<label for="qna">
-								<input type="radio" id="qna" name="board_auth" class="radio_b1" value="0" data-modal="modal" ${boardVO.board_auth==0? 'checked':''}>자주찾는 질문
+								<input type="radio" id="qna" name="board_auth" class="radio_b1" value="0" data-modal="modal"
+								      <c:if test="${boardVO.board_auth==0}">checked</c:if>>자주찾는 질문
 								</label>
 							</li>
 							<li>
 								<label for="news">
-								<input type="radio" id="news" name="board_auth" class="radio_b2" value="1" ${boardVO.board_auth==1? 'checked':''}>뉴스/공지
+								<input type="radio" id="news" name="board_auth" class="radio_b2" value="1"
+								      <c:if test="${boardVO.board_auth==1}">checked</c:if>>뉴스/공지
 								</label>
 							</li>
 						</ul>
@@ -114,23 +127,27 @@ table td, table th{
 					<td>
 						<ul class="type_list">
 							<li>
-								<label for="ticket">
-								<input type="radio" id="ticket" name="cate_num" value="1" checked>예매/매표
+								<label for="tic">
+								<input type="radio" id="tic" name="cate_num" value="1" checked
+									<c:if test="${boardVO.cate_num==1}">checked</c:if>>예매/매표
 								</label>
 							</li>
 							<li>
 								<label for="pay">
-								<input type="radio" id="pay" name="cate_num" value="2">결제수단
+								<input type="radio" id="pay" name="cate_num" value="2"
+									<c:if test="${boardVO.cate_num==2}">checked</c:if>>결제수단
 								</label>
 							</li>
 							<li>
 								<label for="memberShip">
-								<input type="radio" id="memberShip" name="cate_num" value="3">멤버쉽
+								<input type="radio" id="memberShip" name="cate_num" value="3"
+									<c:if test="${boardVO.cate_num==3}">checked</c:if>>멤버쉽
 								</label>
 							</li>
 							<li>
 								<label for="useTheater">
-								<input type="radio" id="useTheater" name="cate_num" value="4">영화관이용
+								<input type="radio" id="useTheater" name="cate_num" value="4"
+									<c:if test="${boardVO.cate_num==4}">checked</c:if>>영화관이용
 								</label>
 							</li>
 						</ul>
@@ -142,17 +159,20 @@ table td, table th{
 						<ul class="type_list cate">
 							<li>
 								<label for="systemCheck">
-								<input type="radio" id="systemCheck" name="cate_num" value="5" checked>시스템점검
+								<input type="radio" id="systemCheck" name="cate_num" value="5" 
+									<c:if test="${boardVO.cate_num==5}">checked</c:if>>시스템점검
 								</label>
 							</li>
 							<li>
 								<label for="theater">
-								<input type="radio" id="theater" name="cate_num" value="6">극장
+								<input type="radio" id="theater" name="cate_num" value="6"
+									<c:if test="${boardVO.cate_num==6}">checked</c:if>>극장
 								</label>
 							</li>
 							<li>
 								<label for="etc">
-								<input type="radio" id="etc" name="cate_num" value="7">기타
+								<input type="radio" id="etc" name="cate_num" value="7"
+									<c:if test="${boardVO.cate_num==7}">checked</c:if>>기타
 								</label>
 							</li>
 						</ul>
@@ -164,12 +184,14 @@ table td, table th{
 						<ul class="type_list">
 							<li class="on">
 								<label for="no_sel">
-								<input type="radio" id="no_sel" name="theater_choise" checked="checked" value="0" />선택하지 않음
+								<input type="radio" id="no_sel" name="theater_choise" checked="checked" value="0"
+									<c:if test="${boardVO.theater_choise==0}">checked</c:if>>선택하지 않음
 								</label>
 							</li>
 							<li>
 								<label for="sel">
-								<input type="radio" id="sel" name="theater_choise" value="1" />선택함
+								<input type="radio" id="sel" name="theater_choise" value="1"
+									<c:if test="${boardVO.theater_choise==1}">checked</c:if>>선택함
 								</label>
 							</li>
 						</ul> 
@@ -189,7 +211,6 @@ table td, table th{
 						</select>
 					</td>
 				</tr>
-
 				<tr>
 					<th scope="row">제목</th>
 					<td>
