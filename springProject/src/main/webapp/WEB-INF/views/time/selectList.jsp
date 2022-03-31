@@ -28,7 +28,133 @@ ul.time-choice li{
 div.area ul li a, div.sect-city ul li a{
 	cursor:pointer;
 }
+
+
+/*밑부터 테스트*/
+div[class^="sect-"] {
+    clear: both;
+    zoom: 1;
+}
+/*아이콘*/
+.sect-showtimes .col-times .ico-grade {
+    top: -2px;
+    left: -1px;
+}
+.ico-grade.grade-15 {
+    background-position: -72px 0;
+}
+.ico-grade {
+    display: block;
+    position: absolute;
+    background: url(https://img.cgv.co.kr/R2014/images/sprite/sprite_icon.png) no-repeat;
+    font: 0/0 a;
+    zoom: 1;
+}
+/*제목*/
+.info-movie {
+    float: left;
+    height: 20px;
+    color: #cccccc;
+    font-size: 12px;
+    border-right: 1px solid white;
+    width: 100%;
+    margin: 10px;
+}
+.sect-showtimes .col-times > .info-movie strong {
+    margin-right: 5px;
+    color: #000;
+    font-size: 16px;
+}
+/*상영중*/
+.round > * {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 0 5px 0;
+}
+.round, .round > * {
+    display: inline-block;
+    position: relative;
+}
+em {
+    font-style: italic;
+}
+.sect-showtimes .col-times > .info-movie .round {
+    line-height: 16px;
+    vertical-align: top;
+}
+.round.lightblue {
+    border: 2px solid #3e82a4;
+    color: #3e82a4;
+}
+.round {
+    line-height: 23px;
+    font-weight: 500;
+    font-size: 12px;
+    text-align: center;
+    vertical-align: middle;
+}
+i {
+    font-style: italic;
+}
+.sect-showtimes .info-hall {
+    clear: both;
+    margin-bottom: 5px;
+    background: url(https://img.cgv.co.kr/r2014/images/common/ico/ico_arrow03.png) no-repeat 2px 50%;
+}
+.sect-showtimes .type-hall, .sect-showtimes .info-hall {
+    zoom: 1;
+}
+ul ul {
+    list-style-type: circle;
+}
+.sect-showtimes .info-timetable > ul > li {
+    float: left;
+    position: relative;
+    width: 60px;
+    height: 36px;
+    margin-right: -1px;
+    padding-top: 5px;
+    border: 1px solid #cbcabe;
+    line-height: 1.4;
+    text-align: center;
+}
+.showtimes-wrap .early, .showtimes-wrap .midnight, .showtimes-wrap .early, .showtimes-wrap .midnight, .showtimes-wrap .ico_script, .descri-info > ul > li > a, .sect-showtimes .info-timetable a > em {
+    color: #333;
+}
+.sect-showtimes .info-timetable em {
+    display: block;
+    font-family: verdana, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+.sect-showtimes .info-timetable span {
+    display: inline-block;
+    font-size: 11px;
+}
+.txt-lightblue {
+    color: #2275a4 !important;
+}
+.sect-showtimes > ul > li:first-child {
+    border-top: 0 none;
+}
+.sect-showtimes > ul > li {
+    padding: 40px 0;
+    border-top: 1px solid #474746;
+}
+.sect-showtimes > ul > li:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+.sect-showtimes .type-hall:after, .sect-showtimes .info-hall:after {
+    content: '';
+    clear: both;
+    display: block;
+}
 </style>
+
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 //극장지역 선택 시 이벤트 발생
@@ -50,7 +176,7 @@ $(function(){
 						let output = '<div class="area">';
 						output += '<ul>';
 						output += '<li class="on">';
-						output += '<a title="'+ item.theater_name + '" class="theater-name" data-num="'+item.theater_num+'">' + item.theater_name + '</a>';
+						output += '<a title="'+ item.theater_name + '" class="theater-name" data-num="'+item.theater_num+'" data-addr="'+item.theater_addr+'">' + item.theater_name + '</a>';
 						output += '</li>';
 						output += '</ul>';
 						output += '</div>';
@@ -71,11 +197,13 @@ $(function(){
 		$(document).on('click','.theater-name',function(){
 			theater_num = $(this).attr('data-num');
 			let theater_name = $(this).text();
+			let theater_addr = $(this).attr('data-addr');
 			
 			//cgv지점명 클릭시 지점별 인포사진 교체
 			$('#theater_img_container').find('img').attr('src','${pageContext.request.contextPath}/theater/theaterImage.do?theater_num='+theater_num);	
 			//cgv지점명 클릭시 인포사진 위에 극장지점명(ex cgv강남) 표시
 			$('h4').find('span').text(theater_name).show();
+			$('.movie-title').text(theater_addr)
 			
 			//상영관명과 상영관 이미지 출력 후 상영 정보 호출
 			//오늘 날짜 추출
@@ -206,11 +334,75 @@ $(function(){
 	</div>
 </div>
 <div class="theater-info">
-     <strong class="title">서울 강남구 테헤란로123</strong>
+     <strong class="movie-title">서울 강남구 테헤란로123</strong>
 </div>
 <hr size="1" noshade="noshade" width="100%">
 <!-- 상영일자 표시 -->
 <div id="time_output"></div>
 <!-- 상영일자 표시 -->
 <hr size="1" noshade="noshade" width="100%">
+
+<c:if test="${!empty user_num && user_auth==3}">
+	<div class="align-right">
+		<input type="button" value="상영정보등록" onclick="location.href='${pageContext.request.contextPath}/time/timeInsert.do'">
+	</div>
+</c:if>
+
+<hr size="1" noshade="noshade" width="100%">
+
+<!-- 영화리스트 시작(참고용) -->
+<div class="sect-showtimes">
+	<ul style="display: block;list-style: none;list-style-type: disc;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
+		<li style="display:list-item;text-align: -webkit-match-parent;list-style: none;">
+			
+			<div class="col-times">
+				<div class="info-movie">
+					<span class="ico-grade grade-15">15세 이상</span>
+					<a href="#" target="_parent">
+					<strong style="font-weight: bold;">극장판 주술회전</strong></a> 
+							<span class="round lightblue">
+								<em>상영중</em>
+							</span>
+							<span class="">
+								<em> </em>
+							</span>
+							<i> 애니메이션</i> / <i> 105분</i> / <i> 2022.03.31 개봉</i>
+				</div>
+
+				<div class="type-hall">
+					<div class="info-hall">
+						<ul style="display: block;list-style: none;list-style-type: disc;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
+							<li style="display: list-item;text-align: -webkit-match-parent;list-style: none;">총 124석</li>
+						</ul>
+					</div>
+					
+					<div class="info-timetable">
+						<ul style="display: block;list-style: none;list-style-type: disc;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
+							<li style="display: list-item;text-align: -webkit-match-parent;list-style: none;">
+								
+								<a href="/ticket/?MOVIE_CD=20028797&amp;MOVIE_CD_GROUP=20028797&amp;PLAY_YMD=20220330&amp;THEATER_CD=0056&amp;PLAY_START_TM=1850&amp;AREA_CD=13&amp;SCREEN_CD=006" 
+								target="_top" data-theatercode="0056" data-playymd="20220330"
+								data-screencode="006" data-playnum="6" data-playstarttime="1850"
+								data-playendtime="2045" data-theatername="CGV 강남"
+								data-seatremaincnt="86">
+								<em>18:50</em>
+								<span class="txt-lightblue">
+									<span class="hidden">잔여좌석</span>86석
+								</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>
+<!-- 영화리스트  끝 -->
+<hr size="1" noshade="noshade" width="100%">
+<div>
+<p class="info-noti"></p>
+<p>ㆍ입장 지연에 따른 관람 불편을 최소화하기 위해 영화는 10분 후 상영이 시작됩니다.</p>
+<p></p>
+</div>
 <!-- 중앙 컨텐츠 끝 -->
