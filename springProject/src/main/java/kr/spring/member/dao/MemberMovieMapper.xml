@@ -85,6 +85,20 @@
 		WHERE rnum >= #{start} AND rnum <= #{end}
 		]]>	  		 	  
 		
+	</select>
+	
+	<select id="selectMyReviewList" parameterType="map" resultType="MovieReviewVO">
+		SELECT 
+		   *
+		FROM (SELECT
+				a.*,
+				rownum rnum
+			  FROM (SELECT
+			  		  *
+			  		 FROM M_review r JOIN M_moive m ON r.movie_num = m.movie_num WHERE mem_num=#{mem_num})a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>	  		 	  
 		
 	</select>
 	 

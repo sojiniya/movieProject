@@ -26,7 +26,7 @@
 								</div>
 								<div class="box-contents">
 									<div class="title">
-										<a href="/movies/detail-view/?midx=80530"> <strong
+										<a href=""> <strong
 											id="strong_80530">${watchedMovie.movie_name}</strong>
 										</a>
 									</div>
@@ -41,7 +41,7 @@
 										src="https://img.cgv.co.kr/R2014/images/common/btn/btn_del.gif"
 										alt="${watchedMovie.movie_name}">
 								</button>
-								<button type="button">
+								<button type="button" onclick="location.href='${pageContext.request.contextPath}/user/writeReviewForm.do?movie_num=${watchedMovie.movie_num}'">
 									리뷰남기기
 								</button>
 						</li>
@@ -49,6 +49,7 @@
 			</div>
 			</c:forEach>
 			</ul>
+			<div class="align-center">${pagingHtml}</div>
 		</div>
 	</div>
 </div>

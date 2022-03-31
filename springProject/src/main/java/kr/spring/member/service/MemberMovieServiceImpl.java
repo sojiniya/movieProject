@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.spring.member.dao.MemberMovieMapper;
-import kr.spring.member.vo.MyReviewVO;
+import kr.spring.movie.vo.MovieReviewVO;
 import kr.spring.movie.vo.MovieVO;
 import kr.spring.reserve.vo.ReserveVO;
 
@@ -54,13 +54,13 @@ public class MemberMovieServiceImpl implements MemberMovieService{
 	}
 
 	@Override
-	public List<MyReviewVO> selectMyReviewList(Map<String, Object> map) {
+	public List<MovieReviewVO > selectMyReviewList(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void insertReview(MyReviewVO review) {
+	public void insertReview(MovieReviewVO review) {
 		// TODO Auto-generated method stub
 		
 	}
