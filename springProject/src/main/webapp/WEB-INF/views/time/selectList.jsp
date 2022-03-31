@@ -107,7 +107,7 @@ i {
     zoom: 1;
 }
 ul ul {
-    list-style-type: circle;
+    list-style-type: none;
 }
 .sect-showtimes .info-timetable > ul > li {
     float: left;
