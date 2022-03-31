@@ -28,6 +28,8 @@ public class MainController {
 		
 		List<MovieVO> movieList = null;
 		if(count > 0) {
+			map.put("start",1);
+			map.put("end",10);
 			movieList = movieService.selectList(map);
 		}
 

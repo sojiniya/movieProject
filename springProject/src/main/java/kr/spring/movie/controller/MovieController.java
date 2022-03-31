@@ -101,10 +101,12 @@ public class MovieController {
 		
 		//페이지 처리
 		PagingUtil page = new PagingUtil(keyfield,keyword,
-				                currentPage,count,20,10,"movieChart.do");
+				                currentPage,count,12,10,"movieChart.do");
 		
 		map.put("start",page.getStartCount());
 		map.put("end", page.getEndCount());
+		
+		System.out.println(page.getStartCount()+","+page.getEndCount()+"****************************");
 		
 		List<MovieVO> list = null;
 		if(count > 0) {
@@ -118,6 +120,8 @@ public class MovieController {
 		mav.addObject("pagingHtml", page.getPagingHtml());
 		
 		return mav;
+		
+		
 	}
 	
 	//영화 상세 정보
@@ -188,7 +192,10 @@ public class MovieController {
 		public String submitDelete(@RequestParam int movie_num) {
 			movieService.deleteMovie(movie_num);
 			return "redirect:/movie/movieChart.do";		
-	}
+		}
+		
+
+		
 }
 	
 

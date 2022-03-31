@@ -5,13 +5,29 @@
 <mapper namespace="kr.spring.movie.dao.MovieMapper"> 
 
 	<select id="selectList" parameterType="map" resultType="movieVO">
-		SELECT
+	SELECT
 		  *
-		FROM M_movie
+		FROM (SELECT 
+		       a.*,
+		       rownum rnum
+		      FROM (SELECT 
+		              m.movie_num, 
+		              <![CDATA[
+		               REPLACE(REPLACE(m.movie_name,'<','&lt;'),'>','&gt;') movie_name,
+		              ]]>
+		              m.movie_pg,
+		              m.movie_auth,
+		              m.movie_genre
+		            FROM M_movie m
+		            ORDER BY m.movie_num DESC)a)
+
+	   <![CDATA[
+	   WHERE rnum >= #{start} AND rnum <= #{end}
+	   ]]>	
 	</select>
 	<select id="selectRowCount" parameterType="map" resultType="integer">
 		SELECT
-			COUNT(*)
+		  COUNT(*)
 		FROM M_movie
 	</select>
 	<update id="updateMovie" parameterType="movieVO">
@@ -31,24 +47,6 @@
                          resultType="movieReviewVO">
        SELECT
           *
-       FROM (SELECT 
-               a.*,
-               rownum rnum
-             FROM (SELECT
-                     review_num,
-                     <![CDATA[
-                     REPLACE(REPLACE(review_content,'<','&lt;'),'>','&gt;') review_content,
-                     ]]>
-                     review_reg_date,
-                     movie_num,
-                     mem_num,
-                     id
-                   FROM M_review
-                   JOIN M_member USING(mem_num) 
-                   WHERE movie_num = #{movie_num}
-                   ORDER BY review_num DESC)a)
-       <![CDATA[
-       WHERE rnum >= #{start} AND rnum <= #{end}
-       ]]>                                 
+       FROM M_review         
     </select>
 </mapper>

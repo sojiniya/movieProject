@@ -69,8 +69,8 @@
 					</li>
 					</ul>
 			</c:forEach>
-				
 			</c:if>
 		</div>
 	</div>
+	<div class="align-center">${pagingHtml}</div>
 </div>
