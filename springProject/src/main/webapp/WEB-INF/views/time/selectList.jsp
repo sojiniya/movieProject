@@ -257,8 +257,14 @@ $(function(){
 			success:function(param){	
 				//$('#area').empty();
 				
-				/*
-				$(param.list).each(function(index,item){
+				let movie_name;
+				let movie_genre;
+				let movie_pg;
+				$(param).each(function(index,item){
+				    movie_name = item.movie_name;
+				    //movie_genre = item.movie_name;
+				    //moive_pg = item.movie_pg;
+					/*
 					let output = '<div class="area">';
 					output += '<ul>';
 					output += '<li class="on">';
@@ -269,8 +275,9 @@ $(function(){
 
 					//문서 객체에 극장지역 리스트 추가
 					$('#area').append(output);
-					
-				});*/
+					*/
+				});
+				$('.movie-name').text(movie_name);
 			},
 			error:function(){
 				alert('네트워크 오류 발생');
@@ -356,10 +363,11 @@ $(function(){
 		<li style="display:list-item;text-align: -webkit-match-parent;list-style: none;">
 			
 			<div class="col-times">
+
 				<div class="info-movie">
 					<span class="ico-grade grade-15">15세 이상</span>
 					<a href="#" target="_parent">
-					<strong style="font-weight: bold;">극장판 주술회전</strong></a> 
+					<strong style="font-weight: bold;" class="movie-name">극장판 주술회전</strong></a> 
 							<span class="round lightblue">
 								<em>상영중</em>
 							</span>
@@ -368,7 +376,6 @@ $(function(){
 							</span>
 							<i> 애니메이션</i> / <i> 105분</i> / <i> 2022.03.31 개봉</i>
 				</div>
-
 				<div class="type-hall">
 					<div class="info-hall">
 						<ul style="display: block;list-style: none;list-style-type: disc;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
@@ -394,6 +401,9 @@ $(function(){
 						</ul>
 					</div>
 				</div>
+				
+				
+				
 			</div>
 		</li>
 	</ul>
