@@ -7,6 +7,13 @@
 <script>
 function like() {
     document.getElementById("like_movie").src = "${pageContext.request.contextPath}/resources/images/like.png";}
+$( document ).ready(function() {
+$(".star_rating a").click(function() {
+    $(this).parent().children("a").removeClass("on");
+    $(this).addClass("on").prevAll("a").addClass("on");
+    return false;
+});
+});
 </script>
 <p class="movie_img"><img src="imageView.do?movie_num=${movie.movie_num}" style="width:185px; height:260px;"></p>
 	<div class="movie_info">
@@ -32,7 +39,6 @@ function like() {
 	              fn:endsWith(movie.filename,'.PNG')}">
 	</c:if>
 </div>
-
 	<hr size="1" width="100%" noshade="noshade">
 	<div class="align-right">
 		<c:if test="${!empty user_num && user_auth == 3}">
@@ -52,13 +58,17 @@ function like() {
 	</div>
 	<hr size="1" width="100%" noshade="noshade">
 	<div id="reply_div">
-		<span class="re-title">댓글 달기</span>
+		<span class="re-title">리뷰 달기</span>
 		<form id="re_form">
 			<input type="hidden" name="movie_num" 
 			                 value="${movie.movie_num}" id="movie_num">
-			 <textarea rows="2" cols="50" name="review_rate" id="review_rate"
-			  <c:if test="${empty user_num}">disabled="disabled"</c:if>
-			         ><c:if test="${empty user_num}">로그인해야 작성할 수 있습니다.</c:if></textarea> 
+<p class="star_rating">
+    <a href="#" class="on">★</a>
+    <a href="#" class="on">★</a>
+    <a href="#" class="on">★</a>
+    <a href="#" class="on">★</a>
+    <a href="#" class="on">★</a>
+</p>
 			<textarea rows="3" cols="50" name="review_content"
 			         id="review_content" class="rep-content"
 			         <c:if test="${empty user_num}">disabled="disabled"</c:if>
@@ -81,5 +91,4 @@ function like() {
 	<div id="loading" style="display:none;">
 		<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif">
 	</div>
-</div>
 <!-- 중앙 컨텐츠 끝 -->
