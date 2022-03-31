@@ -1,4 +1,4 @@
-package kr.spring.member.vo;
+                                                                                       package kr.spring.member.vo;
 
 import java.io.IOException;
 

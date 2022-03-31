@@ -60,6 +60,11 @@
     	<put-attribute name="left" value="/WEB-INF/views/template/adminPageSIde.jsp"/>
     	<put-attribute name="body" value="/WEB-INF/views/admin/adminPage.jsp"/>
     </definition>
+    <definition name="adminReserveListMovie" extends="board_main">
+    	<put-attribute name="title" value="관리자  예매페이지"/>
+    	<put-attribute name="left" value="/WEB-INF/views/template/adminPageSIde.jsp"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminReserveListMovie.jsp"/>
+    </definition>
     
 </tiles-definitions>
 
