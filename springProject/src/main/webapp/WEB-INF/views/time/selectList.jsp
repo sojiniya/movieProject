@@ -6,6 +6,9 @@
 div {
     display: block;
 }
+ul img {
+   display:inline-block;
+}
 div, ul, li, form, font, a{
 	font-family: 'Noto Sans KR', 'CJONLYONENEW', '맑은 고딕', '돋움', Dotum, sans-serif;
     font-size: 100%;
@@ -53,7 +56,7 @@ div[class^="sect-"] {
 /*제목*/
 .info-movie {
     float: left;
-    height: 20px;
+    height: 30px;
     color: #cccccc;
     font-size: 12px;
     border-right: 1px solid white;
@@ -260,10 +263,12 @@ $(function(){
 				let movie_name;
 				let movie_genre;
 				let movie_pg;
+				//let movie_auth;
 				$(param).each(function(index,item){
 				    movie_name = item.movie_name;
-				    //movie_genre = item.movie_name;
-				    //moive_pg = item.movie_pg;
+				    movie_genre = item.movie_genre;
+				    movie_pg = item.movie_pg;
+				    //movie_auth = item.movie_auth;
 					/*
 					let output = '<div class="area">';
 					output += '<ul>';
@@ -276,15 +281,26 @@ $(function(){
 					//문서 객체에 극장지역 리스트 추가
 					$('#area').append(output);
 					*/
+				    /* if(12 <= movie_pg && movie_pg < 15){
+						$('.movie-pg').find('img').attr('src','https://img.cgv.co.kr/R2014/images/common/flag/age/grade-12.png');
+					}else if(15 <= movie_pg && movie_pg < 19){
+						$('.movie-pg').find('img').attr('src','https://img.cgv.co.kr/R2014/images/common/flag/age/grade-15.png');
+					}else if(19 <= movie_pg.text(movie_pg)){
+						$('.movie-pg').find('img').attr('src','https://img.cgv.co.kr/R2014/images/common/flag/age/grade-19.png');
+					}else{
+						$('.movie-pg').find('img').attr('src','https://img.cgv.co.kr/R2014/images/common/flag/age/grade-all.png');
+					} */
 				});
 				$('.movie-name').text(movie_name);
+				$('.movie-genre').text(movie_genre);
+				$('.movie-pg').text(movie_pg);
 			},
 			error:function(){
 				alert('네트워크 오류 발생');
 			}
 		});
-	}
-   
+	}//end
+
 });
 
 </script>
@@ -365,7 +381,9 @@ $(function(){
 			<div class="col-times">
 
 				<div class="info-movie">
-					<span class="ico-grade grade-15">15세 이상</span>
+					<span class="movie-pg">
+						<img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-15.png" width="20px" height="20px"> <!-- <span class="ico-grade grade-15">15세 이상</span> -->
+					</span>
 					<a href="#" target="_parent">
 					<strong style="font-weight: bold;" class="movie-name">극장판 주술회전</strong></a> 
 							<span class="round lightblue">
@@ -374,7 +392,7 @@ $(function(){
 							<span class="">
 								<em> </em>
 							</span>
-							<i> 애니메이션</i> / <i> 105분</i> / <i> 2022.03.31 개봉</i>
+							<i class="movie-genre"> 애니메이션</i> / <i> 105분</i> / <i> 2022.03.31 개봉</i>
 				</div>
 				<div class="type-hall">
 					<div class="info-hall">
