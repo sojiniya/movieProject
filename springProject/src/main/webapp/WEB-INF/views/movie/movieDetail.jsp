@@ -3,9 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!-- 중앙 컨텐츠 시작 -->
-<script
-	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
-
+<script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
+<script>
+function like() {
+    document.getElementById("like_movie").src = "${pageContext.request.contextPath}/resources/images/like.png";}
+</script>
 <p class="movie_img"><img src="imageView.do?movie_num=${movie.movie_num}" style="width:185px; height:260px;"></p>
 	<div class="movie_info">
 	<p class="detail_name">${movie.movie_name}</p>
@@ -15,7 +17,9 @@
 			<span class="auth_result">상영 예정</span></c:if> 
 	<c:if test="${movie.movie_auth == 2}">
 			<span class="auth_result">상영 종료</span></c:if>
-</div><hr>
+	<button type="button" onclick="alert('${movie.movie_name} 영화가 좋아요 되었습니다.\n * 상단  MY CGV에서 확인 가능합니다.'),like()" style="background-color:transparent; border:0;"><img id="like_movie" src="${pageContext.request.contextPath}/resources/images/likedefault.png" style="width:25px; height:25px; margin-left: 5px;"></button> 
+</div>
+<hr>
 <div class="page-main">
 	<p class="movie_contents">${movie.movie_content}</p>
 	<a class="detail_reserve" href="/project/reserve/reserveStep1.do">예매하기</a>
@@ -27,6 +31,8 @@
 	              fn:endsWith(movie.filename,'.png') ||
 	              fn:endsWith(movie.filename,'.PNG')}">
 	</c:if>
+</div>
+
 	<hr size="1" width="100%" noshade="noshade">
 	<div class="align-right">
 		<c:if test="${!empty user_num && user_auth == 3}">
@@ -47,6 +53,33 @@
 	<hr size="1" width="100%" noshade="noshade">
 	<div id="reply_div">
 		<span class="re-title">댓글 달기</span>
+		<form id="re_form">
+			<input type="hidden" name="movie_num" 
+			                 value="${movie.movie_num}" id="movie_num">
+			 <textarea rows="2" cols="50" name="review_rate" id="review_rate"
+			  <c:if test="${empty user_num}">disabled="disabled"</c:if>
+			         ><c:if test="${empty user_num}">로그인해야 작성할 수 있습니다.</c:if></textarea> 
+			<textarea rows="3" cols="50" name="review_content"
+			         id="review_content" class="rep-content"
+			         <c:if test="${empty user_num}">disabled="disabled"</c:if>
+			         ><c:if test="${empty user_num}">로그인해야 작성할 수 있습니다.</c:if></textarea>                 
+			<c:if test="${!empty user_num}">
+			<div id="re_first">
+				<span class="letter-count">300/300</span>
+			</div>
+			<div id="re_second" class="align-right">
+				<input type="submit" value="전송">
+			</div>
+			</c:if>
+		</form>
+	</div>
+	<!-- 댓글 목록 출력 -->
+	<div id="output"></div>
+	<div class="paging-button" style="display:none;">
+		<input type="button" value="다음글 보기">
+	</div>
+	<div id="loading" style="display:none;">
+		<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif">
 	</div>
 </div>
 <!-- 중앙 컨텐츠 끝 -->
