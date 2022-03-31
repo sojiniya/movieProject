@@ -26,11 +26,11 @@ public interface BoardMapper {
 	public BoardVO adminSelectBoard(Integer board_num); //관리자 상세보기(0)
 	public void adminUpdateBoard(BoardVO board); //관리자 글 수정(0)
 	@Delete("DELETE FROM m_board WHERE board_num=#{board_num}")
-	public void adminDeleteBoard(Integer board_num); //관리자 글 삭제
+	public void adminDeleteBoard(Integer board_num); //관리자 글 삭제(0)
 	@Update("UPDATE m_board SET board_uploadfile='',board_filename='' WHERE board_num=#{board_num}")
 	//public void adminDeleteFile(Integer board_num); //관리자 글 파일 삭제
 	//@Select("SELECT board_title,board_reg_date,board_num FROM m_board where rownum <6 AND cate_num between '5' and '7' ORDER BY board_reg_date DESC")
-	public List<BoardVO> selectListBy5(Map<String,Object> map); //고객센터 메인 뉴스 보기
+	public List<BoardVO> selectListBy5(Map<String,Object> map); //고객센터 메인 뉴스 보기(0)
 	
 	
 	//회원부분
@@ -39,17 +39,17 @@ public interface BoardMapper {
 			 + "ON b.mem_num=m.mem_num LEFT JOIN m_category c on b.cate_num=c.cate_num"
 			 + " WHERE b.board_num=#{board_num}")
 	public BoardVO selectBoard(Integer board_num); //회원글 상세보기(0)
-	public void updateBoard(BoardVO board); //회원 글 수정
-	public void deleteBoard(Integer board_num); //회원 글 삭제
-	public void deleteFile(Integer board_num); //회원 글 파일 삭제
+	public void updateBoard(BoardVO board); //회원 글 수정(0)
+	//public void deleteBoard(Integer board_num); //회원 글 삭제
+	//public void deleteFile(Integer board_num); //회원 글 파일 삭제
 	
 	//댓글
 	public List<BoardReplyVO> selectListReply(Map<String,Object> map); //필요없을듯
 	public int selectRowCountReply(Map<String,Object> map);
 	public BoardReplyVO selectReply(Integer re_num);
-	@Insert("INSERT INTO m_reply (reply_num,reply_content,"
+	@Insert("INSERT INTO m_reply (reply_num,re_content,"
 			+ "board_num,mem_num) VALUES (m_reply_seq.nextval,"
-			+ "#{reply_content},#{board_num},#{mem_num})")
+			+ "#{re_content},#{board_num},#{mem_num})")
 	public void insertReply(BoardReplyVO boardReply);
 	public void updateReply(BoardReplyVO boardReply);
 	public void deleteReply(Integer re_num);

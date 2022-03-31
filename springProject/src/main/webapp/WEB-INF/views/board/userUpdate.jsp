@@ -36,7 +36,7 @@ table td, table th{
 			
 			switch(selectVal) {
 				case '1':
-					console.log("1탔다");
+					
 					$('#sel_theatercode').empty();
 					$('#sel_theatercode').append("<option value='0' selected>영화관 선택</option>");
 					$('#sel_theatercode').append("<option value='2' selected>CGV 홍대</option>");
@@ -44,12 +44,12 @@ table td, table th{
 					$('#sel_theatercode').append("<option value='4' selected>CGV 압구정</option>");
 					break;
 				case '2':
-					console.log("2탔다");
+					
 					$('#sel_theatercode').empty();
 					$('#sel_theatercode').append("<option value='0' selected>영화관 선택</option>");
 					$('#sel_theatercode').append("<option value='5' selected>CGV 수원</option>");
 					$('#sel_theatercode').append("<option value='6' selected>CGV 광교</option>");
-					$('#sel_theatercode').append("<option value='7' selected>CGV 화성</option>");
+					$('#sel_theatercode').append("<option value='2' selected>CGV 화성</option>");
 					break;
 				default:
 					break;
@@ -62,8 +62,8 @@ table td, table th{
 <!-- 중앙 시작 -->
 <!-- 3월 11일 31분 -->
 <div class="adminBoardWrite-main">
-	<h3>문의 및 건의</h3>
-	<form:form modelAttribute="boardVO" action="userBoardWrite.do" 
+	<h3>회원 글 수정</h3>
+	<form:form modelAttribute="boardVO" action="userUpdate.do" 
 	 class="adminWriteForm" method="post" enctype="multipart/form-data">
 		<table style="width:100%; table-layout:fixed;" class="tbl_notice_list tbl_left">
 			<colgroup>
@@ -74,6 +74,11 @@ table td, table th{
 					<th scope="row">게시글 유형</th>
 					<td>
 						<ul>
+							<li>
+								<label for="board_num">
+								<input type="hidden" id="board_num" name="board_num" style="display:none;" value="${boardVO.board_num}" >
+								</label>
+							</li>
 							<li >
 								<input type="radio" id="ask" name="board_auth" class="radio_b1" value="2" checked>건의 및 문의
 							</li>
@@ -134,13 +139,13 @@ table td, table th{
 				<tr>
 					<th scope="row">제목</th>
 					<td>
-						<input name="board_title" style="width: 660px; height: 30px;" type="text" placeholder="제목을 입력하세요" />
+						<input name="board_title" style="width: 660px; height: 30px;" type="text" placeholder="제목을 입력하세요" value="${boardVO.board_title}"/>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row"><b>내용</b></th>
 					<td>
-						<textarea name="board_content" class="ck" placeholder="내용을 입력하세요"></textarea>
+						<textarea name="board_content" class="ck" placeholder="내용을 입력하세요">${boardVO.board_content}</textarea>
 						<script>
 						 function MyCustomUploadAdapterPlugin(editor) {
 					    	editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
@@ -171,7 +176,7 @@ table td, table th{
 		</table>
 		<div class="box-btn_adminSubmit">
 			<input type="button" value="취소하기" class="round cancel" onclick="location.href='boardMain.do'">
-			<form:button class="round submit">등록하기</form:button>
+			<form:button class="round submit">수정하기</form:button>
 		</div>
 	</form:form>
 </div>

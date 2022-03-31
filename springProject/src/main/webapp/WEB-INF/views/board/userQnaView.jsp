@@ -19,9 +19,10 @@ table td, table th{
 </style>
 <div class="boardMain">
 	<div class="board-detail">
-		<h3 style="margin:0px 10px;">자주찾는 질문</h3>
+		<h3 style="margin:0px 10px;">문의/건의</h3>
 		<div class="board_view_area">
 			<ul class="top_title_faq">
+				<li style="display:none">${board.mem_num}</li>
 				<li style="display:none">${board.board_num}</li>
 				<li class="title">
 					<span>[<em>${board.cate_name}</em>]</span>
@@ -39,40 +40,55 @@ table td, table th{
 					${board.board_content}
 				</div>
 				<div class="customer_btn">
+					<!-- 작성자, 관리자만 수정, 삭제 가능 -->
 					<c:if test="${!empty user_num && user_auth == 3}">
 					<button type="button" class="round inwhite" id="btn_list"
-					onclick="location.href='userUpdate.do?board_num=${board.board_num}'">
+					onclick="location.href='${pageContext.request.contextPath}/board/userUpdate.do?board_num=${board.board_num}'">
 						<span>수정</span>
 					</button>
 					
-					<button type="button" class="round inred" id="btn_list">
+					<button type="button" class="round inred" id="btn_delete">
 						<span>삭제</span>
 					</button>
+					<script type="text/javascript">
+						let btn_delete = document.getElementById('btn_delete');
+						btn_delete.onclick=function(){
+							let choice = confirm('삭제하시겠습니까?');
+							if(choice){
+								location.replace('userDelete.do?board_num=${board.board_num}');
+							}
+						};
+					</script>
 					</c:if>
 					<button type="button" class="round inblack" id="btn_list">
 						<span>목록</span>
 					</button>
 				</div>
+				<hr size="1" width="100%" noshade="noshade">
 				<div class="reply_area">
 					<span class="re-title">답변 내용</span>
-					<form>
-					
+					<%-- <c:if test="${empty user_num or !empty user_num && user_auth eq 0 or user_auth eq 1 or user_auth eq 2}">
+					<div>
+					작성자에게만 공개된 내용입니다.
+					</div>
+					</c:if> --%>
+					<c:if test="${!empty user_num && user_auth eq 3}">
+					<form id="re_form" action="userBoardWrite.do" class="adminReplyForm" method="post">
 					<!-- 회원인 경우 div창만 보이게 구성. 답변 테이블 null 인  경우 답변전이라는 문구 띄움 , 답변 등록되어 있는 경우 답변내용 출력 -->
 						<input type="hidden" name="board_num" value="${board.board_num}" id="board_num">
-						<textarea rows="3" cols="50" name="re_content" id="re_content" class="rep-content"
-			         		<c:if test="${empty user_num && user_num == 0 or user_num == 1 or user_num == 2}">disabled="disabled"</c:if>>
-			         		<c:if test="${empty user_num}">로그인해야 작성할 수 있습니다.</c:if></textarea>                 
-							<c:if test="${!empty user_num}">
-								<div id="re_first">
-									<span class="letter-count">300/300</span>
-								</div>
-								<div id="re_second" class="align-right">
-									<input type="submit" value="전송">
-								</div>
-							</c:if>
+						<textarea rows="3" cols="50" name="re_content" id="re_content" class="rep-content" placeholder="답변내용을 작성해주세요."
+						></textarea>
+						<div id="re_first">
+							<span class="letter-count">300/300</span>
+						</div>                 
+						<div id="re_second" class="align-right">
+							<input type="submit" value="전송">
+						</div>
 					</form>
+					</c:if>
 				</div>
-
+				<div id="output"></div>
+				
 				<div class="btm_sup_list">
 					<ul class="line_sup_next">
 						<li class="stit">이전글</li>

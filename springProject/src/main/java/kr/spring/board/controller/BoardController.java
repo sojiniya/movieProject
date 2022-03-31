@@ -317,6 +317,39 @@ public class BoardController {
 		return "redirect:/board/boardMain.do";
 		}
 	
+	//회원 수정 폼
+	@GetMapping("/board/userUpdate.do")
+	public String formUpdate2(@RequestParam int board_num,
+					                 Model model) {
+		
+	logger.info("1<<회원 게시판 글 수정>> : " + board_num);
+		
+	BoardVO boardVO = boardService.selectBoard(board_num);
+				
+	model.addAttribute("boardVO", boardVO);		
+				
+	return "userUpdate";
+	}
+	
+	//수정 폼에서 전송된 데이터 처리
+	@PostMapping("/board/userUpdate.do")
+	public String submitUpdate2(BoardVO boardVO,
+					               HttpServletRequest request,
+					                Model model) {
+				
+		System.out.println("수정 실제"+boardVO.toString());
+		logger.info("<<회원 글 정보 수정>> : " + boardVO);
+				
+				
+		//글 수정
+		boardService.updateBoard(boardVO);
+			
+		model.addAttribute("boardVO", boardVO);	
+	
+				
+		return "redirect:/board/userQnaList.do";
+		}
+		
 	//문의/건의 목록
 	@RequestMapping("/board/userQnaList.do")
 		public ModelAndView process2(
@@ -385,5 +418,11 @@ public class BoardController {
 		return "redirect:/board/newsList.do";
 	}
 	
+	//회원 글 삭제
+	@RequestMapping("/board/userDelete.do")
+	public String submitDelete3(@RequestParam int board_num) {
+		boardService.adminDeleteBoard(board_num);
+		return "redirect:/board/userQnaList.do";
+	}
 	
 }

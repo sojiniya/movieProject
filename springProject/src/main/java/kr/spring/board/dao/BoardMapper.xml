@@ -193,4 +193,16 @@
 		  board_content=#{board_content}
 	   WHERE board_num=#{board_num}
 	</update>
+	<update id="updateBoard" parameterType="boardVO">
+		UPDATE m_board SET
+		  
+		  board_auth=#{board_auth},
+		  cate_num=#{cate_num},
+		  theater_choise=#{theater_choise},
+		  sel_regioncode=#{sel_regioncode},
+		  sel_theatercode=#{sel_theatercode},
+		  board_title=#{board_title},
+		  board_content=#{board_content}
+	   WHERE board_num=#{board_num}
+	</update>
 </mapper>

@@ -25,9 +25,6 @@ table td, table th{
 		<c:if test="${board.board_auth eq 1}">
 		<h3 style="margin:0px 10px;">공지/뉴스</h3>
 		</c:if>
-		<c:if test="${board.board_auth eq 2}">
-		<h3 style="margin:0px 10px;">문의/건의</h3>
-		</c:if>
 		<div class="board_view_area">
 			<ul class="top_title_faq">
 				<li style="display:none">${board.board_num}</li>

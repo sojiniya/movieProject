@@ -29,22 +29,7 @@ table td, table th{
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		/* $("#sel_regioncode").change(function(){
-			console.log("sel_theatercode 변함");
-			var regioncode = $("#sel_regioncode").val();
-			
-			$("#sel_regioncode").empty();
-			
-			if(regioncode == 1){
-				option .. append
-			}else if(regioncode == 2){
-				
-			}
-			
-			// 서울 > 1,2,
-			// 부산 > 3,4
-			
-		}); */
+		
 		
 		$(".radio_b1").click(function(){
 			if($("input[type='radio']").is(':checked')){

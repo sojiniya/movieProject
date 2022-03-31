@@ -116,7 +116,7 @@ table td, table th {
 					$('#sel_theatercode').append("<option value='0' selected>영화관 선택</option>");
 					$('#sel_theatercode').append("<option value='5' selected>CGV 수원</option>");
 					$('#sel_theatercode').append("<option value='6' selected>CGV 광교</option>");
-					$('#sel_theatercode').append("<option value='2' selected>CGV 화성</option>");
+					$('#sel_theatercode').append("<option value='7' selected>CGV 화성</option>");
 					break;
 				default:
 					break;

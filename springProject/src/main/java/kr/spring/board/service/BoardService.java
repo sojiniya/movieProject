@@ -29,8 +29,8 @@ public interface BoardService {
 	public void insertBoard(BoardVO board); //회원 글 작성
 	public BoardVO selectBoard(Integer board_num); //회원글 상세보기
 	public void updateBoard(BoardVO board); //회원 글 수정
-	public void deleteBoard(Integer board_num); //회원 글 삭제
-	public void deleteFile(Integer board_num); //회원 글 파일 삭제
+	//public void deleteBoard(Integer board_num); //회원 글 삭제
+	//public void deleteFile(Integer board_num); //회원 글 파일 삭제
 	
 	//댓글
 	public List<BoardReplyVO> selectListReply(Map<String,Object> map); //필요없을듯

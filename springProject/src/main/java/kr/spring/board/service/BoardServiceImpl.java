@@ -88,21 +88,21 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void updateBoard(BoardVO board) {
-		// TODO Auto-generated method stub
+		boardMapper.updateBoard(board);
 		
 	}
 
-	@Override
-	public void deleteBoard(Integer board_num) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteFile(Integer board_num) {
-		// TODO Auto-generated method stub
-		
-	}
+	/*
+	 * @Override public void deleteBoard(Integer board_num) { // TODO Auto-generated
+	 * method stub
+	 * 
+	 * }
+	 * 
+	 * @Override public void deleteFile(Integer board_num) { // TODO Auto-generated
+	 * method stub
+	 * 
+	 * }
+	 */
 
 	
 	
