@@ -263,11 +263,15 @@ $(function(){
 				let movie_name;
 				let movie_genre;
 				let movie_pg;
+				let movie_date;
+				let movie_time;
 				//let movie_auth;
 				$(param).each(function(index,item){
 				    movie_name = item.movie_name;
 				    movie_genre = item.movie_genre;
 				    movie_pg = item.movie_pg;
+				    movie_date = item.movie_date;
+				    movie_time = item.movie_time;
 				    //movie_auth = item.movie_auth;
 					/*
 					let output = '<div class="area">';
@@ -294,6 +298,8 @@ $(function(){
 				$('.movie-name').text(movie_name);
 				$('.movie-genre').text(movie_genre);
 				$('.movie-pg').text(movie_pg);
+				$('.movie-date').text(movie_date);
+				$('.movie-time').text(movie_time);
 			},
 			error:function(){
 				alert('네트워크 오류 발생');
@@ -392,7 +398,7 @@ $(function(){
 							<span class="">
 								<em> </em>
 							</span>
-							<i class="movie-genre"> 애니메이션</i> / <i> 105분</i> / <i> 2022.03.31 개봉</i>
+							<i class="movie-genre"> 애니메이션</i> / <i> 105분</i> / <i class="movie-date"> 2022.03.31 개봉</i>
 				</div>
 				<div class="type-hall">
 					<div class="info-hall">
@@ -410,7 +416,7 @@ $(function(){
 								data-screencode="006" data-playnum="6" data-playstarttime="1850"
 								data-playendtime="2045" data-theatername="CGV 강남"
 								data-seatremaincnt="86">
-								<em>18:50</em>
+								<em class="movie-time">18:50</em>
 								<span class="txt-lightblue">
 									<span class="hidden">잔여좌석</span>86석
 								</span>
