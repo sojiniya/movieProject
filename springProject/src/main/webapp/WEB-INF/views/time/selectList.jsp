@@ -404,7 +404,7 @@ $(function(){
 					<span class="movie-pg">
 						<img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-15.png" width="20px" height="20px"> <!-- <span class="ico-grade grade-15">15세 이상</span> -->
 					</span>
-					<a href="${pageContext.request.contextPath}/movie/movieDetail.do" target="_parent">
+					<a href="${pageContext.request.contextPath}/movie/movieDetail.do?movie_num=${movieVO.movie_num}" target="_parent">
 					<strong style="font-weight: bold;" class="movie-name">극장판 주술회전</strong></a> 
 							<span class="round lightblue movie-auth">
 								<em>상영중</em>
