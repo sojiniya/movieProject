@@ -271,6 +271,7 @@ $(function(){
 				    movie_genre = item.movie_genre;
 				    movie_pg = item.movie_pg;
 				    movie_date = item.movie_date;
+				
 				    movie_time = item.movie_time;
 				    //movie_auth = item.movie_auth;
 					/*
@@ -298,7 +299,7 @@ $(function(){
 				$('.movie-name').text(movie_name);
 				$('.movie-genre').text(movie_genre);
 				$('.movie-pg').text(movie_pg);
-				$('.movie-date').text(movie_date);
+				$('.movie-date').text(movie_date+' 개봉');
 				$('.movie-time').text(movie_time);
 			},
 			error:function(){
