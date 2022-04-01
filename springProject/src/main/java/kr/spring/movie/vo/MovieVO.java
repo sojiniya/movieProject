@@ -22,10 +22,9 @@ public class MovieVO {
 	private int movie_pg;//영화 관람연령
 	@Range(min=0,max=2)
 	private int movie_auth;//영화 상영정보
+	private int movie_showtm;//영화 상영시간
 	private int movie_rate; //영화 평점
 	private int mem_num; //회원번호
-	
-	private String movie_minute; //찬미추가 - ex:120분처럼 영화시간길이?를 구하기 위해 추가
 	
 	//찜한 영화를 위한 my_movie_num
 	private int my_movie_num;
@@ -110,6 +109,14 @@ public class MovieVO {
 	public void setMovie_rate(int movie_rate) {
 		this.movie_rate = movie_rate;
 	}
+	
+	public int getMovie_showtm() {
+		return movie_showtm;
+	}
+
+	public void setMovie_showtm(int movie_showtm) {
+		this.movie_showtm = movie_showtm;
+	}
 
 	public int getMem_num() {
 		return mem_num;
@@ -131,20 +138,13 @@ public class MovieVO {
 		this.my_movie_num = my_movie_num;
 	}
 
-	public String getMovie_minute() {
-		return movie_minute;
-	}
-
-	public void setMovie_minute(String movie_minute) {
-		this.movie_minute = movie_minute;
-	}
 
 	@Override
 	public String toString() {
 		return "MovieVO [movie_num=" + movie_num + ", movie_name=" + movie_name + ", movie_content=" + movie_content
 				+ ", movie_genre=" + movie_genre + ", upload=" + upload + ", filename=" + filename + ", movie_pg="
-				+ movie_pg + ", movie_auth=" + movie_auth + ", movie_rate=" + movie_rate + ", mem_num=" + mem_num
-				+ ", movie_minute=" + movie_minute + ", my_movie_num=" + my_movie_num + "]";
+				+ movie_pg + ", movie_auth=" + movie_auth + ", movie_rate=" + movie_rate + ", movie_showtm=" + movie_showtm
+				+ ", mem_num=" + mem_num + ", my_movie_num=" + my_movie_num + "]";
 	}
 }
 	

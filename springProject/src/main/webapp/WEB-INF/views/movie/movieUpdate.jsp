@@ -36,6 +36,11 @@
 				<form:errors path="movie_pg" cssClass="error-color"/>
 			</li>
 			<li>
+				<form:label path="movie_showtm">상영 시간</form:label>
+				<form:input path="movie_showtm"/>
+				<form:errors path="movie_showtm" cssClass="error-color"/>
+			</li>
+			<li>
 				<form:label path="upload">파일업로드</form:label>
 				<input type="file" name="upload" id="upload">
 				<c:if test="${!empty movieVO.filename}">

@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!-- 중앙 컨텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/movie.review.js"></script>
 <script>
 function like() {
     document.getElementById("like_movie").src = "${pageContext.request.contextPath}/resources/images/like.png";}
@@ -18,6 +19,7 @@ $(".star_rating a").click(function() {
 <p class="movie_img"><img src="imageView.do?movie_num=${movie.movie_num}" style="width:185px; height:260px;"></p>
 	<div class="movie_info">
 	<p class="detail_name">${movie.movie_name}</p>
+	
 	<c:if test="${movie.movie_auth == 0}">
 			<span class="auth_result">상영중</span></c:if>
 	<c:if test="${movie.movie_auth == 1}">
@@ -26,6 +28,7 @@ $(".star_rating a").click(function() {
 			<span class="auth_result">상영 종료</span></c:if>
 	<button type="button" onclick="alert('${movie.movie_name} 영화가 좋아요 되었습니다.\n * 상단  MY CGV에서 확인 가능합니다.'),like()" style="background-color:transparent; border:0;"><img id="like_movie" src="${pageContext.request.contextPath}/resources/images/likedefault.png" style="width:25px; height:25px; margin-left: 5px;"></button> 
 </div>
+	<p style="font-size:20px; margin-top: 5px; width: 29%; text-align: center;">${movie.movie_showtm}분</p>
 <hr>
 <div class="page-main">
 	<p class="movie_contents">${movie.movie_content}</p>
