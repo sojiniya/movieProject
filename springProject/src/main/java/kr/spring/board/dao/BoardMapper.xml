@@ -199,6 +199,9 @@
 		        rownum rnum
 		      FROM  (SELECT
 		               reply_num,
+		               <![CDATA[
+		               REPLACE(REPLACE(re_content,'<','&lt;'),'>','&gt;') re_content,
+		               ]]>
 		               re_content,
 		               re_date,
 		               board_num,
