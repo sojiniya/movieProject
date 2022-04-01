@@ -85,7 +85,7 @@ create table M_movie(
   movie_photo5 blob,
   movie_pg number(10) not null, /*영화 관람 연령(12세/15세/19세)*/
   movie_auth number(1) not null, /*영화 상영정보0:상영중/1:상영예정/2:상영종료*/
-  moive_rate number(4),
+  movie_rate number(4),
 
   constraint M_movie_pk primary key (movie_num)
 );
@@ -96,7 +96,10 @@ create table M_theater(
   theater_num number not null,
   theater_name varchar2(18) not null,
   theater_addr varchar2(100) not null,
-
+  heater_local varchar2(20) not null,
+  theater_image blob,
+  heater_imagefile varchar2(90),
+  
   constraint M_theater_pk primary key (theater_num)
 );
 create sequence M_theater_seq;
