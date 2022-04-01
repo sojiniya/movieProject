@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Select;
 
-import kr.spring.member.vo.MyReviewVO;
+import kr.spring.movie.vo.MovieReviewVO;
 import kr.spring.movie.vo.MovieVO;
 import kr.spring.reserve.vo.ReserveVO;
 
@@ -31,14 +31,22 @@ public interface MemberMovieMapper {
 		//내가 관심 있는 영화 리스트
 		public List<MovieVO> selectMyInterestedMovie(Map<String,Object> map);
 		
-		//내가 매너 평가한 리스트 카운트
-		public int selectMyReviewListCount(Map<String,Object> map);
-	
-		//내가 매너 평가 한 리스트
-		public List<MyReviewVO> selectMyReviewList(Map<String,Object> map);
+		//리뷰 평가 reveiw num 구하기
 		
-		//매너 평가 입력하기
-		public void insertReview(MyReviewVO review);
+		
+		//리뷰 평가 입력하기
+		public void insertReview(MovieReviewVO review);
+		
+		//리뷰평가 계산하기
+		
+		//내가 리뷰 평가 한 리스트
+		public List<MovieReviewVO> selectMyReviewList(Map<String,Object> map);
+		
+		//내가 리뷰 평가한 리스트 카운트
+		@Select("SELECT COUNT(*) FROM M_review r JOIN M_moive m ON r.movie_num = m.movie_num WHERE mem_num = #{mem_num}")
+		public int selectMyReviewListCount(Map<String,Object> map);
+		
+		//매너 리뷰 수정하기
 		
 		
 }

@@ -3,4 +3,51 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.spring.admin.dao.AdminMapper">
+	<select id="adminSelectList" parameterType="map" resultType="MemberVO">
+		Select 
+		   *
+		FROM (SELECT a.*, rownum rnum 
+					FROM
+			 (SELECT * FROM m_member m LEFT OUTER JOIN m_member_detail d ON m.mem_num = d.mem_num ORDER BY m.auth)a)  
+        <![CDATA[
+ 		where rnum >= #{start} AND rnum <= #{end}   
+		]]>					
+	</select>
+	
+	<select id="selectAdminReserveMovieListCount" parameterType="map" resultType="integer" >
+		SELECT 
+		   count(*) 
+		FROM (SELECT * FROM 
+			 (SELECT * FROM M_reserve r LEFT OUTER JOIN M_movie m ON r.movie_num = m.movie_num
+        								LEFT OUTER JOIN m_time t ON r.time_num = t.time_num
+                                        LEFT OUTER JOIN m_reservseat s on s.time_num = t.time_num 
+        								LEFT OUTER JOIN m_theater th ON t.theater_num = th.theater_num   
+        <![CDATA[
+					 WHERE 
+					 movie_Date >= #{movieDate})) 
+		
+		]]>	
+		
+	</select>
+	
+	<select id="selectAdminReserveMovieList" parameterType="map" resultType="ReserveVO">
+		SELECT 
+		   * 
+		FROM (SELECT a.*, rownum rnum FROM 
+			 (SELECT * FROM M_reserve r LEFT OUTER JOIN M_movie m ON r.movie_num = m.movie_num
+        								LEFT OUTER JOIN m_time t ON r.time_num = t.time_num
+                                        LEFT OUTER JOIN m_reservseat s on s.time_num = t.time_num 
+        								LEFT OUTER JOIN m_theater th ON t.theater_num = th.theater_num 
+        								ORDER BY r.movie_num DESC 
+        <![CDATA[
+					 WHERE 
+					 movie_Date >= #{movieDate})a) 
+ 		where rnum >= #{start} AND rnum <= #{end}   
+		
+		]]>					
+		
+	</select>
+	
+	
+	
 </mapper>

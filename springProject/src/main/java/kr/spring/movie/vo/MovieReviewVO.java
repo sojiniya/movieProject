@@ -1,5 +1,7 @@
 package kr.spring.movie.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class MovieReviewVO {
 	private int review_num;
 	private String review_content;
@@ -7,6 +9,9 @@ public class MovieReviewVO {
 	private int review_rate;
 	private int movie_num;//부모 글번호
 	private int mem_num;//작성자 회원번호
+	private MultipartFile upload;
+	private byte[] uploadfile;//파일
+	private String filename;//파일명
 	
 	public int getReview_num() {
 		return review_num;
@@ -44,10 +49,33 @@ public class MovieReviewVO {
 	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
 	}
+	
+	public MultipartFile getUpload() {
+		return upload;
+	}
+	public void setUpload(MultipartFile upload) {
+		this.upload = upload;
+	}
+	public byte[] getUploadfile() {
+		return uploadfile;
+	}
+	public void setUploadfile(byte[] uploadfile) {
+		this.uploadfile = uploadfile;
+	}
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	
 	@Override
 	public String toString() {
 		return "MovieReviewVO [review_num=" + review_num + ", review_content=" + review_content + ", review_reg_date="
 				+ review_reg_date + ", review_rate=" + review_rate + ", movie_num=" + movie_num + ", mem_num=" + mem_num
 				+ "]";
 	}
+	
+	
+	
 }

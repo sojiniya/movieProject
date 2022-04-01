@@ -7,11 +7,16 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,6 +26,7 @@ import kr.spring.member.service.MemberMovieService;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.movie.service.MovieService;
+import kr.spring.movie.vo.MovieReviewVO;
 import kr.spring.movie.vo.MovieVO;
 import kr.spring.reserve.vo.ReserveVO;
 import kr.spring.util.PagingUtil;
@@ -158,8 +164,53 @@ public class MemberMovieController {
 			
 			return mav;
 		}
+	//리뷰평가 등록 폼
+	@GetMapping("/user/writeReviewForm.do")
+	public String writeReviewform(@RequestParam("movie_num") int movie_num, HttpSession session) {
+		
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		
+		session.setAttribute("mem_num",user_num);
+		session.setAttribute("movie_num", movie_num);
+		
+		// 타일스 설정
+		return "writeReviewForm";
+	}	
+
 	
-	//내가 남긴 매너평가
+	//내가 남긴 리뷰평가
+		@RequestMapping("")
+		public ModelAndView viewMyReview(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage, HttpSession session) {
+			Integer user_num = (Integer)session.getAttribute("user_num");
+			MemberVO member = memberService.selectMember(user_num);
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("mem_num",user_num);
+			
+			int count = MemberMovieService.selectMyInterestedMovieCount(map);
+			logger.info("<count>> : " + count);
+			
+			//페이지 처리
+			PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "myInterestedMovie.do");
+			map.put("start", page.getStartCount());
+			map.put("end", page.getEndCount());
+			logger.info("<map222>> : " + map);
+			
+			List<MovieVO> list = null;
+			if (count > 0) {
+				list = MemberMovieService.selectMyInterestedMovie(map);
+			}
+			logger.info("<내가 관심있는 영화>> : " + list);
+
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("myInterestedMovie");
+			mav.addObject("count", count);
+			mav.addObject("list", list);
+			mav.addObject("pagingHtml", page.getPagingHtml());
+			mav.addObject("member",member);
+			return mav;
+		}
+	//리뷰평가 수정
 		
 		
 	//
