@@ -259,7 +259,7 @@ $(function(){
 			timeout:30000,
 			success:function(param){	
 				//$('#area').empty();
-				
+				let movie_num;
 				let movie_name;
 				let movie_auth;
 				let movie_genre;
@@ -267,8 +267,9 @@ $(function(){
 				let movie_date;
 				let movie_time;
 				let movie_minute;
-				//let movie_auth;
+				
 				$(param).each(function(index,item){
+					movie_num = item.movie_num;
 				    movie_name = item.movie_name;
 				    movie_auth = item.movie_auth;
 				    movie_genre = item.movie_genre;
@@ -277,7 +278,7 @@ $(function(){
 				    movie_showtm = item.movie_showtm;
 				
 				    movie_time = item.movie_time;
-				    //movie_auth = item.movie_auth;
+				    
 					/*
 					let output = '<div class="area">';
 					output += '<ul>';
@@ -295,11 +296,24 @@ $(function(){
 				if(movie_auth == 0) $('.movie-auth').find('em').text('상영중');
 				else if(movie_auth == 1) $('.movie-auth').find('em').text('상영예정');
 				else if(movie_auth == 2) $('.movie-auth').find('em').text('상영종료');
+				
 				$('.movie-genre').text(movie_genre);
-				$('.movie-pg').text(movie_pg);
+				//$('.movie-pg').text(movie_pg);
+				if(12 == movie_pg){
+					$('.movie-pg').find('img').attr('src','https://img.cgv.co.kr/R2014/images/common/flag/age/grade-12.png');
+				}else if(15 == movie_pg){
+					$('.movie-pg').find('img').attr('src','https://img.cgv.co.kr/R2014/images/common/flag/age/grade-15.png');
+				}else if(19 == movie_pg){
+					$('.movie-pg').find('img').attr('src','https://img.cgv.co.kr/R2014/images/common/flag/age/grade-19.png');
+				}else{
+					$('.movie-pg').find('img').attr('src','https://img.cgv.co.kr/R2014/images/common/flag/age/grade-all.png');
+				}
 				$('.movie-date').text(movie_date+' 개봉');
 				$('.movie-time').text(movie_time);
 				$('.movie-showtm').text(movie_showtm+'분');
+				
+				//무비디테일 링크
+				$('.info-movie').find('a').attr('href','${pageContext.request.contextPath}/movie/movieDetail.do?movie_num='+movie_num);
 			},
 			error:function(){
 				alert('네트워크 오류 발생');
