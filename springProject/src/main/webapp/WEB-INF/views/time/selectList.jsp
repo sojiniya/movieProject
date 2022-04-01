@@ -265,12 +265,14 @@ $(function(){
 				let movie_pg;
 				let movie_date;
 				let movie_time;
+				let movie_minute;
 				//let movie_auth;
 				$(param).each(function(index,item){
 				    movie_name = item.movie_name;
 				    movie_genre = item.movie_genre;
 				    movie_pg = item.movie_pg;
 				    movie_date = item.movie_date;
+				    movie_minute = item.movie_minute;
 				
 				    movie_time = item.movie_time;
 				    //movie_auth = item.movie_auth;
@@ -292,6 +294,7 @@ $(function(){
 				$('.movie-pg').text(movie_pg);
 				$('.movie-date').text(movie_date+' 개봉');
 				$('.movie-time').text(movie_time);
+				$('.movie-minute').text(movie_minute+'분');
 			},
 			error:function(){
 				alert('네트워크 오류 발생');
@@ -382,7 +385,7 @@ $(function(){
 					<span class="movie-pg">
 						<img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-15.png" width="20px" height="20px"> <!-- <span class="ico-grade grade-15">15세 이상</span> -->
 					</span>
-					<a href="${pageContext.request.contextPath}/movie/movieDetail.do?movie_num=${movie.movie_num}" target="_parent">
+					<a href="${pageContext.request.contextPath}/movie/movieDetail.do" target="_parent">
 					<strong style="font-weight: bold;" class="movie-name">극장판 주술회전</strong></a> 
 							<span class="round lightblue">
 								<em>상영중</em>
@@ -390,7 +393,7 @@ $(function(){
 							<span class="">
 								<em> </em>
 							</span>
-							<i class="movie-genre"> 애니메이션</i> / <i> 105분</i> / <i class="movie-date"> 2022.03.31 개봉</i>
+							<i class="movie-genre"> 애니메이션</i> / <i class="movie-minute"> 105분</i> / <i class="movie-date"> 2022.03.31 개봉</i>
 				</div>
 				<div class="type-hall">
 					<div class="info-hall">

@@ -21,9 +21,7 @@ public interface TimeMapper {
 			+ "VALUES (M_time_seq.nextval,#{theater_num},#{movie_num},#{movie_name},#{movie_date},#{movie_time})")
 	public void insertTheater2(TimeVO timeVO);
 
-	@Select("select time_num,t.movie_name,movie_genre,movie_pg,movie_auth,to_char(movie_date,'YYYY/MM/DD') movie_date,movie_time,theater_name from m_time t JOIN m_theater h using(theater_num) JOIN m_movie USING(movie_num) where movie_date=#{movie_date} and theater_num=#{theater_num}") 
+	@Select("select time_num,t.movie_name,movie_genre,movie_pg,movie_auth,to_char(movie_date,'YYYY/MM/DD') movie_date,movie_time,movie_minute,theater_name from m_time t JOIN m_theater h using(theater_num) JOIN m_movie USING(movie_num) where movie_date=#{movie_date} and theater_num=#{theater_num}") 
 	public List<TimeVO> selectList(Map<String,Object> map);
 	
-	
-
 }

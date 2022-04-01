@@ -18,6 +18,7 @@ public class TimeVO {
 	private String movie_genre; //장르
 	private int movie_pg; //관람연령(12/15/19)
 	private int movie_auth; //영화 상영정보 0:상영중/1:상영예정/2:상영종료
+	private String movie_minute; //영화 시간 길이?
 	
 	private int mem_num;
 	
@@ -101,13 +102,21 @@ public class TimeVO {
 	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
 	}
+
+	public String getMovie_minute() {
+		return movie_minute;
+	}
+
+	public void setMovie_minute(String movie_minute) {
+		this.movie_minute = movie_minute;
+	}
 	
 	//투스트링
 	@Override
 	public String toString() {
 		return "TimeVO [time_num=" + time_num + ", theater_num=" + theater_num + ", movie_num=" + movie_num
-				+ ", movie_name=" + movie_name + ", movie_date=" + movie_date + ", movie_time=" + movie_time
+				+ ", movie_date=" + movie_date + ", movie_time=" + movie_time + ", movie_name=" + movie_name
 				+ ", movie_genre=" + movie_genre + ", movie_pg=" + movie_pg + ", movie_auth=" + movie_auth
-				+ ", mem_num=" + mem_num + "]";
+				+ ", movie_minute=" + movie_minute + ", mem_num=" + mem_num + "]";
 	}
 }
