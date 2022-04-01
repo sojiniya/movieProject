@@ -261,6 +261,7 @@ $(function(){
 				//$('#area').empty();
 				
 				let movie_name;
+				let movie_auth;
 				let movie_genre;
 				let movie_pg;
 				let movie_date;
@@ -269,10 +270,11 @@ $(function(){
 				//let movie_auth;
 				$(param).each(function(index,item){
 				    movie_name = item.movie_name;
+				    movie_auth = item.movie_auth;
 				    movie_genre = item.movie_genre;
 				    movie_pg = item.movie_pg;
 				    movie_date = item.movie_date;
-				    movie_minute = item.movie_minute;
+				    movie_showtm = item.movie_showtm;
 				
 				    movie_time = item.movie_time;
 				    //movie_auth = item.movie_auth;
@@ -290,11 +292,14 @@ $(function(){
 					*/
 				});
 				$('.movie-name').text(movie_name);
+				if(movie_auth == 0) $('.movie-auth').find('em').text('상영중');
+				else if(movie_auth == 1) $('.movie-auth').find('em').text('상영예정');
+				else if(movie_auth == 2) $('.movie-auth').find('em').text('상영종료');
 				$('.movie-genre').text(movie_genre);
 				$('.movie-pg').text(movie_pg);
 				$('.movie-date').text(movie_date+' 개봉');
 				$('.movie-time').text(movie_time);
-				$('.movie-minute').text(movie_minute+'분');
+				$('.movie-showtm').text(movie_showtm+'분');
 			},
 			error:function(){
 				alert('네트워크 오류 발생');
@@ -387,13 +392,13 @@ $(function(){
 					</span>
 					<a href="${pageContext.request.contextPath}/movie/movieDetail.do" target="_parent">
 					<strong style="font-weight: bold;" class="movie-name">극장판 주술회전</strong></a> 
-							<span class="round lightblue">
+							<span class="round lightblue movie-auth">
 								<em>상영중</em>
 							</span>
 							<span class="">
 								<em> </em>
 							</span>
-							<i class="movie-genre"> 애니메이션</i> / <i class="movie-minute"> 105분</i> / <i class="movie-date"> 2022.03.31 개봉</i>
+							<i class="movie-genre"> 애니메이션</i> / <i class="movie-showtm"> 105분</i> / <i class="movie-date"> 2022.03.31 개봉</i>
 				</div>
 				<div class="type-hall">
 					<div class="info-hall">
