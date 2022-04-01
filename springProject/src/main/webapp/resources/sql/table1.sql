@@ -87,7 +87,7 @@ create table M_movie(
   movie_auth number(1) not null, /*영화 상영정보0:상영중/1:상영예정/2:상영종료*/
   movie_rate number(4),
 
-  constraint M_movie_pk primary key (movie_num)
+  constraint M_movie_pk primary key (movie_num) 
 );
 create sequence M_movie_seq;
 
