@@ -286,15 +286,6 @@ $(function(){
 					//문서 객체에 극장지역 리스트 추가
 					$('#area').append(output);
 					*/
-				    /* if(12 <= movie_pg && movie_pg < 15){
-						$('.movie-pg').find('img').attr('src','https://img.cgv.co.kr/R2014/images/common/flag/age/grade-12.png');
-					}else if(15 <= movie_pg && movie_pg < 19){
-						$('.movie-pg').find('img').attr('src','https://img.cgv.co.kr/R2014/images/common/flag/age/grade-15.png');
-					}else if(19 <= movie_pg.text(movie_pg)){
-						$('.movie-pg').find('img').attr('src','https://img.cgv.co.kr/R2014/images/common/flag/age/grade-19.png');
-					}else{
-						$('.movie-pg').find('img').attr('src','https://img.cgv.co.kr/R2014/images/common/flag/age/grade-all.png');
-					} */
 				});
 				$('.movie-name').text(movie_name);
 				$('.movie-genre').text(movie_genre);
@@ -391,7 +382,7 @@ $(function(){
 					<span class="movie-pg">
 						<img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-15.png" width="20px" height="20px"> <!-- <span class="ico-grade grade-15">15세 이상</span> -->
 					</span>
-					<a href="#" target="_parent">
+					<a href="${pageContext.request.contextPath}/movie/movieDetail.do?movie_num=${movie.movie_num}" target="_parent">
 					<strong style="font-weight: bold;" class="movie-name">극장판 주술회전</strong></a> 
 							<span class="round lightblue">
 								<em>상영중</em>
@@ -412,11 +403,7 @@ $(function(){
 						<ul style="display: block;list-style: none;list-style-type: disc;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
 							<li style="display: list-item;text-align: -webkit-match-parent;list-style: none;">
 								
-								<a href="/ticket/?MOVIE_CD=20028797&amp;MOVIE_CD_GROUP=20028797&amp;PLAY_YMD=20220330&amp;THEATER_CD=0056&amp;PLAY_START_TM=1850&amp;AREA_CD=13&amp;SCREEN_CD=006" 
-								target="_top" data-theatercode="0056" data-playymd="20220330"
-								data-screencode="006" data-playnum="6" data-playstarttime="1850"
-								data-playendtime="2045" data-theatername="CGV 강남"
-								data-seatremaincnt="86">
+								<a href="${pageContext.request.contextPath}/reserve/reserveStep1.do">
 								<em class="movie-time">18:50</em>
 								<span class="txt-lightblue">
 									<span class="hidden">잔여좌석</span>86석
