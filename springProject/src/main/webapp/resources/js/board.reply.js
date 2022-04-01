@@ -26,7 +26,7 @@ $(function(){
 			dataType:'json',
 			cache:false,
 			timeout:30000,
-			success:function(){
+			success:function(param){
 				if(param.result == 'logout'){
 					alert('로그인 후 작성할 수 있습니다.');
 				}else if(param.result == 'success'){

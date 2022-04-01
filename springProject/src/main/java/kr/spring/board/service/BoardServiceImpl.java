@@ -64,8 +64,9 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void adminDeleteBoard(Integer board_num) {
+		//댓글이 존재하면 댓글 우선 삭제 후 부모글 삭제
+		boardMapper.deleteReplyByBoardNum(board_num);
 		boardMapper.adminDeleteBoard(board_num);
-		
 	}
 
 	/*
@@ -91,7 +92,11 @@ public class BoardServiceImpl implements BoardService{
 		boardMapper.updateBoard(board);
 		
 	}
-
+	@Override
+	public List<BoardVO> selectListBy5(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return boardMapper.selectListBy5(map);
+	}
 	/*
 	 * @Override public void deleteBoard(Integer board_num) { // TODO Auto-generated
 	 * method stub
@@ -143,19 +148,5 @@ public class BoardServiceImpl implements BoardService{
 		
 	}
 
-	@Override
-	public void deleteReplyByBoardNum(Integer board_num) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public List<BoardVO> selectListBy5(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return boardMapper.selectListBy5(map);
-	}
-
-
-	
 	
 }

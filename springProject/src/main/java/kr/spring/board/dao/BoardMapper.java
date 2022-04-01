@@ -22,7 +22,6 @@ public interface BoardMapper {
 	
 	//관리자 부분
 	public void adminInsertBoard(BoardVO board); //관리자 글 작성(0)
-	
 	public BoardVO adminSelectBoard(Integer board_num); //관리자 상세보기(0)
 	public void adminUpdateBoard(BoardVO board); //관리자 글 수정(0)
 	@Delete("DELETE FROM m_board WHERE board_num=#{board_num}")
@@ -47,9 +46,6 @@ public interface BoardMapper {
 	public List<BoardReplyVO> selectListReply(Map<String,Object> map); //필요없을듯
 	public int selectRowCountReply(Map<String,Object> map);
 	public BoardReplyVO selectReply(Integer re_num);
-	@Insert("INSERT INTO m_reply (reply_num,re_content,"
-			+ "board_num,mem_num) VALUES (m_reply_seq.nextval,"
-			+ "#{re_content},#{board_num},#{mem_num})")
 	public void insertReply(BoardReplyVO boardReply);
 	public void updateReply(BoardReplyVO boardReply);
 	public void deleteReply(Integer re_num);

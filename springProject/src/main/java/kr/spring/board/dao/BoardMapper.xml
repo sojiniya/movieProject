@@ -10,7 +10,7 @@
 		#{board_title},#{board_content},#{board_uploadfile},#{board_filename},#{mem_num})
 </insert>
 
-<select id="selectListBy5" parameterType="map" resultType="boardVO">
+<select id="selectListBy5" parameterType="map" resultType="BoardVO">
 	SELECT
 		  *
 		FROM (SELECT 
@@ -48,7 +48,7 @@
 	   ]]>	       
 </select>
 
-	<select id="selectList" parameterType="map" resultType="boardVO">
+	<select id="selectList" parameterType="map" resultType="BoardVO">
 		SELECT
 		  *
 		FROM (SELECT 
@@ -125,28 +125,7 @@
 	   </if> 
 	</select>
 	
-	<!-- <select id="boardNews" parameterType="map" resultType="boardVO">
-		  SELECT
-		  *
-		FROM (SELECT 
-		       a.*,
-		       rownum
-		      FROM (SELECT 
-		               b.board_num,
-		               b.board_title,
-		               b.board_hit,
-		               b.board_reg_date,
-		               m.cate_name,
-		               m.cate_num
-		            FROM m_board b
-		            JOIN m_category m 
-		            ON b.cate_num = m.cate_num
-		             <![CDATA[
-		             where rownum < 6 AND m.cate_num between '5' and '7'
-		            ]]>
-		            ORDER BY b.board_reg_date DESC)a)
-		                
-	</select> -->
+	
 	<insert id="insertBoard" parameterType="BoardVO" >
 	INSERT INTO M_board (board_num,board_auth,cate_num,sel_regioncode,sel_theatercode,board_title,board_content,board_uploadfile,
 			  board_filename,mem_num) VALUES (M_board_seq.nextval,#{board_auth},#{cate_num},#{sel_regioncode},#{sel_theatercode},
@@ -181,7 +160,7 @@
 		  WHERE b.board_num=#{board_num}
 	</select>
 	
-	<update id="adminUpdateBoard" parameterType="boardVO">
+	<update id="adminUpdateBoard" parameterType="BoardVO">
 		UPDATE m_board SET
 		  
 		  board_auth=#{board_auth},
@@ -193,7 +172,7 @@
 		  board_content=#{board_content}
 	   WHERE board_num=#{board_num}
 	</update>
-	<update id="updateBoard" parameterType="boardVO">
+	<update id="updateBoard" parameterType="BoardVO">
 		UPDATE m_board SET
 		  
 		  board_auth=#{board_auth},
@@ -205,4 +184,30 @@
 		  board_content=#{board_content}
 	   WHERE board_num=#{board_num}
 	</update>
+	
+	<!-- 댓글 -->
+	<insert id="insertReply" parameterType="BoardReplyVO" >
+	INSERT INTO m_reply (reply_num,re_content,
+			board_num,mem_num) VALUES (m_reply_seq.nextval,
+			#{re_content},#{board_num},#{mem_num})
+	</insert>
+	<select id="selectListReply" parameterType="map" resultType="BoardReplyVO">
+		SELECT
+		  *
+		FROM (SELECT
+		        a.*,
+		        rownum rnum
+		      FROM  (SELECT
+		               reply_num,
+		               re_content,
+		               re_date,
+		               board_num,
+		               mem_num,
+		               id
+		             FROM m_board_reply
+		             JOIN m_member USING(mem_num)
+		             WHERE board_num = #{board_num}
+		             ORDER BY reply_num DESC)a)
+		 WHERE rnum <![CDATA[>=]]> #{start} AND rnum  <![CDATA[<= ]]>#{end}
+	</select>
 </mapper>

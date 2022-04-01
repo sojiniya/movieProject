@@ -8,6 +8,7 @@ public class BoardReplyVO {
 	private Date re_date;
 	private int board_num;//부모 글번호
 	private int mem_num;//작성자 회원번호
+	private String id;
 	
 	public int getReply_num() {
 		return reply_num;
@@ -39,9 +40,17 @@ public class BoardReplyVO {
 	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
 	}
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	@Override
 	public String toString() {
 		return "BoardReplyVO [reply_num=" + reply_num + ", re_content=" + re_content + ", re_date=" + re_date
-				+ ", board_num=" + board_num + ", mem_num=" + mem_num + "]";
+				+ ", board_num=" + board_num + ", mem_num=" + mem_num + ", id=" + id + "]";
 	}
+	
 }
