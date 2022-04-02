@@ -150,5 +150,15 @@ public class BoardServiceImpl implements BoardService{
 			return boardMapper.compareMemNumByBrdNum(board_num);
 	}
 
+	@Override
+	public void deleteReplyByBoardNum(Integer board_num) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+	
+
 	
 }

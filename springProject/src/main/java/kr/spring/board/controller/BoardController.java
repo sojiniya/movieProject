@@ -389,6 +389,46 @@ public class BoardController {
 					
 			return mav;
 			}
+	//문의/건의 목록
+	@RequestMapping("/board/myList.do")
+		public ModelAndView process5(
+			@RequestParam(value="pageNum",defaultValue="1")int currentPage,
+			@RequestParam(value="keyfield",defaultValue="")String keyfield,
+			@RequestParam(value="keyword",defaultValue="")String keyword,
+			@RequestParam(value="cate_num",defaultValue="31")String cate_num) {
+						
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("keyfield", keyfield);
+			map.put("keyword", keyword);
+			map.put("cate_num", cate_num);
+						
+			//글의 총갯수 또는 검색된 글의 갯수
+			int count = boardService.selectRowCount(map);
+						
+			//페이지 처리
+			PagingUtil page = new PagingUtil(keyfield,keyword,
+								                currentPage,count,20,10,"myList.do");
+						
+			map.put("start",page.getStartCount());
+			map.put("end", page.getEndCount());
+			map.put("cate_num", cate_num);
+				
+			//리스트
+			List<BoardVO> list = null;
+			if(count > 0) {
+			list = boardService.selectList(map);
+			}
+								
+			ModelAndView mav = new ModelAndView();
+						            //타일스 설정
+			mav.setViewName("myList");
+			mav.addObject("count", count);
+			mav.addObject("list",list);
+			mav.addObject("pagingHtml", page.getPagingHtml());
+						
+			return mav;
+			}
+	
 	//회원 질문  글상세 
 	@RequestMapping("/board/userQnaView.do")
 		public ModelAndView process4(@RequestParam int board_num, HttpServletRequest request) {
@@ -398,6 +438,9 @@ public class BoardController {
 			System.out.println( session.getAttribute("user_num"));
 			int memNum = (Integer) session.getAttribute("user_num");
 			int memNum2 = 0;
+			
+			
+			
 			try {
 				memNum2 = boardService.compareBrdAuthority(board_num);
 			} catch (Exception e) {
@@ -411,9 +454,14 @@ public class BoardController {
 				BoardVO board = boardService.selectBoard(board_num);
 				//타이틀 HTML 불허
 				board.setBoard_title(StringUtil.useNoHtml(board.getBoard_title()));
-					                    //타일스 설정      속성명      속성값
+					                    //타일스 설정            속성명      속성값
 				return new ModelAndView("userQnaView","board",board);
-			} else { 
+				
+			} else if (memNum != memNum2){
+				int alert = 1;
+				return new ModelAndView("userQnaList","alert",alert);
+			} else {
+			
 				int alert = 1;
 				return new ModelAndView("userQnaList","alert",alert);
 			}
@@ -443,5 +491,6 @@ public class BoardController {
 		boardService.adminDeleteBoard(board_num);
 		return "redirect:/board/userQnaList.do";
 	}
+	
 	
 }

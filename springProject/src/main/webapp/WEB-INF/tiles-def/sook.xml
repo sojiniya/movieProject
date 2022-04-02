@@ -49,6 +49,11 @@
     	<put-attribute name="title" value="회원 글 수정"/>
     	<put-attribute name="body" value="/WEB-INF/views/board/userUpdate.jsp"/>
     </definition>
+     <definition name="myList" extends="board_main">
+    	<put-attribute name="title" value="내 상담내역"/>
+    	<put-attribute name="body" value="/WEB-INF/views/board/myList.jsp"/>
+    </definition>
+    
 </tiles-definitions>
 
 
