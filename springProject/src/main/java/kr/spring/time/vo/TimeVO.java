@@ -22,6 +22,10 @@ public class TimeVO {
 	
 	private int mem_num;
 	
+	//좌석
+	private int revseat_num;
+	private int seat_num;
+	
 	//게터세터
 	public int getTime_num() {
 		return time_num;
@@ -111,12 +115,29 @@ public class TimeVO {
 		this.movie_showtm = movie_showtm;
 	}
 	
+	public int getRevseat_num() {
+		return revseat_num;
+	}
+
+	public void setRevseat_num(int revseat_num) {
+		this.revseat_num = revseat_num;
+	}
+
+	public int getSeat_num() {
+		return seat_num;
+	}
+
+	public void setSeat_num(int seat_num) {
+		this.seat_num = seat_num;
+	}
+	
 	//투스트링
 	@Override
 	public String toString() {
 		return "TimeVO [time_num=" + time_num + ", theater_num=" + theater_num + ", movie_num=" + movie_num
 				+ ", movie_date=" + movie_date + ", movie_time=" + movie_time + ", movie_name=" + movie_name
 				+ ", movie_genre=" + movie_genre + ", movie_pg=" + movie_pg + ", movie_auth=" + movie_auth
-				+ ", movie_showtm=" + movie_showtm + ", mem_num=" + mem_num + "]";
+				+ ", movie_showtm=" + movie_showtm + ", mem_num=" + mem_num + ", revseat_num=" + revseat_num
+				+ ", seat_num=" + seat_num + "]";
 	}
 }
