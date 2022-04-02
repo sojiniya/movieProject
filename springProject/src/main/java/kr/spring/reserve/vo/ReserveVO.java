@@ -18,7 +18,7 @@ public class ReserveVO {
 	private String mem_id; //회원 id
 	private String movie_name; //영화 제목
 	private String theater_name; //영화관명
-	private Date movie_date; //상영날짜
+	private String movie_date; //상영날짜
 	private String movie_time; //상영시간
 	
 	//step1 -> step2로 보내기 위해 필요한 프로퍼티 추가
@@ -119,10 +119,10 @@ public class ReserveVO {
 	public void setTheater_name(String theater_name) {
 		this.theater_name = theater_name;
 	}
-	public Date getMovie_date() {
+	public String getMovie_date() {
 		return movie_date;
 	}
-	public void setMovie_date(Date movie_date) {
+	public void setMovie_date(String movie_date) {
 		this.movie_date = movie_date;
 	}
 	public String getMovie_time() {
