@@ -73,7 +73,7 @@ table td, table th{
 					</div>
 					</c:if> --%>
 					<c:if test="${!empty user_num && user_auth eq 3}">
-					<form id="re_form" action="userBoardWrite.do" class="adminReplyForm" method="post">
+					<form id="re_form" action="writeReply.do" class="adminReplyForm" method="post">
 					<!-- 회원인 경우 div창만 보이게 구성. 답변 테이블 null 인  경우 답변전이라는 문구 띄움 , 답변 등록되어 있는 경우 답변내용 출력 -->
 						<input type="hidden" name="board_num" value="${board.board_num}" id="board_num">
 						<textarea rows="3" cols="50" name="re_content" id="re_content" class="rep-content" placeholder="답변내용을 작성해주세요."

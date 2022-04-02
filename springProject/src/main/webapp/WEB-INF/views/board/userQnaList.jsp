@@ -15,6 +15,13 @@ table td, table th{
 	padding:5px;
 }
 </style>
+<script>
+	const alertMessage = "${alert}";
+	if (alertMessage == 1) {
+		alert("관련 게시물에 권한이 없습니다.");
+		location.href="${pageContext.request.contextPath}/board/userQnaList.do"
+	}
+</script>
 <div class="boardMain">
 	<div class="board-detail">
 		<h3 style="margin:0px 10px;">문의/건의</h3>

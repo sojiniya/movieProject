@@ -114,19 +114,16 @@ public class BoardServiceImpl implements BoardService{
 	//댓글 부분
 	@Override
 	public List<BoardReplyVO> selectListReply(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		return boardMapper.selectListReply(map);
 	}
 
 	@Override
 	public int selectRowCountReply(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return boardMapper.selectRowCountReply(map);
 	}
 
 	@Override
 	public BoardReplyVO selectReply(Integer re_num) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -146,6 +143,11 @@ public class BoardServiceImpl implements BoardService{
 	public void deleteReply(Integer re_num) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Integer compareBrdAuthority(Integer board_num) {
+			return boardMapper.compareMemNumByBrdNum(board_num);
 	}
 
 	

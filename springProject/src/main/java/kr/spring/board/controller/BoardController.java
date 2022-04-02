@@ -391,17 +391,36 @@ public class BoardController {
 			}
 	//회원 질문  글상세 
 	@RequestMapping("/board/userQnaView.do")
-		public ModelAndView process4(@RequestParam int board_num) {
+		public ModelAndView process4(@RequestParam int board_num, HttpServletRequest request) {
 			logger.info("<<회원 질문 글 상세 - 글 번호>> : " + board_num);
 				
-			//해당 글의 조회수 증가
-			boardService.updateHit(board_num);
-				
-			BoardVO board = boardService.selectBoard(board_num);
-			//타이틀 HTML 불허
-			board.setBoard_title(StringUtil.useNoHtml(board.getBoard_title()));
-				                    //타일스 설정      속성명      속성값
-			return new ModelAndView("userQnaView","board",board);
+			HttpSession session = request.getSession();
+			System.out.println( session.getAttribute("user_num"));
+			int memNum = (Integer) session.getAttribute("user_num");
+			int memNum2 = 0;
+			try {
+				memNum2 = boardService.compareBrdAuthority(board_num);
+			} catch (Exception e) {
+				System.out.println("관련 게시물이 없음");
+			}
+			
+			if (memNum == memNum2) {
+				//해당 글의 조회수 증가
+				boardService.updateHit(board_num);
+					
+				BoardVO board = boardService.selectBoard(board_num);
+				//타이틀 HTML 불허
+				board.setBoard_title(StringUtil.useNoHtml(board.getBoard_title()));
+					                    //타일스 설정      속성명      속성값
+				return new ModelAndView("userQnaView","board",board);
+			} else { 
+				int alert = 1;
+				return new ModelAndView("userQnaList","alert",alert);
+			}
+			
+			
+			
+			
 			}
 	
 	//qna게시판 글 삭제

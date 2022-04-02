@@ -40,4 +40,7 @@ public interface BoardService {
 	public void updateReply(BoardReplyVO boardReply);
 	public void deleteReply(Integer re_num);
 	
+	// 권한 체크
+	public Integer compareBrdAuthority(Integer board_num);
+	
 }

@@ -3,11 +3,62 @@ $(function(){
 	let count;
 	let rowCount;
 	
+	
 	//댓글 목록
 	function selectData(pageNum,board_num){
+		currentPage = pageNum;
 		
+		//목록 호출
+		$.ajax({
+			type:'get',
+			data:{pageNum:pageNum,board_num:board_num},
+			url:'/board/listReply.do',
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(param){
+				console.log(param);
+				count = param.count;
+				rowCount = param.rowCount;
+				
+				if(pageNum == 1){
+					//처음 호출시는 해당 ID의 div의 내부 내용물을 제거
+					$('#output').empty();
+				}
+				
+				//댓글 목록 작업
+				$(param.list).each(function(index,item){
+				console.log(item);
+				console.log(item.re_content);
+					let output = '<div class="item">';
+					output += '<h4>' + item.id + '</h4>';
+					output += '<div class="sub-item">';
+					// output += '<p>' item.re_content.replace(/\r\n/g,'<br>') + '</p>';
+					
+					output += '<span class="modify-date">등록일: ' + item.re_date + '</span>';
+					
+					output += '<hr size="1" noshade>';
+					output += '</div>';
+					output += '</div>';
+					
+					//문서객체에 추가
+					$('#output').append(output);
+				});
+				
+				//paging button 처리
+				if(currentPage>=Math.ceil(count/rouCount)){
+					//다음 페이지 없음
+					$('.paging-button').hide();
+				}else{
+					//다음 페이지가 존재
+					$('.paging-button').show();
+				}
+			},
+			error:function(){
+				alert('네트워크 오류 발생');
+			}
+		});
 	}
-	//다음 댓글 보기 버튼 클릭시 데이터 추가
 	
 	//댓글 등록
 	$('#re_form').submit(function(event){
@@ -22,11 +73,12 @@ $(function(){
 		$.ajax({
 			type:'post',
 			data:data,
-			url:'writeReply.do',
+			url:'/board/writeReply.do',
 			dataType:'json',
 			cache:false,
 			timeout:30000,
 			success:function(param){
+				console.log(param);
 				if(param.result == 'logout'){
 					alert('로그인 후 작성할 수 있습니다.');
 				}else if(param.result == 'success'){
@@ -50,6 +102,7 @@ $(function(){
 	//댓글 작성 폼 초기화
 	//'#re_first(후손선택자라서 공백있음!).letter-count'
 	function initForm(){
+		console.log("초기화")
 		$('textarea').val('');
 		$('#re_first .letter-count').text('300/300');
 	}

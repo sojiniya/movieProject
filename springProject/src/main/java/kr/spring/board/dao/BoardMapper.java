@@ -34,9 +34,6 @@ public interface BoardMapper {
 	
 	//회원부분
 	public void insertBoard(BoardVO board); //회원 글 작성(0)
-	@Select("SELECT * FROM m_board b JOIN m_member m "
-			 + "ON b.mem_num=m.mem_num LEFT JOIN m_category c on b.cate_num=c.cate_num"
-			 + " WHERE b.board_num=#{board_num}")
 	public BoardVO selectBoard(Integer board_num); //회원글 상세보기(0)
 	public void updateBoard(BoardVO board); //회원 글 수정(0)
 	//public void deleteBoard(Integer board_num); //회원 글 삭제
@@ -51,4 +48,6 @@ public interface BoardMapper {
 	public void deleteReply(Integer re_num);
 	//부모글 삭제시 댓글이 존재하면 부모글 삭제전 댓글 삭제
 	public void deleteReplyByBoardNum(Integer board_num);
+	
+	public Integer compareMemNumByBrdNum(Integer board_num);
 }
