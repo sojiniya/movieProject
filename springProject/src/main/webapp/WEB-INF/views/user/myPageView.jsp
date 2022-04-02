@@ -3,19 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
 <head>
-    
-    <link rel="alternate" href="http://m.cgv.co.kr" />
-    <link rel="shortcut icon" href="https://img.cgv.co.kr/theater_img/favicon.ico" type="image/x-icon" />
-    <title id="ctl00_ctl00_headerTitle"></title>
-    <link rel="shortcut icon" type="image/x-icon" href="https://img.cgv.co.kr/R2014/images/favicon.ico" />
-    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/webfont.css" />
-    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/reset.css" />
-    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/layout.css" />
-    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/module.css?20211209" />
-    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/content.css" />
-    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/common.css" />
-
-
+<script src="${pageContext.request.contextPath}/resources/css/hyoen.css"></script>
 <div class="sect-common">
 <input type="hidden" id="isTown" name="isTown" value="Y" />
 <input type="hidden" id="userTownMemberInfo" name="userTownMemberInfo" value="" />
@@ -68,45 +56,6 @@
 				    </div>
 
         		</div>
-        	</div>
-        </div>
-        <div class="cols-benefit-info">
-        	<div class="col-my-coupon">
-        		<h3>MY COUPON</h3>
-        		<ul>
-                    
-                    <li>
-        				<strong>CGV VIP에 도전하세요!</strong>
-        				<span><a href="/user/vip-lounge/" class="round black1"><i>CGV VIP 혜택보기</i></a></span>
-        			</li>
-                    
-        			<li>
-        				<strong>CGV 할인쿠폰</strong>
-        				<span><em><a href="/user/mycgv/coupon/discount/list.aspx?g=1#contaniner">0</a></em> 개</span>
-        			</li>
-        			<li>
-        				<strong>영화관람권</strong>
-        				<span><em><a href="/user/mycgv/coupon/movie-ticket/list.aspx?g=1#contaniner">0</a></em> 개</span>
-        			</li>
-        		</ul>
-        	</div>
-        	
-                
-                <div class="col-one-point">
-               	<h3>CJ ONE POINT</h3>
-        		<a href="/user/mycgv/cjone-point/pointlist.aspx">CJ ONE POINT 더보기</a>
-        		<ul>
-        			<li>
-        				<strong>CJ ONE 사용가능 포인트</strong>
-        				<span><em class="txt-maroon"><a href="/user/mycgv/cjone-point/pointlist.aspx">1,432</a></a></em> 점</span>
-        			</li>
-        		    <li class="tooltip_list cf">
-        				<strong>VIP선정 포인트</strong><a href="/user/mycgv/cjone-point/pointlist.aspx" class="mycgv_tooltip"></a>
-
-        				<span><em>0</em> 점</span>
-        			</li>
-        		</ul>
-                
         	</div>
         </div>
     </div>

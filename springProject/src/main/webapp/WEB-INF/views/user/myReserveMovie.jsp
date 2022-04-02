@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/webfont.css" />
-    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/reset.css" />
-    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/layout.css" />
-    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/module.css?20211209" />
-    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/content.css" />    
+<script src="${pageContext.request.contextPath}/resources/css/hyoen.css"></script>  
 <!DOCTYPE html>
 <div class="cols-content">
 	<div class="col-detail">
@@ -14,8 +10,8 @@
 				<c:if test="${count == 0}">
 					예매한 영화가 없습니다.
 				</c:if>
-				<c:if test="${count >0}">
 				
+				<c:if test="${count >0}">
 				<c:forEach var="reserveMovie" items="${list}">
 					<ul id="watched_list_container">
 						<li class="movie_info_80530">
@@ -52,6 +48,7 @@
 				</c:forEach>
 				</c:if>		
 			</div>
+			<div class="align-center">${pagingHtml}</div>
 		</div>
 	</div>
 </div>

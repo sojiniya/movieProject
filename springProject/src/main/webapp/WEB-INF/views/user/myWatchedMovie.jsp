@@ -11,6 +11,11 @@
 	<div class="col-detail">
 		<div class="movielog-detail-wrap">
 			<div class="sect-movielog-lst">
+				<c:if test="${count == 0}">
+					내가 본 영화가 없습니다.
+				</c:if>
+				
+				<c:if test="${count >0}">
 				<c:forEach var="watchedMovie" items="${list}">
 					<ul id="watched_list_container">
 						<li class="movie_info_80530">
@@ -44,11 +49,12 @@
 								<button type="button" onclick="location.href='${pageContext.request.contextPath}/user/writeReviewForm.do?movie_num=${watchedMovie.movie_num}'">
 									리뷰남기기
 								</button>
+							</div>
 						</li>
 					</ul>
+				</c:forEach>
+				</c:if>	
 			</div>
-			</c:forEach>
-			</ul>
 			<div class="align-center">${pagingHtml}</div>
 		</div>
 	</div>
