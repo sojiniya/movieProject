@@ -131,7 +131,7 @@ public class TimeVO {
 		this.seat_num = seat_num;
 	}
 	
-	//투스트링
+	//투스트링  
 	@Override
 	public String toString() {
 		return "TimeVO [time_num=" + time_num + ", theater_num=" + theater_num + ", movie_num=" + movie_num
