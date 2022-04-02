@@ -25,6 +25,7 @@ public class MovieVO {
 	private int movie_showtm;//영화 상영시간
 	private int movie_rate; //영화 평점
 	private int mem_num; //회원번호
+	private int likeCnt; // 좋아요수
 	
 	//찜한 영화를 위한 my_movie_num
 	private int my_movie_num;
@@ -138,7 +139,10 @@ public class MovieVO {
 		this.my_movie_num = my_movie_num;
 	}
 
-
+	public int getLikeCnt() {
+		return likeCnt;
+	}
+	
 	@Override
 	public String toString() {
 		return "MovieVO [movie_num=" + movie_num + ", movie_name=" + movie_name + ", movie_content=" + movie_content

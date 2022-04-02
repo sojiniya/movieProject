@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import kr.spring.movie.service.MovieService;
+import kr.spring.movie.vo.MovieLikeVO;
 import kr.spring.movie.vo.MovieVO;
 import kr.spring.util.PagingUtil;
 import kr.spring.util.StringUtil;
@@ -106,8 +108,6 @@ public class MovieController {
 		map.put("start",page.getStartCount());
 		map.put("end", page.getEndCount());
 		
-		System.out.println(page.getStartCount()+","+page.getEndCount()+"****************************");
-		
 		List<MovieVO> list = null;
 		if(count > 0) {
 			list = movieService.selectList(map);
@@ -126,12 +126,20 @@ public class MovieController {
 	
 	//영화 상세 정보
 	@RequestMapping("/movie/movieDetail.do")
-	public ModelAndView process(@RequestParam int movie_num) {
+	public ModelAndView process(@RequestParam int movie_num, HttpSession session) {
 		logger.info("<<영화 상세 정보 - 영화 번호>> : " + movie_num);
-	
-		MovieVO movie = movieService.selectMovie(movie_num);
+		MovieVO movieVo = new MovieVO();
+		
+		if((Integer)session.getAttribute("user_num") != null) {
+			movieVo.setMem_num((Integer)session.getAttribute("user_num"));
+		}
+		movieVo.setMovie_num(movie_num);
+		MovieVO movie = movieService.selectMovie(movieVo);
+
+		logger.info("<<영화 상세 정보 >> : " + movie);
 		//타이틀 HTML 불허
 		movie.setMovie_name(StringUtil.useNoHtml(movie.getMovie_name()));
+		
 		                        //타일스 설정      속성명      속성값
 		return new ModelAndView("movieDetail","movie",movie);
 	}
@@ -139,7 +147,9 @@ public class MovieController {
 	//이미지 출력
 	@RequestMapping("/movie/imageView.do")
 	public ModelAndView viewImage(@RequestParam int movie_num) {
-		MovieVO movie = movieService.selectMovie(movie_num);
+		MovieVO movieVo = new MovieVO();
+		movieVo.setMovie_num(movie_num);
+		MovieVO movie = movieService.selectMovie(movieVo);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");
@@ -192,10 +202,43 @@ public class MovieController {
 		public String submitDelete(@RequestParam int movie_num) {
 			movieService.deleteMovie(movie_num);
 			return "redirect:/movie/movieChart.do";		
+		}	
+		
+		//마이무비 좋아요
+		@RequestMapping("/movie/clickLike.do")
+		@ResponseBody
+		public Map<String, Object> clickLike( @RequestParam int movie_num
+											 ,@RequestParam int my_movie_num 
+											 , HttpSession session) {
+			
+			Map<String, Object> map = new HashMap<String,Object>();
+			int divCd = 0;
+			Integer user_num = (Integer)session.getAttribute("user_num");
+			logger.info(" ** my_movie_num : " + my_movie_num); 
+			logger.info(" ** movie_num : " + movie_num); 
+			logger.info(" ** user_num : " + user_num);
+			
+			MovieLikeVO movieLikeVo = new MovieLikeVO();
+			
+			movieLikeVo.setMem_num(user_num);
+			movieLikeVo.setMovie_num(movie_num);
+			movieLikeVo.setMy_movie_num(my_movie_num);
+			
+			int cnt = movieService.countLike(movieLikeVo);
+			
+			if(cnt == 0) {
+				logger.info(" ** insertLike : " + movieLikeVo); 
+				movieService.insertLike(movieLikeVo);
+				divCd = 1;
+			}else {
+				logger.info(" ** deleteLike : " + movieLikeVo);
+				movieService.deleteLike(movieLikeVo);
+			}
+			
+			map.put("divCd", divCd);
+			
+			return map;	
 		}
-		
-
-		
 }
 	
 

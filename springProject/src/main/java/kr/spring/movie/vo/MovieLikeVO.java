@@ -1,7 +1,7 @@
 package kr.spring.movie.vo;
 
 public class MovieLikeVO {
-	private int my_movie_num;
+	private int my_movie_num;	
 	private int movie_num;
 	private int mem_num;
 	

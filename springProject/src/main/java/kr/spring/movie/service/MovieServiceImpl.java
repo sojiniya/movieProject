@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.spring.movie.dao.MovieMapper;
-import kr.spring.movie.vo.MovieReviewVO;
+import kr.spring.movie.vo.MovieLikeVO;
 import kr.spring.movie.vo.MovieVO;
 
 @Service
@@ -33,20 +33,8 @@ public class MovieServiceImpl implements MovieService{
 	}
 
 	@Override
-	public MovieVO selectMovie(Integer movie_num) {
+	public MovieVO selectMovie(MovieVO movie_num) {
 		return movieMapper.selectMovie(movie_num);
-	}
-
-	@Override
-	public MovieVO beforeView(MovieVO vmovie) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public MovieVO afterView(MovieVO vmovie) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -58,7 +46,6 @@ public class MovieServiceImpl implements MovieService{
 	@Override
 	public void deleteMovie(Integer movie_num) {
 		movieMapper.deleteMovie(movie_num);
-		movieMapper.deleteReviewByMovieNum(movie_num);
 	}
 
 	@Override
@@ -68,37 +55,57 @@ public class MovieServiceImpl implements MovieService{
 	}
 	
 
-	@Override
-	public List<MovieReviewVO> selectListReview(Map<String, Object> map) {
-		return movieMapper.selectListReview(map);
+//	@Override
+//	public List<MovieReviewVO> selectListReview(Map<String, Object> map) {
+//		return movieMapper.selectListReview(map);
+//	}
+//
+//	@Override
+//	public int selectRowCountReview(Map<String, Object> map) {
+//		return movieMapper.selectRowCountReview(map);
+//	}
+//
+//	@Override
+//	public MovieReviewVO selectReview(Integer review_num) {
+//		return movieMapper.selectReview(review_num);
+//	}
+//
+//	@Override
+//	public void insertReview(MovieReviewVO movieReview) {
+//		movieMapper.insertReview(movieReview);
+//	}
+//
+//	@Override
+//	public void updateReview(MovieReviewVO movieReview) {
+//		movieMapper.updateReview(movieReview);
+//	}
+//
+//	@Override
+//	public void deleteReview(Integer review_num) {
+//		movieMapper.deleteReview(review_num);
+//	}
+
+	 @Override 
+	 public int checkLike(MovieLikeVO movielike) { 
+	   return movieMapper.checkLike(movielike); 
 	}
 
 	@Override
-	public int selectRowCountReview(Map<String, Object> map) {
-		return movieMapper.selectRowCountReview(map);
+	public void insertLike(MovieLikeVO movielike) {
+		movieMapper.insertLike(movielike);
 	}
 
 	@Override
-	public MovieReviewVO selectReview(Integer review_num) {
-		return movieMapper.selectReview(review_num);
+	public void deleteLike(MovieLikeVO movielike) {
+		movieMapper.deleteLike(movielike);
 	}
 
 	@Override
-	public void insertReview(MovieReviewVO movieReview) {
-		movieMapper.insertReview(movieReview);
+	public int countLike(MovieLikeVO movielike) {
+		return movieMapper.countLike(movielike);
 	}
 
-	@Override
-	public void updateReview(MovieReviewVO movieReview) {
-		movieMapper.updateReview(movieReview);
-	}
-
-	@Override
-	public void deleteReview(Integer review_num) {
-		movieMapper.deleteReview(review_num);
-	}
-
-
+	
 	/*
 	 * @Override public void insertTheater(MovieVO movie) {
 	 * movieMapper.insertTheater(movie); }

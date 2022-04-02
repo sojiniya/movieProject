@@ -49,4 +49,18 @@
           *
        FROM M_review         
     </select>
+    <select id="selectMovie" parameterType="map" resultType="movieVO">
+		SELECT
+			  A.*
+			, NVL( (SELECT COUNT(*) AS CNT FROM MY_MOVIE WHERE movie_num = #{movie_num}) , 0) AS likeCnt
+			, NVL(B.my_movie_num, 0) as my_movie_num
+		FROM M_movie A
+		LEFT OUTER JOIN (SELECT m.movie_num, m.my_movie_num 
+		                         FROM MY_MOVIE M
+		                         WHERE m.mem_num = #{mem_num}
+		                         AND m.movie_num = #{movie_num}
+		                    ) B 
+		                   ON A.MOVIE_NUM = B.MOVIE_NUM 		
+		WHERE A.MOVIE_NUM = #{movie_num}
+    </select>
 </mapper>
