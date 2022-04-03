@@ -64,7 +64,7 @@
     <div class="box-round-wgray">
         <div class="box-round-inner">
             <div class="inner-contents-log">
-                <a href="${pageContext.request.contextPath}/movies/point/my-list.aspx">
+                <a href="${pageContext.request.contextPath}/user/myReview.do">
                     <em></em>
                     <strong>내가 쓴 평점</strong>
                 </a>

@@ -177,9 +177,24 @@ public class MemberMovieController {
 		return "writeReviewForm";
 	}	
 
+	// 리뷰평가 등록
+	@PostMapping("/user/writeReview.do")
+	public String writeReview(@Valid MovieReviewVO movieReviewVO, BindingResult result) {
+
+		logger.info("<<리뷰평가>> :" + movieReviewVO);
+
+		// 유효성 체크 결과 오류가 있으면 폼 호출
+		/*
+		 * if(result.hasErrors()) { return form(); }
+		 */
+
+		// 리뷰등록
+		MemberMovieService.insertReview(movieReviewVO);
+		return "redirect:/main/main.do";
+	}
 	
 	//내가 남긴 리뷰평가
-		@RequestMapping("")
+		@RequestMapping("/user/myReview.do")
 		public ModelAndView viewMyReview(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage, HttpSession session) {
 			Integer user_num = (Integer)session.getAttribute("user_num");
 			MemberVO member = memberService.selectMember(user_num);
@@ -187,23 +202,22 @@ public class MemberMovieController {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("mem_num",user_num);
 			
-			int count = MemberMovieService.selectMyInterestedMovieCount(map);
+			int count = MemberMovieService.selectMyReviewListCount(map);
 			logger.info("<count>> : " + count);
 			
 			//페이지 처리
-			PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "myInterestedMovie.do");
+			PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "myReview.do");
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
-			logger.info("<map222>> : " + map);
 			
-			List<MovieVO> list = null;
+			List<MovieReviewVO> list = null;
 			if (count > 0) {
-				list = MemberMovieService.selectMyInterestedMovie(map);
+				list = MemberMovieService.selectMyReviewList(map);
 			}
-			logger.info("<내가 관심있는 영화>> : " + list);
+			logger.info("<나의 리뷰>> : " + list);
 
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("myInterestedMovie");
+			mav.setViewName("myReview");
 			mav.addObject("count", count);
 			mav.addObject("list", list);
 			mav.addObject("pagingHtml", page.getPagingHtml());

@@ -12,6 +12,7 @@ public class MovieReviewVO {
 	private MultipartFile upload;
 	private byte[] uploadfile;//파일
 	private String filename;//파일명
+	private int total_rate;
 	
 	public int getReview_num() {
 		return review_num;
@@ -69,6 +70,12 @@ public class MovieReviewVO {
 		this.filename = filename;
 	}
 	
+	public int getTotal_rate() {
+		return total_rate;
+	}
+	public void setTotal_rate(int total_rate) {
+		this.total_rate = total_rate;
+	}
 	@Override
 	public String toString() {
 		return "MovieReviewVO [review_num=" + review_num + ", review_content=" + review_content + ", review_reg_date="
