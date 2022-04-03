@@ -55,6 +55,11 @@
     	<put-attribute name="title" value="리뷰 쓰기"/>
     	<put-attribute name="body" value="/WEB-INF/views/user/writeReviewForm.jsp"/>
     </definition>
+    <definition name="myReview" extends="board_main">
+    	<put-attribute name="title" value="나의 리뷰"/>
+    	<put-attribute name="left" value="/WEB-INF/views/template/myMovieSide.jsp"/>
+    	<put-attribute name="body" value="/WEB-INF/views/user/myReview.jsp"/>
+    </definition>
     <definition name="adminPage" extends="board_main">
     	<put-attribute name="title" value="관리자 페이지"/>
     	<put-attribute name="left" value="/WEB-INF/views/template/adminPageSIde.jsp"/>
