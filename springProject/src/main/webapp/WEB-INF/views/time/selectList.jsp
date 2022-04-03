@@ -426,7 +426,7 @@ $(function(){
 						<ul style="display: block;list-style: none;list-style-type: disc;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
 							<li style="display: list-item;text-align: -webkit-match-parent;list-style: none;">총 124석</li>
 						</ul>
-					</div>
+					</div>  
 					
 					<div class="info-timetable">
 						<ul style="display: block;list-style: none;list-style-type: disc;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
