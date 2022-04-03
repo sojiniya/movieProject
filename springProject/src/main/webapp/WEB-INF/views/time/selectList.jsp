@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 중앙 컨텐츠 시작 -->
+<script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <style type="text/css">
 div {
     display: block;
@@ -195,7 +196,8 @@ $(function(){
 			});
 			
 		}); // end of click (극장지역 선택 시 이벤트 발생)
-		
+		$('#theater_img_container').hide();
+
 		//극장관 등록 후 cgv지점을 클릭하면 지점별 극장 인포사진 노출
 		$(document).on('click','.theater-name',function(){
 			theater_num = $(this).attr('data-num');
@@ -203,10 +205,13 @@ $(function(){
 			let theater_addr = $(this).attr('data-addr');
 			
 			//cgv지점명 클릭시 지점별 인포사진 교체
+			$('#theater_img_container').show();
 			$('#theater_img_container').find('img').attr('src','${pageContext.request.contextPath}/theater/theaterImage.do?theater_num='+theater_num);	
 			//cgv지점명 클릭시 인포사진 위에 극장지점명(ex cgv강남) 표시
 			$('h4').find('span').text(theater_name).show();
 			$('.movie-title').text(theater_addr)
+			$('.time-choice').show();
+			$('.sect-showtimes').show();
 			
 			//상영관명과 상영관 이미지 출력 후 상영 정보 호출
 			//오늘 날짜 추출
@@ -228,6 +233,7 @@ $(function(){
 	   }
 	   return result;
    }
+
    let times = getCurrentWeek();
    $(times).each(function(index,items){
 	   let time = items.split('-');
@@ -238,16 +244,18 @@ $(function(){
 	   output += '</ul>';
 	   $('#time_output').append(output);
    })
-
+   $('.time-choice').hide();
    //날짜를 클릭하면 상영 정보를 구해옴 
    $(document).on('click','.time-choice li',function(){
+	   //$(this).addClass('.time-choice li').css('color','red');
+	   // $(this).css('color','red');
 	   let movie_date = $(this).attr('data-time');
-	   
 	   if(!theater_num) return;
 	   
 	   getTimeList(movie_date);
 	}); // end of click
 	
+	$('.sect-showtimes').hide();
 	//상영 정보 호출 함수
 	function getTimeList(movie_date){
 		$.ajax({
@@ -257,7 +265,7 @@ $(function(){
 			dataType:'json',
 			cache:false,
 			timeout:30000,
-			success:function(param){	
+			success:function(param){
 				//$('#area').empty();
 				let movie_num;
 				let movie_name;
@@ -298,7 +306,6 @@ $(function(){
 				else if(movie_auth == 2) $('.movie-auth').find('em').text('상영종료');
 				
 				$('.movie-genre').text(movie_genre);
-				//$('.movie-pg').text(movie_pg);
 				if(12 == movie_pg){
 					$('.movie-pg').find('img').attr('src','https://img.cgv.co.kr/R2014/images/common/flag/age/grade-12.png');
 				}else if(15 == movie_pg){
@@ -363,7 +370,7 @@ $(function(){
 	<div id="theatername_container"> <!-- <div class="sect-theater" id="theatername_container"> -->
 		<h4 class="theater-ti">
 			<!-- 디폴트값 cgv강남으로 지정 -->
-			<span class="theater-name">cgv강남</span>	<!-- <span class="theater-name">CGV강남</span> -->
+			<span class="theater-name"><!-- cgv강남 --></span>	<!-- <span class="theater-name">CGV강남</span> -->
 		</h4>
 		<div class="wrap-theaterinfo">
 			<div class="box-image">
@@ -377,7 +384,7 @@ $(function(){
 	</div>
 </div>
 <div class="theater-info">
-     <strong class="movie-title">서울 강남구 테헤란로123</strong>
+     <strong class="movie-title"><!-- 서울 강남구 테헤란로123 --></strong>
 </div>
 <hr size="1" noshade="noshade" width="100%">
 <!-- 상영일자 표시 -->
