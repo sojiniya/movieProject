@@ -12,12 +12,12 @@
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>
-				<form:label path="theater_num">영화관</form:label>
+				<form:label path="theater_num">극장관번호</form:label>
 				<form:input path="theater_num"/>
 				<form:errors path="theater_num" cssClass="error-color"/>
 			</li>
 		    <li style="clear:both">
-				<form:label path="movie_num">영화</form:label>
+				<form:label path="movie_num">영화번호</form:label>
 				<form:input path="movie_num"/>
 				<form:errors path="movie_num" cssClass="error-color"/>
 			</li>
