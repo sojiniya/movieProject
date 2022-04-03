@@ -67,11 +67,7 @@ table td, table th{
 				<hr size="1" width="100%" noshade="noshade">
 				<div class="reply_area">
 					<span class="re-title">답변 내용</span>
-					<%-- <c:if test="${empty user_num or !empty user_num && user_auth eq 0 or user_auth eq 1 or user_auth eq 2}">
-					<div>
-					작성자에게만 공개된 내용입니다.
-					</div>
-					</c:if> --%>
+					
 					<c:if test="${!empty user_num && user_auth eq 3}">
 					<form id="re_form" action="writeReply.do" class="adminReplyForm" method="post">
 					<!-- 회원인 경우 div창만 보이게 구성. 답변 테이블 null 인  경우 답변전이라는 문구 띄움 , 답변 등록되어 있는 경우 답변내용 출력 -->
@@ -88,7 +84,12 @@ table td, table th{
 					</c:if>
 				</div>
 				<div id="output"></div>
-				
+				<div class="paging-button" style="display:none;">
+					<input type="button" value="다음글 보기">
+				</div>
+				<div id="loading" style="display:none;">
+					<img src= "${pageContext.request.contextPath}/resources/images/ajax-loader.gif">
+				</div>
 				<div class="btm_sup_list">
 					<ul class="line_sup_next">
 						<li class="stit">이전글</li>

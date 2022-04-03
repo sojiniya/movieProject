@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Insert;
 
 import kr.spring.board.vo.BoardReplyVO;
 import kr.spring.board.vo.BoardVO;
+import kr.spring.member.vo.MemberVO;
 
 public interface BoardService {
 	//부모글
@@ -23,11 +24,12 @@ public interface BoardService {
 	public void adminDeleteBoard(Integer board_num); //관리자 글 삭제
 	public List<BoardVO> selectListBy5(Map<String,Object> map);
 	
+	
 	//회원부분
 	public void insertBoard(BoardVO board); //회원 글 작성
 	public BoardVO selectBoard(Integer board_num); //회원글 상세보기
 	public void updateBoard(BoardVO board); //회원 글 수정
-	//public List<BoardVO> userSelectList(Map<String,Object> map); //회원 작성글 보기
+	public List<BoardVO> userSelectList(Map<String,Object> map); //회원 작성글 보기
 	
 	//댓글
 	public List<BoardReplyVO> selectListReply(Map<String,Object> map); //필요없을듯
@@ -36,10 +38,10 @@ public interface BoardService {
 	public void insertReply(BoardReplyVO boardReply);
 	public void updateReply(BoardReplyVO boardReply);
 	public void deleteReply(Integer re_num);
-	//부모글 삭제시 댓글이 존재하면 부모글 삭제전 댓글 삭제
-	public void deleteReplyByBoardNum(Integer board_num);
 	
 	// 권한 체크
 	public Integer compareBrdAuthority(Integer board_num);
+	
+	public List<MemberVO> selectAdminUsers();
 	
 }

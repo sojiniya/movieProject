@@ -17,6 +17,7 @@ table td, table th{
 </style>
 <script>
 	const alertMessage = "${alert}";
+	console.log(alertMessage);
 	if (alertMessage == 1) {
 		alert("관련 게시물에 권한이 없습니다.");
 		location.href="${pageContext.request.contextPath}/board/userQnaList.do"
@@ -73,7 +74,15 @@ table td, table th{
 						<td>${board.board_num}</td>
 						<td>[${board.cate_name}]</td>
 						<td class="txt"><a href="userQnaView.do?board_num=${board.board_num}">${board.board_title}</a></td>
-						<td>${board.board_reg_date}</td>
+						<td>
+						<c:if test="${board.replyState==0}">
+							미완료
+						</c:if>
+						<c:if test="${board.replyState>0}">
+							완료
+						</c:if>
+						
+						</td>
 						<td>${board.board_reg_date}</td>
 						<td>${board.board_hit}</td>
 					</tr>

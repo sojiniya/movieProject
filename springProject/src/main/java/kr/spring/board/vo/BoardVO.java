@@ -24,6 +24,7 @@ public class BoardVO {
 	private int board_hit; //조회수
 	private Date board_reg_date; //등록일
 	private String id;//아이디
+	private Integer replyState; // 답변 상태 
 	
 	//업로드 파일 처리
 	public void setUpload(MultipartFile upload)throws IOException{
@@ -127,6 +128,12 @@ public class BoardVO {
 		this.cate_name = cate_name;
 	}
 	
+	public Integer getReplyState() {
+		return replyState;
+	}
+	public void setReplyState(Integer replyState) {
+		this.replyState = replyState;
+	}
 	@Override
 	public String toString() {
 		return "BoardVO [board_num=" + board_num + ", board_auth=" + board_auth + ", mem_num=" + mem_num + ", cate_num="

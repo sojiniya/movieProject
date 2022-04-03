@@ -34,7 +34,7 @@
 			<strong class="c_tit">내 상담내역 확인</strong>
 			<span class="c_txt">문의하신 내용을 확인하실 수 있습니다.</span>
 			<c:if test="${!empty user_num && user_auth == 1 or user_auth == 3}">
-			<a href="${pageContext.request.contextPath}/board/myList.do">내역 조회</a>
+			<a href="${pageContext.request.contextPath}/board/myList.do?mem_num=${board.mem_num}">내역 조회</a>
 			</c:if>
 			<c:if test="${empty user_num}">
 			<a href="${pageContext.request.contextPath}/user/login.do">로그인 후 사용</a>

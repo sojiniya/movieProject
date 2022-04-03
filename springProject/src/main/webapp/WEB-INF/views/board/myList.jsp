@@ -57,6 +57,7 @@ table td, table th{
 					
 					<c:forEach var="board" items="${list}">
 					<tr>
+						<td style="display:none;">${board.mem_num}</td>
 						<td>${board.board_num}</td>
 						<td>[${board.cate_name}]</td>
 						<td class="txt"><a href="userQnaView.do?board_num=${board.board_num}">${board.board_title}</a></td>

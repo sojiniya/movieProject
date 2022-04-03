@@ -81,6 +81,44 @@ SELECT * FROM m_board b JOIN m_member m
 	   ]]>	       
 </select>
 
+<select id="userSelectList" parameterType="map" resultType="BoardVO">
+	SELECT
+		  *
+		FROM (SELECT 
+		       a.*,
+		       rownum rnum
+		      FROM (SELECT 
+		               b.board_num,
+		               b.mem_num,
+		               <![CDATA[
+		               REPLACE(REPLACE(b.board_title,'<','&lt;'),'>','&gt;') board_title,
+		               ]]>
+		               b.board_hit,
+		               b.board_reg_date,
+		               m.cate_name,
+		               m.cate_num
+		            FROM m_board b
+		            JOIN m_category m 
+		            ON b.cate_num = m.cate_num
+		            <where>
+		            	<if test="keyword != '' and keyfield == 1">
+		            		b.board_title LIKE '%' || #{keyword} || '%' or
+		            		b.board_content LIKE '%' || #{keyword} || '%'
+		            	</if>
+		            	<if test="keyword != '' and keyfield == 2">
+		            		b.board_title LIKE '%' || #{keyword} || '%'
+		            	</if>
+		            	<if test="keyword != '' and keyfield == 3">
+		            		b.board_content LIKE '%' || #{keyword} || '%'
+		            	</if>
+		            </where>
+		            ORDER BY b.board_num DESC)a)
+	   <![CDATA[
+	   WHERE rnum >= #{start} AND rnum <= #{end}
+	   AND mem_num = #{mem_num}
+	   ]]>	       
+</select>
+
 <select id="selectList" parameterType="map" resultType="BoardVO">
 		SELECT
 		  *
@@ -224,7 +262,6 @@ SELECT * FROM m_board b JOIN m_member m
 		               <![CDATA[
 		               REPLACE(REPLACE(re_content,'<','&lt;'),'>','&gt;') re_content,
 		               ]]>
-		               re_content,
 		               re_date,
 		               board_num,
 		               mem_num,
@@ -233,7 +270,9 @@ SELECT * FROM m_board b JOIN m_member m
 		             JOIN m_member USING(mem_num)
 		             WHERE board_num = #{board_num}
 		             ORDER BY reply_num DESC)a)
-		 WHERE rnum <![CDATA[>=]]> #{start} AND rnum  <![CDATA[<= ]]>#{end}
+		 <![CDATA[
+		 WHERE rnum >= #{start} AND rnum <= #{end}
+		 ]]>
 	</select>
 	<select id="selectRowCountReply" parameterType="map" resultType="integer">
 		SELECT 
@@ -242,6 +281,22 @@ SELECT * FROM m_board b JOIN m_member m
 		JOIN m_member m 
 		ON b.mem_num=m.mem_num 
 		WHERE b.board_num=#{board_num}
+	</select>
+	
+	
+	<select id="selectRowCountByBoardNum" parameterType="Integer" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM m_reply mr
+		WHERE mr.board_num = #{board_num}
+	</select>
+	
+	<select id="selectAdminMember" resultType="MemberVO">
+		SELECT
+			*
+		FROM
+			m_member m
+		WHERE m.auth = 3
 	</select>
 	
 </mapper>

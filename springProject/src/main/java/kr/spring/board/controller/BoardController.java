@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.board.service.BoardService;
 import kr.spring.board.vo.BoardVO;
+import kr.spring.member.vo.MemberVO;
 import kr.spring.util.PagingUtil;
 import kr.spring.util.StringUtil;
 
@@ -389,18 +391,26 @@ public class BoardController {
 					
 			return mav;
 			}
-	//문의/건의 목록
+	
+	//내 상담내역
 	@RequestMapping("/board/myList.do")
 		public ModelAndView process5(
 			@RequestParam(value="pageNum",defaultValue="1")int currentPage,
 			@RequestParam(value="keyfield",defaultValue="")String keyfield,
 			@RequestParam(value="keyword",defaultValue="")String keyword,
-			@RequestParam(value="cate_num",defaultValue="31")String cate_num) {
+			@RequestParam(value="cate_num",defaultValue="31")String cate_num,
+			HttpServletRequest request) {
 						
+		
+			HttpSession session = request.getSession();
+			int userNum = (int) session.getAttribute("user_num");
+			System.out.println(userNum);
+		
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("keyfield", keyfield);
 			map.put("keyword", keyword);
 			map.put("cate_num", cate_num);
+			map.put("mem_num", userNum);
 						
 			//글의 총갯수 또는 검색된 글의 갯수
 			int count = boardService.selectRowCount(map);
@@ -412,11 +422,13 @@ public class BoardController {
 			map.put("start",page.getStartCount());
 			map.put("end", page.getEndCount());
 			map.put("cate_num", cate_num);
+			map.put("mem_num", userNum);
 				
 			//리스트
 			List<BoardVO> list = null;
 			if(count > 0) {
-			list = boardService.selectList(map);
+//			list = boardService.selectList(map);	
+			list = boardService.userSelectList(map);
 			}
 								
 			ModelAndView mav = new ModelAndView();
@@ -435,11 +447,13 @@ public class BoardController {
 			logger.info("<<회원 질문 글 상세 - 글 번호>> : " + board_num);
 				
 			HttpSession session = request.getSession();
-			System.out.println( session.getAttribute("user_num"));
-			int memNum = (Integer) session.getAttribute("user_num");
+			Integer memNum = 0;
+			
+		
+			if (session.getAttribute("user_num") != null ) {
+				memNum = (Integer) session.getAttribute("user_num");
+			}
 			int memNum2 = 0;
-			
-			
 			
 			try {
 				memNum2 = boardService.compareBrdAuthority(board_num);
@@ -447,7 +461,19 @@ public class BoardController {
 				System.out.println("관련 게시물이 없음");
 			}
 			
-			if (memNum == memNum2) {
+			boolean isOk = false;
+			
+			
+			List<MemberVO> memberList = boardService.selectAdminUsers();
+			
+			for (MemberVO member : memberList) {
+				if (memNum == member.getMem_num()) {
+					isOk = true;
+				}
+			}
+			
+			//작성자, 관리자
+			if (memNum == memNum2 || isOk == true) {
 				//해당 글의 조회수 증가
 				boardService.updateHit(board_num);
 					
@@ -456,12 +482,12 @@ public class BoardController {
 				board.setBoard_title(StringUtil.useNoHtml(board.getBoard_title()));
 					                    //타일스 설정            속성명      속성값
 				return new ModelAndView("userQnaView","board",board);
-				
-			} else if (memNum != memNum2){
+				//로그아웃된 경우
+			} else if (memNum == null){
 				int alert = 1;
 				return new ModelAndView("userQnaList","alert",alert);
 			} else {
-			
+				//작성자가 아닌 경우
 				int alert = 1;
 				return new ModelAndView("userQnaList","alert",alert);
 			}

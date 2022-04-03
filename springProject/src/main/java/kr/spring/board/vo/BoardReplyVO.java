@@ -2,10 +2,13 @@ package kr.spring.board.vo;
 
 import java.sql.Date;
 
+import kr.spring.util.DurationFromNow;
+
 public class BoardReplyVO {
 	private int reply_num;
 	private String re_content;
-	private Date re_date;
+	private String re_date;
+	private String re_mdate;
 	private int board_num;//부모 글번호
 	private int mem_num;//작성자 회원번호
 	private String id;
@@ -22,11 +25,18 @@ public class BoardReplyVO {
 	public void setRe_content(String re_content) {
 		this.re_content = re_content;
 	}
-	public Date getRe_date() {
+	
+	public String getRe_mdate() {
+		return re_mdate;
+	}
+	public void setRe_mdate(String re_mdate) {
+		this.re_mdate = DurationFromNow.getTimeDiffLabel(re_mdate);
+	}
+	public String getRe_date() {
 		return re_date;
 	}
-	public void setRe_date(Date re_date) {
-		this.re_date = re_date;
+	public void setRe_date(String re_date) {
+		this.re_date = DurationFromNow.getTimeDiffLabel(re_date);
 	}
 	public int getBoard_num() {
 		return board_num;

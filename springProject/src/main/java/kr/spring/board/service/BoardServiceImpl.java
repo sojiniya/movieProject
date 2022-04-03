@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import kr.spring.board.dao.BoardMapper;
 import kr.spring.board.vo.BoardReplyVO;
 import kr.spring.board.vo.BoardVO;
+import kr.spring.member.vo.MemberVO;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -18,7 +19,13 @@ public class BoardServiceImpl implements BoardService{
 	
 	@Override
 	public List<BoardVO> selectList(Map<String, Object> map) {
-		return boardMapper.selectList(map);
+		List <BoardVO> list = boardMapper.selectList(map);
+		
+		for (BoardVO li : list ) {
+			Integer replyState = boardMapper.selectRowCountByBoardNum(li.getBoard_num());
+			li.setReplyState(replyState);
+		}
+		return list;
 	}
 
 	@Override
@@ -69,12 +76,6 @@ public class BoardServiceImpl implements BoardService{
 		boardMapper.adminDeleteBoard(board_num);
 	}
 
-	/*
-	 * @Override public void adminDeleteFile(Integer board_num) {
-	 * boardMapper.adminDeleteFile(board_num);
-	 * 
-	 * }
-	 */
 
 	@Override
 	public void insertBoard(BoardVO board) {
@@ -97,17 +98,6 @@ public class BoardServiceImpl implements BoardService{
 		// TODO Auto-generated method stub
 		return boardMapper.selectListBy5(map);
 	}
-	/*
-	 * @Override public void deleteBoard(Integer board_num) { // TODO Auto-generated
-	 * method stub
-	 * 
-	 * }
-	 * 
-	 * @Override public void deleteFile(Integer board_num) { // TODO Auto-generated
-	 * method stub
-	 * 
-	 * }
-	 */
 
 	
 	
@@ -150,15 +140,20 @@ public class BoardServiceImpl implements BoardService{
 			return boardMapper.compareMemNumByBrdNum(board_num);
 	}
 
+
 	@Override
-	public void deleteReplyByBoardNum(Integer board_num) {
-		// TODO Auto-generated method stub
-		
+	public List<BoardVO> userSelectList(Map<String, Object> map) {
+		map.put("keyfield", 0);
+		map.put("keyword", 0);
+		System.out.println(map);
+		return boardMapper.userSelectList(map);
 	}
 
+	@Override
+	public List<MemberVO> selectAdminUsers() {
 	
-
-	
+		return boardMapper.selectAdminMember();
+	}
 
 	
 }

@@ -31,6 +31,7 @@ public class BoardAjaxController {
 	@Autowired
 	private BoardService boardService;
 	
+	
 	/*
 	 * //부모글 업로드된 파일 삭제
 	 * 
@@ -44,6 +45,7 @@ public class BoardAjaxController {
 	 * boardService.deleteFile(board_num); map.put("result","success"); } return
 	 * map; }
 	 */
+	 
 	
 	//댓글 등록
 	@RequestMapping("/board/writeReply.do")
