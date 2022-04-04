@@ -161,6 +161,10 @@ ul ul {
 	width:150px;
 	float:left;
 }
+#theater_img_container img{
+	width: 980;
+	height: 420px;
+}
 </style>
 
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
@@ -416,7 +420,7 @@ $(function(){
 				<div class="thumb-image" id="theater_img_container">
 					<!-- cgv강남점을 디폴트 이미지로 -->
 					<%-- <img src="${pageContext.request.contextPath}/theater/theaterImage.do?theater_num=24"> --%>
-					<img src="https://img.cgv.co.kr/Theater/Theater/2014/1211/CGVgangnam.jpg">
+					<img src="https://img.cgv.co.kr/Theater/Theater/2014/1211/CGVgangnam.jpg" >
 				</div>
 			</div>
 		</div>
