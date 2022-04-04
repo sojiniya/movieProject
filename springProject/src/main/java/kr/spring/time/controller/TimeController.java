@@ -79,7 +79,7 @@ public class TimeController {
 	//날짜별 상영 정보 얻기
 	@RequestMapping("/time/selectTimeListAjax.do")
 	@ResponseBody
-	public List<TimeVO> selectTimeList(@RequestParam String movie_date,
+	public Map<String,List<TimeVO>> selectTimeList(@RequestParam String movie_date,
 			                           @RequestParam int theater_num){
 		
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -88,11 +88,17 @@ public class TimeController {
 		
 		System.out.println("~~~~~~"+map);
 		
-		List<TimeVO> list = timeService.selectList(map);
+		Map<String,List<TimeVO>> mapAjax = new HashMap<String,List<TimeVO>>();
 		
-		System.out.println(list);
+		List<TimeVO> list = timeService.selectList(map);
+		List<TimeVO> timeList = timeService.selectTimeList(map);
+		
+		mapAjax.put("list", list);
+		mapAjax.put("time_list", timeList);
+		
+		System.out.println(timeList);
 	
-		return list;
+		return mapAjax;
 	}
 	
 	

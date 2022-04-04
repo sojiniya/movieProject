@@ -17,4 +17,5 @@ public interface TimeService {
 	//목록
 	public List<TimeVO> selectList(Map<String,Object> map);
 	
+	public List<TimeVO> selectTimeList(Map<String,Object> map);
 }

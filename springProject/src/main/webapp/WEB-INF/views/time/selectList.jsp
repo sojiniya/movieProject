@@ -157,6 +157,10 @@ ul ul {
     clear: both;
     display: block;
 }
+.type-hall{
+	width:150px;
+	float:left;
+}
 </style>
 
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
@@ -273,6 +277,9 @@ $(function(){
 			cache:false,
 			timeout:30000,
 			success:function(param){
+				
+				$('#time_output2').empty();
+				
 				//$('#area').empty();
 				let movie_num;
 				let movie_name;
@@ -283,7 +290,7 @@ $(function(){
 				let movie_time;
 				let movie_showtm;
 				
-				$(param).each(function(index,item){
+				$(param.list).each(function(index,item){
 					movie_num = item.movie_num;
 				    movie_name = item.movie_name;
 				    movie_auth = item.movie_auth;
@@ -327,6 +334,31 @@ $(function(){
 				
 				//무비디테일 링크
 				$('.info-movie').find('a').attr('href','${pageContext.request.contextPath}/movie/movieDetail.do?movie_num='+movie_num);
+				
+				$(param.time_list).each(function(index,item){
+					let output = '';
+					output += '<div class="type-hall">';
+					output += '<div class="info-hall">';
+					output += '<ul style="display: block;list-style: none;list-style-type: disc;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">';
+					output += '<li style="display: list-item;text-align: -webkit-match-parent;list-style: none;">총 '+item.total_count+'석</li>';
+					output += '</ul>';
+					output += '</div>';
+					output += '<div class="info-timetable">';
+					output += '<ul style="display: block;list-style: none;list-style-type: disc;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">';
+					output += '<li style="display: list-item;text-align: -webkit-match-parent;list-style: none;">';
+					output += '<a href="${pageContext.request.contextPath}/reserve/reserveStep1.do">';
+					output += '<em class="movie-time">'+item.movie_time+'</em>';
+					output += '<span class="txt-lightblue">';
+					output += '<span class="hidden">잔여좌석 </span>'+item.rest_count+'석';
+					output += '</span>';
+					output += '</a>';
+					output += '</li>';
+					output += '</ul>';
+					output += '</div>';
+					output += '</div>';
+					
+					$('#time_output2').append(output);
+				});
 			},
 			error:function(){
 				alert('네트워크 오류 발생');
@@ -425,30 +457,8 @@ $(function(){
 							</span>
 							<i class="movie-genre"> <!-- 애니메이션 --></i> / <i class="movie-showtm"> <!-- 105분 --></i> / <i class="movie-date"> <!-- 2022.03.31 개봉 --></i>
 				</div>
-				<div class="type-hall">
-					<div class="info-hall">
-						<ul style="display: block;list-style: none;list-style-type: disc;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
-							<li style="display: list-item;text-align: -webkit-match-parent;list-style: none;">총 124석</li>
-						</ul>
-					</div>  
-					
-					<div class="info-timetable">
-						<ul style="display: block;list-style: none;list-style-type: disc;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
-							<li style="display: list-item;text-align: -webkit-match-parent;list-style: none;">
-								
-								<a href="${pageContext.request.contextPath}/reserve/reserveStep1.do">
-								<em class="movie-time"><!-- 18:50 --></em>
-								<span class="txt-lightblue">
-									<span class="hidden">잔여좌석</span>86석
-								</span>
-								</a>
-							</li>
-						</ul>
-					</div>
+				<div id="time_output2">
 				</div>
-				
-				
-				
 			</div>
 		</li>
 	</ul>

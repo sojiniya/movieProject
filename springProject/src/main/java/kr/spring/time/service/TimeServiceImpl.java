@@ -37,4 +37,9 @@ public class TimeServiceImpl implements TimeService{
 	public List<TimeVO> selectList(Map<String, Object> map) {
 		return timeMapper.selectList(map);
 	}
+
+	@Override
+	public List<TimeVO> selectTimeList(Map<String, Object> map) {		
+		return timeMapper.selectTimeList(map);
+	}
 }
