@@ -17,6 +17,10 @@
     	<put-attribute name="title" value="극장지역정보 목록"/>
     	<put-attribute name="body" value="/WEB-INF/views/time/selectList.jsp"/>
     </definition>
+    <definition name="insertSeat" extends="main">
+    	<put-attribute name="title" value="좌석 등록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/time/insertSeat.jsp"/>
+    </definition>
 </tiles-definitions>
 
 

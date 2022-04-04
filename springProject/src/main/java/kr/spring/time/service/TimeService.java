@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import kr.spring.movie.vo.MovieVO;
+import kr.spring.seat.vo.SeatVO;
 import kr.spring.time.vo.TimeVO;
 
 public interface TimeService {
@@ -13,6 +14,9 @@ public interface TimeService {
 	public MovieVO selectMovie2(Integer movie_num);
 	
 	public void insertTheater2(TimeVO timeVO);
+	
+	//좌석 등록
+	public void insertSeat(SeatVO seatVO);
 	
 	//목록
 	public List<TimeVO> selectList(Map<String,Object> map);

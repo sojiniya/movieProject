@@ -25,6 +25,7 @@ public class TimeVO {
 	//좌석
 	private int revseat_num;
 	private int seat_num;
+	private String seat_name;
 	private int total_count;
 	private int reserv_count;
 	private int rest_count;
@@ -157,6 +158,13 @@ public class TimeVO {
 	public void setRest_count(int rest_count) {
 		this.rest_count = rest_count;
 	}
+	public String getSeat_name() {
+		return seat_name;
+	}
+
+	public void setSeat_name(String seat_name) {
+		this.seat_name = seat_name;
+	}
 	
 	//투스트링
 	@Override
@@ -165,7 +173,7 @@ public class TimeVO {
 				+ ", movie_date=" + movie_date + ", movie_time=" + movie_time + ", movie_name=" + movie_name
 				+ ", movie_genre=" + movie_genre + ", movie_pg=" + movie_pg + ", movie_auth=" + movie_auth
 				+ ", movie_showtm=" + movie_showtm + ", mem_num=" + mem_num + ", revseat_num=" + revseat_num
-				+ ", seat_num=" + seat_num + ", total_count=" + total_count + ", reserv_count=" + reserv_count
-				+ ", rest_count=" + rest_count + "]";
+				+ ", seat_num=" + seat_num + ", seat_name=" + seat_name + ", total_count=" + total_count
+				+ ", reserv_count=" + reserv_count + ", rest_count=" + rest_count + "]";
 	}
 }

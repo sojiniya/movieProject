@@ -434,6 +434,7 @@ $(function(){
 <c:if test="${!empty user_num && user_auth==3}">
 	<div class="align-right">
 		<input type="button" value="상영정보등록" onclick="location.href='${pageContext.request.contextPath}/time/timeInsert.do'">
+		<input type="button" value="좌석등록" onclick="location.href='${pageContext.request.contextPath}/time/insertSeat.do'">
 	</div>
 </c:if>
 

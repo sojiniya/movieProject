@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.spring.movie.vo.MovieVO;
+import kr.spring.seat.vo.SeatVO;
 import kr.spring.time.dao.TimeMapper;
 import kr.spring.time.vo.TimeVO;
 
@@ -41,5 +42,10 @@ public class TimeServiceImpl implements TimeService{
 	@Override
 	public List<TimeVO> selectTimeList(Map<String, Object> map) {		
 		return timeMapper.selectTimeList(map);
+	}
+
+	@Override
+	public void insertSeat(SeatVO seatVO) {
+		timeMapper.insertSeat(seatVO);
 	}
 }

@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.movie.vo.MovieVO;
+import kr.spring.seat.vo.SeatVO;
 import kr.spring.time.service.TimeService;
 import kr.spring.time.vo.TimeVO;
 
@@ -75,6 +76,38 @@ public class TimeController {
 
 		return "redirect:/movie/movieChart.do";
 	}
+	
+	//시트 자바빈(VO) 초기화
+	@ModelAttribute
+	public SeatVO initCommandSeat() {
+		return new SeatVO();
+	}
+
+	//좌석 등록 폼
+	@GetMapping("/time/seatInsert.do")
+	public String Seatform() {
+		return "insertSeat";
+	}
+	//좌석 등록 폼에서 전송된 데이터 처리
+	@PostMapping("/time/seatInsert.do")
+	public String Seatsubmit(@Valid SeatVO seatVO, BindingResult result, HttpSession session, HttpServletRequest request) {
+		logger.info("<<좌석 저장>> : " + seatVO);
+
+		//유효성 체크 결과 오류가 있으면 폼 호출
+		if(result.hasErrors()) {
+			return Seatform();
+		}
+
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		//회원 번호 셋팅
+		seatVO.setMem_num(user_num);
+
+		//좌석 등록
+		timeService.insertSeat(seatVO);
+
+		return "redirect:/time/selectList.do";
+	}
+	
 	
 	//날짜별 상영 정보 얻기
 	@RequestMapping("/time/selectTimeListAjax.do")
