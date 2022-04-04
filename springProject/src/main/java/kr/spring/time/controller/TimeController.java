@@ -49,7 +49,7 @@ public class TimeController {
 	public TimeVO initCommand() {
 		return new TimeVO();
 	}
-	
+	  
 	//2. 극장등록
 	//극장 등록 폼
 	@GetMapping("/time/timeInsert.do")
