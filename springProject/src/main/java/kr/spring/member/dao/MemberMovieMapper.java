@@ -58,11 +58,15 @@ public interface MemberMovieMapper {
 		
 		//내가 리뷰 평가 한 리스트
 		public List<MovieReviewVO> selectMyReviewList(Map<String,Object> map);
+
+		//리뷰 디테일 리스트
+		@Select("SELECT * FROM M_review WHERE review_num = #{review_num}")
+		public MovieReviewVO selectReviewDetail(int review_num);
 		
 		//리뷰 수정하기
 		public void updateMyReview(MovieReviewVO review);
 		
 		//리뷰 삭제하기
-		public void deleteMyReview(MovieReviewVO review);
+		public void deleteMyReview(int review_num);
 		
 }

@@ -41,7 +41,9 @@ public interface MemberMovieService {
 			
 			//내가 리뷰 평가 한 리스트
 			public List<MovieReviewVO> selectMyReviewList(Map<String,Object> map);
-			
+
+			//리뷰 디테일 리스트
+			public MovieReviewVO selectReviewDetail(int review_num);
 			
 			//리뷰 수정하기
 			public void updateMyReview(MovieReviewVO review);

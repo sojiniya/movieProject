@@ -8,7 +8,40 @@
 		   *
 		FROM (SELECT a.*, rownum rnum 
 					FROM
-			 (SELECT * FROM m_member m LEFT OUTER JOIN m_member_detail d ON m.mem_num = d.mem_num ORDER BY m.auth)a)  
+			 (SELECT * FROM m_member m LEFT OUTER JOIN m_member_detail d ON m.mem_num = d.mem_num 
+			 			<where>
+			  			<if test="keyword !='' and keyfield==1">
+			  				m.id LIKE '%' || #{keyword} || '%'
+			  				OR
+			  				d.mem_name LIKE '%' || #{keyword} || '%'
+			  				AND
+			  				m.auth = 1
+			  			</if>
+			  			<if test="keyword != '' and keyfield == 2">
+			  				m.id LIKE '%' || #{keyword} || '%'
+			  				OR
+			  				d.mem_name LIKE '%' || #{keyword} || '%'
+			  				AND
+			  				m.auth = 2
+			  			</if>
+			  			<if test="keyword != '' and keyfield == 3" >
+			  				m.id LIKE '%' || #{keyword} || '%'
+			  				OR
+			  				d.mem_name LIKE '%' || #{keyword} || '%'
+			  				AND
+			  				m.auth = 3
+			  			</if>
+			  			<if test="keyword =='' and keyfield ==1">
+							m.auth = 1		  			
+			  			</if>
+			  			<if test="keyword =='' and keyfield ==2">
+			  				m.auth = 2
+			  			</if>
+			  			<if test="keyword =='' and keyfield ==3">
+			  				m.auth = 3
+			  			</if>
+			  		</where>
+			 		ORDER BY m.auth)a)  
         <![CDATA[
  		where rnum >= #{start} AND rnum <= #{end}   
 		]]>					
@@ -41,9 +74,32 @@
         								ORDER BY r.movie_num DESC 
         <![CDATA[
 					 WHERE 
-					 movie_Date >= #{movieDate})a) 
+					 movie_Date >= #{movieDate}
+		]]>
+						<if test="keyword !='' and keyfield==1">
+							AND
+			  				t.movie_date LIKE '%' || #{keyword} || '%'
+			  			</if>
+			  			<if test="keyword != '' and keyfield == 2">
+			  				AND
+			  				m.movie_name LIKE '%' || #{keyword} || '%'
+			  			</if>
+			  			<if test="keyword != '' and keyfield == 3" >
+			  				AND
+			  				th.theater_name LIKE '%' || #{keyword} || '%'
+			  			</if>
+			  			<if test="keyword =='' and keyfield ==1">
+							ORDER BY t.movie_date DESC  			
+			  			</if>
+			  			<if test="keyword =='' and keyfield ==2">
+			  				ORDER BY m.movie_num DESC
+			  			</if>
+			  			<if test="keyword =='' and keyfield ==3">
+			  				ORDER BY th.theater_name ASC
+			  			</if>
+					 	)a)
+		 <![CDATA[			 	 
  		where rnum >= #{start} AND rnum <= #{end}   
-		
 		]]>					
 		
 	</select>

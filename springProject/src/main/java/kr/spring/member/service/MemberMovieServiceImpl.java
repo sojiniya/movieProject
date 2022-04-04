@@ -75,8 +75,11 @@ public class MemberMovieServiceImpl implements MemberMovieService{
 
 	@Override
 	public void updateMyReview(MovieReviewVO review) {
-		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public MovieReviewVO selectReviewDetail(int review_num) {
+		return MemberMovieMapper.selectReviewDetail(review_num);
 	}
 
 	@Override
@@ -84,7 +87,6 @@ public class MemberMovieServiceImpl implements MemberMovieService{
 		// TODO Auto-generated method stub
 		
 	}
-	
 		
 	}
 	

@@ -48,15 +48,20 @@ public class AdminController{
 		
 		//관리자 회원페이지
 		@RequestMapping("/admin/adminPage.do")
-		public ModelAndView adminViewMemberList(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage, HttpSession session) {
+		public ModelAndView adminViewMemberList(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage, 
+												@RequestParam(value="keyfield", defaultValue="") String keyfield,
+												@RequestParam(value="keyword", defaultValue="") String keyword,
+												HttpSession session) {
 			
 			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("keyfield", keyfield);
+			map.put("keyword", keyword);
 			
 			int count = adminMapper.adminMemberRowCount(map);
 			logger.info("<count>> : " + count);
 			
 			//페이지 처리
-			PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "adminPage.do");
+			PagingUtil page = new PagingUtil(keyfield,keyword,currentPage, count, 10, 10, "adminPage.do");
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
 			
@@ -81,10 +86,15 @@ public class AdminController{
 		
 		//예매내역 확인 페이지
 		@RequestMapping("/admin/adminReserveListMovie.do")
-		public ModelAndView viewMyReserveMovie(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage, HttpSession session) {
+		public ModelAndView viewMyReserveMovie(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage, 
+											   @RequestParam(value="keyfield", defaultValue="") String keyfield,
+											   @RequestParam(value="keyword", defaultValue="") String keyword,
+											   HttpSession session) {
 			
 			
 			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("keyfield", keyfield);
+			map.put("keyword", keyword);
 			map.put("movieDate", movieDate);
 			map.put("movieHour", movieHour);
 			logger.info("<map>> : " + map);

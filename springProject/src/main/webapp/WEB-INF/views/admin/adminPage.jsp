@@ -5,7 +5,7 @@
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main">
 	<h2>게시판 목록</h2>
-	<form action="list.do" id="search_form" method="get">
+	<form action="adminPage.do" id="search_form" method="get">
 		<ul class="search">
 			<li>
 				<select name="keyfield" id="keyfield">
@@ -18,8 +18,8 @@
 				<input type="search" name="keyword" id="keyword" value="${param.keyword }">
 			</li>
 			<li>
-				<input type="submit" value="검색">
-				<input type="button" value="목록" onclick="location.href='list.do'">
+				<input type="submit" value="검색" >
+				<input type="button" value="목록" onclick="location.href='adminPage.do'">
 			</li>
 		</ul>
 	</form>

@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -39,6 +40,12 @@ public class MemberMovieController {
 	private MemberMovieService MemberMovieService;
 	@Autowired
 	private MemberService memberService;
+	
+	// 자바빈(VO)초기화
+	@ModelAttribute
+	public MovieReviewVO initCommand() {
+		return new MovieReviewVO();
+	}
 	
 	//예매 조건 체크를 위해서 날짜 데이터
 	Date date = new Date();
@@ -224,8 +231,31 @@ public class MemberMovieController {
 			mav.addObject("member",member);
 			return mav;
 		}
-	//리뷰평가 수정
+		// 리뷰평가 수정폼
+		@GetMapping("/user/modifyReviewForm.do")
+		public String formUpdate(@RequestParam("review_num") int review_num, HttpSession session, Model model) {
+			logger.info("<review>> : " + review_num);
+
+			MovieReviewVO movieReviewVO = MemberMovieService.selectReviewDetail(review_num);
+			model.addAttribute("movieReviewVO", movieReviewVO);
+
+			return "modifyReviewForm";
+		}
+
+		// 리뷰수정폼에서 전송된 데이터 처리
+		@PostMapping("/user/modifyReview.do")
+		public String submitUpdate(@Valid MovieReviewVO movieReviewVO, BindingResult result, HttpSession session) {
+
+
+			// 유효성 체크 결과 오류가 있으면 폼 호출
+			/*
+			 * if(result.hasErrors()) { return "userModifyForm"; }
+			 */
+			Integer user_num = (Integer) session.getAttribute("user_num");
+
+
+			// 회원정보수정
+			return "redirect:/user/myPage.do";
+		}
 		
-		
-	//
 }

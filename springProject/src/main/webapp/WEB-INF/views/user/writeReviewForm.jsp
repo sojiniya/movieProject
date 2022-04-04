@@ -42,21 +42,21 @@
 }
 </style>   
 <!DOCTYPE html>
-	<form:form modelAttribute="MovieReviewVO" action="writeReview.do">
+	<form:form modelAttribute="movieReviewVO" action="writeReview.do">
 		<form:hidden path="movie_num"/>
 		<span class="text-bold">별점을 선택해주세요</span>
-		<form:label path="rate1">★</form:label>
+		<label for="rate1">★</label>
 		<form:radiobutton path="review_rate" value="1" name="reviewStart"></form:radiobutton>
-		<form:label path="rate2">★</form:label>
+		<label for="rate2">★</label>
 		<form:radiobutton path="review_rate" value="2" name="reviewStart"></form:radiobutton>
-		<form:label path="rate3">★</form:label>
+		<label for="rate3">★</label>
 		<form:radiobutton path="review_rate" value="3" name="reviewStart"></form:radiobutton>
-		<form:label path="rate4">★</form:label>
+		<label for="rate4">★</label>
 		<form:radiobutton path="review_rate" value="4" name="reviewStart"></form:radiobutton>
-		<form:label path="rate5">★</form:label>
+		<label for="rate5">★</label>
 		<form:radiobutton path="review_rate" value="5" name="reviewStart"></form:radiobutton>
 		<div>
-		<form:textarea class="col-auto form-control" path="reviewContents"
+		<form:textarea class="col-auto form-control" path="review_content"
 				  placeholder="영화 리뷰를 작성해주세요"></form:textarea>
 		</div>
 		<div class="align-center">

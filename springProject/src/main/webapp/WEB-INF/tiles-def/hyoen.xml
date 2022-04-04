@@ -60,6 +60,10 @@
     	<put-attribute name="left" value="/WEB-INF/views/template/myMovieSide.jsp"/>
     	<put-attribute name="body" value="/WEB-INF/views/user/myReview.jsp"/>
     </definition>
+    <definition name="modifyReviewForm" extends="main">
+    	<put-attribute name="title" value="리뷰 수정하기"/>
+    	<put-attribute name="body" value="/WEB-INF/views/user/modifyReviewForm.jsp"/>
+    </definition>
     <definition name="adminPage" extends="board_main">
     	<put-attribute name="title" value="관리자 페이지"/>
     	<put-attribute name="left" value="/WEB-INF/views/template/adminPageSIde.jsp"/>
