@@ -217,6 +217,7 @@ $(function(){
 				   $(this).css('color','black');
 			   });
 			$('.sect-showtimes').show();
+			$('.info-noti1').show();
 			
 			//상영관명과 상영관 이미지 출력 후 상영 정보 호출
 			//오늘 날짜 추출
@@ -249,7 +250,7 @@ $(function(){
 	   output += '</ul>';
 	   $('#time_output').append(output);
    })
-   $('.time-choice').hide();   
+   $('.time-choice').hide();
    //날짜를 클릭하면 상영 정보를 구해옴 
    $(document).on('click','.time-choice li',function(){
 	   //$(this).addClass('.time-choice li').css('color','red');
@@ -261,6 +262,7 @@ $(function(){
 	}); // end of click
 	
 	$('.sect-showtimes').hide();
+	$('.info-noti1').hide();
 	//상영 정보 호출 함수
 	function getTimeList(movie_date){
 		$.ajax({
@@ -279,7 +281,7 @@ $(function(){
 				let movie_pg;
 				let movie_date;
 				let movie_time;
-				let movie_minute;
+				let movie_showtm;
 				
 				$(param).each(function(index,item){
 					movie_num = item.movie_num;
@@ -288,8 +290,7 @@ $(function(){
 				    movie_genre = item.movie_genre;
 				    movie_pg = item.movie_pg;
 				    movie_date = item.movie_date;
-				    movie_showtm = item.movie_showtm;
-				
+				    movie_showtm = item.movie_showtm;		
 				    movie_time = item.movie_time;
 				    
 					/*
@@ -395,14 +396,13 @@ $(function(){
 <!-- 상영일자 표시 -->
 <div id="time_output"></div>
 <!-- 상영일자 표시 -->
+<hr size="1" noshade="noshade" width="100%">
+
 <c:if test="${!empty user_num && user_auth==3}">
 	<div class="align-right">
-		<hr size="1" noshade="noshade" width="100%">
 		<input type="button" value="상영정보등록" onclick="location.href='${pageContext.request.contextPath}/time/timeInsert.do'">
 	</div>
 </c:if>
-
-<hr size="1" noshade="noshade" width="100%">
 
 <!-- 영화리스트 시작(참고용) -->
 <div class="sect-showtimes">
@@ -454,9 +454,9 @@ $(function(){
 	</ul>
 </div>
 <!-- 영화리스트  끝 -->
-<hr size="1" noshade="noshade" width="100%">
-<div>
+<div class="info-noti1">
 <p class="info-noti"></p>
+<hr size="1" noshade="noshade" width="100%">
 <p>ㆍ입장 지연에 따른 관람 불편을 최소화하기 위해 영화는 10분 후 상영이 시작됩니다.</p>
 <p></p>
 </div>
