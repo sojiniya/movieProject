@@ -186,8 +186,12 @@ public class MemberMovieController {
 
 	// 리뷰평가 등록
 	@PostMapping("/user/writeReview.do")
-	public String writeReview(@Valid MovieReviewVO movieReviewVO, BindingResult result) {
-
+	public String writeReview(@Valid MovieReviewVO movieReviewVO, BindingResult result,HttpSession session) {
+		
+		Integer mem_num = (Integer)session.getAttribute("user_num");
+		Integer movie_num = (Integer)session.getAttribute("movie_num");
+		movieReviewVO.setMem_num(mem_num);
+		movieReviewVO.setMovie_num(movie_num);
 		logger.info("<<리뷰평가>> :" + movieReviewVO);
 
 		// 유효성 체크 결과 오류가 있으면 폼 호출
@@ -200,7 +204,7 @@ public class MemberMovieController {
 		return "redirect:/main/main.do";
 	}
 	
-	//내가 남긴 리뷰평가
+		//내가 남긴 리뷰평가
 		@RequestMapping("/user/myReview.do")
 		public ModelAndView viewMyReview(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage, HttpSession session) {
 			Integer user_num = (Integer)session.getAttribute("user_num");

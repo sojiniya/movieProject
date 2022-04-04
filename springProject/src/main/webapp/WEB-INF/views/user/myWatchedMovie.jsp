@@ -18,7 +18,7 @@
 				success:function(param){
 					if(param.result == 'success'){
 						alert('성공적으로 삭제되었습니다.');
-						
+						return;
 					}else if(param.result == 'notMatchUser_num'){
 						alert('내가 본 영화랑 로그인 된 회원번호가 불일치 합니다.')
 					}else{
