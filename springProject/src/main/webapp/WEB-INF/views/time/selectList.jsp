@@ -260,6 +260,7 @@ $(function(){
 	   //$(this).addClass('.time-choice li').css('color','red');
 	   // $(this).css('color','red');
 	   let movie_date = $(this).attr('data-time');
+	   alert(movie_date+','+theater_num);
 	   if(!theater_num) return;
 	   
 	   getTimeList(movie_date);
