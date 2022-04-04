@@ -74,7 +74,7 @@ public class TimeController {
 		//극장 등록
 		timeService.insertTheater2(timeVO);
 
-		return "redirect:/movie/movieChart.do";
+		return "redirect:/time/selectList.do";
 	}
 	
 	//시트 자바빈(VO) 초기화
