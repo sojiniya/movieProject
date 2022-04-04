@@ -84,12 +84,12 @@ public class TimeController {
 	}
 
 	//좌석 등록 폼
-	@GetMapping("/time/seatInsert.do")
+	@GetMapping("/time/insertSeat.do")
 	public String Seatform() {
 		return "insertSeat";
 	}
 	//좌석 등록 폼에서 전송된 데이터 처리
-	@PostMapping("/time/seatInsert.do")
+	@PostMapping("/time/insertSeat.do")
 	public String Seatsubmit(@Valid SeatVO seatVO, BindingResult result, HttpSession session, HttpServletRequest request) {
 		logger.info("<<좌석 저장>> : " + seatVO);
 
