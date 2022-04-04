@@ -3,6 +3,7 @@ package kr.spring.member.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -32,6 +33,14 @@ public interface MemberMovieMapper {
 		
 		//내가 관심 있는 영화 리스트
 		public List<MovieVO> selectMyInterestedMovie(Map<String,Object> map);
+		
+		//내가 본 영화,예매한 영화 삭제하기
+		@Delete("DELETE FROM M_reserve WHERE reserve_num = #{reserve_num}")
+		public void deleteMyMovie(int reserve_num);
+		
+		//예매 리스트 뽑아오기
+		@Select("Select * FROM m_reserve WHERE reserve_num = #{reserve_num}")
+		public ReserveVO selectMyMovie(int reserve_num);
 		
 		//리뷰 평가 reveiw num 구하기
 		@Select("SELECT M_review_seq.nextval FROM dual")

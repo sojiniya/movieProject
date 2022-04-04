@@ -40,6 +40,15 @@ public class MemberMovieServiceImpl implements MemberMovieService{
 	}
 
 	@Override
+	public void deleteMyMovie(int reserve_num) {
+		MemberMovieMapper.deleteMyMovie(reserve_num);
+	}
+	@Override
+	public ReserveVO selectMyMovie(int reserve_num) {
+		return MemberMovieMapper.selectMyMovie(reserve_num);
+	}
+	
+	@Override
 	public int selectMyInterestedMovieCount(Map<String, Object> map) {
 		return MemberMovieMapper.selectMyInterestedMovieCount(map);
 	}
@@ -47,11 +56,6 @@ public class MemberMovieServiceImpl implements MemberMovieService{
 	@Override
 	public List<MovieVO> selectMyInterestedMovie(Map<String, Object> map) {
 		return MemberMovieMapper.selectMyInterestedMovie(map);
-	}
-
-	@Override
-	public int selectReview_num() {
-		return MemberMovieMapper.selectReview_num();
 	}
 
 	@Override
@@ -87,6 +91,8 @@ public class MemberMovieServiceImpl implements MemberMovieService{
 		// TODO Auto-generated method stub
 		
 	}
+
+
 		
 	}
 	
