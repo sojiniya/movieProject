@@ -211,6 +211,11 @@ $(function(){
 			$('h4').find('span').text(theater_name).show();
 			$('.movie-title').text(theater_addr)
 			$('.time-choice').show();
+			$('.time-choice li').hover(function(){
+				   $(this).css('color','red');
+			   }, function(){
+				   $(this).css('color','black');
+			   });
 			$('.sect-showtimes').show();
 			
 			//상영관명과 상영관 이미지 출력 후 상영 정보 호출
@@ -244,7 +249,7 @@ $(function(){
 	   output += '</ul>';
 	   $('#time_output').append(output);
    })
-   $('.time-choice').hide();
+   $('.time-choice').hide();   
    //날짜를 클릭하면 상영 정보를 구해옴 
    $(document).on('click','.time-choice li',function(){
 	   //$(this).addClass('.time-choice li').css('color','red');
@@ -390,10 +395,9 @@ $(function(){
 <!-- 상영일자 표시 -->
 <div id="time_output"></div>
 <!-- 상영일자 표시 -->
-<hr size="1" noshade="noshade" width="100%">
-
 <c:if test="${!empty user_num && user_auth==3}">
 	<div class="align-right">
+		<hr size="1" noshade="noshade" width="100%">
 		<input type="button" value="상영정보등록" onclick="location.href='${pageContext.request.contextPath}/time/timeInsert.do'">
 	</div>
 </c:if>
@@ -409,17 +413,17 @@ $(function(){
 
 				<div class="info-movie">
 					<span class="movie-pg">
-						<img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-15.png" width="20px" height="20px"> <!-- <span class="ico-grade grade-15">15세 이상</span> -->
+						<img src="<!-- https://img.cgv.co.kr/R2014/images/common/flag/age/grade-15.png -->" width="20px" height="20px"> <!-- <span class="ico-grade grade-15">15세 이상</span> -->
 					</span>
 					<a href="${pageContext.request.contextPath}/movie/movieDetail.do?movie_num=${movieVO.movie_num}" target="_parent">
-					<strong style="font-weight: bold;" class="movie-name">극장판 주술회전</strong></a> 
+					<strong style="font-weight: bold;" class="movie-name"><!-- 극장판 주술회전 --></strong></a> 
 							<span class="round lightblue movie-auth">
-								<em>상영중</em>
+								<em><!-- 상영중 --></em>
 							</span>
 							<span class="">
 								<em> </em>
 							</span>
-							<i class="movie-genre"> 애니메이션</i> / <i class="movie-showtm"> 105분</i> / <i class="movie-date"> 2022.03.31 개봉</i>
+							<i class="movie-genre"> <!-- 애니메이션 --></i> / <i class="movie-showtm"> <!-- 105분 --></i> / <i class="movie-date"> <!-- 2022.03.31 개봉 --></i>
 				</div>
 				<div class="type-hall">
 					<div class="info-hall">
@@ -433,7 +437,7 @@ $(function(){
 							<li style="display: list-item;text-align: -webkit-match-parent;list-style: none;">
 								
 								<a href="${pageContext.request.contextPath}/reserve/reserveStep1.do">
-								<em class="movie-time">18:50</em>
+								<em class="movie-time"><!-- 18:50 --></em>
 								<span class="txt-lightblue">
 									<span class="hidden">잔여좌석</span>86석
 								</span>
