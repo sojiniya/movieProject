@@ -18,7 +18,7 @@ span,  ul, li, fieldset {
 .wrap-login h3 >  strong{ color:#fb4357;}
 .sect-login{ width:541px; }
 .wrap-login .tab-menu-round > li{ width:100px;}
-.box-login{padding:30px 0 0 132px; border-bottom:2px solid #898987; height: 266px;}
+.box-login{padding:30px 0 0 132px; border-top:2px solid #898987; border-bottom:2px solid #898987; height: 266px;}
 
 .box-login button[type="submit"] > span {display:block;width:258px;height:36px; border:1px solid #ffff; color:#f8f8f8; font-size:15px; font-weight:500;}
 .box-login .login > button[type="submit"] {position:absolute; top:0; left:198px; display:block; width:100px; height:86px; padding:2px; background:#fb4357; line-height:78px; text-align:center;}

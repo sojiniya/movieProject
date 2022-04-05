@@ -66,60 +66,126 @@
 	});
 
 </script>
+<style>
+	*{
+		marging:0;
+		padding:0;
+	}
+</style>
 <div class="page-main">
 	<h2>회원가입</h2>
 	<form:form modelAttribute="memberVO" action="registerUser.do" id="register_form">
 		<form:errors element="div" cssClass="error-color"/>
-		<ul>
-			<li>
+		<ul class="cols">
+			<li class="col1">
 				<form:label path="id">아이디</form:label>
-				<form:input path="id" placeholder="영문,숫자만  최소 6글자에서 ~최대 10자"/>
-				<input type="button" id="confrimId" value="ID중복체크">
+			</li>
+			<li class="col2">
+				<form:input path="id" placeholder="영문,숫자만  최소 6글자에서 ~최대 10자" class="registerContent"/>
+				<input type="button" id="confrimId" value="ID중복체크" class="round registerButton">
+			</li>
+		</ul>
+		<ul class="colsErrorMargin">
+			<li class="colError">
 				<span id="message_id"></span>
 				<form:errors path="id" cssClass="error-color"/>
 			</li>
-			<li>
+		</ul>
+		<ul class="cols">
+			<li class="col1">
 				<form:label path="mem_name">이름</form:label>
-				<form:input path="mem_name"/>
+			</li>
+			<li class="col2">
+				<form:input path="mem_name" class="registerContent"/>
+			</li>
+		</ul>
+		<ul class="colsErrorMargin">
+			<li class="colError">
 				<form:errors path="mem_name" cssClass="error-color"/>
 			</li>
-			<li>
+		</ul>
+		<ul class="cols">
+			<li class="col1">
 				<form:label path="mem_pw">비밀번호</form:label>
-				<form:input path="mem_pw" placeholder="영문,숫자만  최소 6글자에서 ~최대 10자"/>
+			</li>
+			<li class="col2">
+				<form:input path="mem_pw" placeholder="영문,숫자만  최소 6글자에서 ~최대 10자" class="registerContent"/>
+			</li>
+		</ul>
+		<ul class="colsErrorMargin">
+			<li class="colError">
 				<form:errors path="mem_pw" cssClass="error-color"/>
 			</li>
-			<li>
+		</ul>
+		<ul class="cols">
+			<li class="col1">
 				<form:label path="mem_birth">생년월일</form:label>
-				<form:input path="mem_birth"/>
+			</li>
+			<li class="col2">
+				<form:input path="mem_birth" class="registerContent" placeholder="00년 00월 00일 형식으로 기재"/>
+			</li>
+		</ul>
+		<ul class="colsErrorMargin">
+			<li class="colError">
 				<form:errors path="mem_birth" cssClass="error-color"/>
 			</li>
-			<li>
+		</ul>
+		<ul class="cols">
+			<li class="col1">
 				<form:label path="mem_phone">전화번호</form:label>
-				<form:input path="mem_phone"/>
+			</li>
+			<li class="col2">
+				<form:input path="mem_phone" class="registerContent"/>
+			</li>
+		</ul>
+		<ul class="colsErrorMargin">
+			<li class="colError">
 				<form:errors path="mem_phone" cssClass="error-color"/>
 			</li>
-			
-			<li>
+		</ul>
+		<ul class="cols">
+			<li class="col1">
 				<form:label path="mem_email">이메일</form:label>
-				<form:input path="mem_email"/>
+			</li>
+			<li class="col2">
+				<form:input path="mem_email" class="registerContent"/>
+			</li>
+		</ul>
+		<ul class="colsErrorMargin">
+			<li class="colError">
 				<form:errors path="mem_email" cssClass="error-color"/>
 			</li>
-			<li>
-				<form:label path="mem_zipcode">우편번호</form:label>
-				<form:input path="mem_zipcode"/>
-				<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기">
+		</ul>
+		<ul class="cols">
+			<li class="col1">
+				<form:label path="mem_zipcode" >우편번호</form:label>
+			</li>
+			<li class="col2">
+				<form:input path="mem_zipcode" class="registerContent"/>
+				<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기" class="round registerButton">
+			</li>
+		</ul>
+		<ul class="colsErrorMargin">
+			<li class="colError">
 				<form:errors path="mem_zipcode" cssClass="error-color"/>
 			</li>
-			<li>
+		</ul>	
+		<ul class="cols">
+			<li class="col1">
 				<form:label path="mem_address">주소</form:label>
-				<form:input path="mem_address"/>
+			</li>
+			<li class="col2">
+				<form:input path="mem_address" class="registerContent"/>
+			</li>
+		</ul>
+		<ul class="colsErrorMargin">
+			<li class="colError">
 				<form:errors path="mem_address" cssClass="error-color"/>
 			</li>
-			
 		</ul>
-		<div class="align-center">
-			<form:button>전송</form:button>
-			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+		<div class="box-btn_adminSubmit">
+			<form:button class="round registerSubmit">회원가입</form:button>
+			<input type="button" value="취소" class="round registerCancel" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>
 	</form:form>
 <!-- 우편번호 스크립트 시작 -->

@@ -109,6 +109,67 @@ span.c1_txt {
     font-size: 13px;
     font-weight: 700;
 }
+/*회원가입 폼*/
+ul.cols {
+    overflow: auto;
+    margin-bottom: 3px;
+	}
+	
+	.cols li{
+		display: inline-block;
+		marging-top:5px;
+		text-align: left;
+	}
+	.cols span{
+		width: auto;
+	}
+	.cols li.col1{
+		width: 100px;
+		text-align: right;
+		font-size: 15px;
+		font-weight: 750;
+		color: #333300;
+	}
+	.cols li.col2{
+		width: 500px;
+	}
+	.cols li.col2 > input.registerContent{
+		width: 250px;
+		height: 23px;
+	}
+	.cols li.colError{
+		width: 500px;
+		margin-left: 100px;
+		font-size: 10px;
+	}
+	ul.colsErrorMargin {
+	overflow: auto;
+    margin: 0px 0px 0px 100px;
+	}
+	.round.registerButton {
+	background-color: white;
+    border: 2px solid #7b7b7b;
+    line-height: 21px;
+    width: 90px;
+    margin-left: 5px;
+    height: 25px;
+    font-size: 13px;
+}
+	.round.registerCancel {
+	background-color: white;
+    border: 2px solid #7b7b7b;
+    line-height: 21px;
+     width: 65px;
+    height: 30px;
+}
+	.round.registerSubmit {
+    background: #fb4357;
+    border: 2px solid #fb4357;
+    color: #ffffff;
+    line-height: 21px;
+    width: 65px;
+    height: 30px;
+}
 /*관리자 글쓰기*/
 .adminBoardWrite-main{
 	position: relative;
@@ -512,6 +573,7 @@ form{
 }
 /*CKEditor 사용시 등록, 수정폼*/
 form#register_form, form#update_form{
+	border: none;
 	width:700px;
 	height:300px;
 }
@@ -531,9 +593,9 @@ label{
 input[type="text"],input[type="password"],input[type="email"]{
 	width:200px;
 }
-#register_form input[id="id"]{
-	width:113px;
-}
+/* #register_form input[id="id"]{
+	width:204px;
+} */
 input[id="zipcode"]{
 	width:95px;
 }
