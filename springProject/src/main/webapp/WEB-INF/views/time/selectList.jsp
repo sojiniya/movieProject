@@ -377,14 +377,12 @@ $(function(){
 <div class="favorite-wrap">
 	<div class="sect-city">
 		<ul>
-			<li class="on">
+			<li class="on" style="text-align: center;">
 			<a class="theater-choice">서울</a>
 			<a class="theater-choice">경기</a>
 			<a class="theater-choice">인천</a>
 			<a class="theater-choice">강원</a>
 			<a class="theater-choice">대구</a>
-			<a class="theater-choice">대전/충청</a>
-			<a class="theater-choice">경상</a>
 			<div id="area"></div>
 			</li>
 		</ul>
