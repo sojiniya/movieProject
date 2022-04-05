@@ -55,7 +55,7 @@ public class TimeController {
 		return new TimeVO();
 	}
 	  
-	//2. 극장등록
+	//2. 극장등록 
 	//극장 등록 폼
 	@GetMapping("/time/timeInsert.do")
 	public ModelAndView form2() {

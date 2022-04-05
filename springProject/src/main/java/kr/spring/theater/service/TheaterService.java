@@ -20,5 +20,5 @@ public interface TheaterService {
 	
 	public List<TheaterVO> selectAllTheater();
 	
-	public List<MovieVO> selectAllMovie();
+	public List<MovieVO> selectAllMovie(); 
 }

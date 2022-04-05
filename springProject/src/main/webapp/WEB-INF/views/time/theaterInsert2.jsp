@@ -13,7 +13,7 @@
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li style="clear:both">
-				<form:label path="theater_num">극장</form:label>
+				<form:label path="theater_num">극장</form:label> 
 				<select name="theater_num" id="theater_num">
 				<c:forEach var="list" items="${theater_list }">
 					<option value="${list.theater_num}">${list.theater_name}</option>

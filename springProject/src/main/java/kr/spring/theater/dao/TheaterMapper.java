@@ -30,5 +30,5 @@ public interface TheaterMapper {
 	public List<TheaterVO> selectAllTheater();
 	
 	@Select("SELECT * FROM M_movie")
-	public List<MovieVO> selectAllMovie();
+	public List<MovieVO> selectAllMovie(); 
 }

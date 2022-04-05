@@ -41,7 +41,7 @@ public class TheaterServiceImpl implements TheaterService{
 	public List<TheaterVO> selectAllTheater() {
 		return theaterMapper.selectAllTheater();
 	}
-
+ 
 	@Override
 	public List<MovieVO> selectAllMovie() {
 		return theaterMapper.selectAllMovie();
