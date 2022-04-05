@@ -15,10 +15,10 @@
 <!-- ckedior 라이브러리 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ckeditor.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/uploadAdapter.js"></script>
-<div class="page-main">
+<div class="movieWrite">
 	<h2>영화 등록</h2>
 	<form:form modelAttribute="movieVO" action="movieWrite.do" 
-	                 enctype="multipart/form-data" id="register_form">
+	                 enctype="multipart/form-data" id="movieRegister_form">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul class="cols">
 			<li class="col1">
@@ -27,31 +27,6 @@
 			<li class="col2">
 				<form:input path="movie_name"/>
 				<form:errors path="movie_name" cssClass="error-color"/>
-			</li>
-		</ul>
-		<ul class="cols">
-			<li class="col1">내용</li>
-			<li>
-				<form:textarea path="movie_content"/>
-				<form:errors path="movie_content" cssClass="error-color"/>
-				<script>
-				 function MyCustomUploadAdapterPlugin(editor) {
-					    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-					        return new UploadAdapter(loader);
-					    }
-					}
-				 
-				 ClassicEditor
-		            .create( document.querySelector( '#content' ),{
-		            	extraPlugins: [MyCustomUploadAdapterPlugin]
-		            })
-		            .then( editor => {
-						window.editor = editor;
-					} )
-		            .catch( error => {
-		                console.error( error );
-		            } );
-			    </script>      
 			</li>
 		</ul>
 		<ul class="cols">
@@ -90,6 +65,33 @@
 				<form:errors path="movie_showtm" cssClass="error-color"/>
 			</li>
 		</ul>
+		<ul class="cols">
+			<li class="col1">내용</li>
+		</ul>
+		<ul class="cols">
+			<li>
+				<textarea name="board_content" class="ck"
+							placeholder="내용을 입력하세요"></textarea> <script>
+						 function MyCustomUploadAdapterPlugin(editor) {
+					    	editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+					        	return new UploadAdapter(loader);
+					    	}
+						}
+				 
+				 	ClassicEditor
+		            	.create( document.querySelector( '.ck' ),{
+		            		extraPlugins: [MyCustomUploadAdapterPlugin]
+		            	})
+		            	.then( editor => {
+							window.editor = editor;
+						} )
+		            	.catch( error => {
+		                	console.error( error );
+		           		} );
+			    	</script> 
+			</li>
+		</ul>
+		
 		<ul class="cols">
 			<li class="col1">
 				<form:label path="upload">파일업로드</form:label>

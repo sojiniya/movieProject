@@ -125,7 +125,7 @@ ul.cols {
 	}
 	.cols li.col1{
 		width: 100px;
-		text-align: right;
+		text-align: left;
 		font-size: 15px;
 		font-weight: 750;
 		color: #333300;
@@ -908,7 +908,7 @@ input#mymovie{
 	margin-bottom: 10px;
 }
 input#movie_name{
-	width:600px;
+	width:500px;
 	height: 20px;
 }
 input#movie_content{
@@ -1322,4 +1322,15 @@ background: linear-gradient(0deg, rgba(255,151,0,1) 0%, rgba(251,75,2,1) 100%);
 }
 .btn-7 span:hover:after {
   width: 100%;
+}
+/*영화 등록*/
+.movieWrite {
+    width: 100%;
+    margin: 0 auto;
+    height: 750px;
+}
+form#movieRegister_form, form#movieUpdate_form {
+    border: none;
+    width: 900px;
+    height: 300px;
 }

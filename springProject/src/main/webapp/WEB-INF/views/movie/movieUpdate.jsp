@@ -4,9 +4,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!-- 중앙 컨텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
-<div class="page-main">
+<div class="movieWrite">
 	<h2>무비차트 수정</h2>
-	<form:form modelAttribute="movieVO" action="movieUpdate.do" id="update_form" enctype="multipart/form-data">
+	<form:form modelAttribute="movieVO" action="movieUpdate.do" id="movieUpdate_form" enctype="multipart/form-data">
 		<form:hidden path="movie_num"/>
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
