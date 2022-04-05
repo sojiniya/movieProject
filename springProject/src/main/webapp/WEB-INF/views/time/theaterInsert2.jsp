@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 중앙 컨텐츠 시작 -->
 <!-- 부트스트랩 라이브러리 -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -11,24 +12,32 @@
 	<form:form modelAttribute="timeVO" action="timeInsert.do" id="register_form">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
-			<li>
-				<form:label path="theater_num">극장관번호</form:label>
-				<form:input path="theater_num"/>
+			<li style="clear:both">
+				<form:label path="theater_num">극장</form:label>
+				<select name="theater_num" id="theater_num">
+				<c:forEach var="list" items="${theater_list }">
+					<option value="${list.theater_num}">${list.theater_name}</option>
+				</c:forEach>
+				</select>
 				<form:errors path="theater_num" cssClass="error-color"/>
 			</li>
 		    <li style="clear:both">
-				<form:label path="movie_num">영화번호</form:label>
-				<form:input path="movie_num"/>
+				<form:label path="movie_num">영화</form:label>
+				<select name="movie_num" id="movie_num">
+				<c:forEach var="list" items="${movie_list }">
+					<option value="${list.movie_num}">${list.movie_name}</option>
+				</c:forEach>
+				</select>
 				<form:errors path="movie_num" cssClass="error-color"/>
 			</li>
-			<li>
+			<li style="clear:both">
 				<form:label path="movie_name">영화제목</form:label>
-				<form:input path="movie_name"/>
+				<form:input path="movie_name" style="width:300px;"/>
 				<form:errors path="movie_name" cssClass="error-color"/>
 			</li>
 			<li style="clear:both">
 				<form:label path="movie_time">극장상영시간</form:label>
-				<form:input path="movie_time"/>
+				<form:input path="movie_time" />
 				<form:errors path="movie_time" cssClass="error-color"/>
 			</li>
 			<li style="clear:both">

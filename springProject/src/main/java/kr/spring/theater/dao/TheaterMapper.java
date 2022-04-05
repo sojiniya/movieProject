@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
+import kr.spring.movie.vo.MovieVO;
 import kr.spring.theater.vo.TheaterVO;
 
 public interface TheaterMapper {
@@ -27,4 +28,7 @@ public interface TheaterMapper {
 	
 	@Select("SELECT * FROM M_theater")
 	public List<TheaterVO> selectAllTheater();
+	
+	@Select("SELECT * FROM M_movie")
+	public List<MovieVO> selectAllMovie();
 }

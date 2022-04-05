@@ -2,6 +2,7 @@ package kr.spring.theater.service;
 
 import java.util.List;
 
+import kr.spring.movie.vo.MovieVO;
 import kr.spring.theater.vo.TheaterVO;
 
 public interface TheaterService {
@@ -18,4 +19,6 @@ public interface TheaterService {
 	public List<TheaterVO> listName(String name);
 	
 	public List<TheaterVO> selectAllTheater();
+	
+	public List<MovieVO> selectAllMovie();
 }

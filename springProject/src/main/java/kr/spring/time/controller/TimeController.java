@@ -58,13 +58,22 @@ public class TimeController {
 	//2. 극장등록
 	//극장 등록 폼
 	@GetMapping("/time/timeInsert.do")
-	public String form2() {
-		return "theaterInsert2";
+	public ModelAndView form2() {
+		
+		List<TheaterVO> list = theaterService.selectAllTheater();
+		List<MovieVO> movie_list = theaterService.selectAllMovie();
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("theaterInsert2");
+		mav.addObject("theater_list", list);
+		mav.addObject("movie_list",movie_list);
+		
+		return mav;
 	}
 
 	//2-1. 극장 등록 폼에서 전송된 데이터 처리
 	@PostMapping("/time/timeInsert.do")
-	public String submit2(@Valid TimeVO timeVO, BindingResult result, HttpSession session, HttpServletRequest request) {
+	public ModelAndView submit2(@Valid TimeVO timeVO, BindingResult result, HttpSession session, HttpServletRequest request) {
 		logger.info("<<극장 저장>> : " + timeVO);
 		
 		//유효성 체크 결과 오류가 있으면 폼 호출
@@ -79,7 +88,7 @@ public class TimeController {
 		//극장 등록
 		timeService.insertTheater2(timeVO);
 
-		return "redirect:/time/selectList.do";
+		return new ModelAndView("redirect:/time/selectList.do");
 	}
 	
 	//시트 자바빈(VO) 초기화

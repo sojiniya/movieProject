@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.spring.movie.vo.MovieVO;
 import kr.spring.theater.dao.TheaterMapper;
 import kr.spring.theater.vo.TheaterVO;
 
@@ -39,6 +40,11 @@ public class TheaterServiceImpl implements TheaterService{
 	@Override
 	public List<TheaterVO> selectAllTheater() {
 		return theaterMapper.selectAllTheater();
+	}
+
+	@Override
+	public List<MovieVO> selectAllMovie() {
+		return theaterMapper.selectAllMovie();
 	}
 
 }
