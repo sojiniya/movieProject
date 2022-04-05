@@ -24,4 +24,7 @@ public interface TheaterMapper {
 	//4. 극장 제목 변경
 	@Select("SELECT * FROM M_theater WHERE theater_name = #{name}")
 	public List<TheaterVO> listName(String name);
+	
+	@Select("SELECT * FROM M_theater")
+	public List<TheaterVO> selectAllTheater();
 }

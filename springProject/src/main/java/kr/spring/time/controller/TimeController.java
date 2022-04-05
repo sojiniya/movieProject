@@ -24,6 +24,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.movie.vo.MovieVO;
 import kr.spring.seat.vo.SeatVO;
+import kr.spring.theater.service.TheaterService;
+import kr.spring.theater.vo.TheaterVO;
 import kr.spring.time.service.TimeService;
 import kr.spring.time.vo.TimeVO;
 
@@ -33,6 +35,9 @@ public class TimeController {
 	
 	@Autowired
 	private TimeService timeService;
+	
+	@Autowired
+	private TheaterService theaterService;
 	
 	//1. 목록
 	@RequestMapping(value = "/time/selectList.do")
@@ -85,17 +90,23 @@ public class TimeController {
 
 	//좌석 등록 폼
 	@GetMapping("/time/insertSeat.do")
-	public String Seatform() {
-		return "insertSeat";
+	public ModelAndView seatform() {
+		
+		List<TheaterVO> list = theaterService.selectAllTheater();
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("insertSeat");
+		mav.addObject("theater_list",list);
+		
+		return mav;
 	}
 	//좌석 등록 폼에서 전송된 데이터 처리
 	@PostMapping("/time/insertSeat.do")
-	public String Seatsubmit(@Valid SeatVO seatVO, BindingResult result, HttpSession session, HttpServletRequest request) {
+	public ModelAndView seatsubmit(@Valid SeatVO seatVO, BindingResult result, HttpSession session, HttpServletRequest request) {
 		logger.info("<<좌석 저장>> : " + seatVO);
 
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		if(result.hasErrors()) {
-			return Seatform();
+			return seatform();
 		}
 
 		Integer user_num = (Integer)session.getAttribute("user_num");
@@ -105,7 +116,7 @@ public class TimeController {
 		//좌석 등록
 		timeService.insertSeat(seatVO);
 
-		return "redirect:/time/selectList.do";
+		return new ModelAndView("redirect:/time/selectList.do");
 	}
 	
 	

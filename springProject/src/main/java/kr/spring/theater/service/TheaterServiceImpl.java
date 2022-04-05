@@ -36,4 +36,9 @@ public class TheaterServiceImpl implements TheaterService{
 		return theaterMapper.listName(name);
 	}
 
+	@Override
+	public List<TheaterVO> selectAllTheater() {
+		return theaterMapper.selectAllTheater();
+	}
+
 }

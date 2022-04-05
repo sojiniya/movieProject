@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 중앙 컨텐츠 시작 -->
 <!-- 부트스트랩 라이브러리 -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -12,11 +13,15 @@
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 		    <li style="clear:both">
-				<form:label path="theater_num">극장관번호</form:label>
-				<form:input path="theater_num"/>
+				<form:label path="theater_num">극장</form:label>
+				<select name="theater_num" id="theater_num">
+				<c:forEach var="list" items="${theater_list }">
+					<option value="${list.theater_num}">${list.theater_name}</option>
+				</c:forEach>
+				</select>
 				<form:errors path="theater_num" cssClass="error-color"/>
 			</li>
-			<li>
+			<li style="clear:both;">
 				<form:label path="seat_name">좌석명</form:label>
 				<form:input path="seat_name"/>
 				<form:errors path="seat_name" cssClass="error-color"/>

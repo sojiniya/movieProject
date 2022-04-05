@@ -16,4 +16,6 @@ public interface TheaterService {
 	
 	//극장 제목 변경 에이젝스
 	public List<TheaterVO> listName(String name);
+	
+	public List<TheaterVO> selectAllTheater();
 }

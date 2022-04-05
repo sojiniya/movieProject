@@ -264,7 +264,7 @@ $(function(){
 	   //$(this).addClass('.time-choice li').css('color','red');
 	   // $(this).css('color','red');
 	   let movie_date = $(this).attr('data-time');
-	   alert(movie_date+','+theater_num);
+	   
 	   if(!theater_num) return;
 	   
 	   getTimeList(movie_date);
@@ -282,8 +282,21 @@ $(function(){
 			cache:false,
 			timeout:30000,
 			success:function(param){
+				$('.movie-name').text("");
+				$('.movie-genre').text("");
+				$('.movie-date').text("");
+				$('.movie-time').text("");
+				$('.movie-showtm').text("");
+				$('.movie-auth').find('em').text("");
+				$('.movie-pg').find('img').hide();
 				
 				$('#time_output2').empty();
+				
+				if(param.list.length==0){
+					$('.info-movie').hide();
+				}else{
+					$('.info-movie').show();
+				}
 				
 				//$('#area').empty();
 				let movie_num;
@@ -318,6 +331,7 @@ $(function(){
 					$('#area').append(output);
 					*/
 				});
+				
 				$('.movie-name').text(movie_name);
 				if(movie_auth == 0) $('.movie-auth').find('em').text('상영중');
 				else if(movie_auth == 1) $('.movie-auth').find('em').text('상영예정');
@@ -325,13 +339,13 @@ $(function(){
 				
 				$('.movie-genre').text(movie_genre);
 				if(12 == movie_pg){
-					$('.movie-pg').find('img').attr('src','https://img.cgv.co.kr/R2014/images/common/flag/age/grade-12.png');
+					$('.movie-pg').find('img').attr('src','https://img.cgv.co.kr/R2014/images/common/flag/age/grade-12.png').show();
 				}else if(15 == movie_pg){
-					$('.movie-pg').find('img').attr('src','https://img.cgv.co.kr/R2014/images/common/flag/age/grade-15.png');
+					$('.movie-pg').find('img').attr('src','https://img.cgv.co.kr/R2014/images/common/flag/age/grade-15.png').show();
 				}else if(19 == movie_pg){
-					$('.movie-pg').find('img').attr('src','https://img.cgv.co.kr/R2014/images/common/flag/age/grade-19.png');
+					$('.movie-pg').find('img').attr('src','https://img.cgv.co.kr/R2014/images/common/flag/age/grade-19.png').show();
 				}else{
-					$('.movie-pg').find('img').attr('src','https://img.cgv.co.kr/R2014/images/common/flag/age/grade-all.png');
+					$('.movie-pg').find('img').attr('src','https://img.cgv.co.kr/R2014/images/common/flag/age/grade-all.png').show();
 				}
 				$('.movie-date').text(movie_date+' 개봉');
 				$('.movie-time').text(movie_time);
