@@ -82,7 +82,7 @@ public class BoardAjaxController {
 		logger.info("<<목록 호출>> currentPage : " + currentPage);
 		logger.info("<<목록 호출>> board_num : " + board_num);
 		
-		Map<String,Object> map = new HashMap<String,Object>();
+		Map<String,Object> map = new HashMap<String,Object>(); 
 		map.put("board_num", board_num);
 		
 		//총 글의 갯수
@@ -97,6 +97,7 @@ public class BoardAjaxController {
 		if(count > 0) {
 			list = boardService.selectListReply(map);
 		}else {
+			//데이터가 없으면 비어있는 배열 넘김
 			list = Collections.emptyList();
 		}
 		

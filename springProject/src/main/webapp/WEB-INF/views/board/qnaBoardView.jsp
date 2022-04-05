@@ -80,7 +80,7 @@ table td, table th{
 						<span>목록</span>
 					</button>
 				</div>
-				<div class="btm_sup_list">
+				<!-- <div class="btm_sup_list">
 					<ul class="line_sup_next">
 						<li class="stit">이전글</li>
 						<li class="name"><a href="#" class="txt"></a></li>
@@ -91,7 +91,7 @@ table td, table th{
 						<li class="name"><a href="#" class="txt"></a></li>
 						<li>등록일<span class="check_num"></span></li>
 					</ul>
-				</div>
+				</div> -->
 		</div>
 		
 	</div>

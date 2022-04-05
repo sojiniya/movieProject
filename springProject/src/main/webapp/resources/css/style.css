@@ -92,6 +92,21 @@ div#boardMain_body {
     float: left;
     width: 78%;
 }
+
+a.c1_tit {
+    font-size: 15px;
+    font-weight: 800;
+}
+a.c1_txt {
+	color: #666;
+    font-size: 13px;
+    font-weight: 700;
+}
+span.c1_txt {
+	color: #666;
+    font-size: 13px;
+    font-weight: 700;
+}
 /*관리자 글쓰기*/
 .adminBoardWrite-main{
 	position: relative;
@@ -632,6 +647,7 @@ input[id="zipcode"]{
     background-size: 50px;
 }
 .customer_notice_area {
+	vertical-align: bottom;
     margin-top: 36px;
 }
 .notice_area {
@@ -641,7 +657,14 @@ input[id="zipcode"]{
     float: right;
     width: 800px;
     height: 287px;
+    margin-top: 20px;
 }
+.notice_detail {
+    margin-left: 100px;
+}
+.notice_detail .span.tit {
+    margin-left: 35px;
+} 
 .notice_area .txt {
     margin-top: 15px;
 }
@@ -673,6 +696,13 @@ input[id="zipcode"]{
     overflow: hidden;
 }
 /*자주찾는 질문, 공지.뉴스 */
+.c_tab_wrap > ul > li:hover > a,
+.c_tab_wrap > ul > li > a:focus,
+.c_tab_wrap > ul > li.on > a {
+    background-color: #fb4357;
+    color: #fdfcf0;
+}
+
 .c_tab_wrap {
     position: relative;
     margin-top: 15px;
