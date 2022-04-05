@@ -64,3 +64,17 @@
 		WHERE A.MOVIE_NUM = #{movie_num}
     </select>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
