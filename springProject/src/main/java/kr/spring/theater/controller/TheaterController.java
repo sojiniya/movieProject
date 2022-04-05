@@ -66,7 +66,7 @@ public class TheaterController {
 		//극장정보 등록 완료
 		theaterService.insertTheater(theaterVO);
 		
-		return "redirect:/main/main.do";
+		return "redirect:/time/selectList.do";
 	}
 	
 		//2. 극장지역리스트 ajax 
