@@ -78,7 +78,9 @@ public class MemberMovieServiceImpl implements MemberMovieService{
 
 	@Override
 	public void updateMyReview(MovieReviewVO review) {
-		
+		MemberMovieMapper.updateMyReview(review);
+		review.setTotal_rate(MemberMovieMapper.countTotalMovieRate(review));
+		MemberMovieMapper.updateMovieRate(review);
 	}
 	@Override
 	public MovieReviewVO selectReviewDetail(int review_num) {

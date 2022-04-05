@@ -70,6 +70,7 @@ public interface MemberMovieMapper {
 		public MovieReviewVO selectReviewDetail(int review_num);
 		
 		//리뷰 수정하기
+		@Update("UPDATE M_review SET review_rate =#{review_rate},review_content=#{review_content} WHERE review_num = #{review_num}")
 		public void updateMyReview(MovieReviewVO review);
 		
 		//리뷰 삭제하기

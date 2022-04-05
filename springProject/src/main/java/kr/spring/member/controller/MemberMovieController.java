@@ -250,16 +250,16 @@ public class MemberMovieController {
 		@PostMapping("/user/modifyReview.do")
 		public String submitUpdate(@Valid MovieReviewVO movieReviewVO, BindingResult result, HttpSession session) {
 
-
+			Integer mem_num = (Integer)session.getAttribute("user_num");
+			logger.info("<<리뷰평가111>> :" + movieReviewVO);
+			
+			MemberMovieService.updateMyReview(movieReviewVO);
+			
 			// 유효성 체크 결과 오류가 있으면 폼 호출
 			/*
-			 * if(result.hasErrors()) { return "userModifyForm"; }
+			 * if(result.hasErrors()) { return form(); }
 			 */
-			Integer user_num = (Integer) session.getAttribute("user_num");
-
-
-			// 회원정보수정
-			return "redirect:/user/myPage.do";
+			return "redirect:/user/myReview.do";
 		}
 		
 }
