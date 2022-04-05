@@ -36,8 +36,8 @@ table td, table th{
 				<li class="on">
 					<a href="/project/board/newsList.do?cate_num=20" style="font-size: 13px;" title="선택된 탭메뉴">전체</a>
 				</li>
-				<li class>
-					<a href="/project/board/newsList.do?cate_num=5" style="font-size: 13px;">시스템점검</a>
+				<li>
+					<a href="/project/board/newsList.do?cate_num=5" style="font-size: 13px; width: 87px;">시스템점검</a>
 				</li>
 				<li class>
 					<a href="/project/board/newsList.do?cate_num=6" style="font-size: 13px;">극장</a>

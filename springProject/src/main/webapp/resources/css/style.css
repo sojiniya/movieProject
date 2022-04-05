@@ -96,6 +96,8 @@ div#boardMain_body {
 a.c1_tit {
     font-size: 15px;
     font-weight: 800;
+    margin-left: 35px;
+
 }
 a.c1_txt {
 	color: #666;
@@ -580,15 +582,16 @@ input[id="zipcode"]{
 .qna_search .board_search_box {
     overflow: hidden;
     display: inline-block;
-    width: 190px;
+    width: 200px;
     height: 30px;
     margin: 12px 0px 9px;
     text-align: left;
     background-color: #fff;
 }
+
 .qna_search .board_search_box input {
     float: left;
-    width: 155px;
+    width: 160px;
     height: 12px;
     padding: 9px 0;
     font-size: 13px;
@@ -597,6 +600,7 @@ input[id="zipcode"]{
     vertical-align: middle;
     border: none;
     background-color: #fff;
+    margin-top: 8px;
 }
 .qna_search .board_search_box .btn_search {
     float: right;
@@ -632,7 +636,7 @@ input[id="zipcode"]{
 .c_check_warp .c_txt + a {
     overflow: hidden;
     display: block;
-    width: 80px;
+    width: 90px;
     margin: 0 auto;
     font-size: 12px;
     color: #fff;
@@ -701,8 +705,16 @@ input[id="zipcode"]{
 .c_tab_wrap > ul > li.on > a {
     background-color: #fb4357;
     color: #fdfcf0;
+    width: 87px;
 }
-
+.c_tab > li > a {
+    vertical-align: middle;
+    text-decoration: none;
+    display: inline-block;
+    width: 87px;
+    height: 42px;
+    
+}
 .c_tab_wrap {
     position: relative;
     margin-top: 15px;
@@ -733,6 +745,7 @@ ul.c_tab.type_free {
 }
 .c_tab > li > a{
 	color: #fff;
+	
 }
 .c_tab > li.on {
     width: 88px;
@@ -743,7 +756,14 @@ ul.c_tab.type_free {
     padding-top: 10px;
     margin-left: 10px;
 }
-
+span.answer0{
+	color: blue;
+	font-weight: 700;
+}
+span.answer1{
+	color: red;
+	font-weight: 700;
+}
 /*====무비차트====*/
 .movie-image img {
 	width: 170px;
