@@ -73,6 +73,7 @@ public interface MemberMovieMapper {
 		public void updateMyReview(MovieReviewVO review);
 		
 		//리뷰 삭제하기
-		public void deleteMyReview(int review_num);
+		@Select("Delete M_review WHERE review_num = #{review_num}")
+		public void deleteMyReview(MovieReviewVO review);
 		
 }
