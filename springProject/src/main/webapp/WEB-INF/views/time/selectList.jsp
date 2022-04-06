@@ -242,7 +242,7 @@ $(function(){
 			$('#theater_img_container').find('img').attr('src','${pageContext.request.contextPath}/theater/theaterImage.do?theater_num='+theater_num);	
 			//cgv지점명 클릭시 인포사진 위에 극장지점명(ex cgv강남) 표시
 			$('h4').find('span').text(theater_name).show();
-			$('.addr-text').text(theater_addr);
+			$('.addr-text').text(theater_addr); 
 			$('.time-choice').show();
 			$('.time-choice li').hover(function(){
 				   $(this).css('color','red');
