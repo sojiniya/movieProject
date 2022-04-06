@@ -4,6 +4,31 @@
 <!-- 중앙 컨텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <style type="text/css">
+.box-image {
+ 	position:relative;
+}
+.addr-text {
+	position:absolute;
+}
+.box-image {
+	opacity:0.7;
+}
+.box-image .addr-text {
+   visibility:visible;
+ }
+ .addr-text {
+  padding: 10px 20px;
+  border-radius: 10px;
+  color:black;
+  font-weight:bold;
+  font-size:large;
+  text-align: left;
+  position: absolute;
+  top: 95%;
+  left: 18%;
+  transform: translate(-50%, -50%);
+}
+ 
 div {
     display: block;
 }
@@ -217,7 +242,7 @@ $(function(){
 			$('#theater_img_container').find('img').attr('src','${pageContext.request.contextPath}/theater/theaterImage.do?theater_num='+theater_num);	
 			//cgv지점명 클릭시 인포사진 위에 극장지점명(ex cgv강남) 표시
 			$('h4').find('span').text(theater_name).show();
-			$('.movie-title').text(theater_addr)
+			$('.addr-text').text(theater_addr);
 			$('.time-choice').show();
 			$('.time-choice li').hover(function(){
 				   $(this).css('color','red');
@@ -261,8 +286,6 @@ $(function(){
    $('.time-choice').hide();
    //날짜를 클릭하면 상영 정보를 구해옴 
    $(document).on('click','.time-choice li',function(){
-	   //$(this).addClass('.time-choice li').css('color','red');
-	   // $(this).css('color','red');
 	   let movie_date = $(this).attr('data-time');
 	   
 	   if(!theater_num) return;
@@ -430,16 +453,15 @@ $(function(){
 		<div class="wrap-theaterinfo">
 			<div class="box-image">
 				<div class="thumb-image" id="theater_img_container">
-					<!-- cgv강남점을 디폴트 이미지로 -->
-					<%-- <img src="${pageContext.request.contextPath}/theater/theaterImage.do?theater_num=24"> --%>
 					<img src="https://img.cgv.co.kr/Theater/Theater/2014/1211/CGVgangnam.jpg" >
+					<div class="addr-text"></div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 <div class="theater-info">
-     <strong class="movie-title"><!-- 서울 강남구 테헤란로123 --></strong>
+     <!-- <strong class="movie-title">서울 강남구 테헤란로123</strong> -->
 </div>
 <hr size="1" noshade="noshade" width="100%">
 <!-- 상영일자 표시 -->
