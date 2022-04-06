@@ -47,12 +47,13 @@ div, ul, li, form, font, a{
 ul.time-choice{
 	list-style: none;
 }
-ul.time-choice li{
-	display:inline-block;
-	width:100px;
-	padding:20px 20px 30px 20px;
-	font-size:18px;
-	cursor:pointer;
+ul.time-choice li {
+    display: inline-block;
+    width: 100px;
+    padding: 20px 18px 20px 20px;
+    font-size: 18px;
+    border: ridge;
+    cursor: pointer;
 }
 div.area ul li a, div.sect-city ul li a{
 	cursor:pointer;
@@ -463,12 +464,10 @@ $(function(){
 <div class="theater-info">
      <!-- <strong class="movie-title">서울 강남구 테헤란로123</strong> -->
 </div>
-<hr size="1" noshade="noshade" width="100%">
+<br>
 <!-- 상영일자 표시 -->
 <div id="time_output"></div>
 <!-- 상영일자 표시 -->
-<hr size="1" noshade="noshade" width="100%">
-
 <c:if test="${!empty user_num && user_auth==3}">
 	<div class="align-right">
 		<input type="button" value="상영정보등록" onclick="location.href='${pageContext.request.contextPath}/time/timeInsert.do'">
