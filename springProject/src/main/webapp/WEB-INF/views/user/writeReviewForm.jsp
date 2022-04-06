@@ -3,7 +3,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<!DOCTYPE html>
 <style>
 #myform fieldset{
     display: inline-block; /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
@@ -31,6 +30,7 @@
     text-shadow: 0 0 0 #a00; /* 마우스 클릭 체크 */
 }
 </style>
+<!DOCTYPE html>
 <form name="moviewReviewVO" id="myform" method="post" action="writeReview.do">
     <fieldset>
         <legend>이모지 별점</legend>

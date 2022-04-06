@@ -120,7 +120,6 @@ public class AdminController{
 			
 			return mav;
 		}
-		//예매내역 취소 페이지
 		
 			
 			

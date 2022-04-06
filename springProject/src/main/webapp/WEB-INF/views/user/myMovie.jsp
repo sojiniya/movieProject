@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<script src="${pageContext.request.contextPath}/resources/css/hyoen.css"></script>  
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/hyoen.css">
 <!DOCTYPE html>
 <div class="cols-content" id="menu">
 	<div class="col-aside">
