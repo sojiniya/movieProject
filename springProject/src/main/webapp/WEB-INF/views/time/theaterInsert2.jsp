@@ -4,6 +4,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 중앙 컨텐츠 시작 -->
 <!-- 부트스트랩 라이브러리 -->
+<style type="text/css">
+div#main_body {
+    float: left;
+    width: 99%;
+    padding: 5px 100px 5px;
+}
+form#register_form, form#update_form {
+    border: none;
+    width: 700px;
+    height: 200px;
+}
+
+</style>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -46,7 +59,7 @@
 				<form:errors path="movie_date" cssClass="error-color"/>
 			</li>
 		</ul>	 
-		<div class="align-center" style="clear:both">
+		<div class="align-center" style="clear:both"><br>
 			<form:button>전송</form:button>
 			<input type="button" value="목록" 
 			              onclick="location.href='${pageContext.request.contextPath}/time/selectList.do'">

@@ -23,21 +23,21 @@
 					<option value="대구">대구</option>
 				</select>
 			</li>
-			<li>
-				<form:label path="theater_addr">극장관주소</form:label>
+			<li style="clear: both;">
+				<form:label path="theater_addr">극장관주소 </form:label>
 				<form:input path="theater_addr"/>
 			</li>
 			<li>
-				<form:label path="theater_name">극장관명</form:label>
+				<form:label path="theater_name">극장관명 </form:label>
 				<form:input path="theater_name"/>
 			</li>
 			<li>
-				<form:label path="upload">info사진업로드</form:label>
+				<form:label path="upload">info사진업로드 </form:label>
 				<input type="file" name="upload" id="upload">
 				<form:errors path="upload" cssClass="error-color"/>
 			</li>
 		</ul>
-		<div class="align-center" style="clear:both">
+		<div class="align-center" style="clear:both"><br>
 			<input type="submit" value="등록">
 			<input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/time/selectList.do'">
 		</div>

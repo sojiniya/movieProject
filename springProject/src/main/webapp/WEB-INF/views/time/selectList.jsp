@@ -371,7 +371,7 @@ $(function(){
 				}else{
 					$('.movie-pg').find('img').attr('src','https://img.cgv.co.kr/R2014/images/common/flag/age/grade-all.png').show();
 				}
-				$('.movie-date').text(movie_date+' 개봉');
+				$('.movie-date').text(movie_date);
 				$('.movie-time').text(movie_time);
 				$('.movie-showtm').text(movie_showtm+'분');
 				

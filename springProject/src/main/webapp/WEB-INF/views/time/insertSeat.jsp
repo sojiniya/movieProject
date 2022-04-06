@@ -21,13 +21,13 @@
 				</select>
 				<form:errors path="theater_num" cssClass="error-color"/>
 			</li>
-			<li style="clear:both;">
+			<li style="clear:both;"><p>
 				<form:label path="seat_name">좌석명</form:label>
 				<form:input path="seat_name"/>
 				<form:errors path="seat_name" cssClass="error-color"/>
 			</li>
 		</ul>	 
-		<div class="align-center" style="clear:both">
+		<div class="align-center" style="clear:both"><p>
 			<form:button>등록</form:button>
 			<input type="button" value="목록" 
 			              onclick="location.href='${pageContext.request.contextPath}/time/selectList.do'">
