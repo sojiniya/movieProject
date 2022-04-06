@@ -19,14 +19,14 @@
  .addr-text {
   padding: 10px 20px;
   border-radius: 10px;
-  color:black;
+  color:red;
   font-weight:bold;
   font-size:large;
   text-align: left;
   position: absolute;
   top: 95%;
   left: 18%;
-  transform: translate(-50%, -50%);
+  transform: translate(-35%, -70%);
 }
  
 div {
