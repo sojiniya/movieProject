@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!-- 중앙 컨텐츠 시작 -->
 <style type="text/css">
-span,  ul, li, fieldset {
+span, ul, li, fieldset {
 	font-family: 'Noto Sans KR', 'CJONLYONENEW', '맑은 고딕', '돋움', Dotum, sans-serif;
     font-size: 100%;
     margin: 0;
@@ -20,19 +20,19 @@ span,  ul, li, fieldset {
 .wrap-login .tab-menu-round > li{ width:100px;}
 .box-login{padding:30px 0 0 132px; border-top:2px solid #898987; border-bottom:2px solid #898987; height: 266px;}
 
-.box-login button[type="submit"] > span {display:block;width:258px;height:36px; border:1px solid #ffff; color:#f8f8f8; font-size:15px; font-weight:500;}
+.box-login button[type="submit"] > span {display:block;width:249px;height:36px; border:1px solid #ffff; color:#f8f8f8; font-size:15px; font-weight:500;}
 .box-login .login > button[type="submit"] {position:absolute; top:0; left:198px; display:block; width:100px; height:86px; padding:2px; background:#fb4357; line-height:78px; text-align:center;}
 .sect-login > .box-login fieldset {position:relative;}
 
 /*버튼*/
 .box-login button[type="submit"] {
-    width: 264px;
+    width: 249px;
     height: 42px;
     line-height: 37px;
     left: 0;
     position: static;
-    margin-top: 5px;
-    padding: 2px;
+    margin-top: 20px;
+    padding: 0px;
     background: #fb4357;
     text-align: center;
 }
@@ -87,10 +87,10 @@ div[class^="sect-"]:after {
     position: relative;
     margin-top: 15px;
 }
-.box-login .login input[type="text"], .box-login .login input[type="password"] {
+.id-form, .pw-form {
     width: 215px;
 }
-.box-login .login input[type="text"] {
+.box-login .login .id-form {
     margin-bottom: 5px;
     background: url(../images/sprite/sprite_icon.png) 12px -230px no-repeat;
 }
@@ -106,7 +106,7 @@ p {
 form {
     display: block;
 }
-body, input, textarea, select, button, table {
+body, form, textarea, select, button, table {
     font-size: 13px;
     line-height: 1.2;
     color: #666;
@@ -116,7 +116,7 @@ body, input, textarea, select, button, table {
 input,form, select, img {
     vertical-align: middle;
 }
-button, input {
+button, .id-form {
     overflow: visible;
 }
 input[type="hidden" i] {
@@ -130,40 +130,28 @@ input[type="hidden" i] {
     border-radius: initial;
 }
 
-.box-login .login input[type="text"], .box-login .login input[type="password"] {
-    width: 215px;
-}
-.box-login .login input[type="text"] {
+.id-form {
     margin-bottom: 5px;
     background: url(../images/sprite/sprite_icon.png) 12px -230px no-repeat;
 }
-.box-login .login input[type="text"], .box-login .login input[type="password"] {
+.id-form, .pw-form {
     display: block;
     width: 135px;
-    height: 35px;
+    height: 40px;
     padding: 0 5px 0 40px;
     border: 2px solid #b5b5b5;
     line-height: 33px;
 }
 
-input, select, img {
+form, select, img {
     vertical-align: middle;
 }
 
-button, input {
+button, .id-form {
     overflow: visible;
 }
-input {
+form {
     writing-mode: horizontal-tb !important;
-    font-style: ;
-    font-variant-ligatures: ;
-    font-variant-caps: ;
-    font-variant-numeric: ;
-    font-variant-east-asian: ;
-    font-weight: ;
-    font-stretch: ;
-    font-size: ;
-    font-family: ;
     text-rendering: auto;
     color: -internal-light-dark(black, white);
     letter-spacing: normal;
@@ -193,7 +181,7 @@ input {
     min-inline-size: min-content;
 }
 
-body, input, textarea, select, button, table {
+body, form, textarea, select, button, table {
     line-height: 1.2;
     color: #666;
     font-weight: 400;
@@ -205,19 +193,11 @@ button, input[type='submit'], input[type='button'] {
     padding: 0;
 }
 /*비번*/
-.box-login .login input[type="text"], .box-login .login input[type="password"] {
+.id-form, .pw-form {
     width: 215px;
 }
-.box-login .login input[type="password"] {
+.id-form {
     background: url(../images/sprite/sprite_icon.png) 12px -261px no-repeat;
-}
-.box-login .login input[type="text"], .box-login .login input[type="password"] {
-    display: block;
-    width: 135px;
-    height: 35px;
-    padding: 0 5px 0 40px;
-    border: 2px solid #b5b5b5;
-    line-height: 33px;
 }
 
 /*탭*/
@@ -247,7 +227,7 @@ ul {
     margin-inline-end: 0px;
     padding-inline-start: 40px;
 }
-body, input, textarea, select, button, table {
+body, form, textarea, select, button, table {
     font-size: 13px;
     line-height: 1.2;
     color: #666;
@@ -328,10 +308,10 @@ ol, ul {
 	<div class="sect-login">
 		<ul class="tab-menu-round">
 			<li class="on">
-                <a href="/user/login/">로그인</a>
+                <a href="#">로그인</a>
             </li>
             <li>
-                <a href="#">예매</a>
+                <a href="${pageContext.request.contextPath}/reserve/reserveStep1.do">예매</a>
             </li>
             <li>
                 <a href="#">예매확인</a>
@@ -346,23 +326,22 @@ ol, ul {
 			<p>아이디와 비밀번호를 입력하신 후, 로그인 버튼을 클릭해주세요.</p>
 			<div class="login">
 				<ul>
-					<li>
-						<form:label path="id">아이디</form:label>
-						<form:input path="id"/>
+					<li style="clear: both;">
+						<form:label path="id" cssClass="hidden">아이디</form:label>
+						<form:input path="id" cssClass="id-form"/>
 						<form:errors path="id" cssClass="error-color"/><br>
 					</li>
 					<li style="clear: both;">
-						<form:label path="mem_pw">비밀번호</form:label>
-						<form:password path="mem_pw"/>
+						<form:label path="mem_pw" cssClass="hidden">비밀번호</form:label>
+						<form:password path="mem_pw" cssClass="pw-form"/>
 						<form:errors path="mem_pw" cssClass="error-color"/>
 					</li>
 				</ul>
 			</div>
-
+<br>
 			<form:button id="submit" title="로그인"><span>로그인</span></form:button>
-			<div class="login-option">
+			<div class="login-option align-center" style="text-align: center;padding-right: 230px;"><br>
 				<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
-				<a href="#">비밀번호 찾기</a>
 			</div>
 			</fieldset>
 			</form:form>
