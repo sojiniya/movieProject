@@ -30,15 +30,14 @@ $(function(){
 				
 				//댓글 목록 작업
 				$(param.list).each(function(index,item){
+					
 					let output = '<div class="item">';
 					output += '<h4>' + item.id + '</h4>';
 					output += '<div class="sub-item">';
-					output += '<p>' + item.reply_num +'</p>';
-					output += '<p>' + item.re_content.replace(/\r\n/g/, '<br>') + '</p>';
+					output += '<p style= "display:none;">' + item.reply_num +'</p>';
+					output += '<p>' + item.re_content.replace(/\r\n/g, '<br>') + '</p>';
 					
-					if(item.re_mdate){
-						output += '<span class="modify-date">최근 수정일: ' + item.re_mdate + '</span>';
-					}else{
+					if(item.re_date){
 						output += '<span class="modify-date">등록일: ' + item.re_date + '</span>';
 					}
 					

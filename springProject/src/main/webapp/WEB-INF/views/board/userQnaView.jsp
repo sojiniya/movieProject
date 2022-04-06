@@ -65,13 +65,15 @@ table td, table th{
 					</button>
 				</div>
 				<hr size="1" width="100%" noshade="noshade">
+				
 				<div class="reply_area">
 					<span class="re-title">답변 내용</span>
 					
-					<c:if test="${!empty user_num && user_auth eq 3}">
-					<form id="re_form" action="writeReply.do" class="adminReplyForm" method="post">
+					
+					<form id="re_form" class="adminReplyForm" method="post">
 					<!-- 회원인 경우 div창만 보이게 구성. 답변 테이블 null 인  경우 답변전이라는 문구 띄움 , 답변 등록되어 있는 경우 답변내용 출력 -->
 						<input type="hidden" name="board_num" value="${board.board_num}" id="board_num">
+						<c:if test="${!empty user_num && user_auth eq 3}">
 						<textarea rows="3" cols="50" name="re_content" id="re_content" class="rep-content" placeholder="답변내용을 작성해주세요."
 						></textarea>
 						<div id="re_first">
@@ -80,31 +82,16 @@ table td, table th{
 						<div id="re_second" class="align-right">
 							<input type="submit" value="전송">
 						</div>
+						</c:if>
 					</form>
-					</c:if>
-				</div>
-				
-				<div id="output" action="listReply.do">
-				
-				</div>
-				<div class="paging-button" style="display:none;">
 					
 				</div>
-				<div id="loading" style="display:none;">
-					<img src= "${pageContext.request.contextPath}/resources/images/ajax-loader.gif">
-				</div>
-				<!-- <div class="btm_sup_list">
-					<ul class="line_sup_next">
-						<li class="stit">이전글</li>
-						<li class="name"><a href="#" class="txt"></a></li>
-						<li>등록일<span class="check_num"></span></li>
-					</ul>
-					<ul class="line_sup_prev">
-						<li class="stit">다음글</li>
-						<li class="name"><a href="#" class="txt"></a></li>
-						<li>등록일<span class="check_num"></span></li>
-					</ul>
-				</div> -->
+				
+				
+				
+				
+				<div id="output"></div>
+				
 		</div>
 		
 	</div>
