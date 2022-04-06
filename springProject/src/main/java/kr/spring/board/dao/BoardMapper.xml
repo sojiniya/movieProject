@@ -274,7 +274,7 @@ SELECT * FROM m_board b JOIN m_member m
 		 WHERE rnum >= #{start} AND rnum <= #{end}
 		 ]]>
 	</select>
-	<select id="selectRowCountReply" parameterType="map" resultType="integer">
+	<select id="selectRowCountReply" parameterType="map" resultType="Integer">
 		SELECT 
 		COUNT(*) 
 		FROM m_reply b 

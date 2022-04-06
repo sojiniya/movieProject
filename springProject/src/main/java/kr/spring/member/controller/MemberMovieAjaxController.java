@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.spring.member.service.MemberMovieService;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.movie.vo.MovieReviewVO;
 import kr.spring.reserve.vo.ReserveVO;
 
 @Controller
@@ -32,8 +33,6 @@ public class MemberMovieAjaxController {
 											@RequestParam("reserve_num") int reserve_num,
 											HttpSession session){
 		
-		
-		
 		logger.info("<<mem_num>> : " + mem_num);
 		logger.info("<<reserve_num>> : " + reserve_num);
 		ReserveVO reserveVO = memberMovieService.selectMyMovie(reserve_num);
@@ -42,7 +41,7 @@ public class MemberMovieAjaxController {
 		
 		if(reserveVO.getMem_num() != mem_num) {
 			map.put("result", "notMatchUser_num");
-		}else {					//id가 정규표현식 패턴이랑 동일한지 체크한다.
+		}else {	
 			memberMovieService.deleteMyMovie(reserve_num);
 			map.put("result", "success");
 		}
@@ -50,6 +49,29 @@ public class MemberMovieAjaxController {
 		return map;
 	}
 	
+	// 내가 쓴 리뷰 삭제하기
+	@RequestMapping("/user/deleteMyReview.do")
+	@ResponseBody
+	public Map<String, String> deleteReviewprocess(@RequestParam("review_num") int review_num,
+												   @RequestParam("mem_num") int mem_num,
+												   HttpSession session) {
+		logger.info("<<mem_num>> : " + mem_num);
+		logger.info("<<review_num>> : " + review_num);
+		MovieReviewVO reviewVO = memberMovieService.selectReviewDetail(review_num);
+		logger.info("<<reviewVO>> : " + reviewVO);
+
+		Map<String, String> map = new HashMap<String, String>();
+		
+		if (reviewVO.getMem_num() != mem_num) {
+			map.put("result", "notMatchUser_num");
+		
+		}else { 
+			memberMovieService.deleteMyReview(reviewVO);
+			map.put("result", "success");
+		}
+		return map;
+	}
+				
 }
 
 

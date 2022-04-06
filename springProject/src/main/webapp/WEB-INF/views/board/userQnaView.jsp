@@ -83,14 +83,17 @@ table td, table th{
 					</form>
 					</c:if>
 				</div>
-				<div id="output"></div>
+				
+				<div id="output" action="listReply.do">
+				
+				</div>
 				<div class="paging-button" style="display:none;">
-					<input type="button" value="다음글 보기">
+					
 				</div>
 				<div id="loading" style="display:none;">
 					<img src= "${pageContext.request.contextPath}/resources/images/ajax-loader.gif">
 				</div>
-				<div class="btm_sup_list">
+				<!-- <div class="btm_sup_list">
 					<ul class="line_sup_next">
 						<li class="stit">이전글</li>
 						<li class="name"><a href="#" class="txt"></a></li>
@@ -101,7 +104,7 @@ table td, table th{
 						<li class="name"><a href="#" class="txt"></a></li>
 						<li>등록일<span class="check_num"></span></li>
 					</ul>
-				</div>
+				</div> -->
 		</div>
 		
 	</div>

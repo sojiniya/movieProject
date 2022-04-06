@@ -63,7 +63,6 @@ public class MemberMovieServiceImpl implements MemberMovieService{
 		review.setReview_num(MemberMovieMapper.selectReview_num());
 		MemberMovieMapper.insertReview(review);
 		review.setTotal_rate(MemberMovieMapper.countTotalMovieRate(review));
-		System.out.println("total rate"+review.getTotal_rate());
 		MemberMovieMapper.updateMovieRate(review);
 	}
 
@@ -77,10 +76,11 @@ public class MemberMovieServiceImpl implements MemberMovieService{
 		return MemberMovieMapper.selectMyReviewList(map);
 	}
 
-
 	@Override
 	public void updateMyReview(MovieReviewVO review) {
-		
+		MemberMovieMapper.updateMyReview(review);
+		review.setTotal_rate(MemberMovieMapper.countTotalMovieRate(review));
+		MemberMovieMapper.updateMovieRate(review);
 	}
 	@Override
 	public MovieReviewVO selectReviewDetail(int review_num) {
@@ -89,11 +89,10 @@ public class MemberMovieServiceImpl implements MemberMovieService{
 
 	@Override
 	public void deleteMyReview(MovieReviewVO review) {
-		// TODO Auto-generated method stub
-		
+		MemberMovieMapper.deleteMyReview(review);
+		review.setTotal_rate(MemberMovieMapper.countTotalMovieRate(review));
+		MemberMovieMapper.updateMovieRate(review);
 	}
 
-
-		
 	}
 	

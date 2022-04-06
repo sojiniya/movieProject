@@ -92,6 +92,84 @@ div#boardMain_body {
     float: left;
     width: 78%;
 }
+
+a.c1_tit {
+    font-size: 15px;
+    font-weight: 800;
+    margin-left: 35px;
+
+}
+a.c1_txt {
+	color: #666;
+    font-size: 13px;
+    font-weight: 700;
+}
+span.c1_txt {
+	color: #666;
+    font-size: 13px;
+    font-weight: 700;
+}
+/*회원가입 폼*/
+ul.cols {
+    overflow: auto;
+    margin-bottom: 3px;
+	}
+	
+	.cols li{
+		display: inline-block;
+		marging-top:5px;
+		text-align: left;
+	}
+	.cols span{
+		width: auto;
+	}
+	.cols li.col1{
+		width: 100px;
+		text-align: left;
+		font-size: 15px;
+		font-weight: 750;
+		color: #333300;
+	}
+	.cols li.col2{
+		width: 500px;
+	}
+	.cols li.col2 > input.registerContent{
+		width: 250px;
+		height: 23px;
+	}
+	.cols li.colError{
+		width: 500px;
+		margin-left: 100px;
+		font-size: 10px;
+	}
+	ul.colsErrorMargin {
+	overflow: auto;
+    margin: 0px 0px 0px 100px;
+	}
+	.round.registerButton {
+	background-color: white;
+    border: 2px solid #7b7b7b;
+    line-height: 21px;
+    width: 90px;
+    margin-left: 5px;
+    height: 25px;
+    font-size: 13px;
+}
+	.round.registerCancel {
+	background-color: white;
+    border: 2px solid #7b7b7b;
+    line-height: 21px;
+     width: 65px;
+    height: 30px;
+}
+	.round.registerSubmit {
+    background: #fb4357;
+    border: 2px solid #fb4357;
+    color: #ffffff;
+    line-height: 21px;
+    width: 65px;
+    height: 30px;
+}
 /*관리자 글쓰기*/
 .adminBoardWrite-main{
 	position: relative;
@@ -495,6 +573,7 @@ form{
 }
 /*CKEditor 사용시 등록, 수정폼*/
 form#register_form, form#update_form{
+	border: none;
 	width:700px;
 	height:300px;
 }
@@ -514,9 +593,9 @@ label{
 input[type="text"],input[type="password"],input[type="email"]{
 	width:200px;
 }
-#register_form input[id="id"]{
-	width:113px;
-}
+/* #register_form input[id="id"]{
+	width:204px;
+} */
 input[id="zipcode"]{
 	width:95px;
 }
@@ -565,15 +644,16 @@ input[id="zipcode"]{
 .qna_search .board_search_box {
     overflow: hidden;
     display: inline-block;
-    width: 190px;
+    width: 200px;
     height: 30px;
     margin: 12px 0px 9px;
     text-align: left;
     background-color: #fff;
 }
+
 .qna_search .board_search_box input {
     float: left;
-    width: 155px;
+    width: 160px;
     height: 12px;
     padding: 9px 0;
     font-size: 13px;
@@ -582,6 +662,7 @@ input[id="zipcode"]{
     vertical-align: middle;
     border: none;
     background-color: #fff;
+    margin-top: 8px;
 }
 .qna_search .board_search_box .btn_search {
     float: right;
@@ -617,7 +698,7 @@ input[id="zipcode"]{
 .c_check_warp .c_txt + a {
     overflow: hidden;
     display: block;
-    width: 80px;
+    width: 90px;
     margin: 0 auto;
     font-size: 12px;
     color: #fff;
@@ -632,6 +713,7 @@ input[id="zipcode"]{
     background-size: 50px;
 }
 .customer_notice_area {
+	vertical-align: bottom;
     margin-top: 36px;
 }
 .notice_area {
@@ -641,7 +723,14 @@ input[id="zipcode"]{
     float: right;
     width: 800px;
     height: 287px;
+    margin-top: 20px;
 }
+.notice_detail {
+    margin-left: 100px;
+}
+.notice_detail .span.tit {
+    margin-left: 35px;
+} 
 .notice_area .txt {
     margin-top: 15px;
 }
@@ -673,6 +762,21 @@ input[id="zipcode"]{
     overflow: hidden;
 }
 /*자주찾는 질문, 공지.뉴스 */
+.c_tab_wrap > ul > li:hover > a,
+.c_tab_wrap > ul > li > a:focus,
+.c_tab_wrap > ul > li.on > a {
+    background-color: #fb4357;
+    color: #fdfcf0;
+    width: 87px;
+}
+.c_tab > li > a {
+    vertical-align: middle;
+    text-decoration: none;
+    display: inline-block;
+    width: 87px;
+    height: 42px;
+    
+}
 .c_tab_wrap {
     position: relative;
     margin-top: 15px;
@@ -703,6 +807,7 @@ ul.c_tab.type_free {
 }
 .c_tab > li > a{
 	color: #fff;
+	
 }
 .c_tab > li.on {
     width: 88px;
@@ -713,7 +818,14 @@ ul.c_tab.type_free {
     padding-top: 10px;
     margin-left: 10px;
 }
-
+span.answer0{
+	color: blue;
+	font-weight: 700;
+}
+span.answer1{
+	color: red;
+	font-weight: 700;
+}
 /*====무비차트====*/
 .movie-image img {
 	width: 170px;
@@ -796,7 +908,7 @@ input#mymovie{
 	margin-bottom: 10px;
 }
 input#movie_name{
-	width:600px;
+	width:500px;
 	height: 20px;
 }
 input#movie_content{
@@ -1210,4 +1322,15 @@ background: linear-gradient(0deg, rgba(255,151,0,1) 0%, rgba(251,75,2,1) 100%);
 }
 .btn-7 span:hover:after {
   width: 100%;
+}
+/*영화 등록*/
+.movieWrite {
+    width: 100%;
+    margin: 0 auto;
+    height: 750px;
+}
+form#movieRegister_form, form#movieUpdate_form {
+    border: none;
+    width: 900px;
+    height: 300px;
 }

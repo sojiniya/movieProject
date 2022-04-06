@@ -5,7 +5,67 @@ $(function(){
 	
 	//댓글 목록
 	function selectData(pageNum,board_num){
+		currentPage = pageNum;
 		
+		//로딩 이미지 노출
+		//$('#loading').show();
+		
+		$.ajax({
+			type:'post',
+			data:{pageNum:pageNum, board_num:board_num},
+			url:'listReply.do',
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(param){
+				//로딩 이미지 감추기
+				//$('#loading').hide();
+				//count = param.count;
+				//rowCount = param.rowCount;
+				
+				//if(pageNum == 1){
+					//처음 호출시는 해당 ID의 div 내부 내용물 제거
+					//$('#output').empty();
+				//}
+				
+				//댓글 목록 작업
+				$(param.list).each(function(index,item){
+					let output = '<div class="item">';
+					output += '<h4>' + item.id + '</h4>';
+					output += '<div class="sub-item">';
+					output += '<p>' + item.reply_num +'</p>';
+					output += '<p>' + item.re_content.replace(/\r\n/g/, '<br>') + '</p>';
+					
+					if(item.re_mdate){
+						output += '<span class="modify-date">최근 수정일: ' + item.re_mdate + '</span>';
+					}else{
+						output += '<span class="modify-date">등록일: ' + item.re_date + '</span>';
+					}
+					
+					output += '<hr size="1" noshade>';
+					output += '</div>';
+					output += '</div>';
+					
+					//문서객체에 추가
+					$('#output').append(output);
+				});
+				
+				//paging button 처리
+				if(currentPage>=Math.ceil(count/rowCount)){
+					//다음 페이지가 없음
+					$('.paging-button').hide();
+				}else{
+					//다음 페이지가 존재
+					$('.paging-button').show();
+				}
+				
+			},
+			error:function(){
+				//로딩 이미지 감추기
+				$('#loading').hide();
+				alert('네트워크 오류 발생');
+			}
+		});
 	}
 	//다음 댓글 보기 버튼 클릭시 데이터 추가
 	
@@ -48,7 +108,6 @@ $(function(){
 	});
 	
 	//댓글 작성 폼 초기화
-	
 	function initForm(){
 		$('textarea').val('');
 		$('#re_first .letter-count').text('300/300');

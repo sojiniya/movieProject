@@ -42,8 +42,9 @@
 		</div>
 	</div>
 	<div class="customer_notice_area">
-		<div class="notice_area">
-			<a href="${pageContext.request.contextPath}/board/newsList.do">
+		<div class="notice_area">	
+			<div class="notice_detail" style="marging:none; padding:none;">
+			<a class="c1_tit" href="${pageContext.request.contextPath}/board/newsList.do">
 				<span class="tit">공지/뉴스</span>
 			</a>
 			
@@ -53,13 +54,14 @@
 			<ul class="txt">
 				<li>
 					<p style="display:none">${status.index}</p>
-					<a href="qnaDetail.do?board_num=${board.board_num}">[${board.cate_name}] ${board.board_title}</a>
-					<span class="day">${board.board_reg_date}</span>
+					<a  class="c1_txt" href="qnaDetail.do?board_num=${board.board_num}">[${board.cate_name}] ${board.board_title}</a>
+					<span class="c1_txt">${board.board_reg_date}</span>
 					
 				</li>
 			</ul>
 		
 			</c:forEach>
+			</div>
 		</div>
 	</div>
 	</div>
