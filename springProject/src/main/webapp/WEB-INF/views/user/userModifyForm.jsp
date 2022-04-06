@@ -3,52 +3,152 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <script src="${pageContext.request.contextPath}/resources/css/hyoen.css"></script>   
 <!DOCTYPE html>
-<div class="page-main">
-		<h2>${member.mem_name}님의 회원정보수정</h2>
-		<form:form modelAttribute="memberVO" action="update.do" id="modify_form">
-			<form:errors element="div" cssClass="error-color"/>
-			<ul>
-				<li>
-					<form:label path="mem_phone">전화번호</form:label> 
-					<form:input path="mem_phone"/>
-					<form:errors path="mem_phone" cssClass="error-color"/>
-				</li>
-				<li>
-					<form:label path="mem_email">이메일 </form:label>
-					<form:input path="mem_email"/>
-					<form:errors path="mem_email" cssClass="error-color"/>
-				</li>
-				<li>
-					<form:label path="mem_zipcode">우편번호</form:label> 
-					<form:input path="mem_zipcode"/> 
-					<input type="button" onclick="sample2_execDaumPostcode()" value="우편변호 찾기">
-					<form:errors path="mem_zipcode"/>
-				</li>
-				<li>
-					<form:label path="mem_address">주소</form:label>
-					<form:input path="mem_address"/> 
-					<form:errors path="mem_address" cssClass="error-color"/>
-				</li>
-			</ul>
-			<div class="align-center">
-				<form:button>전송</form:button>
-				<input type="button" value="홈으로"
-					onclick="location.href='${pageContext.request.contextPath}/user/myPage.do'">
-			</div>
-		</form:form>
-		<!-- 우편번호 스크립트 시작 -->
-		<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
-		<div id="layer"
-			style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
-			<img src="//t1.daumcdn.net/postcode/resource/images/close.png"
-				id="btnCloseLayer"
-				style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
-				onclick="closeDaumPostcode()" alt="닫기 버튼">
-		</div>
+<style type="text/css">
+span,  ul, li, fieldset {
+	font-family: 'Noto Sans KR', 'CJONLYONENEW', '맑은 고딕', '돋움', Dotum, sans-serif;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    word-break: break-all;
+}
 
-		<script
-			src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-		<script>
+.wrap-login{
+	position:relative;
+	padding:100px 200px 60px;
+}
+.wrap-login h3{height:auto;margin:0;background:none;line-height:1.2;text-align:left; color:#222222; font-size:15px;}
+.wrap-login h3 >  strong{ color:#fb4357;}
+.sect-login{ width:541px; }
+.wrap-login .tab-menu-round > li{ width:100px;}
+.box-login{
+	padding:20px 0px 0 70px; 
+	border-top:2px solid #898987; 
+	border-bottom:2px solid #898987; 
+	height: 266px;
+}
+
+/*버튼*/
+.box-login button[type="submit"] {
+    width: 150px;
+    height: 42px;
+    line-height: 37px;
+    left: 0;
+    position: static;
+    margin-top: 60px;
+    margin-left:-200px;
+    padding: 2px;
+    background: #fb4357;
+    text-align: center;
+    color:white;
+}
+
+.sect-login > .box-login fieldset {
+    position: relative;
+    display: block;
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+    padding-block-start: 20px;
+    padding-inline-start: 0.75em;
+    padding-inline-end: 0.75em;
+    padding-block-end: 0.625em;
+    min-inline-size: min-content;
+}
+
+label{
+	padding:20px 15px 15px 10px;
+}
+input[name="mem_phone"]{
+	width:215px;
+	margin-top:16px;
+	margin-left:11.5px;
+}
+input[name="mem_email"]{
+	width:215px;
+	margin-top:16px;
+	margin-left:23px;
+}
+input[name="mem_zipcode"]{
+	width:215px;
+	margin-top:16px;
+	margin-left:11.5px;
+}
+
+input[name="mem_address"]{
+	width:215px;
+	margin-top:16px;
+	margin-left:35px;
+}
+input[name="mem_zipcode_btn"]{
+	margin-top:10px;
+	margin-left:10px;
+}
+input[value="이전 페이지"]{
+	width: 150px;
+    height: 42px;
+	margin-top: 60px;
+    margin-left:10px;
+    padding: 2px;
+    background: #fb4357;
+    text-align: center;
+    color:white;
+    border:none;
+}
+
+</style>
+<div class="wrap-login">
+	<div class="sect-login">
+		<h2>${member.mem_name}님의회원정보수정</h2>
+		<div class="box-login">
+			<form:form modelAttribute="memberVO" action="update.do"
+				id="modify_form">
+				<form:errors element="div" cssClass="error-color" />
+				<fieldset>
+				<ul>
+					<li>
+						<form:label path="mem_phone">전화번호</form:label> 
+						<form:input path="mem_phone" /> 
+						<form:errors path="mem_phone" cssClass="error-color" name="mem_phone"/>
+					</li>
+					<li>
+						<form:label path="mem_email">이메일 </form:label> 
+						<form:input path="mem_email" /> 
+						<form:errors path="mem_email" cssClass="error-color" name="mem_email"/></li>
+					<li>
+						<form:label path="mem_zipcode">우편번호</form:label>
+						<form:input path="mem_zipcode" name="mem_zipcode" />
+						<input type="button"  onclick="sample2_execDaumPostcode()" value="우편변호 찾기" name="mem_zipcode_btn">
+						<form:errors path="mem_zipcode" />
+					</li>
+					<li>
+						<form:label path="mem_address">주소</form:label>
+						<form:input path="mem_address" name="mem_address"/>
+						<form:errors path="mem_address" cssClass="error-color" />
+					</li>
+				</ul>
+				<div class="align-center">
+					<form:button>회원정보 수정하기</form:button>
+					<input type="button" value="이전 페이지"
+						onclick="location.href='${pageContext.request.contextPath}/user/myPage.do'">
+				</div>
+				</fieldset>
+			</form:form>
+		</div>
+	</div>
+	<!-- 우편번호 스크립트 시작 -->
+	<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
+	<div id="layer"
+		style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
+		<img src="//t1.daumcdn.net/postcode/resource/images/close.png"
+			id="btnCloseLayer"
+			style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
+			onclick="closeDaumPostcode()" alt="닫기 버튼">
+	</div>
+
+	<script
+		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script>
     // 우편번호 찾기 화면을 넣을 element
     var element_layer = document.getElementById('layer');
 
@@ -137,6 +237,6 @@
         element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
     }
 </script>
-		<!-- 우편번호 스크립트 끝 -->
-		<!-- 중앙 컨텐츠 끝-->
+	<!-- 우편번호 스크립트 끝 -->
+	<!-- 중앙 컨텐츠 끝-->
 </div>
