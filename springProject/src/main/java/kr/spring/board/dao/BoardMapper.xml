@@ -282,8 +282,12 @@ SELECT * FROM m_board b JOIN m_member m
 		ON b.mem_num=m.mem_num 
 		WHERE b.board_num=#{board_num}
 	</select>
-	
-	
+	<update id="updateReply" parameterType="BoardReplyVO" >
+	UPDATE m_reply SET re_content=#{re_content} WHERE reply_num=#{reply_num}
+	</update>
+	<select id="selectReply" parameterType="Integer" resultType="BoardReplyVO">
+	SELECT * FROM m_reply WHERE reply_num=#{reply_num}
+	</select>
 	<select id="selectRowCountByBoardNum" parameterType="Integer" resultType="Integer">
 		SELECT
 			COUNT(*)

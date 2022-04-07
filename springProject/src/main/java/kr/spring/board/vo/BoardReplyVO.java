@@ -36,7 +36,7 @@ public class BoardReplyVO {
 		return re_date;
 	}
 	public void setRe_date(String re_date) {
-		this.re_date = DurationFromNow.getTimeDiffLabel(re_date);
+		this.re_date = re_date;
 	}
 	public int getBoard_num() {
 		return board_num;

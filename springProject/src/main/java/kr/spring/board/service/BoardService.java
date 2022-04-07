@@ -34,10 +34,10 @@ public interface BoardService {
 	//댓글
 	public List<BoardReplyVO> selectListReply(Map<String,Object> map); //필요없을듯
 	public int selectRowCountReply(Map<String,Object> map);
-	public BoardReplyVO selectReply(Integer re_num);
+	public BoardReplyVO selectReply(Integer reply_num);
 	public void insertReply(BoardReplyVO boardReply);
 	public void updateReply(BoardReplyVO boardReply);
-	public void deleteReply(Integer re_num);
+	public void deleteReply(Integer reply_num);
 	
 	// 권한 체크
 	public Integer compareBrdAuthority(Integer board_num);
