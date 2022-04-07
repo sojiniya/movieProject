@@ -26,7 +26,20 @@ span,  ul, li, fieldset {
 }
 
 .box-login button[type="submit"] > span {display:block;width:258px;height:36px; border:1px solid #ffff; color:#f8f8f8; font-size:15px; font-weight:500;}
-.box-login .login > button[type="submit"] {position:absolute; top:0; left:198px; display:block; width:100px; height:86px; padding:2px; background:#fb4357; line-height:78px; text-align:center;}
+.box-login .login > button[type="submit"] {
+position:absolute;
+top:0; 
+left:198px; 
+display:block; 
+width:100px; 
+height:86px; 
+padding:2px; 
+background:#fb4357; 
+line-height:78px; 
+text-align:center;
+
+}
+
 .sect-login > .box-login fieldset {position:relative;}
 
 /*버튼*/
@@ -35,12 +48,16 @@ span,  ul, li, fieldset {
     height: 42px;
     line-height: 37px;
     left: 0;
+    border: none;
     position: static;
     margin-top: 30px;
-    margin-left:80px;
+    margin-left:120px;
     padding: 2px;
     background: #fb4357;
     text-align: center;
+    color: white;
+    font-weight: 800;
+    font-size: 15px;
 }
 button, button[type='submit'], input[type='button'] {
     cursor: pointer;
@@ -274,7 +291,7 @@ input[name="id"]{
 <!--중앙 컨텐츠 시작-->
 <div class="wrap-login">
 	<div class="sect-login">
-		<h4>회원 탈퇴</h4>
+		<h4>회원탈퇴</h4>
 		<br>
 		<div class="box-login">
 			<h3 class="hidden">회원탈퇴</h3>
@@ -282,16 +299,16 @@ input[name="id"]{
 				id="delete_form">
 				<form:errors element="div" cssClass="error-color" />
 				<fieldset>
-					<p>그동안 저희의 서비스를 이용해주셔서 감사합니다.</p>
+					<p class="marginCheck3">그동안 저희의 서비스를 이용해주셔서 감사합니다.</p>
 					<ul>
 						<li>
-							<form:label path="id">아이디</form:label> 
-							<form:input path="id" name="id"/> 
+							<form:label path="id" class="deleteTit">아이디</form:label> 
+							<form:input path="id" name="id" class="deleteContent" style="margin-left: 14px;" placeholder="아이디를 입력해주세요."/> 
 							<form:errors path="id" cssClass="error-color" />
 						</li>
 						<li style="clear: both;">
-							<form:label path="mem_pw">비밀번호</form:label>
-							<form:password path="mem_pw" />
+							<form:label path="mem_pw" class="deleteTit">비밀번호</form:label>
+							<form:password path="mem_pw" class="deleteContent" placeholder="비밀번호를 입력해주세요."/>
 							<form:errors path="mem_pw" cssClass="error-color" />
 						</li>
 					</ul>

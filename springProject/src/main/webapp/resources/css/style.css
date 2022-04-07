@@ -1447,3 +1447,19 @@ li.modifyPhoto {
     width: 80px;
     height: 30px;
 }
+/*개인정보 회원탈퇴 부분*/
+p.marginCheck3 {
+    margin-left: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    color: gray;
+}
+.deleteTit {
+    font-weight: 600;
+    padding-top: 23px;
+    padding-bottom: 0px;
+}
+.deleteContent{
+	height: 22px;
+	
+}
