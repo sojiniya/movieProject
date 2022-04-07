@@ -32,7 +32,7 @@ $(function(){
 				$(param.list).each(function(index,item){
 					
 					let output = '<div class="item">';
-					output += '<h4>' + item.id + '</h4>';
+					output += '<h4 style= "display:none;">' + item.id + '</h4>';
 					output += '<div class="sub-item">';
 					output += '<p style= "display:none;">' + item.reply_num +'</p>';
 					output += '<p class="content-item">' + item.re_content.replace(/\r\n/g, '<br>') + '</p>';
@@ -147,10 +147,10 @@ $(function(){
 		modifyUI += '<textarea rows="3" cols="50" name="re_content" id="mre_content" class="rep-content">'+content+'</textarea>';
 		modifyUI += '<div id="mre_first"><span class="letter-count">300/300</span></div>';
 		modifyUI += '<div id="mre_second" class="align-right">';
-		modifyUI += '<input type="submit" value="수정">';
-		modifyUI += '<input type="button" value="취소" class="re-reset">';
+		modifyUI += ' <input type="submit" value="수정" class="round inwhite">';
+		modifyUI += ' <input type="button" value="취소" class="re-reset">';
 		modifyUI += '</div>';
-		modifyUI += '<hr size="1" noshade width="96%">';
+		//modifyUI += '<hr size="1" noshade width="96%">';
 		modifyUI += '</form>';
 		
 		initModifyForm();

@@ -18,7 +18,7 @@ table td, table th{
 }
 </style>
 <div class="boardMain">
-	<div class="board-detail">
+	<div class="board-detail1">
 		<c:if test="${board.board_auth eq 0}">
 		<h3 style="margin:0px 10px;">자주찾는 질문</h3>
 		</c:if>

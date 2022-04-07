@@ -18,7 +18,7 @@ table td, table th{
 }
 </style>
 <div class="boardMain">
-	<div class="board-detail">
+	<div class="board-detail1">
 		<h3 style="margin:0px 10px;">문의/건의</h3>
 		<div class="board_view_area">
 			<ul class="top_title_faq">
@@ -79,7 +79,7 @@ table td, table th{
 							<span class="letter-count">300/300</span>
 						</div>                 
 						<div id="re_second" class="align-right">
-							<input type="submit" value="전송">
+							<input type="submit" value="전송" class="round inblue">
 						</div>
 						</c:if>
 					</form>

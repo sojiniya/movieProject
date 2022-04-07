@@ -171,6 +171,9 @@ ul.cols {
     height: 30px;
 }
 /*관리자 글쓰기*/
+.search_area {
+    margin-left: 10px;
+}
 .adminBoardWrite-main{
 	position: relative;
 	width: 820px;
@@ -478,6 +481,7 @@ p.detail_name{
 /*목록*/
 form#search_form{
 	border:none;
+	margin-left: 0px;
 }
 ul.search{
 	width:500px;
@@ -563,6 +567,14 @@ div#output{
 form#mre_form{
 	border:none;
 	margin:5px;
+	padding-left: 0px;
+	padding-right: 30px;
+}
+textarea#mre_content {
+    margin-left: 0px;
+}
+div#mre_second {
+    margin-right: 40px;
 }
 /*등록,수정폼*/
 form{
@@ -610,6 +622,13 @@ input[id="zipcode"]{
 .boardMain .board-detail {
 	margin-top: 30px;
 	margin-bottom: 50px;
+	width: 810px;
+	float: left;
+}
+.boardMain .board-detail1 {
+	margin-top: 30px;
+	margin-bottom: 50px;
+	margin-left: 12px;
 	width: 810px;
 	float: left;
 }
@@ -819,11 +838,11 @@ ul.c_tab.type_free {
     margin-left: 10px;
 }
 span.answer0{
-	color: blue;
+	color: 	#87CEEB;
 	font-weight: 700;
 }
 span.answer1{
-	color: red;
+	color: #FF4500;
 	font-weight: 700;
 }
 /*====무비차트====*/
@@ -961,6 +980,12 @@ input#movie_content{
     color: #ffffff;
     line-height: 21px;
 }
+.round.inblue {
+    background: #87CEEB;
+    border: 2px solid #87CEEB;
+    color: #ffffff;
+    line-height: 21px;
+}
 .round.inred {
     background: #c5291a;
     border: 2px solid #c5291a;
@@ -971,6 +996,29 @@ input#movie_content{
     background: #c0c0c0;
     border: 2px solid #c0c0c0;
     color: #ffffff;
+    line-height: 21px;
+}
+.round.inwhite1 {
+    background: white;
+    border: 2px solid black;
+    color: black;
+    line-height: 21px;
+}
+.modify-btn {
+    background: #c0c0c0;
+    border: 2px solid #c0c0c0;
+    color: #ffffff;
+    line-height: 21px;
+}
+.delete-btn{
+	background: #c5291a;
+    border: 2px solid #c5291a;
+    color: #ffffff;
+    line-height: 21px;
+}
+.re-reset {
+    background-color: white;
+    border: 2px solid #7b7b7b;
     line-height: 21px;
 }
 .search123{
@@ -1327,4 +1375,17 @@ form#movieRegister_form, form#movieUpdate_form {
     border: none;
     width: 900px;
     height: 300px;
+}
+/*관리자 목록*/
+.ad_input{
+	height: 25px;
+	margin-left: 7px;
+	margin-right: 7px;
+}
+.select-height{
+	height: 25px;
+}
+.tbl_area1 {
+    overflow: hidden;
+    padding-top: 10px;
 }

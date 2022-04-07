@@ -53,7 +53,7 @@
 .cols-content .col-aside .snb > ul > li:hover, 
 .cols-content .col-aside .snb > ul > li:focus, 
 .cols-content .col-aside .snb > ul > li.on {margin-top:1px; border-top:0 none}
-.cols-content .col-aside .snb > ul > li > a {width:155px; height:34px; padding-left:10px; color:#222; font-weight:500; font-size:14px; line-height:34px;}
+.cols-content .col-aside .snb > ul > li > a {width:155px; height:34px; color:#222; font-weight:500; font-size:14px; line-height:34px;}
 .cols-content .col-aside .snb > ul > li:hover > a, 
 .cols-content .col-aside .snb > ul > li > a:focus,
 .cols-content .col-aside .snb > ul > li.on > a {background-color:#fb4357; color:#fdfcf0;}
@@ -68,7 +68,7 @@
 .cols-content .col-aside .snb li ul {padding:15px 0;}
 .cols-content .col-aside .snb li li {margin-top:10px;}
 .cols-content .col-aside .snb li li:first-child {margin-top:0;}
-.cols-content .col-aside .snb li li > a {width:125px; height:14px; padding:0 0 0 35px; font-size:12px; line-height:14px;white-space: nowrap;letter-spacing: -0.02em;}
+.cols-content .col-aside .snb li li > a {width:125px; height:14px; padding:0 0 0 12px; font-size:12px; line-height:14px;white-space: nowrap;letter-spacing: -0.02em;}
 .cols-content .col-aside .snb li li:hover > a,
 .cols-content .col-aside .snb li li > a:focus,
 .cols-content .col-aside .snb li li.on > a {background:url(../images/common/ico/ico_smenu_hand.png) no-repeat 0 0; color:#fb4357;}
