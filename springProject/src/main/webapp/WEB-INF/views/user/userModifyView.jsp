@@ -87,8 +87,68 @@
 		
 	});
 </script>
-	<!-- 중앙 컨텐츠 시작 -->
-	<div class="page-main">
+<style type="text/css">
+span,  ul, li, fieldset {
+	font-family: 'Noto Sans KR', 'CJONLYONENEW', '맑은 고딕', '돋움', Dotum, sans-serif;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    word-break: break-all;
+}
+
+.wrap-login{
+	position:relative;
+	padding:100px 200px 60px;
+}
+.wrap-login h3{height:auto;margin:0;background:none;line-height:1.2;text-align:left; color:#222222; font-size:15px;}
+.wrap-login h3 >  strong{ color:#fb4357;}
+.sect-login{ width:541px; }
+.wrap-login .tab-menu-round > li{ width:100px;}
+.box-login{
+	padding:20px 0px 0 70px; 
+	border-top:2px solid #898987; 
+	border-bottom:2px solid #898987; 
+	height: 400px;
+}
+
+/*버튼*/
+.box-login button[type="submit"] {
+    width: 150px;
+    height: 42px;
+    line-height: 37px;
+    left: 0;
+    position: static;
+    margin-top: 60px;
+    margin-left:-200px;
+    padding: 2px;
+    background: #fb4357;
+    text-align: center;
+    color:white;
+}
+
+.sect-login > .box-login fieldset {
+    position: relative;
+    display: block;
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+    padding-block-start: 20px;
+    padding-inline-start: 0.75em;
+    padding-inline-end: 0.75em;
+    padding-block-end: 0.625em;
+    min-inline-size: min-content;
+}
+
+label{
+	padding:20px 15px 15px 10px;
+}
+
+</style>
+<!-- 중앙 컨텐츠 시작 -->
+<div class="wrap-login">
+	<div class="sect-login">	
+	<div class="box-login">
 		<h2>프로필 사진</h2>
 		<ul>
 			<li>
@@ -108,15 +168,17 @@
 					<input type="button" value="전송" id="photo_submit"> 
 					<input type="button" value="취소" id="photo_reset">
 				</div>
+				<br>
+				<br>
 			</li>
 		</ul>
 		<h2>회원 상세 정보</h2>
 		<ul>
-			<li>이름 : ${member.mem_name}</li>
-			<li>전화번호 : ${member.mem_phone}</li>
-			<li>이메일 : ${member.mem_email}</li>
-			<li>우편번호 : ${member.mem_zipcode}</li>
-			<li>주소 : ${member.mem_address}</li>
+			<li>이름 : ${member.mem_name}</li><br>
+			<li>전화번호 : ${member.mem_phone}</li><br>
+			<li>이메일 : ${member.mem_email}</li><br>
+			<li>우편번호 : ${member.mem_zipcode}</li><br>
+			<li>주소 : ${member.mem_address}</li><br>
 			<li>등급 : 
 			<c:if test="${member.mem_grade < 3}"> 
                         <strong class="txt-purple">브론즈</strong>입니다.             
@@ -136,4 +198,6 @@
 			<input type="button" value="회원탈퇴" onclick="location.href='delete.do'">
 		</p>
 	</div>
+</div>
+</div>
 <!-- 중앙 컨텐츠 끝 -->
