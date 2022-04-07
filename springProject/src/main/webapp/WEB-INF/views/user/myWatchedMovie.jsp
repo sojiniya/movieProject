@@ -4,6 +4,7 @@
 <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/webfont.css" />
 <script src="${pageContext.request.contextPath}/resources/css/hyoen.css"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <script type="text/javascript">
 	function delete_btn(){
 		if(confirm("정말로 삭제하시겠습니까?") == true){
@@ -53,7 +54,7 @@
 									<a id="phototicket_popup_80530" title="포스터 크게 보기" href="">
 										<span class="thumb-image">
 										<!-- 영화 포스터 넣어야함(영화 리스트쪽 하시는거보고 확인하자) --> 
-										<img alt="" src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000080/80530/80530_185.jpg"
+										<img alt="" src="${pageContext.request.contextPath}/movie/imageView.do?movie_num=${watchedMovie.movie_num}"
 											onerror="errorImage(this)" />
 									</span>
 									</a>
@@ -66,8 +67,9 @@
 											id="strong_80530">${watchedMovie.movie_name}</strong>
 										</a>
 									</div>
-									<p class="date">${watchedMovie.movie_date}
-										${watchedMovie.movie_time}</p>
+									<c:set var="MovieDate" value="${watchedMovie.movie_date}"/> 
+									<p class="date">${fn:substring(MovieDate,0,10)}
+										${reserveMovie.movie_time}</p>
 									<p class="theater">CGV${watchedMovie.theater_name}
 										/${watchedMovie.seat_num}석</p>
 								</div>
