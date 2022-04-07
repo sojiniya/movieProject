@@ -102,12 +102,14 @@ public class BoardAjaxController {
 		}
 		
 		Integer user_num = (Integer)session.getAttribute("user_num");
+		Integer user_auth = (Integer)session.getAttribute("user_auth");
 		
 		Map<String,Object> mapJson = new HashMap<String,Object>();
 		mapJson.put("count", count);
 		mapJson.put("rowCount", rowCount);
 		mapJson.put("list", list);
 		mapJson.put("user_num", user_num);
+		mapJson.put("user_auth", user_auth);
 		
 		return mapJson;
 	}
@@ -118,8 +120,9 @@ public class BoardAjaxController {
 	public Map<String,String> modifyReply(BoardReplyVO boardReplyVO,
 			                     HttpSession session,
 			                     HttpServletRequest request){
+		System.out.println("~~~~~~~~~~~~~~~~~~~");
 		logger.info("<<댓글 수정>> : " + boardReplyVO);
-		
+		 
 		Map<String,String> map = new HashMap<String,String>();
 		
 		Integer user_num = (Integer)session.getAttribute("user_num");

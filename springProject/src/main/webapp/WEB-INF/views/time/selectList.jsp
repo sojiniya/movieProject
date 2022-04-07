@@ -4,6 +4,11 @@
 <!-- 중앙 컨텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <style type="text/css">
+ul.memberInfo_wrap {
+    float: right;
+    margin: 10px;
+    padding: 2px;
+}
 .box-image {
  	position:relative;
 }
@@ -32,7 +37,7 @@
 div {
     display: block;
 }
-ul img {
+ul img.grade-round{
    display:inline-block;
 }
 div, ul, li, form, font, a{
@@ -484,7 +489,7 @@ $(function(){
 
 				<div class="info-movie">
 					<span class="movie-pg">
-						<img src="<!-- https://img.cgv.co.kr/R2014/images/common/flag/age/grade-15.png -->" width="20px" height="20px"> <!-- <span class="ico-grade grade-15">15세 이상</span> -->
+						<img class="grade-round" src="<!-- https://img.cgv.co.kr/R2014/images/common/flag/age/grade-15.png -->" width="20px" height="20px"> <!-- <span class="ico-grade grade-15">15세 이상</span> -->
 					</span>
 					<a href="${pageContext.request.contextPath}/movie/movieDetail.do?movie_num=${movieVO.movie_num}" target="_parent">
 					<strong style="font-weight: bold;" class="movie-name"><!-- 극장판 주술회전 --></strong></a> 
