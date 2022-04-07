@@ -21,7 +21,12 @@ form {
     border: 1px solid #000;
     padding: 10px 15px 10px 70px;
 }
-
+#search_form {
+    overflow: hidden;
+    margin-left: 10px;
+    margin-top: -6px;
+    padding: 0px;
+}
 </style>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
