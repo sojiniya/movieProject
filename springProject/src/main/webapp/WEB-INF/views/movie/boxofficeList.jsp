@@ -24,18 +24,20 @@
 </style> 
 <div class="page-main">
    <h2>박스오피스</h2>
+   <span>총30건</span>
+   <hr>
    <c:if test="${count == 0}">
    <div class="result-display">표시할 게시물이 없습니다.</div>
    </c:if>
    <c:if test="${count > 0}">
-   <span>총30건</span>
+   
    <div class="image-cine">
       <c:forEach var="box" items="${list}" end="29" varStatus="status">
       <div class="horizontal-area">
-         <h3>${status.count}</h3>
+         <h3 style="background:#fb4357; color:white; text-align:center; border-radius:5px;">No.${status.count}</h3>
          <img src="${box.url}">
          <p>
-            <span>${box.title}</span><br>
+            <span style="font-weight:bold; font-size:14px;">${box.title}</span><br>
             <c:if test="${box.count != 'None'}">
             <span>${box.count}</span>
             </c:if>
