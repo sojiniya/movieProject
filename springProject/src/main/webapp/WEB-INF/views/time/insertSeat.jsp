@@ -3,12 +3,20 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!-- 중앙 컨텐츠 시작 -->
+<style type="text/css">
+form {
+    width: 355px;
+    margin: 0 auto;
+    border: 1px solid #000;
+    padding: 10px 10px 10px 30px;
+}
+</style>
 <!-- 부트스트랩 라이브러리 -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <div class="page-main">
-	<h2>좌석 등록</h2>
+	<h2 style="padding-left: 135px;">좌석 등록</h2>
 	<form:form modelAttribute="seatVO" action="insertSeat.do" id="seat_form">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
