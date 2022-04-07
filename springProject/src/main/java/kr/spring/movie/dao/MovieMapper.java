@@ -21,7 +21,7 @@ public interface MovieMapper {
 	@Insert("INSERT INTO M_movie (movie_num,movie_name,movie_content,uploadfile,filename,movie_genre,movie_auth,movie_pg,movie_showtm) "
 			+ "VALUES (M_movie_seq.nextval,#{movie_name},#{movie_content},#{uploadfile},#{filename},#{movie_genre},#{movie_auth},#{movie_pg},#{movie_showtm})")
 	public void insertMovie(MovieVO movie); //글 작성
-	public MovieVO selectMovie(MovieVO movieVo); //상세보기
+	public MovieVO selectMovie(int movie_num); //상세보기
 	public void updateMovie(MovieVO movie); //글 수정
 	@Delete("DELETE FROM M_movie WHERE movie_num=#{movie_num}")
 	public void deleteMovie(Integer movie_num); //글 삭제

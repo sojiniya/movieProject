@@ -37,6 +37,7 @@
 			 movie_genre=#{movie_genre},
 			 movie_auth=#{movie_auth},
 			 movie_pg=#{movie_pg},
+			 movie_showtm=#{movie_showtm},
 			  <if test="filename != ''">
 		  	uploadfile=#{uploadfile},
 		  	filename=#{filename}

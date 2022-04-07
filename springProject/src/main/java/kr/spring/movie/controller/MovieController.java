@@ -134,7 +134,7 @@ public class MovieController {
 			movieVo.setMem_num((Integer)session.getAttribute("user_num"));
 		}
 		movieVo.setMovie_num(movie_num);
-		MovieVO movie = movieService.selectMovie(movieVo);
+		MovieVO movie = movieService.selectMovie(movie_num);
 
 		logger.info("<<영화 상세 정보 >> : " + movie);
 		//타이틀 HTML 불허
@@ -149,7 +149,7 @@ public class MovieController {
 	public ModelAndView viewImage(@RequestParam int movie_num) {
 		MovieVO movieVo = new MovieVO();
 		movieVo.setMovie_num(movie_num);
-		MovieVO movie = movieService.selectMovie(movieVo);
+		MovieVO movie = movieService.selectMovie(movie_num);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");

@@ -11,7 +11,7 @@ public interface MovieService {
 	public List<MovieVO> selectList(Map<String,Object> map); //목록 생성
 	public int selectRowCount(Map<String,Object> map); //페이징 처리
 	public void insertMovie(MovieVO movie); //글 작성
-	public MovieVO selectMovie(MovieVO movie); //상세보기
+	public MovieVO selectMovie(int movie); //상세보기
 	public void updateMovie(MovieVO movie); //글 수정
 	public void deleteMovie(Integer movie_num); //글 삭제
 	public void deleteFile(Integer movie_num); //글 파일 삭제

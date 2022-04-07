@@ -70,7 +70,7 @@
 		</ul>
 		<ul class="cols">
 			<li>
-				<textarea name="board_content" class="ck"
+				<textarea name="movie_content" class="ck"
 							placeholder="내용을 입력하세요"></textarea> <script>
 						 function MyCustomUploadAdapterPlugin(editor) {
 					    	editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
