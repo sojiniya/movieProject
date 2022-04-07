@@ -148,17 +148,17 @@ public class BoardAjaxController {
 	@RequestMapping("/board/deleteReply.do")
 	@ResponseBody
 	public Map<String,String> deleteReply(
-			@RequestParam int re_num, HttpSession session){
+			@RequestParam int reply_num, HttpSession session){
 		
 		Map<String,String> map = new HashMap<String,String>();
 		
 		Integer user_num = (Integer)session.getAttribute("user_num");
-		BoardReplyVO db_reply = boardService.selectReply(re_num);
+		BoardReplyVO db_reply = boardService.selectReply(reply_num);
 		if(user_num==null) {//로그인이 되지 않은 경우
 			map.put("result", "logout");
 		}else if(user_num!=null && user_num == db_reply.getMem_num()) {
 			//로그인 되어 있고 로그인한 회원번호와 작성자 회원번호 일치
-			boardService.deleteReply(re_num);
+			boardService.deleteReply(reply_num);
 			map.put("result", "success");
 		}else {
 			//로그인한 회원번호와 작성자 회원번호 불일치

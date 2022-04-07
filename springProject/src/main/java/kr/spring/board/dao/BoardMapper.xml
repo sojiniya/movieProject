@@ -288,12 +288,19 @@ SELECT * FROM m_board b JOIN m_member m
 	<select id="selectReply" parameterType="Integer" resultType="BoardReplyVO">
 	SELECT * FROM m_reply WHERE reply_num=#{reply_num}
 	</select>
+	
 	<select id="selectRowCountByBoardNum" parameterType="Integer" resultType="Integer">
 		SELECT
 			COUNT(*)
 		FROM m_reply mr
 		WHERE mr.board_num = #{board_num}
 	</select>
+	<delete id="deleteReply" parameterType="Integer">
+	DELETE FROM m_reply WHERE reply_num=#{reply_num}
+	</delete>
+	<delete id="deleteReplyByBoardNum" parameterType="Integer">
+	DELETE FROM m_reply WHERE board_num=#{board_num}
+	</delete>
 	
 	<select id="selectAdminMember" resultType="MemberVO">
 		SELECT

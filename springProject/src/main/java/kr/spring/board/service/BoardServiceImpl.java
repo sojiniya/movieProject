@@ -131,7 +131,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void deleteReply(Integer reply_num) {
-		// TODO Auto-generated method stub
+		boardMapper.deleteReply(reply_num);
 		
 	}
 

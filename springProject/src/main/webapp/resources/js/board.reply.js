@@ -221,6 +221,34 @@ $(function(){
 	
 	
 	//댓글 삭제
+	$(document).on('click','.delete-btn',function(){
+		//댓글 번호
+		let reply_num = $(this).attr('data-num');
+		
+		$.ajax({
+			type:'post',
+			url:'deleteReply.do',
+			data:{reply_num:reply_num},
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(param){
+				if(param.result == 'logout'){
+					alert('로그인해야 삭제할 수 있습니다.');
+				}else if(param.result == 'success'){
+					alert('삭제완료');
+					selectData(1,$('#board_num').val());
+				}else if(param.result == 'wrongAccess'){
+					alert('타인의 글을 삭제할 수 없습니다.');
+				}else{
+					alert('댓글 삭제시 오류 발생');
+				}
+			},
+			error:function(){
+				alert('네트워크 오류발생');
+			}
+		});
+	});
 	
 	//초기 데이터(목록) 호출
 	selectData(1,$('#board_num').val());

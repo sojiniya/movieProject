@@ -39,10 +39,10 @@ public interface BoardMapper {
 	//댓글
 	public List<BoardReplyVO> selectListReply(Map<String,Object> map); //필요없을듯
 	public int selectRowCountReply(Map<String,Object> map);
-	public BoardReplyVO selectReply(Integer re_num);
+	public BoardReplyVO selectReply(Integer reply_num);
 	public void insertReply(BoardReplyVO boardReply);
 	public void updateReply(BoardReplyVO boardReply);
-	public void deleteReply(Integer re_num);
+	public void deleteReply(Integer reply_num);
 	//부모글 삭제시 댓글이 존재하면 부모글 삭제전 댓글 삭제
 	public void deleteReplyByBoardNum(Integer board_num);
 	
