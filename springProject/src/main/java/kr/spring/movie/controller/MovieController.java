@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import kr.spring.member.vo.MemberVO;
 import kr.spring.movie.service.MovieService;
 import kr.spring.movie.vo.MovieLikeVO;
 import kr.spring.movie.vo.MovieVO;
@@ -239,6 +241,40 @@ public class MovieController {
 			
 			return map;	
 		}
+		// 검색 후 페이지
+		@RequestMapping("/movie/searchMovie.do")
+		public ModelAndView adminViewMemberList(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
+												@RequestParam(value = "keyfield", defaultValue = "") String keyfield,								
+												@RequestParam(value = "keyword", defaultValue = "") String keyword,
+												HttpSession session) {
+			logger.info("<keyword>> : " + keyword);
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("keyword", keyword);
+			map.put("keyfield", keyfield);
+
+			int count = movieService.searchMovieCount(map);
+			logger.info("<count>> : " + count);
+
+			// 페이지 처리
+			PagingUtil page = new PagingUtil(keyfield,keyword, currentPage, count, 10, 10, "searchMovie.do");
+			map.put("start", page.getStartCount());
+			map.put("end", page.getEndCount());
+
+			List<MovieVO> list = null;
+			if (count > 0) {
+				list = movieService.searchMovieList(map);
+			}
+
+			logger.info("<list>> : " + list);
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("keyword",keyword);
+			mav.setViewName("searchMovie");
+			mav.addObject("count", count);
+			mav.addObject("list", list);
+			mav.addObject("pagingHtml", page.getPagingHtml());
+			return mav;
+		}
+		
 }
 	
 

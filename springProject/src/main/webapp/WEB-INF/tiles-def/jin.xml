@@ -26,6 +26,10 @@
     	<put-attribute name="title" value="박스오피스"/>
     	<put-attribute name="body" value="/WEB-INF/views/movie/boxofficeList.jsp"/>
     </definition>
+    <definition name="searchMovie" extends="main">
+    	<put-attribute name="title" value="영화검색"/>
+    	<put-attribute name="body" value="/WEB-INF/views/movie/searchMovie.jsp"/>
+    </definition>
     
 </tiles-definitions>
 

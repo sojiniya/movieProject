@@ -21,10 +21,10 @@
 	<li><a href="${pageContext.request.contextPath}/movie/boxoffice.do">박스오피스</a></li>
 	<li>
         <div class="search_box">
-        <form action="moviechart.do" id="search_form" method="get">
+        <form action="${pageContext.request.contextPath}/movie/searchMovie.do" id="search_form" method="get">
           <input type="search" maxlength="225" placeholder="스텔라" onfocus="this.placeholder=''" onblur="this.placeholder='스텔라'" id="keyword" name="keyword" value="${param.keyword}"/>
           <input type="submit" value="검색">
-          </form>
+         </form>
         </div>
     </li>
 </ul>

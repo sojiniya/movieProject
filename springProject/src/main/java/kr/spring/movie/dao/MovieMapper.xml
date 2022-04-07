@@ -64,6 +64,26 @@
 		                   ON A.MOVIE_NUM = B.MOVIE_NUM 		
 		WHERE A.MOVIE_NUM = #{movie_num}
     </select>
+    
+     <select id="searchMovieCount" parameterType="map" resultType="Integer">
+		SELECT 
+		   count(*) 
+		FROM M_movie 
+		   WHERE movie_name LIKE '%' || #{keyword} || '%'
+    </select>
+    
+     <select id="searchMovieList" parameterType="map" resultType="movieVO">
+		SELECT 
+		   * 
+		FROM (SELECT a.*, rownum rnum FROM 
+			 	(SELECT * FROM M_movie WHERE movie_name LIKE '%' || #{keyword} || '%')a)
+		<![CDATA[			 	 
+ 		where rnum >= #{start} AND rnum <= #{end}   
+		]]>	
+    </select>
+    
+    
+    
 </mapper>
 
 
