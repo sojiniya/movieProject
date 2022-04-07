@@ -4,6 +4,11 @@
 <!-- 중앙 컨텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <style type="text/css">
+ul.memberInfo_wrap {
+    float: right;
+    margin: 10px;
+    padding: 2px;
+}
 .box-image {
  	position:relative;
 }
