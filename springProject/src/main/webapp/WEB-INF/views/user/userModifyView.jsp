@@ -104,13 +104,14 @@ span,  ul, li, fieldset {
 }
 .wrap-login h3{height:auto;margin:0;background:none;line-height:1.2;text-align:left; color:#222222; font-size:15px;}
 .wrap-login h3 >  strong{ color:#fb4357;}
-.sect-login{ width:541px; }
+.sect-login{ width:541px; float:none;}
 .wrap-login .tab-menu-round > li{ width:100px;}
 .box-login{
-	padding:20px 0px 0 70px; 
+	padding:7px 0px 0 70px; 
 	border-top:2px solid #898987; 
 	border-bottom:2px solid #898987; 
-	height: 400px;
+	height: auto;
+	
 }
 
 /*버튼*/
@@ -147,10 +148,10 @@ label{
 </style>
 <!-- 중앙 컨텐츠 시작 -->
 <div class="wrap-login">
-	<div class="sect-login">	
+	<div class="sect-login">
+	<div class="infoTit">회원 정보</div>	
 	<div class="box-login">
-		<h2>프로필 사진</h2>
-		<ul>
+		<ul class="checkMyPage cols">
 			<li>
 			<c:if test="${empty member.mem_photo}">
 				<img src="${pageContext.request.contextPath}/resources/images/face.png" width="200" height="200" class="my-photo">
@@ -159,21 +160,31 @@ label{
 				<img src="${pageContext.request.contextPath}/user/photoView.do" width="200" height="200" class="my-photo">
 			</c:if>
 			</li>
-			<li>
-				<div class="align-center">
-					<input type="button" value="프로필 사진 수정" id="photo_btn">
+		</ul>
+		
+		<ul class="cols">
+			<li class="modifyPhoto">
+				<div>
+					<input type="button" value="프로필 사진 수정" id="photo_btn" class="round modifyPhoto">
 				</div>
+			</li>
+		</ul>
+	
+		<ul>
+			<li>
 				<div id="photo_choice" style="display: none;">
-					<input type="file" id="upload" accept="image/gif,image/png,image/jpeg">
-					<input type="button" value="전송" id="photo_submit"> 
-					<input type="button" value="취소" id="photo_reset">
+					<input type="file" id="upload" accept="image/gif,image/png,image/jpeg" >
+					<input type="button" value="전송" id="photo_submit" class="round inblue"> 
+					<input type="button" value="취소" id="photo_reset" class="round inwhite1">
 				</div>
 				<br>
 				<br>
 			</li>
 		</ul>
+		
+		<div class="infoDetail">
 		<h2>회원 상세 정보</h2>
-		<ul>
+		<ul class="userInfo">
 			<li>이름 : ${member.mem_name}</li><br>
 			<li>전화번호 : ${member.mem_phone}</li><br>
 			<li>이메일 : ${member.mem_email}</li><br>
@@ -191,13 +202,18 @@ label{
             </c:if>				
 			</li>
 		</ul>
+		</div>
 		<hr size="1" width="100%">
-		<p class="align-right">
-			<input type="button" value="회원정보수정" onclick="location.href='userModify.do'">
-			<input type="button" value="비밀번호변경" onclick="location.href='changePassword.do'">
-			<input type="button" value="회원탈퇴" onclick="location.href='delete.do'">
+		
+		
+		<p class="modifyBtn">
+			<input type="button" value="회원정보수정" class="round inwhite2" onclick="location.href='userModify.do'">
+			<input type="button" value="비밀번호변경" class="round inblue2" onclick="location.href='changePassword.do'">
+			<input type="button" value="회원탈퇴" class="round inred2" onclick="location.href='delete.do'">
 		</p>
+		</div>
+		</div>
 	</div>
-</div>
-</div>
+
+
 <!-- 중앙 컨텐츠 끝 -->
