@@ -204,7 +204,7 @@ button, input[type='submit'], input[type='button'] {
 }
 /*비번*/
 .id-form, .pw-form {
-    width: 215px;
+    width: 215px; 
 }
 
 /*탭*/
