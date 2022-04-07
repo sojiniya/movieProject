@@ -90,9 +90,19 @@ div[class^="sect-"]:after {
 .id-form, .pw-form {
     width: 215px;
 }
-.box-login .login .id-form {
+.id-form {
     margin-bottom: 5px;
     background: url(../images/sprite/sprite_icon.png) 12px -230px no-repeat;
+    background-image: url(../images/sprite/sprite_icon.png);
+    background-position-x: 12px;
+    background-position-y: -230px;
+    background-size: initial;
+    background-repeat-x: no-repeat;
+    background-repeat-y: no-repeat;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
 }
 /*로그인 칸*/
 p {
@@ -130,10 +140,6 @@ input[type="hidden" i] {
     border-radius: initial;
 }
 
-.id-form {
-    margin-bottom: 5px;
-    background: url(../images/sprite/sprite_icon.png) 12px -230px no-repeat;
-}
 .id-form, .pw-form {
     display: block;
     width: 135px;
@@ -161,7 +167,6 @@ form {
     text-indent: 0px;
     text-shadow: none;
     display: inline-block;
-    text-align: start;
     appearance: auto;
     -webkit-rtl-ordering: logical;
     cursor: text;
@@ -191,13 +196,15 @@ button, input[type='submit'], input[type='button'] {
     cursor: pointer;
     margin: 0;
     padding: 0;
+    background-color: white;
+    border: 2px solid #7b7b7b;
+    line-height: 20px;
+    width: 48px;
+    height: 22px;
 }
 /*비번*/
 .id-form, .pw-form {
     width: 215px;
-}
-.id-form {
-    background: url(../images/sprite/sprite_icon.png) 12px -261px no-repeat;
 }
 
 /*탭*/
@@ -322,18 +329,18 @@ ol, ul {
 			<form:form modelAttribute="memberVO" action="login.do" id="login_form">
 			<form:errors element="div" cssClass="error-color"/>
 			<fieldset>
-			<legend>회원 로그인</legend>
+			<legend class="hidden">회원 로그인</legend>
 			<p>아이디와 비밀번호를 입력하신 후, 로그인 버튼을 클릭해주세요.</p>
 			<div class="login">
 				<ul>
 					<li style="clear: both;">
 						<form:label path="id" cssClass="hidden">아이디</form:label>
-						<form:input path="id" cssClass="id-form"/>
+						<form:input path="id" cssClass="id-form" cssStyle="id-form"/>
 						<form:errors path="id" cssClass="error-color"/><br>
 					</li>
 					<li style="clear: both;">
 						<form:label path="mem_pw" cssClass="hidden">비밀번호</form:label>
-						<form:password path="mem_pw" cssClass="pw-form"/>
+						<form:password path="mem_pw" cssClass="pw-form" cssStyle="pw-form"/>
 						<form:errors path="mem_pw" cssClass="error-color"/>
 					</li>
 				</ul>
