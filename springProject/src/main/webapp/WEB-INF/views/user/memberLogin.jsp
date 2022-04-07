@@ -192,7 +192,7 @@ body, form, textarea, select, button, table {
     font-weight: 400;
 }
 
-button, input[type='submit'], input[type='button'] {
+.login-option input[type='button'] {
     cursor: pointer;
     margin: 0;
     padding: 0;
@@ -348,7 +348,7 @@ ol, ul {
 <br>
 			<form:button id="submit" title="로그인"><span>로그인</span></form:button>
 			<div class="login-option align-center" style="text-align: center;padding-right: 230px;"><br>
-				<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+				<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'" id="home-button">
 			</div>
 			</fieldset>
 			</form:form>
