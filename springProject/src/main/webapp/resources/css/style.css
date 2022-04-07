@@ -447,7 +447,7 @@ div#movie_api li{
 }
 .movie_rank{
 	position: absolute;
-	top: 112%;
+	top: 128%;
 	color: white;
 	font-size: 50px;
 }
@@ -921,11 +921,6 @@ input#movie_content{
 .movie_info{
 	margin-top: 30px;
 }
-p.movie_contents{
-	margin-left: 200px;
-	width: 750px;
-	height: 100px;
-}
 .detail_reserve{
 	display: inline-block;
     width: 100px;
@@ -934,7 +929,6 @@ p.movie_contents{
     text-align: center;
     border-radius: 15px;
     padding-top: 13px;
-    margin-left: 25px;
 }
 .star_rating{
 	font-size:0; 
