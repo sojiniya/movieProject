@@ -66,7 +66,7 @@ public interface MemberMovieMapper {
 		public List<MovieReviewVO> selectMyReviewList(Map<String,Object> map);
 
 		//리뷰 디테일 리스트
-		@Select("SELECT * FROM M_review WHERE review_num = #{review_num}")
+		@Select("SELECT * FROM M_review r JOIN M_movie m ON r.movie_num = m.movie_num WHERE review_num = #{review_num}")
 		public MovieReviewVO selectReviewDetail(int review_num);
 		
 		//리뷰 수정하기
