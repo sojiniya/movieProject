@@ -8,7 +8,7 @@
             
 <div class="main_header">
 <div class="contents">
-        <h1 onclick=""><a href="${pageContext.request.contextPath}/main/main.do"><img src="https://img.cgv.co.kr/R2014/images/common/logo/logoRed.png" alt="CGV" /></a><span>CULTUREPLEX</span></h1>
+        <h1 onclick=""><a href="${pageContext.request.contextPath}/main/main.do"><img src="${pageContext.request.contextPath}/resources/images/logo.png" style="width:200px;"/></a></h1>
         <ul class="memberInfo_wrap">
 			
 			<c:if test="${!empty user_num && !empty user_photo}">
