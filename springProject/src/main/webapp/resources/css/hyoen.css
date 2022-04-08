@@ -205,16 +205,60 @@
 
 /*기대되는 영화 , 내가 본 영화, 내가 쓴 평점 box 사이즈*/
 .box-polaroid {
-    width: 850px;
-    height:200px;
+    width: 800px;
+    height:150px;
 }
+.mycgv-main1 {
+    padding-left: 44px;
+    width: 800px;
+}
+.cont1{
+	margin-bottom: 25px;
+}
+.cont2{
+	text-align: right; 
+	padding-bottom: 20px;
+}
+.tit-mycgv > h3 {
+    float: left;
+    font-size: 15px;
+    padding-right: 7px;
+}
+.tit-mycgv2 > h3 {
+    float: left;
+    font-size: 15px;
+    padding-right: 7px;
+}
+.sect-base-booking {
+    border: solid 1px black;
+    margin-top: 14px;
+}
+.box-polaroid.box-size {
+    height: 120px;
+}
+.box-polaroid.box-size1 {
+    border: solid 1px black;
+    margin-top: 25px;
+}
+.box-inner2 {
+    margin: 30px;
+}
+.tit-mycgv2 {
+    margin-bottom: 15px;
+}
+.showLine{
+	padding: 20px 20px 20px 0px;
+    border-top: solid 2px #b8b6aa;
+    border-bottom: solid 2px #b8b6aa;
+}
+
 .sect-mycgv-reserve.movielog.col3 .box-inner {width:265px; padding: 0;text-align: center;line-height: 16px;}
 .sect-mycgv-reserve.movielog.col3 .box-inner:first-child{width:266px}
 .sect-mycgv-reserve.movielog.col3 .box-inner a {display: inline-block;padding: 50px 0 16px;}
 .sect-mycgv-reserve.movielog.col3 h3 {background: none;color: #000;font-size: 16px;margin: 0 auto 2px;line-height: 20px;height: auto;}
-.sect-mycgv-reserve.movielog.col3 .box-inner.preegg {background:url('https://img.cgv.co.kr/R2014/images/common/ico/mycgv/icon_preegg.png') no-repeat 50% 16px;}
-.sect-mycgv-reserve.movielog.col3 .box-inner.watched {background:url('https://img.cgv.co.kr/R2014/images/common/ico/mycgv/icon_watched.png') no-repeat 50% 16px;}
-.sect-mycgv-reserve.movielog.col3 .box-inner.mvdiary {background:url('https://img.cgv.co.kr/R2014/images/common/ico/mycgv/icon_watched.png') no-repeat 50% 16px;}
+.sect-mycgv-reserve.movielog.col3 .box-inner.preegg {background:url('https://img.cgv.co.kr/R2014/images/common/ico/mycgv/icon_preegg.png') no-repeat 50% 16px; padding-top: 20px;}
+.sect-mycgv-reserve.movielog.col3 .box-inner.watched {background:url('https://img.cgv.co.kr/R2014/images/common/ico/mycgv/icon_watched.png') no-repeat 50% 16px; padding-top: 20px;}
+.sect-mycgv-reserve.movielog.col3 .box-inner.mvdiary {background:url('https://img.cgv.co.kr/R2014/images/common/ico/mycgv/icon_watched.png') no-repeat 50% 16px; padding-top: 20px;}
 .tab_mycgv {height: 37px;position: relative;margin-bottom:10px;}
 .tab_mycgv .select_wrap {position: absolute;right: 0;top: 0;}
 .tab_mycgv ul li {width: 169px;background: #858583;color: #fff;float: left;line-height: 37px;text-align: center;margin-right:1px;font-size: 14px;position: relative;}

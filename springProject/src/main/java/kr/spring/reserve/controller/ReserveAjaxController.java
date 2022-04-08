@@ -189,4 +189,21 @@ public class ReserveAjaxController {
 		return mapJson;
 	}
 	
+	//예매취소
+	@RequestMapping("/reserve/deletereserve.do")
+	@ResponseBody
+	public void deletereserve(@RequestParam(value="reserve_num") Integer reserve_num,
+			 				  @RequestParam(value="revseat_num") Integer revseat_num) {
+		
+		logger.info("<<전달받은 예매 번호>> reserve_num : " + reserve_num);
+		logger.info("<<전달받은 예매 좌석번호>> revseat_num : " + revseat_num);
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("reserve_num", reserve_num);
+		map.put("revseat_num", revseat_num);
+		
+		reserveService.deletereserve(map);
+
+	}
+	
 }

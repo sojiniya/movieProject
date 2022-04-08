@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.reserve.dao.ReserveMapper;
 import kr.spring.reserve.vo.ReserveVO;
@@ -100,6 +101,13 @@ public class ReserveServiceImpl implements ReserveService{
 	@Override
 	public void insertreserve(ReserveVO reserveVO) {
 		reserveMapper.insertreserve(reserveVO);
+	}
+
+	@Override
+	@Transactional
+	public void deletereserve(Map<String, Object> map) {
+		reserveMapper.deletereserve(map);
+		reserveMapper.deletereservseat(map);
 	}
 
 

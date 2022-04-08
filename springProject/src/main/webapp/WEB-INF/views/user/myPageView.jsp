@@ -46,6 +46,7 @@
     </div>
 </div>
 
+<div class="mycgv-main1">
 <div class="sect-mycgv-reserve movielog col3">
     <div class="box-polaroid">
         <div class="box-inner preegg">
@@ -68,24 +69,27 @@
         </div>
     </div>
 </div>
-
+<div class="cont1">
+<div class="cont2"><span>예매번호로만 티켓을 찾을 수 있으니 반드시 확인 부탁드립니다.</span></div>
 <div class="tit-mycgv">
-	<h3>MY 예매내역</h3>
+	<h3 >MY 예매내역</h3>
 	<p>
 		<em>0건</em> <a href="/user/mycgv/reserve/">예매내역 더보기</a>
 	</p>
-	<span>예매번호로만 티켓을 찾을 수 있으니 반드시 확인 부탁드립니다.</span>
+	
 </div>
 
 <div class="sect-base-booking">
-	<div class="box-polaroid">
+	<div class="box-polaroid box-size">
 		<div class="box-inner">
 			<div class="lst-item">고객님의 최근 예매내역이 존재하지 않습니다.</div>
 		</div>
 	</div>
 </div>
-<div class="box-inner">
-	<div class="tit-mycgv">
+
+<div class="box-polaroid box-size1">
+<div class="box-inner2">
+	<div class="tit-mycgv2">
 		<h3>MY Q&amp;A</h3>
 		<p>
 			<em>0건</em> <a href="/user/mycgv/inquiry/qna/list.aspx">MY
@@ -93,9 +97,14 @@
 		</p>
 	</div>
 	<div class="col-myqna">
-		<ul>
+		
+		<ul class="showLine">
 			<li>고객님의 1:1 문의내역이 존재하지 않습니다.</li>
 		</ul>
+		
 	</div>
+</div>
+</div>
+</div>
 </div>
 

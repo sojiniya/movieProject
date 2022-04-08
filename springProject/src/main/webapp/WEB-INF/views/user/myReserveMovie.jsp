@@ -3,6 +3,40 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
 <!DOCTYPE html>
+<!-- 2022.04.08 - 예매 취소를 위한 스크립트문 추가 // 정동윤 -->
+<script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.btn-del').click(function(){
+			let reserve_num = $(this).attr('reserve-idx'); // 예약된 예매 번호
+			let revseat_num = $(this).attr('revseat-idx'); // 예약된 좌석 번호
+			
+			let check = confirm('예매를 취소하시겠습니까?');
+			
+			if(check){ // 예매 취소를 할 경우 ajax 처리
+				
+				$.ajax({
+					type:'post',
+					data:{reserve_num:reserve_num,revseat_num:revseat_num},
+					url:'/project/reserve/deletereserve.do',
+					//dataType:'json',
+					cache:false,
+					timeout:30000,
+					success:function(){
+						alert('예매가 취소되었습니다.');
+						location.href='${pageContext.request.contextPath}/user/myReserveMovie.do';
+					},
+					 error:function(request,status,error){
+					    alert("[네트워크 오류] code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+					}
+				}); // end of ajax	
+				
+			}
+			
+		}); // end of click (예매 취소 클릭 시 이벤트 발생)
+		
+	});
+</script>
 <div class="cols-content">
 	<div class="col-detail">
 		<div class="movielog-detail-wrap">
@@ -37,7 +71,8 @@
 									<p class="theater">CGV${reserveMovie.theater_name}
 										/${reserveMovie.seat_num}석</p>
 								</div>
-								<button type="button" data="329787502" class="btn-del">
+								<!-- 2022.04.08 예매취소 기능을 위해  reserve-idx="${reserveMovie.reserve_num}" 추가 // 정동윤-->
+								<button type="button" data="329787502" class="btn-del" reserve-idx="${reserveMovie.reserve_num}" revseat-idx="${reserveMovie.revseat_num}">
 									<img
 										src="https://img.cgv.co.kr/R2014/images/common/btn/btn_del.gif"
 										alt="${reserveMovie.movie_name}">
