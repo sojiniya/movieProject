@@ -60,6 +60,4 @@ form {
 		</div>
 	</form:form>
 </div>
-
-	
 <!-- 중앙 컨텐츠 끝 -->
