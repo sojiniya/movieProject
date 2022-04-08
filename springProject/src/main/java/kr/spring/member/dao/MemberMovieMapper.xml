@@ -3,6 +3,20 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.spring.member.dao.MemberMovieMapper">
+	<select id="selectReviewForMovieChart" parameterType="map" resultType="MovieReviewVO" >
+        SELECT
+        	*
+        FROM (SELECT a.*, rownum rnum FROM(
+        	   SELECT * FROM M_review r JOIN M_movie m ON r.movie_num = m.movie_num 
+        	   							JOIN M_member mm ON r.mem_num = mm.mem_num 
+        	   WHERE r.movie_num =#{movie_num}
+        	  )a)
+        <![CDATA[
+			WHERE rnum >= #{start} AND rnum <= #{end}
+				
+		]]>	
+		
+	</select>
 	<select id="selectMyWatchedMovieCount" parameterType="map" resultType="integer" >
 		SELECT 
 		   count(*) 

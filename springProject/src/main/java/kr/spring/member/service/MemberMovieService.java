@@ -49,6 +49,12 @@ public interface MemberMovieService {
 			//리뷰 디테일 리스트
 			public MovieReviewVO selectReviewDetail(int review_num);
 			
+			//무비 디테일에 뿌리기 위한 리뷰 리스트
+			public List<MovieReviewVO> selectReviewForMovieChart(Map<String,Object> map);
+			
+			//무비 디테일에 뿌리기 위한 리뷰 카운트
+			public int countReviewForMovieChart(Map<String,Object> map);
+			
 			//리뷰 수정하기
 			public void updateMyReview(MovieReviewVO review);
 			

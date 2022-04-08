@@ -22,9 +22,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.member.service.MemberMovieService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.movie.service.MovieService;
 import kr.spring.movie.vo.MovieLikeVO;
+import kr.spring.movie.vo.MovieReviewVO;
 import kr.spring.movie.vo.MovieVO;
 import kr.spring.util.PagingUtil;
 import kr.spring.util.StringUtil;
@@ -35,6 +37,8 @@ public class MovieController {
 	
 	@Autowired
 	private MovieService movieService;
+	@Autowired
+	private MemberMovieService memberMovieService;
 	
 	//자바빈(VO) 초기화
 	@ModelAttribute
@@ -128,9 +132,27 @@ public class MovieController {
 	
 	//영화 상세 정보
 	@RequestMapping("/movie/movieDetail.do")
-	public ModelAndView process(@RequestParam int movie_num, HttpSession session) {
+	public ModelAndView process(@RequestParam int movie_num, 
+								@RequestParam(value ="pageNum",defaultValue="1") int currentPage,
+								HttpSession session) {
+		
 		logger.info("<<영화 상세 정보 - 영화 번호>> : " + movie_num);
 		MovieVO movieVo = new MovieVO();
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("movie_num", movie_num);
+		
+		int count = memberMovieService.countReviewForMovieChart(map);
+		logger.info("CountReview : " + count);
+		
+		PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "movieDetail.do");
+		map.put("start", page.getStartCount());
+		map.put("end", page.getEndCount());
+		
+		List<MovieReviewVO> reviewVO = null;
+		if(count > 0) {
+			reviewVO = memberMovieService.selectReviewForMovieChart(map);
+		}
 		
 		if((Integer)session.getAttribute("user_num") != null) {
 			movieVo.setMem_num((Integer)session.getAttribute("user_num"));
@@ -142,8 +164,11 @@ public class MovieController {
 		//타이틀 HTML 불허
 		movie.setMovie_name(StringUtil.useNoHtml(movie.getMovie_name()));
 		
-		                        //타일스 설정      속성명      속성값
-		return new ModelAndView("movieDetail","movie",movie);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("movieDetail");
+		mav.addObject("movie",movie);
+		mav.addObject("reviewVO",reviewVO);
+		return mav;
 	}
 	
 	//이미지 출력
@@ -247,6 +272,7 @@ public class MovieController {
 												@RequestParam(value = "keyfield", defaultValue = "") String keyfield,								
 												@RequestParam(value = "keyword", defaultValue = "") String keyword,
 												HttpSession session) {
+			logger.info("<keyword>> : " + keyword);
 			logger.info("<keyword>> : " + keyword);
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("keyword", keyword);

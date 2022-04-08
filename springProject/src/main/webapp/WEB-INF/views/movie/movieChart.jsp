@@ -4,20 +4,26 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script
 	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
+<style>
+	#search_form2{
+		padding-left:480px;
+		border:none;
+	}
+</style>
 <div class="page-main">
 	<div class="tit-moviechart">
 		<h1>무비차트</h1>
 	</div>
 	<div class="order-moviechart">
 		<div class="align-right">
-			<select id="order_type" name="order-type">
-				<option title="현재 선택됨" selected value="1">예매율순</option>
-				<option value="2">평점순</option>
-				<option value="3">관람객순</option>
-			</select>
-			<button type="button" class="round gray">
-				<span>GO</span>
-			</button>
+			<form id="search_form2" action="searchMovie.do">
+				<select id="order_type" name="order-type">
+					<option title="현재 선택됨" selected value="1">예매율순</option>
+					<option value="2">평점순</option>
+					<option value="3">관람객순</option>
+				</select>
+			<input type="submit" value="GO">
+			</form>
 		</div>
 		<div class="list-moviechart">
 			<c:if test="${!empty user_num && user_auth == 3}">

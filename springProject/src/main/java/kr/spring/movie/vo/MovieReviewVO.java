@@ -18,6 +18,7 @@ public class MovieReviewVO {
 	private String filename;//파일명
 	private int total_rate;
 	private String movie_name;
+	private String id;
 	
 	
 	public int getReview_num() {
@@ -87,6 +88,13 @@ public class MovieReviewVO {
 	}
 	public void setMovie_name(String movie_name) {
 		this.movie_name = movie_name;
+	}
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	@Override
 	public String toString() {

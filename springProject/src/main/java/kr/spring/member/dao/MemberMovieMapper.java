@@ -69,6 +69,13 @@ public interface MemberMovieMapper {
 		@Select("SELECT * FROM M_review r JOIN M_movie m ON r.movie_num = m.movie_num WHERE review_num = #{review_num}")
 		public MovieReviewVO selectReviewDetail(int review_num);
 		
+		//무비 디테일에 뿌리기 위한 리뷰 카운트
+		@Select("SELECT COUNT(*) FROM m_review WHERE movie_num = #{movie_num}")
+		public int countReviewForMovieChart(Map<String,Object> map);
+		
+		//무비 디테일에 뿌리기 위한 리뷰 리스트
+		public List<MovieReviewVO> selectReviewForMovieChart(Map<String,Object> map);
+		
 		//리뷰 수정하기
 		@Update("UPDATE M_review SET review_rate =#{review_rate},review_content=#{review_content} WHERE review_num = #{review_num}")
 		public void updateMyReview(MovieReviewVO review);

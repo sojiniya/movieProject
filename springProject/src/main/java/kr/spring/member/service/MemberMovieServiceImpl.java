@@ -75,6 +75,14 @@ public class MemberMovieServiceImpl implements MemberMovieService{
 	public List<MovieReviewVO> selectMyReviewList(Map<String, Object> map) {
 		return MemberMovieMapper.selectMyReviewList(map);
 	}
+	@Override
+	public int countReviewForMovieChart(Map<String, Object> map) {
+		return MemberMovieMapper.countReviewForMovieChart(map);
+	}
+	@Override
+	public List<MovieReviewVO> selectReviewForMovieChart(Map<String,Object> map) {
+		return MemberMovieMapper.selectReviewForMovieChart(map);
+	}
 
 	@Override
 	public void updateMyReview(MovieReviewVO review) {
@@ -93,6 +101,8 @@ public class MemberMovieServiceImpl implements MemberMovieService{
 		review.setTotal_rate(MemberMovieMapper.countTotalMovieRate(review));
 		MemberMovieMapper.updateMovieRate(review);
 	}
+
+
 
 	}
 	
