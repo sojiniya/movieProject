@@ -191,7 +191,8 @@ $(function(){
 		//데이터 전송
 		$.ajax({
 			url:'updateReply.do',
-			type:data,
+			type:'post',
+			data:data,
 			dataType:'json',
 			cache:false,
 			timeout:30000,
