@@ -76,22 +76,21 @@ table td, table th{
 					</script>
 					</c:if>
 					</c:if>
-					<button type="button" class="round inblack" id="btn_list">
+					<c:if test="${board.cate_num eq 1 or board.cate_num eq 2 or board.cate_num eq 3 or board.cate_num eq 4}">
+					<button type="button" class="round inblack" id="btn_list" 
+					onclick="location.href='${pageContext.request.contextPath}/board/qnaList.do'">
 						<span>목록</span>
 					</button>
+					</c:if>
+					<c:if test="${board.cate_num eq 5 or board.cate_num eq 6 or board.cate_num eq 7}">
+					<button type="button" class="round inblack" id="btn_list" 
+					onclick="location.href='${pageContext.request.contextPath}/board/newsList.do'">
+						<span>목록</span>
+					</button>
+					</c:if>
+					
 				</div>
-				<!-- <div class="btm_sup_list">
-					<ul class="line_sup_next">
-						<li class="stit">이전글</li>
-						<li class="name"><a href="#" class="txt"></a></li>
-						<li>등록일<span class="check_num"></span></li>
-					</ul>
-					<ul class="line_sup_prev">
-						<li class="stit">다음글</li>
-						<li class="name"><a href="#" class="txt"></a></li>
-						<li>등록일<span class="check_num"></span></li>
-					</ul>
-				</div> -->
+				
 		</div>
 		
 	</div>
