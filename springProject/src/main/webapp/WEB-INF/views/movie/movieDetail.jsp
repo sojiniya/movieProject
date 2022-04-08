@@ -93,6 +93,19 @@ function clickLike(likeYn){
 
 	<hr size="1" width="100%" noshade="noshade">
 	<div class="align-right">
+		<c:if test="${!empty user_num && user_auth == 3}">
+		<input type="button" value="수정" onclick="location.href='movieUpdate.do?movie_num=${movie.movie_num}'"> 
+		<input type="button" value="삭제" id="delete_btn"> 
+		<script type="text/javascript">
+			let delete_btn = document.getElementById('delete_btn');
+			delete_btn.onclick=function(){
+				let choice = confirm('삭제하시겠습니까?');
+				if(choice){
+					location.replace('movieDelete.do?movie_num=${movie.movie_num}');
+				}
+			};
+		</script>
+		</c:if>
 		<input type="button" value="목록" onclick="location.href='movieChart.do'">
 	</div>
 	<c:forEach var="reviewVO" items="${reviewVO}">
