@@ -78,5 +78,5 @@
 			</c:if>
 		</div>
 	</div>
-	<div class="align-center">${pagingHtml}</div>
+	<div class="align-center" style="clear:both;">${pagingHtml}</div>
 </div>
