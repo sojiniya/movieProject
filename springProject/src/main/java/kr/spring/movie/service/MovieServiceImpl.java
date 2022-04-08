@@ -115,6 +115,16 @@ public class MovieServiceImpl implements MovieService{
 		return movieMapper.searchMovieList(map);
 	}
 
+	@Override
+	public List<MovieVO> searchReserveRateList(Map<String, Object> map) {
+		return movieMapper.searchReserveRateList(map);
+	}
+
+	@Override
+	public List<MovieVO> searchAudienceRateList(Map<String, Object> map) {
+		return movieMapper.searchAudienceRateList(map);
+	}
+
 	
 	/*
 	 * @Override public void insertTheater(MovieVO movie) {

@@ -68,19 +68,60 @@
      <select id="searchMovieCount" parameterType="map" resultType="Integer">
 		SELECT 
 		   count(*) 
-		FROM M_movie 
-		   WHERE movie_name LIKE '%' || #{keyword} || '%'
+		FROM M_movie <!-- keyfield == 1:예매율순 2:평점순 3:관람객순 -->
+			<where>
+				<if test="keyword != '' and keyfield == ''">
+			   		movie_name LIKE '%' || #{keyword} || '%'
+				</if>
+			</where>
     </select>
     
      <select id="searchMovieList" parameterType="map" resultType="movieVO">
 		SELECT 
-		   * 
+		   * 	
 		FROM (SELECT a.*, rownum rnum FROM 
-			 	(SELECT * FROM M_movie WHERE movie_name LIKE '%' || #{keyword} || '%')a)
+			 	(SELECT * FROM M_movie 
+			 	<where>	<!-- keyfield == 1:예매율순 2:평점순 3:관람객순 -->
+					<if test="keyword !='' and keyfield ==''">
+			 			movie_name LIKE '%' || #{keyword} || '%'
+					</if>
+			 	</where>
+					<if test="keyword =='' and keyfield ==2">
+						ORDER BY movie_rate DESC
+					</if>		 	
+			 	)a)
 		<![CDATA[			 	 
  		where rnum >= #{start} AND rnum <= #{end}   
 		]]>	
     </select>
+    <select id="searchReserveRateList" parameterType="map" resultType="movieVO">
+		SELECT 
+		 * 
+		FROM (SELECT a.*, rownum rnum FROM 
+			 	(SELECT m.movie_num,movie_name,movie_genre,movie_pg,movie_auth,count(reserve_num) FROM M_movie m LEFT OUTER JOIN M_reserve r ON m.movie_num = r.movie_num 					
+				GROUP BY m.movie_num,movie_name,movie_genre,movie_pg,movie_auth
+				ORDER BY COUNT(reserve_num) DESC				
+			 )a)	 	 
+		<![CDATA[			 	 
+ 		where rnum >= #{start} AND rnum <= #{end}   
+		]]>	
+    </select>
+    
+    <select id="searchAudienceRateList" parameterType="map" resultType="movieVO">
+		SELECT 
+		 * 
+		FROM (SELECT a.*, rownum rnum FROM 
+			 	(SELECT m.movie_num,movie_name,movie_genre,movie_pg,movie_auth,count(reserve_seat) FROM M_movie m LEFT OUTER JOIN M_reserve r ON m.movie_num = r.movie_num 					
+				GROUP BY m.movie_num,movie_name,movie_genre,movie_pg,movie_auth
+				ORDER BY sum(reserve_seat) DESC				
+			 )a)	 	 
+		<![CDATA[			 	 
+ 		where rnum >= #{start} AND rnum <= #{end}   
+		]]>	
+    </select>
+    
+    
+    
     
     
     

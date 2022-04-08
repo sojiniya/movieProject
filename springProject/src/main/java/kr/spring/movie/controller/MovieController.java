@@ -273,7 +273,8 @@ public class MovieController {
 												@RequestParam(value = "keyword", defaultValue = "") String keyword,
 												HttpSession session) {
 			logger.info("<keyword>> : " + keyword);
-			logger.info("<keyword>> : " + keyword);
+			logger.info("<keyfield>> : " + keyfield);
+			
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("keyword", keyword);
 			map.put("keyfield", keyfield);
@@ -288,9 +289,16 @@ public class MovieController {
 
 			List<MovieVO> list = null;
 			if (count > 0) {
-				list = movieService.searchMovieList(map);
+				if(keyword != "" && keyfield == "") {
+					list = movieService.searchMovieList(map);
+				}else if(keyword.equals("") && keyfield.equals("1")) {//예매율순	
+					list = movieService.searchReserveRateList(map);
+				}else if(keyword.equals("") && keyfield.equals("2")) {//평점순
+					list = movieService.searchMovieList(map);
+				}else if(keyword.equals("") && keyfield.equals("3")){ //관람객순
+					list = movieService.searchAudienceRateList(map);
+				}
 			}
-
 			logger.info("<list>> : " + list);
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("keyword",keyword);

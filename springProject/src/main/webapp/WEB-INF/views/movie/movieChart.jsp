@@ -17,7 +17,7 @@
 	<div class="order-moviechart">
 		<div class="align-right">
 			<form id="search_form2" action="searchMovie.do">
-				<select id="order_type" name="order-type">
+				<select id="keyfield" name="keyfield">
 					<option title="현재 선택됨" selected value="1">예매율순</option>
 					<option value="2">평점순</option>
 					<option value="3">관람객순</option>

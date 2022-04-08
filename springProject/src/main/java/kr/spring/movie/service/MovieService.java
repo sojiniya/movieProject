@@ -33,4 +33,8 @@ public interface MovieService {
 	//영화검색
 	public int searchMovieCount(Map<String,Object> map);
 	public List<MovieVO> searchMovieList(Map<String,Object> map);
+	// 예매순
+	public List<MovieVO> searchReserveRateList(Map<String, Object> map);
+	// 관람객순
+	public List<MovieVO> searchAudienceRateList(Map<String, Object> map);
 }
