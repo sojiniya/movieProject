@@ -165,7 +165,7 @@ SELECT * FROM m_board b JOIN m_member m
 	   AND cate_num IN (3)
 	   </if>
 	   <if test="cate_num == 4">
-	   AND cate_num IN (1)
+	   AND cate_num IN (4)
 	   </if>
 	   <if test="cate_num == 20">
 	   AND cate_num IN (5,6,7)
