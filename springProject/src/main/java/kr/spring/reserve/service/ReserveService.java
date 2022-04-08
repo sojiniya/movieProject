@@ -3,6 +3,7 @@ package kr.spring.reserve.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
@@ -34,4 +35,7 @@ public interface ReserveService {
 	//예매완료
 	public void insertreserveseat(List<Map<String,Object>> list);
 	public void insertreserve(ReserveVO reserveVO);
+	
+	// 예매취소
+	public void deletereserve(Map<String,Object> map);
 }

@@ -3,6 +3,7 @@ package kr.spring.reserve.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
@@ -50,4 +51,10 @@ public interface ReserveMapper {
 	public void insertreserveseat(Map<String,Object> map);
 	@Insert("insert into m_reserve values(m_reserve_seq.nextval,#{time_num},#{mem_num},#{movie_num},#{reserve_seat},#{reserve_paymethod},#{final_price})")
 	public void insertreserve(ReserveVO reserveVO);
+
+	// 예매취소
+	@Delete("delete from m_reserve where reserve_num = #{reserve_num}")
+	public void deletereserve(Map<String,Object> map);
+	@Delete("delete from m_reservseat where revseat_num = #{revseat_num}")
+	public void deletereservseat(Map<String,Object> map);
 }
