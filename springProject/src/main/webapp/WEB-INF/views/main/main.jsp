@@ -23,16 +23,14 @@
 					자율주행차?!<br>본격 버라이어티 코미디
 				</span>
 				<div class="movieSelection_video_controller_wrap">
-					<a
-						href="http://ad.cgv.co.kr/click/CGV/CGV_201401/main@MovieSelection2021?ads_id%3d46812%26creative_id%3d66312%26click_id%3d86631%26maid%3D%26event%3d"
+					<a href="${pageContext.request.contextPath}/movie/movieDetail.do?movie_num=123"
 						id="AD_movie_url" class="btn_detail">상세보기</a>
 				</div>
 			</div>
 		</div>
-		
 		<c:if test="${count > 0}">
 			<div class="movieChart_wrap">
-				<h2>주간 박스오피스 순위</h2>
+				<h2>무비차트 순위</h2>
 				<a href="${pageContext.request.contextPath}/movie/movieChart.do"
 					id="btn_allView_Movie" class="btn_allView">전체보기</a>
 			</div>

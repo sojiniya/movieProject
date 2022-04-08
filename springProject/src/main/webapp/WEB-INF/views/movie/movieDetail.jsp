@@ -4,7 +4,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!-- 중앙 컨텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
-<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/movie.review.js"></script> --%>
 <script>
 var divCd = 0;
 function like() {
@@ -79,17 +78,17 @@ function clickLike(likeYn){
 </div>
 	<p style="font-size:20px; margin-top: 5px; width: 29%; text-align: center;">${movie.movie_showtm}분</p>
 <hr>
-<div class="page-main">
-	<p class="movie_contents">${movie.movie_content}</p>
+<div class="page-main" style="margin-left:210px;">
+	<p>${movie.movie_content}</p>
 	<a class="detail_reserve" href="/project/reserve/reserveStep1.do">예매하기</a>
-	<p>첨부파일 : <a href="file.do?movie_num=${movie.movie_num}">${movie.filename}</a></p>
+	<%-- <p style="float:right;">첨부파일 : <a href="file.do?movie_num=${movie.movie_num}">${movie.filename}</a></p>
 	<c:if test="${fn:endsWith(movie.filename,'.jpg') ||
 	              fn:endsWith(movie.filename,'.JPG') ||
 	              fn:endsWith(movie.filename,'.gif') ||
 	              fn:endsWith(movie.filename,'.GIF') ||
 	              fn:endsWith(movie.filename,'.png') ||
 	              fn:endsWith(movie.filename,'.PNG')}">
-	</c:if>
+	</c:if> --%>
 </div>
 	<hr size="1" width="100%" noshade="noshade">
 	<div class="align-right">
