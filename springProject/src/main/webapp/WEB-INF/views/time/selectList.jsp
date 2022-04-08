@@ -25,7 +25,7 @@ ul.memberInfo_wrap {
   padding: 10px 20px;
   border-radius: 10px;
   color:white;
-  background-color:black;
+  background-color: rgba(0,0,0,0.4);
   font-weight:bold;
   font-size:large;
   text-align: left;
