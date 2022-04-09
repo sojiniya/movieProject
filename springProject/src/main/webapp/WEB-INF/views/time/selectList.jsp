@@ -203,14 +203,6 @@ ul ul {
 	width: 980px;
 	height: 420px;
 }
-.time-notice p{
-	float: left;
-    margin: 5px 18px;
-    padding-bottom: 5px;
-    color: #794624;
-    font-weight: bold;
-    font-style: italic;
-}
 </style>
 
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
@@ -521,19 +513,12 @@ $(function(){
 	</div>
 </c:if>
 
-<hr width="100%" size="1" noshade="noshade">
-<div class="time-notice">
-	<p>* 시간을 클릭하시면 빠른 예매를 할 수 있습니다.</p>
-</div>
-<hr width="100%" size="1" noshade="noshade">
-
 <!-- 영화리스트 시작(참고용) -->
 <div class="sect-showtimes">
 	<ul style="display: block;list-style: none;list-style-type: disc;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
 		<li style="display:list-item;text-align: -webkit-match-parent;list-style: none;">
-			
 			<div class="col-times">
-
+				<p style="color: #794624;font-weight: bold;font-style: italic;">* 시간을 클릭하시면 빠른 예매를 할 수 있습니다.</p><br>
 				<div class="info-movie">
 					<span class="movie-pg">
 						<img class="grade-round" src="<!-- https://img.cgv.co.kr/R2014/images/common/flag/age/grade-15.png -->" width="20px" height="20px"> <!-- <span class="ico-grade grade-15">15세 이상</span> -->
