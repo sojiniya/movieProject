@@ -101,6 +101,9 @@ public class ReserveServiceImpl implements ReserveService{
 	@Override
 	public void insertreserve(ReserveVO reserveVO) {
 		reserveMapper.insertreserve(reserveVO);
+		int count = reserveMapper.countReservation(reserveVO);
+		reserveVO.setCount(count);
+		reserveMapper.updateMemberGrade(reserveVO);
 	}
 
 	@Override

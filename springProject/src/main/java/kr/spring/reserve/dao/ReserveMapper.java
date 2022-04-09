@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import kr.spring.movie.vo.MovieVO;
 import kr.spring.reserve.vo.ReserveVO;
@@ -51,6 +52,12 @@ public interface ReserveMapper {
 	public void insertreserveseat(Map<String,Object> map);
 	@Insert("insert into m_reserve values(m_reserve_seq.nextval,#{time_num},#{mem_num},#{movie_num},#{reserve_seat},#{reserve_paymethod},#{final_price})")
 	public void insertreserve(ReserveVO reserveVO);
+	
+	//멤버 등급 업데이트
+	@Select("SELECT count(*) FROM m_reserve WHERE mem_num = #{mem_num}")
+	public int countReservation(ReserveVO reserveVO);
+	@Update("UPDATE M_member_detail SET mem_grade =#{count} where mem_num =#{mem_num}")
+	public void updateMemberGrade(ReserveVO reserveVO);
 
 	// 예매취소
 	@Delete("delete from m_reserve where reserve_num = #{reserve_num}")

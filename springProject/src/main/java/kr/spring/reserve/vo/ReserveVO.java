@@ -5,6 +5,10 @@ import java.util.List;
 
 import kr.spring.movie.vo.MovieVO;
 
+/**
+ * @author jaehy
+ *
+ */
 public class ReserveVO {
 	private int reserve_num; // 예매번호
 	private int time_num; // 상영시간 번호 (외래키)
@@ -45,6 +49,9 @@ public class ReserveVO {
 
 	//나의 예매 내역확인을 위한 MovieVO추가
 	private MovieVO movieVO;
+	
+	//멤버 grade를 위한 count
+	private int count;
 	
 	public MovieVO getMovieVO() {
 		return movieVO;
@@ -214,6 +221,13 @@ public class ReserveVO {
 	}
 	public void setFinal_price(int final_price) {
 		this.final_price = final_price;
+	}
+	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
 	}
 	@Override
 	public String toString() {

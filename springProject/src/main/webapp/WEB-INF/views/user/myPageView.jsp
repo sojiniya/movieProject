@@ -30,14 +30,14 @@
         	        
                     <p style="margin-bottom:4px;color: #342929;font-family: 'NanumBarunGothicBold', '맑은 고딕', '돋움', Dotum, sans-serif;font-size: 20px;line-height: 20px;">
                         
-                            고객님은   
+                            고객님의 등급은   
                         <c:if test="${member.mem_grade < 3}"> 
                         <strong class="txt-purple">브론즈</strong>입니다.             
                         </c:if>
-                        <c:if test="${member.mem_grade >= 3}"> 
+                        <c:if test="${member.mem_grade >= 3 && member.mem_grade <= 5}"> 
                         <strong class="txt-purple">실버</strong>입니다.             
                         </c:if>
-                        <c:if test="${member.mem_grade >= 5}"> 
+                        <c:if test="${member.mem_grade > 5}"> 
                         <strong class="txt-purple">골드</strong>입니다.             
                         </c:if>
                     </p>
