@@ -87,7 +87,7 @@
 					</if>
 			 	</where>
 					<if test="keyword =='' and keyfield ==2">
-						ORDER BY movie_rate DESC
+						ORDER BY movie_rate DESC NULLS LAST
 					</if>		 	
 			 	)a)
 		<![CDATA[			 	 
@@ -98,7 +98,8 @@
 		SELECT 
 		 * 
 		FROM (SELECT a.*, rownum rnum FROM 
-			 	(SELECT m.movie_num,movie_name,movie_genre,movie_pg,movie_auth,count(reserve_num) FROM M_movie m LEFT OUTER JOIN M_reserve r ON m.movie_num = r.movie_num 					
+			 	(SELECT m.movie_num,movie_name,movie_genre,movie_pg,movie_auth,count(reserve_num),ROW_NUMBER() OVER(ORDER BY count(reserve_num) DESC)AS RANK
+			 	FROM M_movie m LEFT OUTER JOIN M_reserve r ON m.movie_num = r.movie_num 					
 				GROUP BY m.movie_num,movie_name,movie_genre,movie_pg,movie_auth
 				ORDER BY COUNT(reserve_num) DESC				
 			 )a)	 	 

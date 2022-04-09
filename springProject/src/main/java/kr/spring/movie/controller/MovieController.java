@@ -1,5 +1,6 @@
 package kr.spring.movie.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -95,7 +96,7 @@ public class MovieController {
 	public ModelAndView process(
 			@RequestParam(value="pageNum",defaultValue="1")
 			int currentPage,
-			@RequestParam(value="keyfield",defaultValue="")
+			@RequestParam(value="keyfield",defaultValue="1")
 			String keyfield,
 			@RequestParam(value="keyword",defaultValue="")
 			String keyword) {
@@ -116,14 +117,14 @@ public class MovieController {
 		
 		List<MovieVO> list = null;
 		if(count > 0) {
-			list = movieService.selectList(map);
+			list = movieService.searchReserveRateList(map);
 		}
-				
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("movieChart");
 		mav.addObject("count", count);
 		mav.addObject("list",list);
 		mav.addObject("pagingHtml", page.getPagingHtml());
+		mav.addObject("keyfield",keyfield);
 		
 		return mav;
 		
@@ -289,7 +290,7 @@ public class MovieController {
 
 			List<MovieVO> list = null;
 			if (count > 0) {
-				if(keyword != "" && keyfield == "") {
+				if(keyword != "" && keyfield.equals("")) {
 					list = movieService.searchMovieList(map);
 				}else if(keyword.equals("") && keyfield.equals("1")) {//예매율순	
 					list = movieService.searchReserveRateList(map);
@@ -302,7 +303,12 @@ public class MovieController {
 			logger.info("<list>> : " + list);
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("keyword",keyword);
-			mav.setViewName("searchMovie");
+			if(keyfield.equals("1") || keyfield.equals("2") || keyfield.equals("3")) {
+				mav.setViewName("movieChart");
+			}else {
+				mav.setViewName("searchMovie");
+			}
+			mav.addObject("keyfield",keyfield);
 			mav.addObject("count", count);
 			mav.addObject("list", list);
 			mav.addObject("pagingHtml", page.getPagingHtml());

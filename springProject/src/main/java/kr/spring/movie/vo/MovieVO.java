@@ -29,6 +29,8 @@ public class MovieVO {
 	
 	//찜한 영화를 위한 my_movie_num
 	private int my_movie_num;
+	
+	private int rank;
 
 	//업로드 파일 처리
 	public void setUpload(MultipartFile upload)throws IOException{
@@ -143,6 +145,15 @@ public class MovieVO {
 		return likeCnt;
 	}
 	
+	
+	public int getRank() {
+		return rank;
+	}
+
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
+
 	@Override
 	public String toString() {
 		return "MovieVO [movie_num=" + movie_num + ", movie_name=" + movie_name + ", movie_content=" + movie_content

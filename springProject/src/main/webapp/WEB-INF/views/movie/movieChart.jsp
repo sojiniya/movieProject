@@ -18,9 +18,9 @@
 		<div class="align-right">
 			<form id="search_form2" action="searchMovie.do">
 				<select id="keyfield" name="keyfield">
-					<option title="현재 선택됨" selected value="1">예매율순</option>
-					<option value="2">평점순</option>
-					<option value="3">관람객순</option>
+					<option title="현재 선택됨"<c:if test="${keyfield ==1}">selected</c:if>value="1">예매율순</option>
+					<option value="2" <c:if test="${keyfield ==2}">selected</c:if>>평점순</option>
+					<option value="3" <c:if test="${keyfield ==3}">selected</c:if>>관람객순</option>
 				</select>
 			<input type="submit" value="GO">
 			</form>
@@ -39,6 +39,7 @@
 			<c:forEach var="movie" items="${list}">
 				<ul>
 					<li>
+						<span>NO.${movie.rank}</span>
 						<div class="movie-image">
 						<a href="movieDetail.do?movie_num=${movie.movie_num}"><img src="imageView.do?movie_num=${movie.movie_num}" style="width:185px; height:260px;"></a></div>
 						<div class="movie-content">
