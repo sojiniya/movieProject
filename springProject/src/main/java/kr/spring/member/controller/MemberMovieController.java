@@ -239,9 +239,13 @@ public class MemberMovieController {
 		@GetMapping("/user/modifyReviewForm.do")
 		public String formUpdate(@RequestParam("review_num") int review_num, HttpSession session, Model model) {
 			logger.info("<review>> : " + review_num);
-
+			int mem_num = (Integer)session.getAttribute("user_num");
+			
 			MovieReviewVO movieReviewVO = MemberMovieService.selectReviewDetail(review_num);
+			MemberVO memberVO = memberService.selectMember(mem_num);
+			logger.info("<movieReviewVO>> : " + movieReviewVO);
 			model.addAttribute("movieReviewVO", movieReviewVO);
+			model.addAttribute("member", memberVO);
 
 			return "modifyReviewForm";
 		}
