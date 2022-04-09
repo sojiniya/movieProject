@@ -72,6 +72,7 @@ function clickLike(likeYn){
 			<img id="like_movie" src="${pageContext.request.contextPath}/resources/images/like.png" style="width:25px; height:25px; margin-left: 5px;">		
 		</c:if>
 	</button>
+	<input type="hidden" id="movie_num" value="${movie.movie_num}">
 	<input type="hidden" id="my_movie_num" value="${movie.my_movie_num}">
 	<input type="hidden" id="contextPath" value="${pageContext.request.contextPath}">
 	<p id="likeCnt" style="font-weight: bold;">${movie.likeCnt}</p>
