@@ -34,6 +34,13 @@
 		}
 	}
 </script>
+<style>
+.box-image #MoviePoster {
+    width: 170px;
+    height: 200px;
+    padding-top:10px;
+}
+</style>
 <div class="cols-content">
 	<div class="col-detail">
 		<div class="movielog-detail-wrap">
@@ -51,7 +58,7 @@
 									<a id="phototicket_popup_80530" title="포스터 크게 보기" href="">
 										<span class="thumb-image">
 										<!-- 영화 포스터 넣어야함(영화 리스트쪽 하시는거보고 확인하자) --> 
-										<img alt="" src="${pageContext.request.contextPath}/movie/imageView.do?movie_num=${myReview.movie_num}"
+										<img id="MoviePoster" src="${pageContext.request.contextPath}/movie/imageView.do?movie_num=${myReview.movie_num}"
 											onerror="errorImage(this)" />
 									</span>
 									</a>

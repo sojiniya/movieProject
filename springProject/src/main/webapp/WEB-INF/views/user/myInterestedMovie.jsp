@@ -58,8 +58,14 @@ a:link {
     color: white;
 }
 .box-image img {
-    width: 200px;
+    width: 180px;
     height: 260px;
+}
+.box-image{
+	padding-left:18px;
+}
+.box-contents{
+	padding-bottom:30px;
 }
 </style>
 <div class="sect-wishlist-lst">
@@ -83,7 +89,7 @@ a:link {
 							class="title">${InterestedMovie.movie_name}</strong>
 							<br><br>
 						</a> <span class="movie_reserve"> <a class="link-reservation"
-							href="/ticket/?MOVIE_CD=20028988&MOVIE_CD_GROUP=20028988">예매하기</a>
+							href="${pageContext.request.contextPath}/reserve/reserveStep1.do"  style="color: white">예매하기</a>
 						</span>
 					</div>
 				</li>
