@@ -8,32 +8,25 @@
 div#main_body {
     float: left;
     width: 99%;
-    padding: 5px 100px 5px;
+    padding: 0px 0px 0px;
 }
-form#register_form, form#update_form {
-    border: none;
-    width: 700px;
-    height: 270px;
+form#time_form {
+    width: 400px;
+    height: 250px;
 }
-form {
-    width: 500px;
-    margin: 0 auto;
+form#time_form {
+    width: 400px;
+    margin: 55px auto;
     border: 1px solid #000;
-    padding: 10px 15px 10px 70px;
-}
-#search_form {
-    overflow: hidden;
-    margin-left: 10px;
-    margin-top: -6px;
-    padding: 0px;
+    padding: 10px 10px 10px 40px;
 }
 </style>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <div class="page-main">
-	<h2>상영 정보 등록</h2>
-	<form:form modelAttribute="timeVO" action="timeInsert.do" id="register_form">
+	<h2 style="padding-left: 120px;height: 0px;">상영 정보 등록</h2>
+	<form:form modelAttribute="timeVO" action="timeInsert.do" id="time_form">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li style="clear:both">
@@ -70,7 +63,7 @@ form {
 				<form:errors path="movie_date" cssClass="error-color"/><p>
 			</li>
 		</ul>	 
-		<div class="align-center" style="clear:both;padding-right: 250px;"><br>
+		<div class="align-center" style="clear:both;padding-right: 50px;"><br>
 			<form:button>전송</form:button>
 			<input type="button" value="목록" 
 			              onclick="location.href='${pageContext.request.contextPath}/time/selectList.do'">
