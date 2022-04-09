@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import kr.spring.movie.vo.MovieLikeVO;
 import kr.spring.movie.vo.MovieReviewVO;
 import kr.spring.movie.vo.MovieVO;
 import kr.spring.reserve.vo.ReserveVO;
@@ -31,8 +32,12 @@ public interface MemberMovieMapper {
 		@Select("SELECT COUNT(*) FROM My_Movie my JOIN M_movie m ON my.movie_num = m.movie_num WHERE mem_num = #{mem_num}")
 		public int selectMyInterestedMovieCount(Map<String,Object> map);
 		
-		//내가 관심 있는 영화 리스트
+		//내가 관심 있는 영화 리스트 디테일
 		public List<MovieVO> selectMyInterestedMovie(Map<String,Object> map);
+		
+		//내가 관심있는 영화 리스트
+		@Select("SELECT * FROM my_movie WHERE my_movie_num = #{my_movie_num}")
+		public MovieLikeVO selectMyLikeMovie(int my_movie_num);
 		
 		//내가 본 영화,예매한 영화 삭제하기
 		@Delete("DELETE FROM M_reserve WHERE reserve_num = #{reserve_num}")

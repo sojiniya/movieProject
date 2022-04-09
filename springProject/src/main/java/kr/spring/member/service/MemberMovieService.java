@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import kr.spring.movie.vo.MovieLikeVO;
 import kr.spring.movie.vo.MovieReviewVO;
 import kr.spring.movie.vo.MovieVO;
 import kr.spring.reserve.vo.ReserveVO;
@@ -31,8 +32,11 @@ public interface MemberMovieService {
 			//내가 관심 있는 영화 리스트 카운트
 			public int selectMyInterestedMovieCount(Map<String,Object> map);
 			
-			//내가 관심 있는 영화 리스트
+			//내가 관심 있는 영화 디테일 리스트
 			public List<MovieVO> selectMyInterestedMovie(Map<String,Object> map);
+			
+			//내가 관심있는 영화 리스트
+			public MovieLikeVO selectMyLikeMovie(int my_movie_num);
 			
 			//예매 리스트 뽑아오기
 			public ReserveVO selectMyMovie(int reserve_num);

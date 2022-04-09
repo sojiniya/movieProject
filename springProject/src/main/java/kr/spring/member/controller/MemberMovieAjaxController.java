@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.spring.member.service.MemberMovieService;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.movie.service.MovieService;
+import kr.spring.movie.vo.MovieLikeVO;
 import kr.spring.movie.vo.MovieReviewVO;
 import kr.spring.reserve.vo.ReserveVO;
 
@@ -25,6 +27,8 @@ public class MemberMovieAjaxController {
 	
 	@Autowired
 	private MemberMovieService memberMovieService;
+	@Autowired
+	private MovieService movieService;
 	
 	//나의 영화 삭제하기
 	@RequestMapping("/user/deleteMyMovie.do")
@@ -71,6 +75,29 @@ public class MemberMovieAjaxController {
 		}
 		return map;
 	}
+	
+	// 찜한 영화 삭제하기
+		@RequestMapping("/user/deleteMyInterestedMovie.do")
+		@ResponseBody
+		public Map<String, String> deleteMyInterestedMovieprocess(@RequestParam("my_movie_num") int my_movie_num,
+													   			  HttpSession session) {
+			int mem_num = (Integer)session.getAttribute("user_num");
+			logger.info("<<mem_num>> : " + mem_num);
+			logger.info("<<my_movie_num>> : " + my_movie_num);
+			MovieLikeVO movieLikeVO = memberMovieService.selectMyLikeMovie(my_movie_num);
+
+			Map<String, String> map = new HashMap<String, String>();
+			
+			if (movieLikeVO.getMem_num() != mem_num) {
+				map.put("result", "notMatchUser_num");
+			
+			}else { 
+				movieService.deleteLike(movieLikeVO);
+				map.put("result", "success");
+			}
+			return map;
+		}
+	
 				
 }
 

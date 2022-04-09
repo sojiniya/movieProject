@@ -69,7 +69,7 @@
 									<p class="date">${fn:substring(MovieTime,0,10)}
 										${reserveMovie.movie_time}</p>
 									<p class="theater">CGV${reserveMovie.theater_name}
-										/${reserveMovie.seat_num}석</p>
+										/A-${reserveMovie.reserve_seat}</p>
 								</div>
 								<!-- 2022.04.08 예매취소 기능을 위해  reserve-idx="${reserveMovie.reserve_num}" 추가 // 정동윤-->
 								<button type="button" data="329787502" class="btn-del" reserve-idx="${reserveMovie.reserve_num}" revseat-idx="${reserveMovie.revseat_num}">

@@ -71,7 +71,7 @@
 									<p class="date">${fn:substring(MovieDate,0,10)}
 										${reserveMovie.movie_time}</p>
 									<p class="theater">CGV${watchedMovie.theater_name}
-										/${watchedMovie.seat_num}석</p>
+										/A-${watchedMovie.reserve_seat}</p>
 								</div>
 								<button type="button"class="btn-del" onclick="delete_btn()">
 									<img

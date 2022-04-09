@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.member.dao.MemberMovieMapper;
+import kr.spring.movie.vo.MovieLikeVO;
 import kr.spring.movie.vo.MovieReviewVO;
 import kr.spring.movie.vo.MovieVO;
 import kr.spring.reserve.vo.ReserveVO;
@@ -57,6 +58,11 @@ public class MemberMovieServiceImpl implements MemberMovieService{
 	public List<MovieVO> selectMyInterestedMovie(Map<String, Object> map) {
 		return MemberMovieMapper.selectMyInterestedMovie(map);
 	}
+	
+	@Override
+	public MovieLikeVO selectMyLikeMovie(int my_movie_num) {
+		return MemberMovieMapper.selectMyLikeMovie(my_movie_num);
+	}
 
 	@Override
 	public void insertReview(MovieReviewVO review) {
@@ -101,7 +107,6 @@ public class MemberMovieServiceImpl implements MemberMovieService{
 		review.setTotal_rate(MemberMovieMapper.countTotalMovieRate(review));
 		MemberMovieMapper.updateMovieRate(review);
 	}
-
 
 
 	}

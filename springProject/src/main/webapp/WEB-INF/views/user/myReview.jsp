@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <script src="${pageContext.request.contextPath}/resources/css/hyoen.css"></script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>      
+<script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>       
 <!DOCTYPE html>
 <script type="text/javascript">
 	function delete_btn(){
@@ -64,7 +65,7 @@
 										</a>
 									</div>
 
-									<p class="date">${myReview.review_reg_date}</p>
+									<p class="date">${fn:substring(myReview.review_reg_date,0,16)}</p>
 									<p class="theater">CGV${watchedMovie.theater_name}
 										/${myReview.review_rate}점</p>
 									<p>"${myReview.review_content}"</p>
