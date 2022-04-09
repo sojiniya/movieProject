@@ -145,8 +145,16 @@ public class BoardServiceImpl implements BoardService{
 	public List<BoardVO> userSelectList(Map<String, Object> map) {
 		map.put("keyfield", 0);
 		map.put("keyword", 0);
-		System.out.println(map);
-		return boardMapper.userSelectList(map);
+		
+		List <BoardVO> list = boardMapper.userSelectList(map);
+		
+		for (BoardVO li : list ) {
+			Integer replyState = boardMapper.selectRowCountByBoardNum(li.getBoard_num());
+			li.setReplyState(replyState);
+			
+		}
+		return list;
+		
 	}
 
 	@Override

@@ -60,7 +60,8 @@ table td, table th{
 						};
 					</script>
 					<%-- </c:if> --%>
-					<button type="button" class="round inblack" id="btn_list">
+					<button type="button" class="round inblack" id="btn_list" 
+					onclick="location.href='${pageContext.request.contextPath}/board/userQnaList.do'">
 						<span>목록</span>
 					</button>
 				</div>
