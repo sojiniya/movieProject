@@ -58,7 +58,9 @@ ul.time-choice li {
     width: 100px;
     padding: 20px 18px 20px 20px;
     font-size: 18px;
-    border: ridge;
+    border: solid;
+    border-radius: 20%;
+    border-color:gray;
     cursor: pointer;
 }
 div.area ul li a, div.sect-city ul li a{
@@ -206,9 +208,21 @@ $(function(){
 	let theater_local; //선택한 지역명(서울,경기,인천 ...)
 	let theater_num;
 		$(document).on('click','.theater-choice',function(){
+			selectTheater(this);
+			
+		}); // end of click (극장지역 선택 시 이벤트 발생)
+		
+		function selectTheater(self,local){
+			let t_local;
+			if(local){
+				t_local = local;
+			}else{
+				t_local = $(self).text();
+			}
+			
 			$.ajax({
 				type:'post',
-				data:{theater_local:$(this).text()},// 클릭한 극장 지역명 저장
+				data:{theater_local:t_local},// 클릭한 극장 지역명 저장
 				url:'selectListData.do',
 				dataType:'json',
 				cache:false,
@@ -228,45 +242,58 @@ $(function(){
 						//문서 객체에 극장지역 리스트 추가
 						$('#area').append(output);
 						
+						getTheaterName('',1);
 					});
 				},
 				error:function(){
 					alert('네트워크 오류 발생');
 				}
 			});
-			
-		}); // end of click (극장지역 선택 시 이벤트 발생)
+		}
+		
 		$('#theater_img_container').hide();
 
-		//극장관 등록 후 cgv지점을 클릭하면 지점별 극장 인포사진 노출
-		$(document).on('click','.theater-name',function(){
-			theater_num = $(this).attr('data-num');
-			let theater_name = $(this).text();
-			let theater_addr = $(this).attr('data-addr');
-			
-			//cgv지점명 클릭시 지점별 인포사진 교체
-			$('#theater_img_container').show();
-			$('#theater_img_container').find('img').attr('src','${pageContext.request.contextPath}/theater/theaterImage.do?theater_num='+theater_num);	
-			//cgv지점명 클릭시 인포사진 위에 극장지점명(ex cgv강남) 표시
-			$('h4').find('span').text(theater_name).show();
-			$('.addr-text').text(theater_addr); 
-			$('.time-choice').show();
-			$('.time-choice li').hover(function(){
-				   $(this).css('color','red');
-			   }, function(){
-				   $(this).css('color','black');
-			   });
-			$('.sect-showtimes').show();
-			$('.info-noti1').show();
-			
-			//상영관명과 상영관 이미지 출력 후 상영 정보 호출
-			//오늘 날짜 추출
-			let times = getCurrentWeek();
-			let movie_date = times[0].split('-');
-			movie_date = movie_date[0] + '/' + movie_date[1] + '/' + movie_date[2];
-			getTimeList(movie_date);
-			
+	//극장관 등록 후 cgv지점을 클릭하면 지점별 극장 인포사진 노출
+	$(document).on('click','.theater-name',function(){
+		getTheaterName(this);
 	});	
+	
+	function getTheaterName(self,num){
+		
+		let theater_name;
+		let theater_addr;
+		if(num){
+			theater_num= $('.theater-name').first().attr('data-num');
+			theater_name = $('.theater-name').first().text();
+			theater_addr = $('.theater-name').first().attr('data-addr');
+		}else{
+			theater_name = $(self).text();
+			theater_num = $(self).attr('data-num');
+			theater_addr = $(self).attr('data-addr');
+		}
+		
+		//cgv지점명 클릭시 지점별 인포사진 교체
+		$('#theater_img_container').show();
+		$('#theater_img_container').find('img').attr('src','${pageContext.request.contextPath}/theater/theaterImage.do?theater_num='+theater_num);	
+		//cgv지점명 클릭시 인포사진 위에 극장지점명(ex cgv강남) 표시
+		$('h4').find('span').text(theater_name).show();
+		$('.addr-text').text(theater_addr); 
+		$('.time-choice').show();
+		$('.time-choice li').hover(function(){
+			   $(this).css('color','red');
+		   }, function(){
+			   $(this).css('color','black');
+		   });
+		$('.sect-showtimes').show();
+		$('.info-noti1').show();
+		
+		//상영관명과 상영관 이미지 출력 후 상영 정보 호출
+		//오늘 날짜 추출
+		let times = getCurrentWeek();
+		let movie_date = times[0].split('-');
+		movie_date = movie_date[0] + '/' + movie_date[1] + '/' + movie_date[2];
+		getTimeList(movie_date);
+	}
 		
 	//오늘부터 7일 날짜 출력하기	
 	function getCurrentWeek(){
@@ -415,6 +442,8 @@ $(function(){
 		});
 	}//end
 
+	//초기값 셋팅
+	selectTheater('','서울');
 });
 
 </script>
