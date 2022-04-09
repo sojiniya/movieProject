@@ -52,6 +52,7 @@ public class ReserveVO {
 	
 	//멤버 grade를 위한 count
 	private int count;
+	private String id;
 	
 	public MovieVO getMovieVO() {
 		return movieVO;
@@ -228,6 +229,13 @@ public class ReserveVO {
 	}
 	public void setCount(int count) {
 		this.count = count;
+	}
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	@Override
 	public String toString() {

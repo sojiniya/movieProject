@@ -3,6 +3,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- 중앙 컨텐츠 시작 -->
+<style>
+table{
+	width:100%;
+	border:none;
+	border-collapse:collapse;
+}
+table td, table th{
+	border:none;
+	padding:5px;
+}
+</style>
 <div class="page-main">
 	<h2>회원 영화예매</h2>
 	<form action="adminReserveListMovie.do" id="search_form" method="get" class="adminForm1">
@@ -57,16 +68,7 @@
 			<td>${reserve.movie_name}</td>
 			<td>${reserve.theater_name}</td>
 			<td>예매 좌석수</td>
-			
-			<c:if test="${reserve.reserve_paymethod == 1}">
-			<td>카드 결제</td>
-			</c:if>
-			<c:if test="${reserve.reserve_paymethod == 2}">
-			<td>현금 결제</td>
-			</c:if>
-			<c:if test="${reserve.reserve_paymethod == 3}">
 			<td>카카오페이 결제</td>
-			</c:if>
 			
 			<td>${reserve.reserve_paytotal}</td>
 		</tr>
