@@ -58,7 +58,7 @@ ul.time-choice li {
     width: 100px;
     padding: 20px 18px 20px 20px;
     font-size: 18px;
-    border: solid;
+    border: solid 2px;
     border-radius: 20%;
     border-color:gray;
     cursor: pointer;
@@ -66,7 +66,6 @@ ul.time-choice li {
 div.area ul li a, div.sect-city ul li a{
 	cursor:pointer;
 }
-
 
 /*밑부터 테스트*/
 div[class^="sect-"] {
@@ -166,8 +165,10 @@ ul ul {
     font-family: verdana, sans-serif;
     font-size: 12px;
     font-weight: bold;
+    text-align: center;
 }
 .sect-showtimes .info-timetable span {
+	padding-left: 8.5px;
     display: inline-block;
     font-size: 11px;
 }
