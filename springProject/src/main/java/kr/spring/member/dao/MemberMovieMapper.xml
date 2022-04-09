@@ -8,7 +8,8 @@
         	*
         FROM (SELECT a.*, rownum rnum FROM(
         	   SELECT * FROM M_review r JOIN M_movie m ON r.movie_num = m.movie_num 
-        	   							J
+        	   							JOIN M_member mm ON r.mem_num = mm.mem_num 
+        	   where r.movie_num = #{movie_num})a)
         <![CDATA[
 			WHERE rnum >= #{start} AND rnum <= #{end}
 				
