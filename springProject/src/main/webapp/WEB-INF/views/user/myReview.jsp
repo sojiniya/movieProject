@@ -50,7 +50,7 @@
 									<a id="phototicket_popup_80530" title="포스터 크게 보기" href="">
 										<span class="thumb-image">
 										<!-- 영화 포스터 넣어야함(영화 리스트쪽 하시는거보고 확인하자) --> 
-										<img alt="" src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000080/80530/80530_185.jpg"
+										<img alt="" src="${pageContext.request.contextPath}/movie/imageView.do?movie_num=${myReview.movie_num}"
 											onerror="errorImage(this)" />
 									</span>
 									</a>
