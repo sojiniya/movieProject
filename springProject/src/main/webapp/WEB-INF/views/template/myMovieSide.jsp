@@ -26,7 +26,7 @@
             </div>
         </div>
     </div>
-    <div class="box-round-wgray">
+    <div class="box-round-<c:if test="${select == 0}">on</c:if><c:if test="${select != 0}">wgray</c:if>">
         <div class="box-round-inner">
             <div class="inner-contents-log">
                 <a href="${pageContext.request.contextPath}/user/myReserveMovie.do">
@@ -36,7 +36,7 @@
             </div>
         </div>
     </div>
-    <div class="box-round-wgray">
+    <div class="box-round-<c:if test="${select == 1}">on</c:if><c:if test="${select != 1}">wgray</c:if>">
         <div class="box-round-inner">
             <div class="inner-contents-log">
                 <a href="${pageContext.request.contextPath}/user/myInterestedMovie.do">
@@ -46,7 +46,7 @@
             </div>
         </div>
     </div>
-    <div class="box-round-on">
+    <div class="box-round-<c:if test="${select == 2}">on</c:if><c:if test="${select != 2}">wgray</c:if>">
         <div class="box-round-inner">
             <div class="inner-contents-log">
                 <a href="${pageContext.request.contextPath}/user/myWatchedMovie.do">
@@ -56,7 +56,7 @@
             </div>
         </div>
     </div>
-    <div class="box-round-wgray">
+    <div class="box-round-<c:if test="${select == 3}">on</c:if><c:if test="${select != 3}">wgray</c:if>">
         <div class="box-round-inner">
             <div class="inner-contents-log">
                 <a href="${pageContext.request.contextPath}/user/myReview.do">

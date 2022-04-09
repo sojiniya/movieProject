@@ -42,7 +42,7 @@
 		<div class="movielog-detail-wrap">
 			<div class="sect-movielog-lst">
 				<c:if test="${count == 0}">
-					예매한 영화가 없습니다.
+					<div class="result-display">예매한 영화가 없습니다.</div>
 				</c:if>
 				
 				<c:if test="${count >0}">

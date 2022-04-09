@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>     
 <div class="sect-common">
     <div class="mycgv-info-wrap">
 		<div class="skipnaiv" >
@@ -74,7 +75,11 @@
 <div class="tit-mycgv">
 	<h3 >MY 예매내역</h3>
 	<p>
-		<em>0건</em> <a href="/user/mycgv/reserve/">예매내역 더보기</a>
+		<em>
+			<c:if test="${reserveCount ==0}">0건</c:if>
+			<c:if test="${reserveCount >0}">${reserveCount}건</c:if>
+		</em> 
+		<a href="${pageContext.request.contextPath}/user/myReserveMovie.do">예매내역 더보기</a>
 	</p>
 	
 </div>
@@ -82,7 +87,18 @@
 <div class="sect-base-booking">
 	<div class="box-polaroid box-size">
 		<div class="box-inner">
-			<div class="lst-item">고객님의 최근 예매내역이 존재하지 않습니다.</div>
+			<c:if test="${reserveCount == 0}">
+				<div class="lst-item">고객님의 최근 예매내역이 존재하지 않습니다.</div>
+			</c:if>
+			<br>
+			<c:if test="${reserveCount >0}">
+				<c:forEach var="reserveList" items="${reserveList}">
+					<span><a href="${pageContext.request.contextPath}/movie/movieDetail.do?movie_num=${reserveList.movie_num}">&emsp;&emsp;${reserveList.movie_name}</a>/
+					<c:set var="MovieTime" value="${reserveList.movie_date}"/>${fn:substring(MovieTime,0,10)}/
+					${reserveList.movie_time}/
+					A-${reserveList.reserve_seat}</span><br>
+				</c:forEach>
+			</c:if>
 		</div>
 	</div>
 </div>
@@ -92,15 +108,27 @@
 	<div class="tit-mycgv2">
 		<h3>MY Q&amp;A</h3>
 		<p>
-			<em>0건</em> <a href="/user/mycgv/inquiry/qna/list.aspx">MY
-				Q&amp;A 더보기</a>
+			<em>
+				<c:if test="${myQnACount ==0}">0건</c:if>
+				<c:if test="${myQnACount >0}">${myQnACount}건</c:if>
+			</em>
+			<a href="${pageContext.request.contextPath}/board/myList.do">MY Q&amp;A 더보기</a>
 		</p>
 	</div>
 	<div class="col-myqna">
-		
-		<ul class="showLine">
-			<li>고객님의 1:1 문의내역이 존재하지 않습니다.</li>
-		</ul>
+		<c:if test="${myQnACount ==0}">
+			<ul class="showLine">
+				<li>고객님의 1:1 문의내역이 존재하지 않습니다.</li>
+			</ul>
+		</c:if>
+		<c:if test="${myQnACount >0}">
+			<c:forEach var="myQnA" items="${myQnA}">
+				<span>
+					<a href="${pageContext.request.contextPath}/board/myList.do">${myQnA.board_title}</a>/
+					<c:set var="RegisterDate" value="${myQnA.board_reg_date}"/>${fn:substring(RegisterDate,0,10)}/
+				</span><br>
+			</c:forEach>
+		</c:if>
 		
 	</div>
 </div>

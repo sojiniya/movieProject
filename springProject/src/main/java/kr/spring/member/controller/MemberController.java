@@ -1,5 +1,11 @@
 package kr.spring.member.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -13,19 +19,36 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.board.service.BoardService;
+import kr.spring.board.vo.BoardVO;
+import kr.spring.member.service.MemberMovieService;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.reserve.vo.ReserveVO;
 import kr.spring.util.AuthCheckException;
+import kr.spring.util.PagingUtil;
 import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
+	//예매 조건 체크를 위해서 날짜 데이터
+		Date date = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yy/MM/dd hh:mm");
+		String str = format.format(date);
+		String movieDate = str.substring(0, 8);
+		String movieHour = str.substring(9,11)+"시";
+	
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private MemberMovieService memberMovieService;
+	@Autowired
+	private BoardService boardService; 
 
 	//자바빈(VO)초기화
 		@ModelAttribute
@@ -121,14 +144,46 @@ public class MemberController {
 		
 		//My페이지
 		@RequestMapping("/user/myPage.do")
-		public String process(HttpSession session, Model model) {
+		public String process(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,HttpSession session, Model model) {
 			
 			Integer user_num = (Integer)session.getAttribute("user_num");
 			MemberVO member = memberService.selectMember(user_num);
 			
 			logger.info("<<회원 상세 정보>> :" + member);
 			
+			Map<String, Object> map = new HashMap<String, Object>();
+			//예매내역처리
+			map.put("mem_num",user_num);
+			map.put("movieDate", movieDate);
+			map.put("movieHour", movieHour);
+			int reserveCount = memberMovieService.selectMyReserveMovieCount(map);
+			PagingUtil page = new PagingUtil(currentPage, reserveCount, 10, 10, "myPage.do");
+			map.put("start", page.getStartCount());
+			map.put("end", page.getEndCount());
+			List<ReserveVO> reserveList = null;
+			if (reserveCount > 0) {
+				reserveList = memberMovieService.selectMyReserveMovie(map);
+			}
+			//고객 문의내역
+			Map<String,Object> map2 = new HashMap<String,Object>();
+			map2.put("mem_num", user_num);
+			int myQnACount = boardService.selectRowCount(map2);
+			PagingUtil page2 = new PagingUtil(currentPage,myQnACount,20,10,"myPage.do");
+			map2.put("start",page.getStartCount());
+			map2.put("end", page.getEndCount());
+			map2.put("mem_num", user_num);
+			List<BoardVO> myQnA = null;
+			if(myQnACount > 0) {
+				myQnA = boardService.userSelectList(map);
+			}
+			
+			//
 			model.addAttribute("member", member);
+			model.addAttribute("reserveList",reserveList);
+			model.addAttribute("reserveCount",reserveCount);
+			model.addAttribute("myQnACount",myQnACount);
+			model.addAttribute("myQnA",myQnA);
+			
 			
 			return "myPageView";
 		}

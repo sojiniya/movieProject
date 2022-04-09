@@ -27,9 +27,9 @@
 					</ul></li>
 
 				<li>
-					<a href="/user/mycgv/inquiry/qna/list.aspx?g=1">나의 문의내역 </a>
+					<a href="${pageContext.request.contextPath}/board/myList.do">나의 문의내역 </a>
 					<ul>
-						<li><a href="/user/mycgv/inquiry/qna/list.aspx?g=1">1:1 문의</a></li>
+						<li><a href="${pageContext.request.contextPath}/board/myList.do">1:1 문의</a></li>
 					</ul>
 				</li>
 				<li class="my-event"><a href="${pageContext.request.contextPath}/user/myWatchedMovie.do">내가 본 영화</a></li>

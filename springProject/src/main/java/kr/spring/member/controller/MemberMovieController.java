@@ -92,6 +92,7 @@ public class MemberMovieController {
 		mav.addObject("list", list);
 		mav.addObject("pagingHtml", page.getPagingHtml());
 		mav.addObject("member",member);
+		mav.addObject("select",2);
 		
 		return mav;
 	}
@@ -134,6 +135,7 @@ public class MemberMovieController {
 		mav.addObject("list", list);
 		mav.addObject("pagingHtml", page.getPagingHtml());
 		mav.addObject("member",member);
+		mav.addObject("select",0);
 		
 		return mav;
 	}
@@ -168,6 +170,7 @@ public class MemberMovieController {
 			mav.addObject("list", list);
 			mav.addObject("pagingHtml", page.getPagingHtml());
 			mav.addObject("member",member);
+			mav.addObject("select",1);
 			
 			return mav;
 		}
@@ -179,6 +182,7 @@ public class MemberMovieController {
 		
 		session.setAttribute("mem_num",user_num);
 		session.setAttribute("movie_num", movie_num);
+		
 		
 		// 타일스 설정
 		return "writeReviewForm";
@@ -233,6 +237,7 @@ public class MemberMovieController {
 			mav.addObject("list", list);
 			mav.addObject("pagingHtml", page.getPagingHtml());
 			mav.addObject("member",member);
+			mav.addObject("select",3);
 			return mav;
 		}
 		// 리뷰평가 수정폼

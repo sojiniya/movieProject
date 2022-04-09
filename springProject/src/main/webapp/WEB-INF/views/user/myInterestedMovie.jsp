@@ -64,7 +64,7 @@ a:link {
 </style>
 <div class="sect-wishlist-lst">
 	<c:if test="${count == 0}">
-		관심이 있는 영화가 없습니다.
+		<div class="result-display">관심이 있는 영화가 없습니다.</div>
 	</c:if>
 	<c:if test="${count > 0}">
 		<ul id="wishlist_container">
