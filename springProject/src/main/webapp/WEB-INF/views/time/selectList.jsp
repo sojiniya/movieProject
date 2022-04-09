@@ -4,6 +4,9 @@
 <!-- 중앙 컨텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <style type="text/css">
+h3 {
+	background: url(https://img.cgv.co.kr/r2014/images/common/bg/bg_h3_line.jpg) repeat-x 0 50%;
+}
 ul.memberInfo_wrap {
     float: right;
     margin: 10px;
@@ -199,6 +202,14 @@ ul ul {
 #theater_img_container img{
 	width: 980px;
 	height: 420px;
+}
+.time-notice p{
+	float: left;
+    margin: 5px 18px;
+    padding-bottom: 5px;
+    color: #794624;
+    font-weight: bold;
+    font-style: italic;
 }
 </style>
 
@@ -469,7 +480,6 @@ $(function(){
 	</div>
 </c:if>
 
-<hr size="1" noshade="noshade" width="100%">
 <div>
 </div>
 <!-- THEATER 삽입 START -->
@@ -478,7 +488,7 @@ $(function(){
 		<img alt="theater" src="https://img.cgv.co.kr/R2014/images/title/h3_theater.gif">
 	</h3>
 </div>
-<hr size="1" noshade="noshade" width="100%">
+
 <!-- THEATER 삽입 END -->
 <!-- 지점별 THEATER 삽입 시작 -->
 <div class="sect-theater">
@@ -510,6 +520,12 @@ $(function(){
 		<input type="button" value="좌석등록" onclick="location.href='${pageContext.request.contextPath}/time/insertSeat.do'">
 	</div>
 </c:if>
+
+<hr width="100%" size="1" noshade="noshade">
+<div class="time-notice">
+	<p>* 시간을 클릭하시면 빠른 예매를 할 수 있습니다.</p>
+</div>
+<hr width="100%" size="1" noshade="noshade">
 
 <!-- 영화리스트 시작(참고용) -->
 <div class="sect-showtimes">
