@@ -7,7 +7,7 @@
 form {
     width: 355px;
     margin: 0 auto;
-    border: 1px solid #000;
+    border: #000f;
     padding: 10px 10px 10px 30px;
 }
 #search_form {
@@ -37,7 +37,7 @@ div #register{
 		<ul>
 		    <li style="clear:both">
 				<form:label path="theater_num">극장</form:label>
-				<select name="theater_num" id="theater_num">
+				<select name="theater_num" id="theater_num" style="margin-left: 14px;">
 				<c:forEach var="list" items="${theater_list }">
 					<option value="${list.theater_num}">${list.theater_name}</option>
 				</c:forEach>

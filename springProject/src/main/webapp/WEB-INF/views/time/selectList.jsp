@@ -33,8 +33,9 @@ ul.memberInfo_wrap {
   font-size:large;
   text-align: left;
   position: absolute;
-  top: 95%;
-  left: 18%;
+  top: 96%;
+  left: 34%;
+  width: 93%;
   transform: translate(-35%, -70%);
 }
  
@@ -61,9 +62,9 @@ ul.time-choice li {
     width: 100px;
     padding: 20px 18px 20px 20px;
     font-size: 18px;
-    border: solid 2px;
-    border-radius: 20%;
-    border-color:gray;
+    border: solid;
+    border-width: 0px 1px 0px 1px;
+    border-color: #c8c8c8;
     cursor: pointer;
 }
 div.area ul li a, div.sect-city ul li a{
@@ -212,6 +213,33 @@ ul ul {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+#theater_write {
+background: #666;
+color: white;
+width: 100px;
+height: 35px;
+margin-top: 20px;
+border: 2px solid lightgrey;
+font-size: 15px;
+}
+#time_insert {
+background: #666;
+color: white;
+width: 130px;
+height: 35px;
+margin: 20px 10px 0px 0px;
+border: 2px solid lightgrey;
+font-size: 15px;
+}
+#seat_insert {
+background: #666;
+color: white;
+width: 100px;
+height: 35px;
+margin-top: 20px;
+border: 2px solid lightgrey;
+font-size: 15px;
 }
 </style>
 
@@ -484,7 +512,7 @@ $(function(){
 
 <c:if test="${!empty user_num && user_auth==3}">
 	<div class="align-right">
-		<input type="button" value="극장등록" onclick="location.href='${pageContext.request.contextPath}/theater/theaterWrite.do'">
+		<input type="button" value="극장등록" onclick="location.href='${pageContext.request.contextPath}/theater/theaterWrite.do'" id="theater_write">
 	</div>
 </c:if>
 
@@ -524,8 +552,8 @@ $(function(){
 <!-- 상영일자 표시 -->
 <c:if test="${!empty user_num && user_auth==3}">
 	<div class="align-right">
-		<input type="button" value="상영정보등록" onclick="location.href='${pageContext.request.contextPath}/time/timeInsert.do'">
-		<input type="button" value="좌석등록" onclick="location.href='${pageContext.request.contextPath}/time/insertSeat.do'">
+		<input type="button" value="상영정보등록" onclick="location.href='${pageContext.request.contextPath}/time/timeInsert.do'" id="time_insert">
+		<input type="button" value="좌석등록" onclick="location.href='${pageContext.request.contextPath}/time/insertSeat.do'" id="seat_insert">
 	</div>
 </c:if>
 

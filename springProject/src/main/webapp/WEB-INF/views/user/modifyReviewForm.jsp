@@ -33,7 +33,7 @@
 </style>
 <!DOCTYPE html>
 <form name="moviewReviewVO" id="myform" method="post" action="modifyReview.do" style="width:100%; height:450px; margin-top: 30px; text-align:center; position:relative;">
-	<p style="float: left; font-size: 25px; color: black;">평점 작성</p>
+	<p style="float: left; font-size: 25px; color: black;">평점 수정</p>
 	<p style="position: absolute;top: 20%;left: 33%;font-weight: bold;font-size: 17px;">${movieReviewVO.movie_name}</p>
 	<div class="review_form" style="position:absolute; top:30%; left:30%;">
     <fieldset>

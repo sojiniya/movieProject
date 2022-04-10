@@ -37,11 +37,13 @@
 
 </style>
 <!DOCTYPE html>
-<form name="moviewReviewVO" id="myform" method="post" action="writeReview.do" style="width:100%; height:450px; margin-top: 30px; text-align:center; position:relative;">
+<form name="moviewReviewVO" id="myform" method="post" action="writeReview.do" style="width:100%; height:450px; margin-top: 30px; text-align:center; position:relative; border:#fff0;">
 	<p style="float: left; font-size: 25px; color: black;">평점 작성</p>
 	<p style="position: absolute;top: 20%;left: 33%;font-weight: bold;font-size: 17px;">${movieReviewVO.movie_name}</p>
 	<div class="review_form" style="position:absolute; top:19%; left:33%;">
     <fieldset>
+    	<input type=hidden name="review_num" value="${movieReviewVO.review_num}">
+        <input type=hidden name="movie_num" value="${movieReviewVO.movie_num}">
         <legend>영화평점</legend>
         <div class="review_rate" style="float:left; margin-bottom: 10px;">
         <input type="radio" name="review_rate" value="5" id="rate1"><label for="rate1">⭐</label>
@@ -56,8 +58,8 @@
     <div style="width: 20%; height: 20px; float: right; margin-top: 10px; font-size:15px;">
     	<input type="submit" value="전송">
     </div>
-    <hr>
-    <p style="    position: absolute; top: 100%; margin-top: 30px; width: 350px;">
+
+    <p style="position: absolute; top: 100%; margin-top: 30px; width: 350px;">
          올바른 커뮤니티를 지향하기 위하여 운영원칙에 어긋나는<br>
          게시물로 판단되는 글은 적발 시, 경고 없이 삭제되며<br> 아이디 중지 등의
 	제재 조치를 받을 수 있습니다.<br>

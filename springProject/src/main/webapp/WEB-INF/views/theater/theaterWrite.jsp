@@ -20,15 +20,6 @@ form {
     margin-top: -6px;
     padding: 0px;
 }
-.theaterRegister{
-	background: #666;
-	color: white;
-	width: 100px;
-	height: 35px;
-	margin-top: -8px;
-	border: 2px solid lightgrey;
-	font-size: 15px;
-}
 li select[name="theater_local"]{
 	margin-left:10px;
 }
@@ -49,8 +40,8 @@ input[name="upload"]{
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/uploadAdaptor.js">
 </script>
 <div class="page-main">
-	<h2 style="padding-left: 100px;">극장지역정보 등록</h2>
-	<form:form modelAttribute="theaterVO" action="theaterWrite.do" enctype="multipart/form-data" id="theater_form">
+	<h2 style="padding-left: 80px;">극장지역정보 등록</h2>
+	<form:form modelAttribute="theaterVO" action="theaterWrite.do" enctype="multipart/form-data" id="theater_form" style="border:#0000;">
 	<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>

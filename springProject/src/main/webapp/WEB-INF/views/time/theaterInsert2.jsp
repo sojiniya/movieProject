@@ -17,7 +17,7 @@ form#time_form {
 form#time_form {
     width: 400px;
     margin: 55px auto;
-    border: 1px solid #000;
+    border: #000f;
     padding: 10px 10px 10px 40px;
 }
 </style>
@@ -31,7 +31,7 @@ form#time_form {
 		<ul>
 			<li style="clear:both">
 				<form:label path="theater_num">극장</form:label> 
-				<select name="theater_num" id="theater_num">
+				<select name="theater_num" id="theater_num" style="margin-left: 53px;">
 				<c:forEach var="list" items="${theater_list }">
 					<option value="${list.theater_num}">${list.theater_name}</option>
 				</c:forEach>
@@ -40,7 +40,7 @@ form#time_form {
 			</li>
 		    <li style="clear:both">
 				<form:label path="movie_num">영화</form:label>
-				<select name="movie_num" id="movie_num">
+				<select name="movie_num" id="movie_num" style="margin-left: 53px;">
 				<c:forEach var="list" items="${movie_list }">
 					<option value="${list.movie_num}">${list.movie_name}</option>
 				</c:forEach>
@@ -49,7 +49,7 @@ form#time_form {
 			</li>
 			<li style="clear:both">
 				<form:label path="movie_name">영화제목</form:label>
-				<form:input path="movie_name" style="width:225px;"/>
+				<form:input path="movie_name" style="width:225px; margin-left:27px;"/>
 				<form:errors path="movie_name" cssClass="error-color"/><p>
 			</li>
 			<li style="clear:both">
@@ -64,7 +64,7 @@ form#time_form {
 			</li>
 		</ul>	 
 		<div class="align-center" style="clear:both;padding-right: 50px;"><br>
-			<form:button>전송</form:button>
+			<form:button>등록</form:button>
 			<input type="button" value="목록" 
 			              onclick="location.href='${pageContext.request.contextPath}/time/selectList.do'">
 		</div>                                          
