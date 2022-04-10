@@ -313,17 +313,6 @@ ol, ul {
 </style>
 <div class="wrap-login">
 	<div class="sect-login">
-		<ul class="tab-menu-round">
-			<li class="on">
-                <a href="#">로그인</a>
-            </li>
-            <li>
-                <a href="${pageContext.request.contextPath}/reserve/reserveStep1.do">예매</a>
-            </li>
-            <li>
-                <a href="#">예매확인</a>
-            </li>
-        </ul>
 		<div class="box-login">
 			<h3 class="hidden">회원 로그인</h3>
 			<form:form modelAttribute="memberVO" action="login.do" id="login_form">
