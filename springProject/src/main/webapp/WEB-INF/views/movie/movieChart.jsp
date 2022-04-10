@@ -15,6 +15,7 @@
 	height:25px;
 	padding-top:3px;
 	margin-bottom:8px;
+	border-radius: 5px;
 }
 </style>
 <div class="page-main">
@@ -25,7 +26,7 @@
 		<div class="align-right">
 			<form id="search_form2" action="searchMovie.do">
 				<select id="keyfield" name="keyfield">
-					<option title="현재 선택됨"<c:if test="${keyfield ==1}">selected</c:if>value="1">예매율순</option>
+					<option title="현재 선택됨" value="1">예매율순</option>
 					<option value="2" <c:if test="${keyfield ==2}">selected</c:if>>평점순</option>
 				</select>
 			<input type="submit" value="GO" style="height: 30px;background: lightgray;border: 2px solid lightgray;">
@@ -44,8 +45,9 @@
 			<c:if test="${count > 0}">
 			<c:forEach var="movie" items="${list}">
 				<ul>
-					<li>
+					<li><c:if test="${movie.rank != ''}">
 						<div class="movieRank">NO.${movie.rank}</div>
+						</c:if>
 						<div class="movie-image">
 						<a href="movieDetail.do?movie_num=${movie.movie_num}"><img src="imageView.do?movie_num=${movie.movie_num}" style="width:185px; height:260px;"></a></div>
 						<div class="movie-content">

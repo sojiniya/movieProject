@@ -117,7 +117,7 @@ public class MovieController {
 		
 		List<MovieVO> list = null;
 		if(count > 0) {
-			list = movieService.searchReserveRateList(map);
+			list = movieService.selectList(map);
 		}
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("movieChart");

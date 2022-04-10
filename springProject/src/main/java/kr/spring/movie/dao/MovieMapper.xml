@@ -19,8 +19,8 @@
 		              m.movie_auth,
 		              m.movie_genre
 		            FROM M_movie m
-		            WHERE movie_auth = 0
-		            ORDER BY m.movie_num DESC)a)
+		            WHERE movie_auth = 0 or movie_auth = 1
+		            ORDER BY m.movie_auth)a)
 
 	   <![CDATA[
 	   WHERE rnum >= #{start} AND rnum <= #{end}
