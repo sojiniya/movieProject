@@ -95,8 +95,8 @@ function clickLike(likeYn){
 	<hr size="1" width="100%" noshade="noshade">
 	<div class="align-right">
 		<c:if test="${!empty user_num && user_auth == 3}">
-		<input type="button" value="수정" onclick="location.href='movieUpdate.do?movie_num=${movie.movie_num}'"> 
-		<input type="button" value="삭제" id="delete_btn"> 
+		<input type="button" value="수정" onclick="location.href='movieUpdate.do?movie_num=${movie.movie_num}'" style="width: 55px;height: 30px;background:white; border: 2px solid #87ceeb;"> 
+		<input type="button" value="삭제" id="delete_btn" style="width: 55px;height: 30px;background:white;border: 2px solid #ebad87;"> 
 		<script type="text/javascript">
 			let delete_btn = document.getElementById('delete_btn');
 			delete_btn.onclick=function(){
@@ -107,22 +107,22 @@ function clickLike(likeYn){
 			};
 		</script>
 		</c:if>
-		<input type="button" value="목록" onclick="location.href='movieChart.do'">
+		<input type="button" value="목록" onclick="location.href='movieChart.do'" style="width: 55px;height: 30px;background:white;border: 2px solid #ababab;">
 	</div>
 	<c:forEach var="reviewVO" items="${reviewVO}">
-		<table>
-			<tr>
-				<th>작성자</th>
-				<th>평정</th>
-				<th>리뷰 내용</th>
-			</tr>
-			<tr>
-				<th>${reviewVO.id}</th>
-				<th>${reviewVO.review_rate}</th>
-				<th>${reviewVO.review_content }</th>
-			</tr>
-		</table>
+				<div class="movie_review" style="width: 50%;text-align: center;border-right: 1px solid #ddd;border-top: 2px solid #808080;margin-top:10px;">	
+				<p>${reviewVO.id}</p>
+				<c:choose>
+				<c:when test="${reviewVO.review_rate == 5}"><p>★★★★★</p></c:when>
+				<c:when test="${reviewVO.review_rate == 4}"><p>★★★★☆</p></c:when>
+				<c:when test="${reviewVO.review_rate == 3}"><p>★★★☆☆</p></c:when>
+				<c:when test="${reviewVO.review_rate == 2}"><p>★★☆☆☆</p></c:when>
+				<c:otherwise><p>★☆☆☆☆</p></c:otherwise>
+				</c:choose>
+				<p>${reviewVO.review_content }</p>
+			</div>
 	</c:forEach>
+	
 <!-- 중앙 컨텐츠 끝 -->
 
 
