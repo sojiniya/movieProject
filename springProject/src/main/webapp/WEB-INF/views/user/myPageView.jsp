@@ -24,7 +24,6 @@
         		<div class="person-info">
         			<strong>${member.id}</strong>
         			<em>${member.mem_name}</em>
-        			<button type="button" title="개인정보 수정" onclick="${pageContext.request.contextPath}/user/update.do">나의 정보 변경</button>
         		</div>
         		<div class="grade-info">
         	        
@@ -79,14 +78,14 @@
 			<c:if test="${reserveCount ==0}">0건</c:if>
 			<c:if test="${reserveCount >0}">${reserveCount}건</c:if>
 		</em> 
-		<a href="${pageContext.request.contextPath}/user/myReserveMovie.do">예매내역 더보기</a>
+		<a href="${pageContext.request.contextPath}/user/myReserveMovie.do" style="float:right">예매내역 더보기 > </a>
 	</p>
 	
 </div>
 
 <div class="sect-base-booking">
 	<div class="box-polaroid box-size">
-		<div class="box-inner">
+		<div class="box-inner" style="font-size: 17px;">
 			<c:if test="${reserveCount == 0}">
 				<div class="lst-item">고객님의 최근 예매내역이 존재하지 않습니다.</div>
 			</c:if>
@@ -102,20 +101,20 @@
 		</div>
 	</div>
 </div>
-
-<div class="box-polaroid box-size1">
-<div class="box-inner2">
-	<div class="tit-mycgv2">
-		<h3>MY Q&amp;A</h3>
+<div class="tit-mycgv2">
+<h3>MY Q&amp;A</h3>
 		<p>
 			<em>
 				<c:if test="${myQnACount ==0}">0건</c:if>
 				<c:if test="${myQnACount >0}">${myQnACount}건</c:if>
 			</em>
-			<a href="${pageContext.request.contextPath}/board/myList.do">MY Q&amp;A 더보기</a>
+			
+			<a href="${pageContext.request.contextPath}/board/myList.do" style="float:right">MY Q&amp;A 더보기 > </a>
 		</p>
-	</div>
-	<div class="col-myqna">
+		</div>
+<div class="box-polaroid box-size1">
+<div class="box-inner2">
+	<div class="col-myqna" style="font-size: 17px;">
 		<c:if test="${myQnACount ==0}">
 			<ul class="showLine">
 				<li>고객님의 1:1 문의내역이 존재하지 않습니다.</li>

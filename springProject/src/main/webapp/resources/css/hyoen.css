@@ -9,14 +9,14 @@
 
 /* Section MYCGV Area */
 /*MyPage 박스 크기 css*/
-.mycgv-info-wrap {width:882px; height:176px; padding:60px 40px 0 58px; background:url(../images/common/bg/bg_mycgv_info.gif) no-repeat 0 0;}
+.mycgv-info-wrap {width:882px; height:150px; padding:60px 40px 0 45px; background:url(../images/common/bg/bg_mycgv_info.gif) no-repeat 0 0;}
 .mycgv-info-wrap em {font-family:verdana, sans-serif; font-weight:bold;}
 .mycgv-info-wrap .sect-person-info > .box-image {float:left; width:135px; height:135px;}
-.mycgv-info-wrap .sect-person-info > .box-contents {float:right; width:719px;}
+.mycgv-info-wrap .sect-person-info > .box-contents {float:right; width:700px;}
 
 /* sect-person-info newtype : 150416 추가 */
 .mycgv-info-wrap .sect-person-info > .box-contents.newtype > .person-info,
-.mycgv-info-wrap .sect-person-info > .box-contents.newtype > .grade-info {width:482px;}
+.mycgv-info-wrap .sect-person-info > .box-contents.newtype > .grade-info {width:620px;}
 .mycgv-info-wrap .sect-person-info > .box-contents.newtype > .grade-info #view_usergrade{margin-top:12px}
 .mycgv-info-wrap .sect-person-info > .box-contents.newtype > .grade-info #view_usergrade ~ a{margin-top:12px}
 
@@ -244,7 +244,7 @@
     margin: 30px;
 }
 .tit-mycgv2 {
-    margin-bottom: 15px;
+   	margin: 15px 0px 15px 0px;
 }
 .showLine{
 	padding: 20px 20px 20px 0px;
@@ -314,7 +314,7 @@ div[class^="sect-"] .box-contents li a{ display:block; font-weight:500; white-sp
 div[class^="sect-"] .btn-itemmore{ margin-top:30px;}
 
 .box-image a{ display:block;}
-.box-image img{ width:100%;}
+.box-image img{ width:120%;}
 .thumb-image{ display:block; position:relative;}
 /* .box-contents{} */
 
@@ -451,10 +451,10 @@ input:focus::-moz-placeholder {color:#dcdcdc;}
 /*버튼 테두리 css*/
 button,
 input[type='submit'],
-input[type='reset'] { padding:0;border:0 none; background-color:transparent; vertical-align:middle;}
+input[type='reset'] {vertical-align:middle;}
 button,
 input[type='submit'],
-input[type='button'] {cursor:pointer; margin:0; padding:0;}
+input[type='button'] {cursor:pointer; margin:0;}
 input[type='text'],input[type='password'] {display:inline-block; height:25px; line-height:22px; padding-left:10px; border:1px solid #b5b5b5;}
 
 input[type='password'][readonly],
