@@ -6,6 +6,7 @@
 <style type="text/css">
 form#theater_form {
     height: 198px;
+	
 }
 form {
     width: 390px;
@@ -19,6 +20,28 @@ form {
     margin-top: -6px;
     padding: 0px;
 }
+.theaterRegister{
+	background: #666;
+	color: white;
+	width: 100px;
+	height: 35px;
+	margin-top: -8px;
+	border: 2px solid lightgrey;
+	font-size: 15px;
+}
+li select[name="theater_local"]{
+	margin-left:10px;
+}
+li #theater_addr{
+	margin-left:10px;
+}
+li #theater_name{
+	margin-left:23px;
+}
+input[name="upload"]{
+	padding-left:7px;
+}
+
 </style>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -32,7 +55,7 @@ form {
 		<ul>
 			<li>
 				<form:label path="theater_local">극장관지역</form:label>
-				<select name="theater_local">
+				<select name="theater_local" id="theater_local">
 					<option value="서울">서울</option>
 					<option value="경기">경기</option>
 					<option value="인천">인천</option>
@@ -42,11 +65,11 @@ form {
 			</li>
 			<li style="clear: both;">
 				<form:label path="theater_addr">극장관주소 </form:label>
-				<form:input path="theater_addr"/><p>
+				<form:input path="theater_addr" id="theater_addr"/><p>
 			</li>
 			<li>
 				<form:label path="theater_name">극장관명 </form:label>
-				<form:input path="theater_name"/><p>
+				<form:input path="theater_name" id="theater_name"/><p>
 			</li>
 			<li>
 				<form:label path="upload">info사진업로드 </form:label>
@@ -55,8 +78,8 @@ form {
 			</li>
 		</ul>
 		<div class="align-center" style="clear:both"><br>
-			<input type="submit" value="등록">
-			<input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/time/selectList.do'">
+			<input type="submit" class="theaterRegister" value="등록">
+			<input type="button" class="theaterRegister" value="목록" onclick="location.href='${pageContext.request.contextPath}/time/selectList.do'">
 		</div>
 	</form:form>
 </div>
