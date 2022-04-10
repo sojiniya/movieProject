@@ -295,7 +295,7 @@ public class MovieController {
 				}else if(keyword.equals("") && keyfield.equals("1")) {//예매율순	
 					list = movieService.searchReserveRateList(map);
 				}else if(keyword.equals("") && keyfield.equals("2")) {//평점순
-					list = movieService.searchMovieList(map);
+					list = movieService.searchMovieRateList(map);
 				}else if(keyword.equals("") && keyfield.equals("3")){ //관람객순
 					list = movieService.searchAudienceRateList(map);
 				}

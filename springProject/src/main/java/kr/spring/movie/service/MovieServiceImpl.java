@@ -114,6 +114,10 @@ public class MovieServiceImpl implements MovieService{
 	public List<MovieVO> searchMovieList(Map<String, Object> map) {
 		return movieMapper.searchMovieList(map);
 	}
+	@Override
+	public List<MovieVO> searchMovieRateList(Map<String, Object> map) {
+		return movieMapper.searchMovieRateList(map);
+	}
 
 	@Override
 	public List<MovieVO> searchReserveRateList(Map<String, Object> map) {
@@ -124,6 +128,7 @@ public class MovieServiceImpl implements MovieService{
 	public List<MovieVO> searchAudienceRateList(Map<String, Object> map) {
 		return movieMapper.searchAudienceRateList(map);
 	}
+
 
 	
 	/*

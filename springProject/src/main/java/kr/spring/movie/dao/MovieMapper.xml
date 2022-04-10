@@ -86,14 +86,23 @@
 			 			movie_name LIKE '%' || #{keyword} || '%'
 					</if>
 			 	</where>
-					<if test="keyword =='' and keyfield ==2">
-						ORDER BY movie_rate DESC NULLS LAST
-					</if>		 	
 			 	)a)
 		<![CDATA[			 	 
  		where rnum >= #{start} AND rnum <= #{end}   
 		]]>	
     </select>
+    
+    <select id="searchMovieRateList" parameterType="map" resultType="movieVO">
+		SELECT 
+		   * 	
+		FROM (SELECT a.*, rownum rnum FROM 
+			 	(SELECT movie_num,movie_name,movie_genre,movie_pg,movie_auth,movie_Rate,ROW_NUMBER() OVER(ORDER BY movie_rate DESC)AS RANK FROM M_movie  
+			 	)a)
+		<![CDATA[			 	 
+ 		where rnum >= #{start} AND rnum <= #{end}   
+		]]>
+    </select>
+    
     <select id="searchReserveRateList" parameterType="map" resultType="movieVO">
 		SELECT 
 		 * 
