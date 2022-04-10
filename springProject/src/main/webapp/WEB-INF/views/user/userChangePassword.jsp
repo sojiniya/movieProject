@@ -108,6 +108,7 @@ button, button[type='submit'], input[type='button'] {
     cursor: pointer;
     margin: 0;
     padding: 0;
+    color:white;
 }
 
 /*히든*/
