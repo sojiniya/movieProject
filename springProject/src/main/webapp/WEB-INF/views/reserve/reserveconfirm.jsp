@@ -12,13 +12,13 @@
 <div>
 	<div>
 		<c:if test="${empty movie.filename}">
-			<img src="${pageContext.request.contextPath}/resources/images/default.png" width="500px" height="500px" style="float:left; margin: 20px;" id="movie_photo">
+			<img src="${pageContext.request.contextPath}/resources/images/default.png" style="margin: 10px 360px;width: 300px;" id="movie_photo">
 		</c:if>
 		<c:if test="${!empty movie.filename}">
-			<img src="${pageContext.request.contextPath}/movie/imageView.do?movie_num=${movie.movie_num }" width="500px" style="float:left; margin: 20px;" id="movie_photo">
+			<img src="${pageContext.request.contextPath}/movie/imageView.do?movie_num=${movie.movie_num }" style="margin: 10px 360px;width: 300px;" id="movie_photo">
 		</c:if>
 	</div>
-	<div>
+	<div style="text-align: center;">
 		<p>${movie.movie_name}</p>
 		<p>극장 | ${theater.theater_name}</p>
 		<p>일시 | ${time.movie_date} ${time.movie_time}</p>
