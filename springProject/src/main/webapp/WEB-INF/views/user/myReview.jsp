@@ -37,7 +37,6 @@
 <style>
 .box-image #MoviePoster {
     width: 170px;
-    height: 200px;
     padding-top:10px;
 }
 </style>
@@ -63,7 +62,7 @@
 									</span>
 									</a>
 								</div>
-								<div class="box-contents">
+								<div class="box-contents" style="margin-top:60px;">
 								<input style="display:none" id="review_num" value="${myReview.review_num}">
 								<input style="display:none" id="mem_num" value="${myReview.mem_num}">
 									<div class="title">
@@ -73,17 +72,17 @@
 									</div>
 
 									<p class="date">${fn:substring(myReview.review_reg_date,0,16)}</p>
-									<p class="theater">CGV${watchedMovie.theater_name}
-										/${myReview.review_rate}점</p>
+									<p class="theater">${watchedMovie.theater_name}
+										/★ ${myReview.review_rate}</p>
 									<p>"${myReview.review_content}"</p>
 								</div>
-								<button type="button" class="btn-del" onclick="delete_btn()">
+								<button type="button" class="btn-del" onclick="delete_btn()" style="background: #ffd70000; border: #00ffff00;">
 									<img
 										src="https://img.cgv.co.kr/R2014/images/common/btn/btn_del.gif"
 										alt="${myReview.movie_name}">
 								</button>
-								<button type="button" onclick="location.href='${pageContext.request.contextPath}/user/modifyReviewForm.do?review_num=${myReview.review_num}'">
-									수정하기
+								<button type="button" onclick="location.href='${pageContext.request.contextPath}/user/modifyReviewForm.do?review_num=${myReview.review_num}'" style="float:right; background:#6660; float:right; border:#00f0; height:24px;">
+									수정하기 > 
 								</button>
 							</div>
 						</li>

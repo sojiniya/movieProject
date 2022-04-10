@@ -38,7 +38,7 @@
 <style>
 .box-image #MoviePoster {
     width: 170px;
-    height: 200px;
+    height: 240px;
     padding-top:10px;
 }
 </style>
@@ -65,7 +65,7 @@
 									</span>
 									</a>
 								</div>
-								<div class="box-contents">
+								<div class="box-contents" style="margin-top: 60px;">
 								<input style="display:none" id="reserve_num" value="${watchedMovie.reserve_num}">
 								<input style="display:none" id="mem_num" value="${member.mem_num}">
 									<div class="title">
@@ -76,16 +76,16 @@
 									<c:set var="MovieDate" value="${watchedMovie.movie_date}"/> 
 									<p class="date">${fn:substring(MovieDate,0,10)}
 										${reserveMovie.movie_time}</p>
-									<p class="theater">CGV${watchedMovie.theater_name}
-										/A-${watchedMovie.reserve_seat}</p>
+									<p class="theater">${watchedMovie.theater_name}
+										/${watchedMovie.reserve_seat}</p>
 								</div>
-								<button type="button"class="btn-del" onclick="delete_btn()">
+								<button type="button"class="btn-del" onclick="delete_btn()" style="background: #ffd70000; border: #00ffff00;">
 									<img
 										src="https://img.cgv.co.kr/R2014/images/common/btn/btn_del.gif"
 										alt="${watchedMovie.movie_name}">
 								</button>
-								<button type="button" onclick="location.href='${pageContext.request.contextPath}/user/writeReviewForm.do?movie_num=${watchedMovie.movie_num}'">
-									리뷰남기기
+								<button type="button" onclick="location.href='${pageContext.request.contextPath}/user/writeReviewForm.do?movie_num=${watchedMovie.movie_num}'" style="float:right; background:#6660; float:right; border:#00f0; height:24px;">
+									리뷰남기기 > 
 								</button>
 							</div>
 						</li>

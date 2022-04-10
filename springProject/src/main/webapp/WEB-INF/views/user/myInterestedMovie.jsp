@@ -37,7 +37,7 @@
 <style>
 li #btn-del img{
 	width: 30px;
-    margin-left: -31px;
+    margin-left: -40px;
     position: relative;
 }
 .movie_reserve {
@@ -61,9 +61,7 @@ a:link {
     width: 180px;
     height: 260px;
 }
-.box-image{
-	padding-left:18px;
-}
+
 .box-contents{
 	padding-bottom:30px;
 }
@@ -73,7 +71,7 @@ a:link {
 		<div class="result-display">관심이 있는 영화가 없습니다.</div>
 	</c:if>
 	<c:if test="${count > 0}">
-		<ul id="wishlist_container">
+		<ul id="wishlist_container" style="margin:30px">
 			<c:forEach var="InterestedMovie" items="${list}">
 				<li>
 					<div class="box-image">
@@ -95,7 +93,7 @@ a:link {
 				</li>
 				<li id="btn-del">
 					<input type="hidden" value="${InterestedMovie.my_movie_num}" id="my_movie_num">
-					<button type="button" class="btn-del" id="btn-del" onclick="delete_btn()">
+					<button type="button" class="btn-del" id="btn-del" onclick="delete_btn()" style="background: #ffd70000; border: #00ffff00;">
 						<img src="https://img.cgv.co.kr/R2014/images/common/btn/btn_del02.png"/>
 					</button>
 				</li>

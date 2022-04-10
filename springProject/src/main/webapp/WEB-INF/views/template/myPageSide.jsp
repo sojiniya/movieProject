@@ -10,12 +10,11 @@
 		<h2>MY CGV 서브메뉴</h2>
 		<div class="snb">
 			<ul>
-				<li class="on"><a href="${pageContext.request.contextPath}/user/myPage.do" title="현재 선택">MY
-						CGV HOME <i></i>
+				<li class="on"><a href="${pageContext.request.contextPath}/user/myPage.do" title="현재 선택">MY PAGE HOME <i></i>
 				</a></li>
 				<li><a href="${pageContext.request.contextPath}/user/myReserveMovie.do">나의 예매내역 <i></i></a></li>
 
-				<li><a href="/user/mycgv/myinfo/?g=1">회원정보<i></i></a>
+				<li><a href="">회원정보<i></i></a>
 					<ul>
 						<li><a
 							href="${pageContext.request.contextPath}/user/update.do">개인정보
@@ -29,7 +28,7 @@
 				<li>
 					<a href="${pageContext.request.contextPath}/board/myList.do">나의 문의내역 </a>
 					<ul>
-						<li><a href="${pageContext.request.contextPath}/board/myList.do">1:1 문의</a></li>
+						<li><a href="${pageContext.request.contextPath}/board/userBoardWrite.do">1:1 문의</a></li>
 					</ul>
 				</li>
 				<li class="my-event"><a href="${pageContext.request.contextPath}/user/myWatchedMovie.do">내가 본 영화</a></li>

@@ -77,7 +77,7 @@
 										/${reserveMovie.reserve_seat}</p>
 								</div>
 								<!-- 2022.04.08 예매취소 기능을 위해  reserve-idx="${reserveMovie.reserve_num}" 추가 // 정동윤-->
-								<button type="button" data="329787502" class="btn-del" reserve-idx="${reserveMovie.reserve_num}" revseat-idx="${reserveMovie.revseat_num}">
+								<button type="button" data="329787502" class="btn-del" reserve-idx="${reserveMovie.reserve_num}" revseat-idx="${reserveMovie.revseat_num}" style="background: #ffd70000; border: #00ffff00;">
 									<img
 										src="https://img.cgv.co.kr/R2014/images/common/btn/btn_del.gif"
 										alt="${reserveMovie.movie_name}">

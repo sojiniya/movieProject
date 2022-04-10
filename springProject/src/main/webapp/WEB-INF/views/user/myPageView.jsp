@@ -95,7 +95,7 @@
 					<span><a href="${pageContext.request.contextPath}/movie/movieDetail.do?movie_num=${reserveList.movie_num}">&emsp;&emsp;${reserveList.movie_name}</a>/
 					<c:set var="MovieTime" value="${reserveList.movie_date}"/>${fn:substring(MovieTime,0,10)}/
 					${reserveList.movie_time}/
-					A-${reserveList.reserve_seat}</span><br>
+					${reserveList.reserve_seat}</span><br>
 				</c:forEach>
 			</c:if>
 		</div>
