@@ -28,14 +28,14 @@
 					<option title="현재 선택됨"<c:if test="${keyfield ==1}">selected</c:if>value="1">예매율순</option>
 					<option value="2" <c:if test="${keyfield ==2}">selected</c:if>>평점순</option>
 				</select>
-			<input type="submit" value="GO">
+			<input type="submit" value="GO" style="height: 30px;background: lightgray;border: 2px solid lightgray;">
 			</form>
 		</div>
 		<div class="list-moviechart">
 			<c:if test="${!empty user_num && user_auth == 3}">
 				<div class="align-right">
 					<input type="button" value="글쓰기"
-						onclick="location.href='movieWrite.do'">
+						onclick="location.href='movieWrite.do'" style="background: #fff0;color: black;width: 70px;height: 35px;border: 2px solid lightgrey;font-size: 15px;">
 				</div>
 			</c:if>
 			<c:if test="${count == 0}">
