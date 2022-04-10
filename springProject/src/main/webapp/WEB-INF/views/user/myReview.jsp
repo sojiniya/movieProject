@@ -70,10 +70,23 @@
 											id="strong_80530">${myReview.movie_name}</strong>
 										</a>
 									</div>
-
 									<p class="date">${fn:substring(myReview.review_reg_date,0,16)}</p>
-									<p class="theater">${watchedMovie.theater_name}
-										/★ ${myReview.review_rate}</p>
+									<c:if test="${myReview.review_rate == 1}">
+										<p>	★☆☆☆☆ <p>
+									</c:if>
+									<c:if test="${myReview.review_rate == 2}">
+										<p>	★★☆☆☆ <p>
+									</c:if>
+									<c:if test="${myReview.review_rate == 3}">
+										<p>	★★★☆☆<p>
+									</c:if>
+									<c:if test="${myReview.review_rate == 4}">
+										<p>	★★★★☆<p>
+									</c:if>
+									<c:if test="${myReview.review_rate == 5}">
+										<p>	★★★★★ <p>
+									</c:if>
+									<br>
 									<p>"${myReview.review_content}"</p>
 								</div>
 								<button type="button" class="btn-del" onclick="delete_btn()" style="background: #ffd70000; border: #00ffff00;">
@@ -90,6 +103,7 @@
 				</c:forEach>
 				</c:if>	
 			</div>
+			<br><br><br><br><br><br><br><br><br><br>
 			<div class="align-center">${pagingHtml}</div>
 		</div>
 	</div>
