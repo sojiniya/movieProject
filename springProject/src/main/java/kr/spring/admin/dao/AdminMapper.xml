@@ -15,14 +15,14 @@
 			  				OR
 			  				d.mem_name LIKE '%' || #{keyword} || '%'
 			  				AND
-			  				m.auth = 1
+			  				m.auth = 2
 			  			</if>
 			  			<if test="keyword != '' and keyfield == 2">
 			  				m.id LIKE '%' || #{keyword} || '%'
 			  				OR
 			  				d.mem_name LIKE '%' || #{keyword} || '%'
 			  				AND
-			  				m.auth = 2
+			  				m.auth = 1
 			  			</if>
 			  			<if test="keyword != '' and keyfield == 3" >
 			  				m.id LIKE '%' || #{keyword} || '%'
@@ -32,10 +32,10 @@
 			  				m.auth = 3
 			  			</if>
 			  			<if test="keyword =='' and keyfield ==1">
-							m.auth = 1		  			
+							m.auth = 2		  			
 			  			</if>
 			  			<if test="keyword =='' and keyfield ==2">
-			  				m.auth = 2
+			  				m.auth = 1
 			  			</if>
 			  			<if test="keyword =='' and keyfield ==3">
 			  				m.auth = 3
@@ -70,30 +70,24 @@
 			 (SELECT * FROM M_reserve r LEFT OUTER JOIN M_movie m ON r.movie_num = m.movie_num
         								LEFT OUTER JOIN m_time t ON r.time_num = t.time_num
                                         LEFT OUTER JOIN m_reservseat s on s.time_num = t.time_num 
-        								LEFT OUTER JOIN m_theater th ON t.theater_num = th.theater_num 
+        								LEFT OUTER JOIN m_theater th ON t.theater_num = th.theater_num
+        								LEFT OUTER JOIN m_member mm ON r.mem_num = mm.mem_num 
         <![CDATA[
 					 WHERE 
 					 movie_Date >= #{movieDate}
-		]]>					<!-- 1:요일별, 2:영화별 3:극장별 -->
-						<if test="keyword !='' and keyfield==1">
-							AND
-			  				t.movie_date LIKE '%' || #{keyword} || '%'
-			  			</if>
-			  			<if test="keyword != '' and keyfield == 2">
+		]]>					<!--1:영화별 2:극장별 -->
+			  			<if test="keyword != '' and keyfield == 1">
 			  				AND
 			  				m.movie_name LIKE '%' || #{keyword} || '%'
 			  			</if>
-			  			<if test="keyword != '' and keyfield == 3" >
+			  			<if test="keyword != '' and keyfield == 2" >
 			  				AND
 			  				th.theater_name LIKE '%' || #{keyword} || '%'
 			  			</if>
 			  			<if test="keyword =='' and keyfield ==1">
-							ORDER BY t.movie_date DESC  			
-			  			</if>
-			  			<if test="keyword =='' and keyfield ==2">
 			  				ORDER BY m.movie_num DESC
 			  			</if>
-			  			<if test="keyword =='' and keyfield ==3">
+			  			<if test="keyword =='' and keyfield ==2">
 			  				ORDER BY th.theater_name ASC
 			  			</if>
 					 	)a)

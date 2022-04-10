@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
 <!-- 중앙 컨텐츠 시작 -->
 <style>
 table{
@@ -20,9 +20,8 @@ table td, table th{
 		<ul class="search">
 			<li>
 				<select name="keyfield" id="keyfield" class="select-height">
-					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>요일</option>
-					<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>영화별</option>
-					<option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>극장별</option>
+					<option value="2" <c:if test="${param.keyfield == 1}">selected</c:if>>영화별</option>
+					<option value="3" <c:if test="${param.keyfield == 2}">selected</c:if>>극장별</option>
 				</select>
 			</li>
 			<li>
@@ -55,6 +54,7 @@ table td, table th{
 			<th>회원 아이디</th>
 			<th>영화제목</th>
 			<th>극장</th>
+			<th>예매 날짜</th>
 			<th>예매 좌석</th>
 			<th>결제 수단</th>
 			<th>결제 금액</th>
@@ -67,6 +67,8 @@ table td, table th{
 			<td>${reserve.id}</td>
 			<td>${reserve.movie_name}</td>
 			<td>${reserve.theater_name}</td>
+			<c:set var="MovieTime" value="${reserve.movie_date}"/> 
+			<td>${fn:substring(MovieTime,0,10)}</td>
 			<td>${reserve.reserve_seat}</td>
 			<td>카카오페이 결제</td>
 			

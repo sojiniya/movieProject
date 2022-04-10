@@ -21,7 +21,7 @@ table td, table th{
 		<ul class="search">
 			<li>
 				<select name="keyfield" id="keyfield" class="select-height">
-					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>정지회원</option>
+					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>탈퇴회원</option>
 					<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>일반회원</option>
 					<option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>관리자</option>
 				</select>
@@ -65,7 +65,7 @@ table td, table th{
 			<td>${member.mem_name}</td>
 			<td>${member.mem_address}</td>
 			<c:if test="${member.auth == 0}">
-			<td>정지회원</td>
+			<td>탈퇴회원</td>
 			</c:if>
 			<c:if test="${member.auth == 1}">
 			<td>일반회원</td>
