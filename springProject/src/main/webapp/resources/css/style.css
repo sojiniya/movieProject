@@ -240,6 +240,7 @@ ul.memberInfo_wrap{
 	display: flex;
 	float:right;
 	align-items: center;
+	margin-top: 50px;
 }
 
 li.header_id{
@@ -888,12 +889,16 @@ span.answer1{
 	height: 100%;	
 }
 .list-moviechart li{
-	margin: 30px 30px 30px 30px;
+	margin: 30px 30px 30px 15px;
+	width: 19%;
 }
 .movie-content{
 	margin: 10px 0px 10px 0px;
 	width: 100%;
 	text-align: left;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .movie_name{
 	font-size: 17px;

@@ -6,7 +6,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <script>
 var divCd = 0;
-function like() {
+/* function like() {
     document.getElementById("like_movie").src = "${pageContext.request.contextPath}/resources/images/like.png";}
 $( document ).ready(function() {
 	$(".star_rating a").click(function() {
@@ -15,7 +15,7 @@ $( document ).ready(function() {
 	    return false;
 	});
 });
-
+ */
 function clickLike(likeYn){
 	var my_movie_num = $("#my_movie_num").val();
 	var imgUrl = ""; 
