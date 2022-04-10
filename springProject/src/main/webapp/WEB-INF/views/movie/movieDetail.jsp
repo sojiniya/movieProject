@@ -65,10 +65,10 @@ function clickLike(likeYn){
 			<span class="auth_result">상영 종료</span></c:if>
 	<%-- <button type="button" onclick="alert('${movie.movie_name} 영화가 좋아요 되었습니다.\n * 상단  MY CGV에서 확인 가능합니다.'),like()" style="background-color:transparent; border:0;"><img id="like_movie" src="${pageContext.request.contextPath}/resources/images/likedefault.png" style="width:25px; height:25px; margin-left: 5px;"></button> --%>
 	<button type="button" onclick="clickLike();" style="background-color:transparent; border:0;">
-		<c:if test="${0 eq movie.my_movie_num}">
+		<c:if test="${likeCheck != 1}">
 			<img id="like_movie" src="${pageContext.request.contextPath}/resources/images/likedefault.png" style="width:25px; height:25px; margin-left: 5px;">
 		</c:if>
-		<c:if test="${0 ne movie.my_movie_num}">
+		<c:if test="${likeCheck == 1}">
 			<img id="like_movie" src="${pageContext.request.contextPath}/resources/images/like.png" style="width:25px; height:25px; margin-left: 5px;">		
 		</c:if>
 	</button>

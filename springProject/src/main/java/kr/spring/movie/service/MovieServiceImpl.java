@@ -105,6 +105,10 @@ public class MovieServiceImpl implements MovieService{
 	public int countLike(MovieLikeVO movielike) {
 		return movieMapper.countLike(movielike);
 	}
+	@Override
+	public int countCheckLike(Map<String, Object> map) {
+		return movieMapper.countCheckLike(map);
+	}
 	
 	@Override
 	public int searchMovieCount(Map<String, Object> map) {
@@ -129,6 +133,8 @@ public class MovieServiceImpl implements MovieService{
 	public List<MovieVO> searchAudienceRateList(Map<String, Object> map) {
 		return movieMapper.searchAudienceRateList(map);
 	}
+
+	
 
 
 	

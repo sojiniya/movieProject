@@ -29,6 +29,7 @@ public interface MovieService {
 	public void insertLike(MovieLikeVO movielike); //좋아요 추가
 	public void deleteLike(MovieLikeVO movielike); //좋아요 취소
 	public int countLike(MovieLikeVO movielike); //좋아요 갯수
+	public int countCheckLike(Map<String,Object> map);
 	
 	//영화검색
 	public int searchMovieCount(Map<String,Object> map);

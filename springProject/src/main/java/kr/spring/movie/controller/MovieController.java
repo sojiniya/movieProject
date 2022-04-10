@@ -137,6 +137,7 @@ public class MovieController {
 								@RequestParam(value ="pageNum",defaultValue="1") int currentPage,
 								HttpSession session) {
 		
+		Integer mem_num = (Integer)session.getAttribute("user_num");
 		logger.info("<<영화 상세 정보 - 영화 번호>> : " + movie_num);
 		MovieVO movieVo = new MovieVO();
 		
@@ -156,16 +157,26 @@ public class MovieController {
 		}
 		
 		if((Integer)session.getAttribute("user_num") != null) {
-			movieVo.setMem_num((Integer)session.getAttribute("user_num"));
+			movieVo.setMem_num(mem_num);
 		}
 		movieVo.setMovie_num(movie_num);
 		MovieVO movie = movieService.selectMovie(movie_num);
 
 		logger.info("<<영화 상세 정보 >> : " + movie);
+		ModelAndView mav = new ModelAndView();
+		
+		if(mem_num != null) {
+			//좋아요 체크
+			Map<String, Object> likeMap = new HashMap<String, Object>();
+			likeMap.put("movie_num", movie_num);
+			likeMap.put("mem_num", mem_num);
+			int likeCheck = movieService.countCheckLike(likeMap);
+			logger.info("<<LikeCheck >> : " + likeCheck);
+			mav.addObject("likeCheck",likeCheck);
+		}
+		
 		//타이틀 HTML 불허
 		movie.setMovie_name(StringUtil.useNoHtml(movie.getMovie_name()));
-		
-		ModelAndView mav = new ModelAndView();
 		mav.setViewName("movieDetail");
 		mav.addObject("movie",movie);
 		mav.addObject("reviewVO",reviewVO);
