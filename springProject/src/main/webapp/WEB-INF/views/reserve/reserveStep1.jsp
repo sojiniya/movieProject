@@ -84,13 +84,16 @@
 					// 선택한 영화가 상영하는 극장 카테고리(지역) 노출
 					$(param.theater_local_name).each(function(index,item){
 						let output = '<li style="float:none; text-align:right;">';
+						output += '<c:if test="${empty '+item.theater_local+'}">';
+						output += '현재 상영중인 영화가 없습니다.';
+						output += '</c:if>';
+						output += '<c:if test="${!empty '+item.theater_local+'}">';
 						output += item.theater_local;
+						output += '</c:if>';
 						output += '</li>';
 						
 						//문서 객체에 추가
 						$('#theater-local').append(output);
-						
-						
 						
 					});
 				},
@@ -318,6 +321,7 @@
 					reserv_total_count = param.reserv_total_count; //해당 영화 예약된 좌석 수
 					seat_possable_count = param.seat_possable_count; //해당 영화 예약 가능한 좌석 수
 					
+					
 					//인원수 선택 및 합계 조회 정보 노출
 					//$('#people_check').css('display','');
 					let output = '<div id="people_check">';
@@ -389,6 +393,11 @@
 				$(this).val('').focus();
 			}
 			
+			if($(this).val() > seat_possable_count){
+				alert('예약 가능한 인원을 초과했습니다.');
+				$(this).val('').focus();
+				return;
+			}
 			
 			adult = Number($('#adult').val());
 			youth = Number($('#youth').val());
@@ -516,7 +525,7 @@
 		<div class="col-body">
 			<c:if test="${empty movie_list}">
 			<div style="text-align: center;">현재 상영중인 영화가 없습니다.</div>
-		</c:if>
+			</c:if>
 		<c:if test="${!empty movie_list}">
 			<ul style="margin-top: 0px; padding-left: 0px; margin-bottom: 0px;" class="movie_list">
 				<c:forEach var="movie" items="${movie_list}">

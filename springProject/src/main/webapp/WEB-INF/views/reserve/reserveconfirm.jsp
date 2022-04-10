@@ -25,7 +25,7 @@
 		<p>인원 | 성인 ${reserve.reserve_adult}명, 청소년 ${reserve.reserve_youth}명, 경로우대 ${reserve.reserve_old}명</p>
 		<p>좌석번호 | ${reserve.reserve_seat}<p>
 		<input type="button" value="영화정보 보기" class="custom-btn btn-7" onclick="location.href='${pageContext.request.contextPath}/movie/movieDetail.do?movie_num=${movie.movie_num}'">
-		<input type="button" value="마이페이지"  class="custom-btn btn-7" onclick="location.href='${pageContext.request.contextPath}/user/myPage.do'">
+		<input type="button" value="예매내역 확인"  class="custom-btn btn-7" onclick="location.href='${pageContext.request.contextPath}/user/myReserveMovie.do'">
 	</div>
 </div>
 <hr width="100%">

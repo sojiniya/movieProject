@@ -4,6 +4,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 중앙 컨텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	let seat_num;
+</script>
 <div id="step-info">
 	<div id="step1-info">1.영화 및 극장 선택</div>
 	<div id="step2-info" style="background: #ed6e6e; font-weight: bold;">2.좌석 선택</div>
@@ -64,16 +67,24 @@
 	
 	<c:forEach var="seat" items="${seat_list}">
 			<span class="seat_detail" style="background: black; color: white; display: inline-block; width: 95px; height: 50px; margin-bottom: 10px;">
-				<input style="margin-top: 17px; margin-left: 30px;" type="checkbox" class="seat_select" seat_num="${seat.seat_num}" value="${seat.seat_name}">${seat.seat_name}
-			</span>			
+				<input style="margin-top: 17px; margin-left: 30px;" type="checkbox" class="seat_select" id="${seat.seat_num}" seat_num="${seat.seat_num}" value="${seat.seat_name}">${seat.seat_name}
+			</span>	
+		
 		<c:forEach var="reserveseat" items="${reserveseat_list}">
 				<c:if test="${reserveseat.seat_num == seat.seat_num}">
 					<script type="text/javascript">
-						$('input:checkbox').prop("checked",true).prop('disabled', true);
-						$('.seat_detail').css('background','#743030');
+						seat_num = ${reserveseat.seat_num};
+						
+						//$('input:checkbox').prop("checked",true).prop('disabled', true);
+						//$('.seat_detail').css('background','#743030');
+						
+						$('#'+ seat_num +'').prop("checked",true).prop('disabled', true);
+						$('#'+ seat_num +'').parent().css('background','#743030');
+
 					</script>
 				</c:if>
 		</c:forEach>
+		
 	</c:forEach>
 			
 </div>

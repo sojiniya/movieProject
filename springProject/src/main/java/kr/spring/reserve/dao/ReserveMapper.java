@@ -38,7 +38,7 @@ public interface ReserveMapper {
 	public TheaterVO picktheaterdetail(Integer theater_num);
 	@Select("select * from m_time where time_num = #{time_num}")
 	public TimeVO picktimedetail(Integer time_num);
-	@Select("select * from m_seat s join m_time t on s.theater_num = t.theater_num where time_num = #{time_num} order by t.time_num,s.seat_name")
+	@Select("select * from m_seat s join m_time t on s.theater_num = t.theater_num where time_num = #{time_num} order by s.seat_num")
 	public List<ReserveVO> seatlist(Integer time_num);
 	@Select("select * from m_reservseat where time_num = #{time_num} order by revseat_num")
 	public List<ReserveseatVO> reservseatlist(Integer time_num);
