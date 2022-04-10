@@ -62,12 +62,12 @@
 
 <div id="info-message" style="background: #f2f2f2; padding: 10px; margin-bottom: 10px">
 	<div>${member.mem_name}님은 
-		<c:if test="${member.mem_grade == 0}">브론즈</c:if>
-		<c:if test="${member.mem_grade == 1}">실버</c:if>
-		<c:if test="${member.mem_grade == 2}">골드</c:if>등급으로 
-		<c:if test="${member.mem_grade == 0}"><span id="grade_sale_price">1000</span></c:if>
-		<c:if test="${member.mem_grade == 1}"><span id="grade_sale_price">2000</span></c:if>
-		<c:if test="${member.mem_grade == 2}"><span id="grade_sale_price">3000</span></c:if> 원 할인 혜택을 받으실 수 있습니다.
+		<c:if test="${member.mem_grade < 3}">브론즈</c:if>
+		<c:if test="${member.mem_grade >=3 && member.mem_grade <=5}">실버</c:if>
+		<c:if test="${member.mem_grade > 5}">골드</c:if>등급으로 
+		<c:if test="${member.mem_grade < 3}"><span id="grade_sale_price">1000</span></c:if>
+		<c:if test="${member.mem_grade >=3 && member.mem_grade <=5}"><span id="grade_sale_price">2000</span></c:if>
+		<c:if test="${member.mem_grade > 5}"><span id="grade_sale_price">3000</span></c:if> 원 할인 혜택을 받으실 수 있습니다.
 	</div>
 </div>
 

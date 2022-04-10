@@ -111,9 +111,17 @@
 		  seat_num_array.push($(this).attr('seat_num'));
 		  
 		  //체크한 좌석번호를 다시 체크할 경우 배열 요소 삭제
+		  if(!$(this).is(":checked")){
+			//배열의 마지막 요소 삭제	  
+		  }
 		  
 		  //체크한 좌석명을 배열 요소 추가
 		  reserve_seat.push($(this).val());
+		  
+		  //체크한 좌석명을  다시 체크할 경우 배열 요소 삭제
+		  if(!$(this).is(":checked")){
+			//배열의 마지막 요소 삭제  
+		  }
 	  }
 	  
 	  $('#seat_num_array').val(seat_num_array);

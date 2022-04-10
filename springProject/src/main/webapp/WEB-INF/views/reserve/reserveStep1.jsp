@@ -83,6 +83,7 @@
 					
 					// 선택한 영화가 상영하는 극장 카테고리(지역) 노출
 					$(param.theater_local_name).each(function(index,item){
+						
 						let output = '<li style="float:none; text-align:right;">';
 						output += '<c:if test="${empty '+item.theater_local+'}">';
 						output += '현재 상영중인 영화가 없습니다.';
@@ -301,6 +302,8 @@
 		//상영 시간 선택 시 이벤트 발생
 		$(document).on('click','#movie-time li',function(){
 			pick_time_num = $(this).children().attr('time-idx'); // 클릭한 상영시간의 시간 번호(time_num)을 변수에 저장
+			
+			$('#time_num').val(pick_time_num); // 날짜 중복 조회 제거 시 form태그 내 time_num을 입력하기 위한 코드
 			
 			//인원수 체크 내용 초기화
 			$('#people').empty();
