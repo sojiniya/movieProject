@@ -26,10 +26,10 @@
             </c:if>
             <c:if test="${!empty user_num}">
              <li class="header_id">${user_id}</li>
-			<a href="${pageContext.request.contextPath}/user/logout.do"><img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png" alt="로그아웃" />로그아웃</a>
+			<a href="${pageContext.request.contextPath}/user/logout.do"><img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png" alt="로그아웃" /><span style="margin-left:10px;">로그아웃</span></a>
             </c:if>
             <c:if test="${!empty user_num && user_auth == 1}">
-            <li><a href="${pageContext.request.contextPath}/user/myPage.do"><img src="https://img.cgv.co.kr/R2014/images/common/ico/loginMember.png" alt="MY CGV" /><span>MY CGV</span></a></li>
+            <li><a href="${pageContext.request.contextPath}/user/myPage.do"><img src="https://img.cgv.co.kr/R2014/images/common/ico/loginMember.png" alt="MY Page" /><span>My page</span></a></li>
             </c:if>
             <c:if test="${!empty user_num && user_auth == 3}">
 			<li><a href="${pageContext.request.contextPath}/admin/adminPage.do"><img src="https://img.cgv.co.kr/R2014/images/common/ico/loginMember.png" alt="회원관리" /><span>회원관리</span></a></li>	
