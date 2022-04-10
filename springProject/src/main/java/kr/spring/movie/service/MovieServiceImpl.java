@@ -46,6 +46,7 @@ public class MovieServiceImpl implements MovieService{
 	@Override
 	public void deleteMovie(Integer movie_num) {
 		movieMapper.deleteMovie(movie_num);
+		
 	}
 
 	@Override

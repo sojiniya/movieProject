@@ -36,13 +36,16 @@
       <c:forEach var="rearchResult" items="${list}" end="29" varStatus="status">
       <div class="horizontal-area">
          <img src="imageView.do?movie_num=${rearchResult.movie_num}">
-         <p>
-            <span style="font-weight:bold; font-size:14px;">${rearchResult.movie_name}</span><br>
-         <h3 style="background:#fb4357; color:white; text-align:center; border-radius:5px;"><a href="${pageContext.request.contextPath}/reserve/reserveStep1.do">예매하기</a></h3>
-            <c:if test="${box.count != 'None'}">
-            <span>${box.count}</span>
-            </c:if>
-         </p>
+         <span style="font-weight:bold; font-size:14px;">${rearchResult.movie_name}</span>
+         <br>
+         <c:if test="${rearchResult.movie_auth == 0}">
+         <h3 style="background:#fb4357; color:white; text-align:center; border-radius:5px;">
+         	<a href="${pageContext.request.contextPath}/reserve/reserveStep1.do">예매하기</a>
+         </h3>
+         </c:if>
+         <c:if test="${rearchResult.movie_auth == 2}">
+         	<span>상영종료</span>
+         </c:if>
       </div>
       </c:forEach>
       <div class="float-clear">

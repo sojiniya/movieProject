@@ -12,8 +12,9 @@
 .movieRank{
 	color:white;
 	background:red;
-	height:20px;
+	height:25px;
 	padding-top:3px;
+	margin-bottom:8px;
 }
 </style>
 <div class="page-main">

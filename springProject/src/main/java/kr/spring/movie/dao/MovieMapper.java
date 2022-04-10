@@ -23,7 +23,8 @@ public interface MovieMapper {
 	public void insertMovie(MovieVO movie); //글 작성
 	public MovieVO selectMovie(int movie_num); //상세보기
 	public void updateMovie(MovieVO movie); //글 수정
-	@Delete("DELETE FROM M_movie WHERE movie_num=#{movie_num}")
+	//auth 0 :상영중, 1:상영예정, 2:상영종료
+	@Update("Update M_movie SET movie_auth = 2 WHERE movie_num=#{movie_num}")
 	public void deleteMovie(Integer movie_num); //글 삭제
 	@Update("UPDATE M_movie SET uploadfile='',filename='' "
 			+ "WHERE movie_num=#{movie_num}")
