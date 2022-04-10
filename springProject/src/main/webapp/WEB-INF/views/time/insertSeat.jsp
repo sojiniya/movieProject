@@ -16,6 +16,15 @@ form {
     margin-left: 75px;
     padding: 5px;
 }
+div #register{
+	background: #666;
+	color: white;
+	width: 100px;
+	height: 35px;
+	margin-top: 20px;
+	border: 2px solid lightgrey;
+	font-size: 15px;
+}
 </style>
 <!-- 부트스트랩 라이브러리 -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -42,8 +51,8 @@ form {
 			</li>
 		</ul>	 
 		<div class="align-center" style="clear:both"><p>
-			<form:button>등록</form:button>
-			<input type="button" value="목록" 
+			<form:button class="register">등록</form:button>
+			<input type="button" value="목록" class="register" 
 			              onclick="location.href='${pageContext.request.contextPath}/time/selectList.do'">
 		</div>                                          
 	</form:form>

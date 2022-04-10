@@ -19,6 +19,7 @@ public class MovieReviewVO {
 	private int total_rate;
 	private String movie_name;
 	private String id;
+	private String theater_name;
 	
 	
 	public int getReview_num() {
@@ -95,6 +96,13 @@ public class MovieReviewVO {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	
+	public String getTheater_name() {
+		return theater_name;
+	}
+	public void setTheater_name(String theater_name) {
+		this.theater_name = theater_name;
 	}
 	@Override
 	public String toString() {

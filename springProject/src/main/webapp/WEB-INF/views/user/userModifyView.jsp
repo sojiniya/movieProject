@@ -192,14 +192,14 @@ label{
 			<li>주소 : ${member.mem_address}</li><br>
 			<li>등급 : 
 			<c:if test="${member.mem_grade < 3}"> 
-                        <strong class="txt-purple">브론즈</strong>입니다.             
+                        <strong class="txt-purple">브론즈</strong>            
                         </c:if>
-                        <c:if test="${member.mem_grade >= 3}"> 
-                        <strong class="txt-purple">실버</strong>입니다.             
+                        <c:if test="${member.mem_grade >= 3 && member.mem_grade <= 5}"> 
+                        <strong class="txt-purple">실버</strong>            
                         </c:if>
-                        <c:if test="${member.mem_grade >= 5}"> 
-                        <strong class="txt-purple">골드</strong>입니다.             
-            </c:if>				
+                        <c:if test="${member.mem_grade > 5}"> 
+                        <strong class="txt-purple">골드</strong>            
+                        </c:if>				
 			</li>
 		</ul>
 		</div>
