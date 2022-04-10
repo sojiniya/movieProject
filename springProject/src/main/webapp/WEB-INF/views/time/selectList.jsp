@@ -203,6 +203,16 @@ ul ul {
 	width: 980px;
 	height: 420px;
 }
+.result-display {
+    width: 400px;
+    height: 200px;
+    margin: 100px auto;
+    margin-bottom: 5px;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 </style>
 
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
@@ -369,6 +379,12 @@ $(function(){
 				let movie_time;
 				let movie_showtm;
 				
+				if(param.list.length==0){
+					$('.result-display').text('등록된 상영정보가 없습니다.').show();
+				}else{
+					$('.result-display').hide();
+				}
+				
 				$(param.list).each(function(index,item){
 					movie_num = item.movie_num;
 				    movie_name = item.movie_name;
@@ -513,7 +529,8 @@ $(function(){
 	</div>
 </c:if>
 
-<!-- 영화리스트 시작(참고용) -->
+<div class="result-display" style="display:none;"></div>
+
 <div class="sect-showtimes">
 	<ul style="display: block;list-style: none;list-style-type: disc;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
 		<li style="display:list-item;text-align: -webkit-match-parent;list-style: none;">
@@ -539,6 +556,7 @@ $(function(){
 		</li>
 	</ul>
 </div>
+
 <!-- 영화리스트  끝 -->
 <div class="info-noti1">
 <p class="info-noti"></p>
