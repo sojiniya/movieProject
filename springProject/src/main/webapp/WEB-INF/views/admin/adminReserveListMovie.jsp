@@ -55,7 +55,7 @@ table td, table th{
 			<th>회원 아이디</th>
 			<th>영화제목</th>
 			<th>극장</th>
-			<th>예매 좌석수</th>
+			<th>예매 좌석</th>
 			<th>결제 수단</th>
 			<th>결제 금액</th>
 		</tr>
@@ -67,7 +67,7 @@ table td, table th{
 			<td>${reserve.id}</td>
 			<td>${reserve.movie_name}</td>
 			<td>${reserve.theater_name}</td>
-			<td>예매 좌석수</td>
+			<td>${reserve.reserve_seat}</td>
 			<td>카카오페이 결제</td>
 			
 			<td>${reserve.reserve_paytotal}</td>
