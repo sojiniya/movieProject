@@ -40,8 +40,6 @@
 <style>
 .box-image #MoviePoster {
     width: 170px;
-    height: 200px;
-    padding-top:10px;
 }
 </style>
 <div class="cols-content">
@@ -66,17 +64,17 @@
 									</span>
 									</a>
 								</div>
-								<div class="box-contents">
+								<div class="box-contents" style="margin-top: 60px;">
 									<div class="title">
 										<a href="/movies/detail-view/?midx=80530"> <strong
-											id="strong_80530">${reserveMovie.movie_name}</strong>
+											id="strong_80530" style="font-size:20px;">${reserveMovie.movie_name}</strong>
 										</a>
 									</div>
 									<c:set var="MovieTime" value="${reserveMovie.movie_date}"/> 
-									<p class="date">${fn:substring(MovieTime,0,10)}
+									<p class="date" style="font-size:17px">${fn:substring(MovieTime,0,10)}
 										${reserveMovie.movie_time}</p>
-									<p class="theater">CGV${reserveMovie.theater_name}
-										/A-${reserveMovie.reserve_seat}</p>
+									<p class="theater" style="font-size:16px">${reserveMovie.theater_name}
+										/${reserveMovie.reserve_seat}</p>
 								</div>
 								<!-- 2022.04.08 예매취소 기능을 위해  reserve-idx="${reserveMovie.reserve_num}" 추가 // 정동윤-->
 								<button type="button" data="329787502" class="btn-del" reserve-idx="${reserveMovie.reserve_num}" revseat-idx="${reserveMovie.revseat_num}">
