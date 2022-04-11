@@ -60,7 +60,7 @@ function clickLike(likeYn){
 	<c:if test="${movie.movie_auth == 0}">
 			<span class="auth_result">상영중</span></c:if>
 	<c:if test="${movie.movie_auth == 1}">
-			<span class="auth_result">상영 예정</span></c:if> 
+			<span class="auth_result" style="font-weight: normal;border: 2px solid #87ceeb;color: #87ceeb;padding: 5px;">상영 예정</span></c:if> 
 	<c:if test="${movie.movie_auth == 2}">
 			<span class="auth_result">상영 종료</span></c:if>
 	<%-- <button type="button" onclick="alert('${movie.movie_name} 영화가 좋아요 되었습니다.\n * 상단  MY CGV에서 확인 가능합니다.'),like()" style="background-color:transparent; border:0;"><img id="like_movie" src="${pageContext.request.contextPath}/resources/images/likedefault.png" style="width:25px; height:25px; margin-left: 5px;"></button> --%>
