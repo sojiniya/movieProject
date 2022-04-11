@@ -20,8 +20,8 @@ table td, table th{
 		<ul class="search">
 			<li>
 				<select name="keyfield" id="keyfield" class="select-height">
-					<option value="2" <c:if test="${param.keyfield == 1}">selected</c:if>>영화별</option>
-					<option value="3" <c:if test="${param.keyfield == 2}">selected</c:if>>극장별</option>
+					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>영화별</option>
+					<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>극장별</option>
 				</select>
 			</li>
 			<li>
