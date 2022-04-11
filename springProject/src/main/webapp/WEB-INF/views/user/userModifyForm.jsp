@@ -130,7 +130,7 @@ input[value="이전 페이지"]{
 				<div class="align-center">
 					<form:button>회원정보 수정하기</form:button>
 					<input type="button" value="이전 페이지"
-						onclick="location.href='${pageContext.request.contextPath}/user/myPage.do'">
+						onclick="location.href='${pageContext.request.contextPath}/user/update.do'">
 				</div>
 				</fieldset>
 			</form:form>
