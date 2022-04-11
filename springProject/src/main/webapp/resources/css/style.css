@@ -594,7 +594,7 @@ form{
 form#register_form, form#update_form{
 	border: none;
 	width:700px;
-	height:300px;
+	height:400px;
 }
 ul{
 	list-style:none;
