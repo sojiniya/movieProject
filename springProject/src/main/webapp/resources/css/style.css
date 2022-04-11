@@ -1041,6 +1041,19 @@ input#movie_content{
     text-align: center;
     background-color: #f8f8f8;
 }
+.payInfo tbody th {
+    padding: 10px 0 8px 0px;
+    border-bottom: solid 1px #e1dfd5;
+    text-align: center;
+    background-color: #ea3423;
+    color: white;
+}
+.payInfo tbody td {
+    padding: 15px 0px 13px 0px;
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
+    text-align: center;
+}
 .tbl_notice_list .tit, .tbl_notice_list .txt {
     text-align: left;
     padding: 10px 15px 8px;
@@ -1153,6 +1166,7 @@ em {
     width: 49%;
     height: 99%;
     overflow: hidden;
+    border-right: solid 1px darkgray;
 }
 
 .theater-cgv-list{
@@ -1165,7 +1179,7 @@ em {
 .movie-form{
 	width: 100%;
 	height: 500px;
-	background: gainsboro;
+	background: #f9f9f9;
 }
 
 .info-movie{
@@ -1192,7 +1206,7 @@ em {
 	float: left;
     height: 120px;
     color: #cccccc;
-    font-size: 12px;
+    font-size: 13px;
     border-right: 1px solid white;
     width: 15%;
     margin: 10px;
@@ -1283,12 +1297,74 @@ theater-choice,theater-name{
 }
 
 #step1-info,#step2-info,#step3-info{
-	padding-top: 10px;
+	padding-top: 12px;
 	width: 33%; 
 	border: 1px solid black;
 }
+div#step2-info {
+    border-right: none;
+}
+div#step1-info {
+	border-right: none;
+    color: white;
+}
+ul.movie_list{
+	margin-top: 0px; 
+	padding-top: 5px; 
+	padding-left: 5px; 
+	margin-bottom: 0px;
+}
+li.reserveDetail{
+	
+}
+span.movieName1 {
+    font-size: 17px;
+}
+#theater-local{
+	font-size: 16px;
+	weight: 700;
+	
+}
+#theater-cgv{
+	font-size: 16px;
+	weight: 700;
+	
+}
+ul#theater-local {
+    font-weight: 600;
+    padding-left: 55px;
+    
+}
+.theater-cgv-list {
+    font-weight: 600;
+    
+}
+div#people_check {
+    margin-left: 7px;
+}
+.margin7 {
+    margin-bottom: 7px;
+}
+input#adult, input#youth, input#old {
+    border-radius: 7%;
+    width: 50px;
+    height: 18px;
+}
+div#movie_name, div#movie_genre, div#movie_pg, div#cgv_name {
+    font-size: 15px;
+}
+div#cgv_date, div#cgv_time {
+    font-size: 13px;
+}
 
-.custom-btn{
+/* .btn-ea3423 {
+    background: #ea3423;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+} */
+
+/* .custom-btn{
   width: 130px;
   height: 40px;
   color: #fff;
@@ -1305,13 +1381,44 @@ theater-choice,theater-name{
    7px 7px 20px 0px rgba(0,0,0,.1),
    4px 4px 5px 0px rgba(0,0,0,.1);
   outline: none;
+} */
+.custom-btn {
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgb(255 255 255 / 50%), 7px 7px 20px 0px rgb(0 0 0 / 10%), 4px 4px 5px 0px rgb(0 0 0 / 10%);
+    outline: none;
 }
-
-.btn-7 {
+/* .btn-7 {
 background: linear-gradient(0deg, rgba(255,151,0,1) 0%, rgba(251,75,2,1) 100%);
   line-height: 42px;
   padding: 0;
   border: none;
+} */
+.btn-7 {
+    background: #ea3423;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+}
+input.cancelBtn {
+    background-color: #554c4c;
+    border: 2px solid #7b7b7b;
+    color: white;
+    line-height: 21px;
+    width: 120px;
+    height: 30px;
+    /* border-radius: 5%; */
 }
 .btn-7 span {
   position: relative;

@@ -5,14 +5,25 @@
 <!-- 중앙 컨텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<style>
+table{
+	width:100%;
+	border:none;
+	border-collapse:collapse;
+}
+table td, table th{
+	border:none;
+	padding:5px;
+}
+</style>
 <div id="step-info">
-	<div id="step1-info">1.영화 및 극장 선택</div>
+	<div id="step1-info" style="color: black">1.영화 및 극장 선택</div>
 	<div id="step2-info">2.좌석 선택</div>
-	<div id="step3-info" style="background: #ed6e6e; font-weight: bold;">3.결제</div>
+	<div id="step3-info" style="background: red; font-weight: bold; color: white;">3.결제</div>
 </div>
 	
 <div style="display: flex; flex-direction: row-reverse;">
-	<input type="button" value="예약 선택 초기화" onclick="location.href='reserveStep1.do'">
+	<input type="button" value="예약 선택 초기화" class="cancelBtn" onclick="location.href='reserveStep1.do'">
 </div>
 
 <div id="info-banner" style="width: 100%; background: black; height: 150px; margin: 10px 0 10px 0">
@@ -72,7 +83,7 @@
 </div>
 
 <hr width="100%">
-<table>
+<table class="payInfo">
 	<tr>
 		<th>결제하실 금액</th>
 		<th>총 할인 금액</th>

@@ -84,7 +84,7 @@
 					// 선택한 영화가 상영하는 극장 카테고리(지역) 노출
 					$(param.theater_local_name).each(function(index,item){
 						
-						let output = '<li style="float:none; text-align:right;">';
+						let output = '<li style="float:none; text-align:left;">';
 						output += '<c:if test="${empty '+item.theater_local+'}">';
 						output += '현재 상영중인 영화가 없습니다.';
 						output += '</c:if>';
@@ -153,7 +153,7 @@
 						
 					//선택한 지역에 속해있는 극장 노출
 					$(param.cgv_list).each(function(index,item){
-						let output = '<li style="float:none; text-align:right";>';
+						let output = '<li style="float:none; text-align:left";>';
 						output += '<a href="#" theater-idx="'+ item.theater_num +'">';
 						output += item.theater_name;
 						output += '</a>';
@@ -217,7 +217,7 @@
 					
 					//선택한 영화/상영관에 상영중인 시간대 노출
 					$(param.date_list).each(function(index,item){
-						let output = '<li style="float:none; text-align:center;" time_num="'+ item.time_num +'">';
+						let output = '<li style="float:none; text-align:center; font-size: 16px; weight: 700;" time_num="'+ item.time_num +'">';
 						output += '<a href="#">';
 						output += item.movie_date;						
 						output += '</a>';
@@ -277,7 +277,7 @@
 					
 					//선택한 영화/상영관에 상영중인 시간대 노출
 					$(param.time_list).each(function(index,item){
-						let output = '<li style="float:none; text-align:center";>';
+						let output = '<li style="float:none; text-align:center; font-size: 16px; weight: 700;";>';
 						output += '<a href="#" time-idx="'+ item.time_num +'">';
 						output += item.movie_time;
 						output += '</a>';
@@ -328,10 +328,10 @@
 					//인원수 선택 및 합계 조회 정보 노출
 					//$('#people_check').css('display','');
 					let output = '<div id="people_check">';
-					output += '<div style="height: 30px; text-align: center; background: white;"><span style="vertical-align: middle;">'+seat_possable_count+'/'+seat_total_count+'(예약가능 좌석 / 총 좌석)</div>';
-					output += '<div><span>성인(20세 이상) / 10,000원 </span><input type="number" id="adult" name="adult" max="3" min="0"></div>';
-					output += '<div><span>청소년(19세 이하) / 8,000원 </span><input type="number" id="youth" name="youth" max="3" min="0"></div>';
-					output += '<div><span>경로우대(65세 이상) / 6,000원 </span><input type="number" id="old" name="old" max="3" min="0"></div>';
+					output += '<div style="height: 30px; text-align: left; margin-top: 10px;" margin-left: 0px;><span style="vertical-align: middle;">'+seat_possable_count+'/'+seat_total_count+'(예약가능 좌석 / 총 좌석)</div>';
+					output += '<div class="margin7"><span>성인(20세 이상) / 10,000원 </span><input type="number" class="peopel_age" id="adult" name="adult" max="3" min="0"></div>';
+					output += '<div class="margin7"><span>청소년(19세 이하) / 8,000원 </span><input type="number" class="peopel_age" id="youth" name="youth" max="3" min="0"></div>';
+					output += '<div class="margin7"><span>경로우대(65세 이상) / 6,000원 </span><input type="number" class="peopel_age" id="old" name="old" max="3" min="0"></div>';
 					output += '<div style="margin-top: 10px;"><span id="total_people" name=""></span><div id="total_price" name="total_price"></div></div>';
 					output += '</div>';
 
@@ -478,13 +478,13 @@
 </script>
 
 <div id="step-info">
-	<div id="step1-info" style="background: #ed6e6e; font-weight: bold;">1.영화 및 극장 선택</div>
-	<div id="step2-info">2.좌석 선택</div>
-	<div id="step3-info">3.결제</div>
+	<div id="step1-info" style="background: red; font-weight: bold;">1. 영화 및 극장 선택</div>
+	<div id="step2-info">2. 좌석 선택</div>
+	<div id="step3-info">3. 결제</div>
 </div>
 	
 <div style="display: flex; flex-direction: row-reverse;">
-	<input type="button" value="초기화" onclick="location.href='reserveStep1.do'">
+	<input type="button" value="초기화" class="cancelBtn" onclick="location.href='reserveStep1.do'">
 </div>
 
 <div id="info-banner" style="width: 100%; background: black; height: 150px; margin: 10px 0 10px 0">
@@ -523,18 +523,18 @@
 </div>
 
 <div class="movie-form">
-	<div id="movieselect" style="width: 30%; height: 100%; border:1px black solid; float: left;">
+	<div id="movieselect" style="width: 30%; height: 100%; border:1px #383b40 solid; float: left;">
 		<div class="col-head">영화</div>
 		<div class="col-body">
 			<c:if test="${empty movie_list}">
 			<div style="text-align: center;">현재 상영중인 영화가 없습니다.</div>
 			</c:if>
 		<c:if test="${!empty movie_list}">
-			<ul style="margin-top: 0px; padding-left: 0px; margin-bottom: 0px;" class="movie_list">
+			<ul class="movie_list">
 				<c:forEach var="movie" items="${movie_list}">
-					<li style="margin: 5px; float: none; text-align: left;">
-						<a href="#" movie-idx="${movie.movie_num}">
-							<span style="display:inline-block;">
+					<li style="margin: 5px; float: none; text-align: left; padding-bottom: 3px;">
+						<a href="#" movie-idx="${movie.movie_num}" >
+							<span style="display:inline-block; ">
 								<c:choose>
 									<c:when test="${12 <= movie.movie_pg && movie.movie_pg < 15}">
 									<img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-12.png" width="30px" height="30px;">
@@ -550,7 +550,7 @@
 									</c:otherwise>
 								</c:choose>
 							</span>
-							<span>${movie.movie_name}</span>
+							<span class="movieName1">${movie.movie_name}</span>
 						</a>
 					</li>					
 				</c:forEach>
@@ -558,7 +558,7 @@
 		</c:if>
 		</div>
 	</div>
-	<div style="width: 30%; height: 100%; border:1px black solid; float: left;">
+	<div style="width: 30%; height: 100%; border:1px #383b40 solid; float: left;">
 		<div class="col-head">극장</div>
 		<div class="col-body">
 			<div class="theater-list">
@@ -575,7 +575,7 @@
 			</div>
 		</div>
 	</div>
-	<div style="width: 9%; height: 100%; border:1px black solid; float: left;">
+	<div style="width: 9%; height: 100%; border:1px #383b40 solid; float: left;">
 		<div class="col-head">날짜</div>
 		<div class="col-body">
 			<div class="date-list">
@@ -585,7 +585,7 @@
 			</div>
 		</div>
 	</div>
-	<div style="width: 10%; height: 100%; border:1px black solid; float: left;">
+	<div style="width: 10%; height: 100%; border:1px #383b40 solid; float: left;">
 		<div class="col-head">시간</div>
 		<div class="col-body">
 			<div class="time-list"> 
@@ -595,7 +595,7 @@
 			</div>
 		</div>
 	</div>
-	<div style="width: 20%; height: 100%; border:1px black solid; float: left;">
+	<div style="width: 20%; height: 100%; border:1px #383b40 solid; float: left;">
 		<div class="col-head">인원 (최대 3명)</div>
 		<div class="col-body" id="people">
 		</div>

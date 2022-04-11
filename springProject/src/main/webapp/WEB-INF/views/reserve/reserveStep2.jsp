@@ -8,13 +8,13 @@
 	let seat_num;
 </script>
 <div id="step-info">
-	<div id="step1-info">1.영화 및 극장 선택</div>
-	<div id="step2-info" style="background: #ed6e6e; font-weight: bold;">2.좌석 선택</div>
+	<div id="step1-info" style="color: black">1.영화 및 극장 선택</div>
+	<div id="step2-info" style="background: red; font-weight: bold; color:white;">2.좌석 선택</div>
 	<div id="step3-info">3.결제</div>
 </div>
 	
-<div style="display: flex; flex-direction: row-reverse;">
-	<input type="button" value="예약 선택 초기화" onclick="location.href='reserveStep1.do'">
+<div style="display: flex; flex-direction: row-reverse;" >
+	<input type="button" value="예약 선택 초기화" class="cancelBtn" onclick="location.href='reserveStep1.do'">
 </div>
 
 <div id="info-banner" style="width: 100%; background: black; height: 150px; margin: 10px 0 10px 0">
