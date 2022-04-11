@@ -5,7 +5,7 @@
 <style>
 .image-cine .horizontal-area{
    margin:2px;
-   padding:3px;
+   padding:20px;
    width:180px;
    height:370px;
    float:left;
@@ -32,7 +32,7 @@
    </c:if>
    <c:if test="${count > 0}">
    
-   <div class="image-cine">
+   <div class="image-cine" style="margin: 10px auto; padding: 100px 0px 0px 40px;">
       <c:forEach var="rearchResult" items="${list}" end="29" varStatus="status">
       <div class="horizontal-area">
          <img src="imageView.do?movie_num=${rearchResult.movie_num}">
