@@ -65,6 +65,8 @@ public interface MovieMapper {
 	public int checkLike(MovieLikeVO movielike); 	
 	@Select("SELECT COUNT(*) FROM My_movie m WHERE m.movie_num=#{movie_num}")
 	public int countLike(MovieLikeVO movielike); //좋아요 갯수
+	@Select("SELECT COUNT(*) FROM My_movie WHERE movie_num=#{movie_num} AND mem_num=#{mem_num}")
+	public int countCheckLike(Map<String,Object> map);
 	
 	//영화검색
 	public int searchMovieCount(Map<String,Object> map);
