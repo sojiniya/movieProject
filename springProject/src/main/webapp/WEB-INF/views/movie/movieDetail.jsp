@@ -110,7 +110,7 @@ function clickLike(likeYn){
 		<input type="button" value="목록" onclick="location.href='movieChart.do'" style="width: 55px;height: 30px;background:white;border: 2px solid #ababab;">
 	</div>
 	<c:forEach var="reviewVO" items="${reviewVO}">
-				<div class="movie_review" style="width: 50%;text-align: center;border-right: 1px solid #ddd;border-top: 2px solid #808080;margin-top:10px;">	
+				<div class="movie_review" style="width: 50%;text-align: center;border-right: 1px solid #ddd;border-top: 2px solid #808080;margin-top:10px;float:right;">	
 				<p>${reviewVO.id}</p>
 				<c:choose>
 				<c:when test="${reviewVO.review_rate == 5}"><p>★★★★★</p></c:when>
