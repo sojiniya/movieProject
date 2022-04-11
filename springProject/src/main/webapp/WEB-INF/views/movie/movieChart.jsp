@@ -79,7 +79,7 @@
 						</c:if>
 						</strong>
 						</div>
-						<strong class="movie_reserve"><a href="${pageContext.request.contextPath}/reserve/reserveStep1.do">예매하기</a></strong>
+						<strong class="movie_reserve"><a href="${pageContext.request.contextPath}/reserve/reserveStep1.do" style="color:white";>예매하기</a></strong>
 						
 					</li>
 					</ul>

@@ -94,7 +94,7 @@
 						</strong>
          <c:if test="${rearchResult.movie_auth == 0}">
          <h3 style="background:#fb4357; color:white; text-align:center; border-radius:5px;margin: 5px;">
-         	<a href="${pageContext.request.contextPath}/reserve/reserveStep1.do">예매하기</a>
+         	<a href="${pageContext.request.contextPath}/reserve/reserveStep1.do" style="color:white">예매하기</a>
          </h3>
          </c:if>
          <c:if test="${rearchResult.movie_auth == 2}">
