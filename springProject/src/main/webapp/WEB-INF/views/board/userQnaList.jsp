@@ -6,23 +6,25 @@
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 $( document ).ready(function() {
-     $(this).parent().children("a").removeClass("on");
-     $(this).addClass("on").prevAll("a").addClass("on");
-     
-     $('li').removeClass('on');
-     
-     let a_link = location.href.substring(location.href.lastIndexOf('/'));
-     if(a_link == '/userQnaList.do?cate_num=21'){
-	     $('#cate_link10').addClass('on');
-   	 }else if(a_link == '/userQnaList.do?cate_num=8'){
-         $('#cate_link11').addClass('on');
-     }else if(a_link == '/userQnaList.do?cate_num=9'){
-    	 $('#cate_link12').addClass('on');
-     }else if(a_link == '/userQnaList.do?cate_num=10'){
-    	 $('#cate_link13').addClass('on');
-     }else if(a_link == '/userQnaList.do?cate_num=11'){
-         $('#cate_link14').addClass('on');
-     }
+	$('ul.c_tab type_fre li a').click(function(){
+		$(this).parent().children("a").removeClass("on");
+	     $(this).addClass("on").prevAll("a").addClass("on");
+	     
+	     $('li').removeClass('on');
+	     
+	     let a_link = location.href.substring(location.href.lastIndexOf('/'));
+	     if(a_link == '/userQnaList.do?cate_num=21'){
+		     $('#cate_link10').addClass('on');
+	   	 }else if(a_link == '/userQnaList.do?cate_num=8'){
+	         $('#cate_link11').addClass('on');
+	     }else if(a_link == '/userQnaList.do?cate_num=9'){
+	    	 $('#cate_link12').addClass('on');
+	     }else if(a_link == '/userQnaList.do?cate_num=10'){
+	    	 $('#cate_link13').addClass('on');
+	     }else if(a_link == '/userQnaList.do?cate_num=11'){
+	         $('#cate_link14').addClass('on');
+	     }
+	});
 });
 </script>
 <style>
