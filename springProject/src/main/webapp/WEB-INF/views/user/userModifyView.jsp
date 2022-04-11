@@ -100,14 +100,14 @@ span,  ul, li, fieldset {
 
 .wrap-login{
 	position:relative;
-	padding:100px 200px 60px;
+	padding:40px 150px;
 }
 .wrap-login h3{height:auto;margin:0;background:none;line-height:1.2;text-align:left; color:#222222; font-size:15px;}
 .wrap-login h3 >  strong{ color:#fb4357;}
 .sect-login{ width:541px; float:none;}
 .wrap-login .tab-menu-round > li{ width:100px;}
 .box-login{
-	padding:7px 0px 0 70px; 
+	padding:20px, 10px; 
 	border-top:2px solid #898987; 
 	border-bottom:2px solid #898987; 
 	height: auto;
@@ -165,7 +165,7 @@ label{
 		<ul class="cols">
 			<li class="modifyPhoto">
 				<div>
-					<input type="button" value="프로필 사진 수정" id="photo_btn" class="round modifyPhoto">
+					<input type="button" value="프로필 사진 수정" id="photo_btn" class="round modifyPhoto" style="width:110px;">
 				</div>
 			</li>
 		</ul>
@@ -207,8 +207,8 @@ label{
 		
 		
 		<p class="modifyBtn">
-			<input type="button" value="회원정보수정" class="round inwhite2" onclick="location.href='userModify.do'">
-			<input type="button" value="비밀번호변경" class="round inblue2" onclick="location.href='changePassword.do'">
+			<input type="button" value="회원정보수정" class="round inwhite2" onclick="location.href='userModify.do'" style="width:90px">
+			<input type="button" value="비밀번호변경" class="round inblue2" onclick="location.href='changePassword.do'" style="width:90px">
 			<input type="button" value="회원탈퇴" class="round inred2" onclick="location.href='delete.do'">
 		</p>
 		</div>
