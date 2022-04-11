@@ -955,7 +955,7 @@ input#movie_content{
 	display: inline-block;
     width: 100px;
     height: 35px;
-    background: #c9c9c9; 
+    background: red; 
     text-align: center;
     border-radius: 15px;
     padding-top: 13px;

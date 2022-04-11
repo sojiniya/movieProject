@@ -81,7 +81,7 @@ function clickLike(likeYn){
 <hr>
 <div class="page-main" style="margin-left:210px;">
 	<p>${movie.movie_content}</p>
-	<a class="detail_reserve" href="/project/reserve/reserveStep1.do">예매하기</a>
+	<a class="detail_reserve" href="/project/reserve/reserveStep1.do" style="color:white">예매하기</a>
 	<%-- <p style="float:right;">첨부파일 : <a href="file.do?movie_num=${movie.movie_num}">${movie.filename}</a></p>
 	<c:if test="${fn:endsWith(movie.filename,'.jpg') ||
 	              fn:endsWith(movie.filename,'.JPG') ||
