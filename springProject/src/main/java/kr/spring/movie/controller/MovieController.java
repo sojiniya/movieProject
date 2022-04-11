@@ -282,7 +282,7 @@ public class MovieController {
 		@RequestMapping("/movie/searchMovie.do")
 		public ModelAndView adminViewMemberList(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
 												@RequestParam(value = "keyfield", defaultValue = "") String keyfield,								
-												@RequestParam(value = "keyword", defaultValue = "") String keyword,
+												@RequestParam(value = "MenuKeyword", defaultValue = "") String keyword,
 												HttpSession session) {
 			logger.info("<keyword>> : " + keyword);
 			logger.info("<keyfield>> : " + keyfield);

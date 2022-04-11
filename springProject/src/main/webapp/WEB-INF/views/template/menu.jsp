@@ -22,7 +22,7 @@
 	<li>
         <div class="search_box">
         <form action="${pageContext.request.contextPath}/movie/searchMovie.do" id="search_form" method="get">
-          <input type="search" maxlength="225" placeholder="스텔라" onfocus="this.placeholder=''" onblur="this.placeholder='스텔라'" id="keyword" name="keyword" value="${param.keyword}"/>
+          <input type="search" maxlength="225" placeholder="스텔라" onfocus="this.placeholder=''" onblur="this.placeholder='스텔라'" id="MenuKeyword" name="MenuKeyword" value="${param.MenuKeyword}"/>
           <input type="submit" value="검색">
          </form>
         </div>
