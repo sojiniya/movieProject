@@ -295,7 +295,7 @@ public class MovieController {
 			logger.info("<count>> : " + count);
 
 			// 페이지 처리
-			PagingUtil page = new PagingUtil(keyfield,keyword, currentPage, count, 10, 10, "searchMovie.do");
+			PagingUtil page = new PagingUtil(keyfield,keyword, currentPage, count, 12, 10, "searchMovie.do");
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
 
