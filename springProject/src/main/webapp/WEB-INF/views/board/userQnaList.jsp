@@ -4,6 +4,27 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 콘텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$( document ).ready(function() {
+     $(this).parent().children("a").removeClass("on");
+     $(this).addClass("on").prevAll("a").addClass("on");
+     
+     $('li').removeClass('on');
+     
+     let a_link = location.href.substring(location.href.lastIndexOf('/'));
+     if(a_link == '/userQnaList.do?cate_num=21'){
+	     $('#cate_link10').addClass('on');
+   	 }else if(a_link == '/userQnaList.do?cate_num=8'){
+         $('#cate_link11').addClass('on');
+     }else if(a_link == '/userQnaList.do?cate_num=9'){
+    	 $('#cate_link12').addClass('on');
+     }else if(a_link == '/userQnaList.do?cate_num=10'){
+    	 $('#cate_link13').addClass('on');
+     }else if(a_link == '/userQnaList.do?cate_num=11'){
+         $('#cate_link14').addClass('on');
+     }
+});
+</script>
 <style>
 table{
 	width:100%;
@@ -13,6 +34,10 @@ table{
 table td, table th{
 	border:none;
 	padding:5px;
+}
+.col-aside li.on{
+color:#fdfcf0;
+background:#fb4357;
 }
 </style>
 <script>
@@ -28,19 +53,19 @@ table td, table th{
 		<h3 style="margin:0px 10px;">문의/건의</h3>
 		<div class="c_tab_wrap">
 			<ul class="c_tab type_free">
-				<li class="on">
+				<li id="cate_link10">
 					<a href="/project/board/userQnaList.do?cate_num=21" style="font-size: 13px;" title="선택된 탭메뉴">전체</a>
 				</li>
-				<li class>
+				<li id="cate_link11" class>
 					<a href="/project/board/userQnaList.do?cate_num=8" style="font-size: 13px;">문의</a>
 				</li>
-				<li class>
+				<li id="cate_link12" class>
 					<a href="/project/board/userQnaList.do?cate_num=9" style="font-size: 13px;">불만</a>
 				</li>
-				<li class>
+				<li id="cate_link13" class>
 					<a href="/project/board/userQnaList.do?cate_num=10" style="font-size: 13px;">칭찬</a>
 				</li>
-				<li class>
+				<li id="cate_link14" class>
 					<a href="/project/board/userQnaList.do?cate_num=11" style="font-size: 13px;">제안</a>
 				</li>
 			</ul>

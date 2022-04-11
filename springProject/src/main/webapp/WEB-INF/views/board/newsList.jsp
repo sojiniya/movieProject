@@ -4,7 +4,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 콘텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
-
+<script type="text/javascript">
+$( document ).ready(function() {
+     $(this).parent().children("a").removeClass("on");
+     $(this).addClass("on").prevAll("a").addClass("on");
+     
+     $('li').removeClass('on');
+     
+     let a_link = location.href.substring(location.href.lastIndexOf('/'));
+     if(a_link == '/newsList.do?cate_num=20'){
+	     $('#cate_link6').addClass('on');
+   	 }else if(a_link == '/newsList.do?cate_num=5'){
+         $('#cate_link7').addClass('on');
+     }else if(a_link == '/newsList.do?cate_num=6'){
+    	 $('#cate_link8').addClass('on');
+     }else if(a_link == '/newsList.do?cate_num=7'){
+    	 $('#cate_link9').addClass('on');
+     }
+});
+</script>
 <style>
 table{
 	width:100%;
@@ -14,6 +32,10 @@ table{
 table td, table th{
 	border:none;
 	padding:5px;
+}
+.col-aside li.on{
+color:#fdfcf0;
+background:#fb4357;
 }
 </style>
 <div class="boardMain">
@@ -33,16 +55,16 @@ table td, table th{
 		</form>
 		<div class="c_tab_wrap">
 			<ul class="c_tab type_free">
-				<li class="on">
+				<li id="cate_link6">
 					<a href="/project/board/newsList.do?cate_num=20" style="font-size: 13px;" title="선택된 탭메뉴">전체</a>
 				</li>
-				<li>
+				<li id="cate_link7">
 					<a href="/project/board/newsList.do?cate_num=5" style="font-size: 13px; width: 87px;">시스템점검</a>
 				</li>
-				<li class>
+				<li id="cate_link8" class>
 					<a href="/project/board/newsList.do?cate_num=6" style="font-size: 13px;">극장</a>
 				</li>
-				<li class>
+				<li id="cate_link9" class>
 					<a href="/project/board/newsList.do?cate_num=7" style="font-size: 13px;">기타</a>
 				</li>
 			</ul>

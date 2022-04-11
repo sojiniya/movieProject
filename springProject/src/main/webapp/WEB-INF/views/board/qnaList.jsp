@@ -3,12 +3,27 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 콘텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
-
-<script>
-	$(window).ready(function(){
-		console.log("2");
-	});
-</script>
+<script type="text/javascript">
+$( document ).ready(function() {
+     $(this).parent().children("a").removeClass("on");
+     $(this).addClass("on").prevAll("a").addClass("on");
+     
+     $('li').removeClass('on');
+     
+     let a_link = location.href.substring(location.href.lastIndexOf('/'));
+     if(a_link == '/qnaList.do?cate_num=0'){
+	     $('#cate_link1').addClass('on');
+   	 }else if(a_link == '/qnaList.do?cate_num=1'){
+         $('#cate_link2').addClass('on');
+     }else if(a_link == '/qnaList.do?cate_num=2'){
+    	 $('#cate_link3').addClass('on');
+     }else if(a_link == '/qnaList.do?cate_num=3'){
+    	 $('#cate_link4').addClass('on');
+     }else if(a_link == '/qnaList.do?cate_num=4'){
+    	 $('#cate_link5').addClass('on');
+     }
+});
+</script>  
 <style>
 table{
 	width:100%;
@@ -18,6 +33,10 @@ table{
 table td, table th{
 	border:none;
 	padding:5px;
+}
+.col-aside li.on{
+color:#fdfcf0;
+background:#fb4357;
 }
 </style>
 <div class="boardMain">
@@ -36,19 +55,19 @@ table td, table th{
 		</form>
 		<div class="c_tab_wrap">
 			<ul class="c_tab type_free">
-				<li class="on">
+				<li id="cate_link1">
 					<a href="/project/board/qnaList.do?cate_num=0" style="font-size: 13px;" title="선택된 탭메뉴">전체</a>
 				</li>
-				<li>
+				<li id="cate_link2">
 					<a href="/project/board/qnaList.do?cate_num=1" style="font-size: 13px;">예매/매표</a>
 				</li>
-				<li>
+				<li id="cate_link3">
 					<a href="/project/board/qnaList.do?cate_num=2" style="font-size: 13px;">결제수단</a>
 				</li>
-				<li>
+				<li id="cate_link4">
 					<a href="/project/board/qnaList.do?cate_num=3" style="font-size: 13px;">멤버쉽</a>
 				</li>
-				<li>
+				<li id="cate_link5">
 					<a href="/project/board/qnaList.do?cate_num=4" style="font-size: 13px;">영화관이용</a>
 				</li>
 			</ul>
