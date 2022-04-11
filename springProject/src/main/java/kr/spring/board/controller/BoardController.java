@@ -123,7 +123,7 @@ public class BoardController {
 					
 			//페이지 처리
 			PagingUtil page = new PagingUtil(keyfield,keyword,
-							                currentPage,count,20,10,"qnaList.do");
+							                currentPage,count,30,20,"qnaList.do");
 					
 			map.put("start",page.getStartCount());
 			map.put("end", page.getEndCount());
