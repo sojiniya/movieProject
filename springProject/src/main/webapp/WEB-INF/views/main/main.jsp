@@ -36,6 +36,7 @@
 			</div>
 			<div id="movie_api">
 				<c:forEach var="movie" items="${movieList}" varStatus="status" begin="1" end="5">
+					<c:if test="${movie.movie_auth == 0}">
 					<li>
 						<p class="movie_img"><a href="/project/movie/movieDetail.do?movie_num=${movie.movie_num}"><img src="/project/movie/imageView.do?movie_num=${movie.movie_num}" style="width:185px; height:260px;"></a></p>
 						<p class="movie_rank">${status.count}</p>
@@ -61,6 +62,7 @@
 						<strong class="movie_name"><a href="/project/movie/movieDetail.do?movie_num=${movie.movie_num}">${movie.movie_name}</a></strong><br>
 						</div>
 					</li>
+					</c:if>
 				</c:forEach>
 			</div>
 		</c:if>

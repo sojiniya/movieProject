@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.member.controller.MemberController;
@@ -24,18 +25,21 @@ public class MainController {
 	private MovieService movieService;
 
 	@RequestMapping("/main/main.do")
-	public ModelAndView main() {
+	public ModelAndView main(@RequestParam(value = "keyfield", defaultValue = "") String keyfield) {
 		//1. TODO 소진 : 검색조건 추가하기(상위랭크4개만 뽑기)
 		Map<String,Object> map = new HashMap<String,Object>();
 		
 		//2. select(service)
-		int count = movieService.selectRowCount(map);
+		map.put("keyfield", keyfield);
+		map.put("keyword", "");
+		int count = movieService.searchMovieCount(map);
+		logger.info("<count>> : " + count);
 		
 		List<MovieVO> movieList = null;
 		if(count > 0) {
 			map.put("start",1);
 			map.put("end",10);
-			movieList = movieService.selectList(map);
+			movieList = movieService.searchReserveRateList(map);
 		}
 		
 		logger.info("<<count>> :" + count);
