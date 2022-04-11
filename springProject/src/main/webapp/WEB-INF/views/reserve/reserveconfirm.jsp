@@ -5,6 +5,17 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- 중앙 컨텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
+<style>
+table{
+	width:100%;
+	border:none;
+	border-collapse:collapse;
+}
+table td, table th{
+	border:none;
+	padding:5px;
+}
+</style>
 <div>
 	<b>${member.mem_name}</b>님 예매가 완료되었습니다.
 </div>
@@ -29,7 +40,7 @@
 	</div>
 </div>
 <hr width="100%">
-<table>
+<table class="payInfo">
 	<tr>
 		<th>결제하실 금액</th>
 		<th>총 할인 금액</th>

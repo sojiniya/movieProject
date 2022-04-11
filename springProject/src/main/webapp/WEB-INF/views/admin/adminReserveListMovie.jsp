@@ -43,10 +43,11 @@ table td, table th{
 			<col style="width:70px;">
 			<col style="auto;">
 			<col style="width:120px;">
-			<col style="width:140px;">
+			<col style="width:110px;">
+			<col style="width:110px;">
+			<col style="width:90px;">
 			<col style="width:120px;">
-			<col style="width:120px;">
-			<col style="width:120px;">
+			<col style="width:100px;">
 		</colgroup>
 		<thead>
 		<tr>
