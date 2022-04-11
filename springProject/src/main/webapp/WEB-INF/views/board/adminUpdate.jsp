@@ -85,6 +85,34 @@ table td, table th{
         });
 		
 	})
+	function movie(){
+			
+			const selectVal = $('#sel_regioncode').children("option:selected").val();
+			console.log(selectVal);
+			
+			switch(selectVal) {
+				case '1':
+					console.log("1탔다");
+					$('#sel_theatercode').empty();
+					$('#sel_theatercode').append("<option value='0' selected>영화관 선택</option>");
+					$('#sel_theatercode').append("<option value='2' selected>CGV 홍대</option>");
+					$('#sel_theatercode').append("<option value='3' selected>CGV 강남</option>");
+					$('#sel_theatercode').append("<option value='4' selected>CGV 압구정</option>");
+					break;
+				case '2':
+					console.log("2탔다");
+					$('#sel_theatercode').empty();
+					$('#sel_theatercode').append("<option value='0' selected>영화관 선택</option>");
+					$('#sel_theatercode').append("<option value='5' selected>CGV 수원</option>");
+					$('#sel_theatercode').append("<option value='6' selected>CGV 광교</option>");
+					$('#sel_theatercode').append("<option value='7' selected>CGV 화성</option>");
+					break;
+				default:
+					break;
+			}
+		
+			
+		}
 </script>
 <!-- 중앙 시작 -->
 <!-- 3월 11일 31분 -->
