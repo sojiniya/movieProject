@@ -3,6 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <style>
+#search_form2{
+		padding-left:480px;
+		border:none;
+}
 .image-cine .horizontal-area{
    margin:2px;
    padding:20px;
@@ -35,8 +39,18 @@
    <div class="result-display">검색 결과가 없습니다.</div>
    </c:if>
    <c:if test="${count > 0}">
-
-		<div class="image-cine" style="margin: 10px auto; padding: 100px 0px 0px 40px;">
+		
+		<div class="align-right">
+			<form id="search_form2" action="searchMovie.do">
+				<select id="keyfield" name="keyfield">
+					<option title="현재 선택됨" value="1">예매율순</option>
+					<option value="2" <c:if test="${keyfield ==2}">selected</c:if>>평점순</option>
+				</select>
+			<input type="submit" value="GO" style="height: 30px;background: lightgray;border: 2px solid lightgray;">
+			</form>
+		</div>
+		
+		<div class="image-cine" style="margin: 10px auto; padding: 45px 0px 0px 40px;">
       <c:forEach var="rearchResult" items="${list}" end="29" varStatus="status">
       <div class="horizontal-area">	
          <img src="imageView.do?movie_num=${rearchResult.movie_num}">
